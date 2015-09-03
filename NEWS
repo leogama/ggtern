@@ -5,7 +5,7 @@ ggtern 1.0.6.1
 * Fixed a bug in the Confidence Levels, when inf values where being generaged in the isometric log ratio calculation.
 * Alterations to the theme_custom constructors, for consistency with the theme element names
 * Alterations / typos fixed in documentation
-* Updated the Feldspar Data, Errors were discovered
+* Updated the Feldspar Data, Errors were discovered, this has no bearing on the functioning of the package
 * Added some more global options, which were previously theme defaults, such as tern.vshift, tern.hshift, tern.arrowsep
 
 ggtern 1.0.6.0
