@@ -49,7 +49,7 @@
                              grid.major.size     = NULL,
                              ticklength.major    = unit(0.010,"npc"),
                              ticklength.minor    = unit(0.005,"npc"),
-                             margin.tern         = unit(1,"lines")){  
+                             margin.tern         = unit(2,"lines")){  
   #TEXT SIZES
   size.base      <- max(base_size-4,2)
   size.text      <- max(base_size-2,4)
@@ -74,9 +74,9 @@
       plot.margin                = unit(c(1,1,1,1),"lines"),
       panel.margin               = unit(0.25,"lines"),
       axis.tern.padding          = unit(c(2,0,0,0),"lines"),
-      axis.tern.hshift           = unit(0.0,       "npc"),
-      axis.tern.vshift           = unit(0.0,       "npc"),
-      axis.tern.arrowsep         = unit(1.0,       "lines"),
+      axis.tern.hshift           = getOption("tern.hshift"),
+      axis.tern.vshift           = getOption("tern.vshift"),
+      axis.tern.arrowsep         = getOption("tern.arrowsep"),
       
       axis.tern               = element_line(size=axis.tern.size,linetype="solid"),
       axis.tern.line          = element_line(),
@@ -136,7 +136,7 @@
 #' A theme with grey background and white gridlines (ggtern version)
 #' 
 #' \code{theme_gray} is a theme with grey background and white gridlines.
-#' @aliases theme_tern_gray theme_grey
+#' @aliases theme_tern_gray theme_tern_grey theme_grey
 #' @param base_size base font size
 #' @param base_family base font family
 #' @rdname theme_gray
@@ -186,6 +186,7 @@ theme_rgb <- theme_rgbg
 #' @param col.L colour of left axis, ticks, labels and major gridlines
 #' @param col.R colour of right axis, ticks, labels and major gridlines
 #' @param col.BG colour of background colour to plot area
+#' @param col.grid.minor the colour of the minor grid
 #' \code{theme_custom} is a convenience function to allow the user to control the basic theme colours very easily.
 #' @export
 theme_custom  <- function(base_size = 12,

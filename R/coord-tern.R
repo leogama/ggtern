@@ -490,9 +490,9 @@ coord_render_bg.ternary <- function(coord,details,theme){
     majmin <- ifthenelse(major,"major","minor")  #Major or Minor Element Name part.
     
     #The new dataframe
-    new            <- data.frame(ID = id,Scale=X,Breaks=breaks,Labels=labels,Major=major)
-    new            <- subset(new,Breaks >= min(limits) & Breaks <= max(limits))
-    new$Prop       <- (new$Breaks - min(limits)) / abs(diff(limits))
+    new            <- data.frame(ID = id,Scale=X,breaks,Labels=labels,Major=major)
+    new            <- subset(new,breaks >= min(limits) & breaks <= max(limits))
+    new$Prop       <- (new$breaks - min(limits)) / abs(diff(limits))
     new$TickLength <- ifthenelse(major,tl.major[ix],tl.minor[ix])
     new$NameText   <- paste0("axis.tern.text.",X)
     new$NameTicks  <- paste0("axis.tern.ticks.",majmin,".",X)
@@ -775,7 +775,6 @@ coord_render_bg.ternary <- function(coord,details,theme){
         newunit <- arrowsep[x] + 
           ifthenelse(arrowbaseline[x] >= 1 & ticksoutside,ticklength[x], unit(0,"npc")) + 
           ifthenelse(arrowbaseline[x] >= 2,.theme.get.maxlabwidth(details,theme,ixseq),unit(0,"npc"))
-        
         convertWidth(newunit,"npc",valueOnly=TRUE)
       })
       

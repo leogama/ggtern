@@ -112,7 +112,9 @@ transform_tern_to_cart <- function(T,L,R,data=data.frame(T=T,L=L,R=R),...,Tlim=c
   if(class(data) != "data.frame")stop("data must be of type 'data.frame'")
   if(length(which(c("T","L","R") %in% colnames(data))) < 3) stop("data must contain columns T, L and R")
   
-  Tlim <- sort(Tlim); Rlim <- sort(Rlim); Llim <- sort(Llim)
+  Tlim <- if(is.null(Tlim)){c(0,1)}else{sort(Tlim)}; ## TRYING TO FIND ERROR WITH grid.arrange(...)
+  Rlim <- if(is.null(Rlim)){c(0,1)}else{sort(Rlim)}; ## TRYING TO FIND ERROR WITH grid.arrange(...)
+  Llim <- if(is.null(Llim)){c(0,1)}else{sort(Llim)}; ## TRYING TO FIND ERROR WITH grid.arrange(...)
   
   d <- data; 
   s <- rowSums(d);

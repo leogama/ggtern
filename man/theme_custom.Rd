@@ -19,7 +19,9 @@ theme_custom(base_size = 12, base_family = "", col.T = "gray95",
 
 \item{col.R}{colour of right axis, ticks, labels and major gridlines}
 
-\item{col.BG}{colour of background colour to plot area
+\item{col.BG}{colour of background colour to plot area}
+
+\item{col.grid.minor}{the colour of the minor grid
 \code{theme_custom} is a convenience function to allow the user to control the basic theme colours very easily.}
 }
 \description{
