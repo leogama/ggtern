@@ -46,7 +46,8 @@ ggplot_build <- function(plot) {
     
     ##Update the scale limits from the coordinate system
     for(X in c(scales.tern,scales.cart))
-      plot$coordinates$limits[[X]] <- is.numericor(.select.lim(plot$scales$get_scales(X)$limits, plot$coordinates$limits[[X]]),c(0,1))
+      plot$coordinates$limits[[X]] <- is.numericor(.select.lim(plot$scales$get_scales(X)$limits, 
+                                                               plot$coordinates$limits[[X]]),c(0,1))
     
     #Store coordinates for use by other methods, AFTER the limits have been updated (ie the previous command)
     set_last_coord(plot$coordinates) 
