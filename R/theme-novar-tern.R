@@ -24,11 +24,10 @@
 #' the \pkg{ggplot2} framework.
 #'
 #' @param species
-#' A character giving the species.  Choices are "T", "L" and "R", but is not case
-#' sensitive.
+#' A character giving the species. Choices are "T", "L" and "R", but is not case sensitive
 #'
 #' @param \dots
-#' Further arguments, for future development.
+#' Further arguments, including additional selections otherwise used in species
 #'
 #' @usage
 #' theme_novar_tern(species, \dots)
@@ -38,13 +37,21 @@
 #' the grid and axis elements for the chosen ternary species.
 #'
 #' @examples
-#' \dontrun{theme_novar_tern("L")}
+#' \dontrun{
+#'  theme_novar_tern("L")
+#'  theme_novar_tern(c("T","L"))
+#'  theme_novar_tern(T,L)
+#' }
 #'
 #' @author
 #' Nicholas Hamilton, John Szumiloski
 
 #' @export
 theme_novar_tern <- function(species, ...) {
+  
+  species = unique(c(as.character(species),sapply(substitute(list(...)), deparse)[-1]))
+  if(length(species) > 1)
+    return(lapply(species,theme_novar_tern))
   
   species <- substring(toupper(species[1]),1,1)
   
