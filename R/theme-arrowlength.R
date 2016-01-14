@@ -1,14 +1,3 @@
-#Internal function
-.theme_arrowsize <- function(s=getOption("tern.arrowstart"),f=getOption("tern.arrowfinish")){
-  
-  #Check numeric
-  s = is.numericor(s,getOption("tern.arrowstart") )#[1]
-  f= is.numericor(f,getOption("tern.arrowfinish"))#[1]
-  
-  #Execute
-  theme(axis.tern.showarrows= (s!=f), axis.tern.arrowstart=s,axis.tern.arrowfinish=f)
-}
-
 #' @title
 #' Change the Length of the Ternary Arrows
 #' 
@@ -96,3 +85,15 @@ theme_arrowlarge <- function(){.theme_arrowsize(s=0.2,f=0.8)}
 #' @rdname themearrowlength
 #' @export
 theme_arrowlong  <- theme_arrowlarge
+
+
+#Internal function
+.theme_arrowsize <- function(s=getOption("tern.arrowstart"),f=getOption("tern.arrowfinish")){
+  
+  #Check numeric
+  s = is.numericor(s,getOption("tern.arrowstart") )#[1]
+  f= is.numericor(f,getOption("tern.arrowfinish"))#[1]
+  
+  #Execute
+  theme(axis.tern.showarrows= (s!=f), axis.tern.arrowstart=s,axis.tern.arrowfinish=f)
+}
