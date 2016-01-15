@@ -27,20 +27,17 @@ License: GPL-2
 URL: http://www.ggtern.com
 LazyData: true
 Collate:
-    'doc-imports.R'
+    'ggtern-package.R'
     'aes.R'
     'coord-tern.R'
     'calc-tern-tlr2xy.R'
     'calc-mahalanobis-distance.R'
     'calc-kde2d-weighted.R'
     'doc-data.R'
-    'doc-overloaded.R'
     'doc-theme-convenience.R'
-    'doc-theme-complete.R'
     'depreciated.R'
     'labels-new.R'
     'labels-percent.R'
-    'ggtern-package.R'
     'ggtern-constructor.R'
     'gg-internal.R'
     'modifications-gridExtra.R'
