@@ -8,6 +8,7 @@
 \enumerate{
   \item \code{\link[=data_Feldspar]{Elkin and Groves Feldspar Data}}
   \item \code{\link[=data_USDA]{USDA Textural Classification Data}}
+  \item \code{\link[=data_Fragments]{Grantham and Valbel Rock Fragment Data}}
 }
 }
 \author{

@@ -11,7 +11,7 @@
 \usage{
 geom_smooth_tern(mapping = NULL, data = NULL, method = "auto",
   formula = y ~ x, se = TRUE, position = "identity", na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE, ...)
+  show.legend = NA, inherit.aes = TRUE, base = "ilr", ...)
 
 stat_smooth_tern(mapping = NULL, data = NULL, position = "identity",
   method = "auto", formula = y ~ x, se = TRUE, n = 80, span = 0.75,
@@ -54,6 +54,9 @@ rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link{borders}}.}
 
+\item{base}{transform to cartesian space ('\code{identity}') or isometric-log ratio ('\code{\link{ilr}}') 
+before conducting the smoothing operation}
+
 \item{...}{other arguments passed on to \code{\link{layer}}. There are
   three types of arguments you can use here:
 
@@ -78,15 +81,19 @@ the data}
 
 \item{method.args}{List of additional arguments passed on to the modelling
 function defined by \code{method}.}
-
-\item{base}{transform to cartesian space ('identity') or isometric-log ratio ('ilr') before conducting the smoothing
-operation}
 }
 \description{
 Aids the eye in seeing patterns in the presence of overplotting.
 \code{geom_smooth_tern} and \code{stat_smooth_tern} are effectively aliases: they
 both use the same arguments. Use \code{geom_smooth_tern} unless you want to
 display the results with a non-standard geom.
+}
+\examples{
+data(Feldspar)
+ggtern(data=Feldspar,aes(Ab,An,Or)) +  
+  geom_smooth_tern(base='ilr',method=lm,colour='red') + 
+  geom_point() +
+  labs(title="Example Smoothing")
 }
 \keyword{datasets}
 

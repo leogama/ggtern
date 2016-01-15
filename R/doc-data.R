@@ -4,6 +4,7 @@
 #' \enumerate{
 #'   \item \code{\link[=data_Feldspar]{Elkin and Groves Feldspar Data}}
 #'   \item \code{\link[=data_USDA]{USDA Textural Classification Data}}
+#'   \item \code{\link[=data_Fragments]{Grantham and Valbel Rock Fragment Data}}
 #' }
 #' @name  data_ggtern_package
 #' @rdname data_ggtern_package
@@ -68,3 +69,59 @@ NULL
 #' @aliases USDA
 #' @author Nicholas Hamilton
 NULL
+
+
+
+#' Grantham and Valbel Rock Fragment Data
+#' 
+#' \strong{ABSTRACT:} Chemical weathering influences the detrital composition of sand-size sediment derived from source 
+#' areas subject to different amounts of precipitation in the Coweeta Basin, North Carolina. Of the grain types 
+#' studied, rock fragments are most sensitive to chemical degradation; therefore, their abundance is the best 
+#' indicator of cumulative weathering effects. Destruction of sand-size rock fragments by chemical weathering 
+#' is a function of both the intensity and duration of chemical weathering experienced by grains in regoliths 
+#' of the source area. In the Coweeta Basin, the intensity of chemical weathering is directly related to the 
+#' climate via effective precipitation in individual subbasins, whereas the duration of chemical weathering is 
+#' inversely related to the relief ratio of the watershe . Therefore, soils in watersheds with low-relief 
+#' ratios and high discharge per unit area experience the most extensive chemical weathering, and sediments 
+#' derived from these watersheds contain the lowest percentage of rock fragments. The effects of climate alone 
+#' cannot explain the systematic variation of rock fragment abundance in sediments from the Coweeta Basin. 
+#' The compositional imprint left on these sediments by chemical weathering is a function of both climate and 
+#' topographic slope in the sediment source area.
+#' @docType data
+#' @references Grantham, Jeremy Hummon, and Michael Anthony Velbel. 
+#' "The influence of climate and topography on rock-fragment abundance in modern fluvial sands of the southern 
+#' Blue Ridge Mountains, North Carolina." Journal of Sedimentary Research 58.2 (1988).
+#' @usage data(Fragments)
+#' @format 1row per point, Each point contains data on the following:
+#' \enumerate{ 
+#' \item \strong{Watershed}: By id: 2, 10, 34, 41, 13, 27, 32 or 37, 
+#' \item \strong{Position}: By name: Tallulah or Coweeta, 
+#' \item \strong{CCWI}: The Cumulative Chemical Weathering Index: numeric
+#' \item \strong{Precipitation}: Average Annual Precipitation, numeric 
+#' \item \strong{Discharge}: Annual Average Discharge, numeric 
+#' \item \strong{Relief}: Relief Ratio, numeric
+#' \item \strong{GrainSize}: Coarse Medium or Fine, 
+#' \item \strong{Sample}: Field Sampling, A, B or C 
+#' \item \strong{Points}: The number of points measured for each sample
+#' \item \strong{Qm}: Multicrystalline Quarts Amount, percentage
+#' \item \strong{Qp}: Polycrystalline Quarts Amount, percentage
+#' \item \strong{Rf}: Rock Fragments Amount, percentage
+#' \item \strong{M}: Mica Amount, percentage
+#' }
+#' @name data_Fragments
+#' @rdname data_Fragments
+#' @aliases Fragments fragments
+#' @author Jeremy Hummon Grantham and Michael Anthony Velbel
+#' @examples 
+#' data(Fragments)
+#' ggtern(Fragments,aes(Qm+Qp,Rf,M,colour=Sample)) +
+#'   geom_density_tern(h=2,aes(fill=..level..),expand=0.75,alpha=0.5) + 
+#'   geom_point(aes(shape=Position,size=Relief)) + 
+#'   theme_bw() + theme_showarrows() + custom_percent('%') + 
+#'   labs(title = "Grantham and Valbel Rock Fragment Data",
+#'        x = "Q_m+Q_p", xarrow = "Quartz (Multi + Poly)",
+#'        y = "R_f",     yarrow = "Rock Fragments",
+#'        z = "M",       zarrow = "Mica") + 
+#'   facet_wrap(~Sample,nrow=2)
+NULL
+
