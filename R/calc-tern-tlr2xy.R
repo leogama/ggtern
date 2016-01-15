@@ -128,12 +128,13 @@ tlr2xy <- function(data,coord,...,inverse=FALSE,scale=TRUE,drop=FALSE){
 }
 
 #' @details \code{xy2tlr} transforms from the cartesian to ternary spaces, an inverse transformation 
-#' transforms between ternary to cartesian spaces
+#' transforms between ternary to cartesian spaces, it is the reciprocal to \code{\link{tlr2xy}}, therefore
+#' an inverse transformation in \code{\link{xy2tlr}} function is the same as the forward 
+#' transformation in \code{\link{tlr2xy}} 
 #' @rdname ternary-transformation
 #' @export
-xy2tlr <- function(data,coord,...,inverse=TRUE,scale=TRUE){
-  tlr2xy(data,coord,...,inverse=!inverse,scale=scale)
-}
+xy2tlr <- function(data,coord,...,inverse=FALSE,scale=TRUE) 
+  tlr2xy(data,coord,...,inverse=!inverse,scale=scale) 
 
 
 #internal
