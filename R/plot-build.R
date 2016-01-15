@@ -70,21 +70,10 @@ ggplot_build <- function(plot) {
   scales_add_missing(plot, c("x", "y"), plot$plot_env)
   
   # Make sure missing (but required) ternary aesthetics are added, and ensure the limits are common
-  scales_add_missing_tern <- function(plot){
-    rs = plot$coordinates$required_scales
-    scales_add_missing(plot,rs,plot$plot_env) ##NH
-    plot$coordinates$scales = sapply(rs,scales$get_scales) ##NH
-    for(r in rs)
-      plot$coordinates$limits[[r]] = scales$get_scales(r)$limits
-    plot$coordinates$labels_coord  = plot$labels
-    plot$coordinates$theme         = ggint$plot_theme(plot) #NH
-    plot$coordinates$manual_mask   = ("GeomMask" %in% unlist(lapply(layers,function(x){ class(x$geom) })))
-  }
-  if(isTernary) scales_add_missing_tern(plot)
+  if(isTernary) plot = scales_add_missing_tern(plot)
   
   # Reparameterise geoms from (e.g.) y and width to ymin and ymax
   data <- by_layer(function(l, d) l$compute_geom_1(d))
-  
   
   # Apply position adjustments
   data <- by_layer(function(l, d) l$compute_position(d, panel))
