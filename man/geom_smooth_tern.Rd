@@ -16,7 +16,7 @@ geom_smooth_tern(mapping = NULL, data = NULL, method = "auto",
 stat_smooth_tern(mapping = NULL, data = NULL, position = "identity",
   method = "auto", formula = y ~ x, se = TRUE, n = 80, span = 0.75,
   fullrange = FALSE, level = 0.95, method.args = list(), na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE, ...)
+  show.legend = NA, inherit.aes = TRUE, base = "ilr", ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -78,6 +78,9 @@ the data}
 
 \item{method.args}{List of additional arguments passed on to the modelling
 function defined by \code{method}.}
+
+\item{base}{transform to cartesian space ('identity') or isometric-log ratio ('ilr') before conducting the smoothing
+operation}
 }
 \description{
 Aids the eye in seeing patterns in the presence of overplotting.

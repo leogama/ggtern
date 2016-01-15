@@ -53,21 +53,31 @@ GeomSmoothTern <- ggproto("GeomSmoothTern", Geom,
 #Taken from ggplot2, need to add extra z term in the summarize part
 .drawRibbonModified = function(data, panel_scales, coord, na.rm = FALSE) {
   #Prevent no visible bindings error: http://ahref.io/aUNt9
-  x = y = ymin = ymax = zmin = zmax = ids = NULL  
+  x = y = ymin = ymax = zmin = zmax = ids = NULL 
 
   #Continue
   if (na.rm) data <- data[stats::complete.cases(data[c("x", "ymin", "ymax")]), ]
-  data <- data[order(data$group, data$x), ]
+  
+  #Order from left to right in cartesian space
+  #data <- tlr2xy(data,coord)
+  #data <- data[order(data$group, data$x), ]
+  #data <- tlr2xy(data,coord,inverse=TRUE)
+  
+  # Check that aesthetics are constant
   aes <- unique(data[c("colour", "fill", "size", "linetype", "alpha")])
-  if (nrow(aes) > 1) { stop("Aesthetics can not vary with a ribbon")}
+  if (nrow(aes) > 1) { 
+    stop("Aesthetics can not vary with a ribbon")
+  }
   aes <- as.list(aes)
+  
   missing_pos <- !stats::complete.cases(data[c("x", "ymin", "ymax")])
   ids <- cumsum(missing_pos) + 1
   ids[missing_pos] <- NA
-  #-----
-  positions <- plyr::summarise(data, x = c(x, rev(x)), y = c(ymax, rev(ymin)),z = c(zmax,rev(zmin)), id = c(ids, rev(ids)))
-  #-----
+  
+  positions <- plyr::summarise(data, 
+    x = c(x, rev(x)), y = c(ymax, rev(ymin)),z = c(zmax,rev(zmin)), id = c(ids, rev(ids)))
   munched <- coord_munch(coord, positions, panel_scales)
+  
   ggint$ggname("geom_ribbon", polygonGrob(
     munched$x, munched$y, id = munched$id,
     default.units = "native",

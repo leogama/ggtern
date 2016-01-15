@@ -8,7 +8,7 @@
 \usage{
 tlr2xy(data, coord, ..., inverse = FALSE, scale = TRUE, drop = FALSE)
 
-xy2tlr(data, coord, ..., inverse = TRUE, scale = TRUE)
+xy2tlr(data, coord, ..., inverse = FALSE, scale = TRUE)
 }
 \arguments{
 \item{data}{\code{data.frame} containing columns as required by the coordinate system. 
@@ -35,7 +35,9 @@ Functions to transform data from the ternary to cartesian spaces and vice-versa.
 transforms between cartesian to ternary spaces
 
 \code{xy2tlr} transforms from the cartesian to ternary spaces, an inverse transformation 
-transforms between ternary to cartesian spaces
+transforms between ternary to cartesian spaces, it is the reciprocal to \code{\link{tlr2xy}}, therefore
+an inverse transformation in \code{\link{xy2tlr}} function is the same as the forward 
+transformation in \code{\link{tlr2xy}}
 }
 \examples{
 data(Feldspar)
