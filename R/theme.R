@@ -1,3 +1,14 @@
+#' Overloaded ggplot2 functions
+#' 
+#' @description INTERNAL FUNCTIONS (Overloaded from ggplot2): The source of the following functions originate 
+#' from ggplot2, however, minor patches were required in order for them to function under the ggtern framework. 
+#' Patches were mainly to do with handling the new theme elements and heirarchies. 
+#' @format functions and objects
+#' @keywords internal
+#' @rdname overloaded
+#' @name zzz-overloaded
+NULL
+
 #' @description \code{validate_element} is a local copy of the ggplot2 function which checks the validity of a given theme element 
 #' against the elements table. Since the \code{.elements_tree} is an internal function, which is not exported, and modifications could not be made, 
 #' a new (and equivalent) \code{.element_tree} is created within ggtern to handle the new theme elements created within this package.

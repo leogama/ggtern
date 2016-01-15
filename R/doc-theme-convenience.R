@@ -15,6 +15,7 @@
 #'   \item \code{\link[=theme_clockwise]{Clockwise/Anticlockwise Axis Precession}}  
 #'   \item \code{\link[=theme_ticksoutside]{Ticks Inside or Outside of the Main Plot Area}}
 #'   \item \code{\link[=atomic_percent]{Atomic or Weight Percent Arrow Label Suffix.}}
+#'   \item \code{\link[=theme_rotate]{Rotate the plot by X degrees or radians}}
 #' }
 #' 
 #' @section Manual Modification:
@@ -33,44 +34,43 @@
 #' @name convenience_functions
 #' @rdname convenience_functions
 #' @examples
+#' 
 #' #Load data and create the base plot.
 #' data(Feldspar)
-#' plot <- ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
-#' 
-#' #Default Themes
-#' plot + theme_rgbw()
-#' #plot + theme_rgbg()
-#' #plot + theme_bw()
-#' #plot + theme_gray()
-#' #plot + theme_custom(col.T="red",col.L="blue",col.R="black")
+#' plot <- ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point() + theme_bw()
+#' plot
 #' 
 #' #Show or Hide Arrows
-#' plot + theme_showarrows()
-#' #plot + theme_hidearrows()
-#' #plot + theme_noarrows()
+#' last_plot() + theme_showarrows()
+#' last_plot() + theme_hidearrows()
 #' 
 #' #Major/Minor Grids?
-#' plot + theme_nogrid_minor()
-#' #plot + theme_nogrid_major()
-#' #plot + theme_nogrid()
+#' last_plot() + theme_nogrid_minor()
+#' last_plot() + theme_nogrid_major()
+#' last_plot() + theme_showgrid()
+#' last_plot() + theme_nogrid()
 #' 
 #' #Clockwise/Anticlockwise Precession
-#' plot + theme_clockwise()
-#' #plot + theme_anticlockwise()
+#' last_plot() + theme_clockwise()
+#' last_plot() + theme_anticlockwise()
 #' 
 #' #Ticks Inside or Outside
-#' plot + theme_ticksoutside()
-#' #plot + theme_ticksinside()
+#' last_plot() + theme_ticksoutside()
+#' last_plot() + theme_ticksinside()
 #' 
 #' #Show/Hide BOTH Primary and Secondary Ticks
-#' plot + theme_showticks()
-#' #plot + theme_hideticks()
+#' last_plot() + theme_showticks()
+#' last_plot() + theme_hideticks()
 #' 
 #' #Show/Hide EITHER Primary OR Secondary Ticks.
-#' plot + theme_showprimary() + theme_hidesecondary()
-#' #plot + theme_hideprimary() + theme_showsecondary()
+#' last_plot() + theme_showprimary() + theme_hidesecondary()
+#' last_plot() + theme_hideprimary() + theme_showsecondary()
 #' 
 #' #Atomic / Weight Percent
-#' plot + theme_showarrows() + atomic_percent()
-#' #plot + theme_showarrows() + weight_percent()
+#' last_plot() + theme_showarrows() + atomic_percent()
+#' last_plot() + theme_showarrows() + weight_percent()
+#' last_plot() + theme_showarrows() + custom_percent("Atomic Percent")
+#' 
+#' #Rotation
+#' last_plot() + theme_rotate(30)
 NULL

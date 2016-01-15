@@ -22,7 +22,7 @@
 \alias{theme_tern_rgbg}
 \alias{theme_tern_rgbw}
 \alias{theme_void}
-\title{ggplot2 themes}
+\title{ggtern themes}
 \usage{
 theme_gray(base_size = 12, base_family = "")
 
@@ -33,10 +33,6 @@ theme_linedraw(base_size = 12, base_family = "")
 theme_classic(base_size = 12, base_family = "")
 
 theme_void(base_size = 12, base_family = "")
-
-theme_custom(base_size = 12, base_family = "",
-  plot.background.tern = "gray92", col.T = "gray95", col.L = "gray95",
-  col.R = "gray95", col.BG = "transparent", col.grid.minor = "gray90")
 
 theme_rgbg(base_size = 12, base_family = "")
 
@@ -49,6 +45,10 @@ theme_dark(base_size = 12, base_family = "")
 theme_darker(base_size = 12, base_family = "")
 
 theme_light(base_size = 12, base_family = "")
+
+theme_custom(base_size = 12, base_family = "",
+  plot.background.tern = "gray92", col.T = "gray95", col.L = "gray95",
+  col.R = "gray95", col.BG = "transparent", col.grid.minor = "gray90")
 }
 \arguments{
 \item{base_size}{base font size}
@@ -100,7 +100,7 @@ The dark cousin of \code{theme_light}, with similar line sizes but a dark backgr
 Useful to make thin coloured lines pop out.
 }
 
-\item{code{theme_darker}}{
+\item{\code{theme_darker}}{
 A darker cousing to \code{theme_dark}, with a dark panel background.
 }
 
@@ -127,20 +127,17 @@ A completely empty theme.
 \item{\code{theme_custom}}{
 Theme with custom basic colours
 }
-
 }
 }
 \examples{
-p <- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
-     colour=factor(gear))) + facet_wrap(~am)
+data(Feldspar)
+p <- ggtern(Feldspar,aes(Ab,An,Or)) + 
+     geom_point(aes(colour=T.C,size=P.Gpa)) + 
+     facet_wrap(~Feldspar)
 
-p
+#Uncomment to run
 p + theme_gray()
-p + theme_bw()
-p + theme_linedraw()
-p + theme_light()
-p + theme_minimal()
-p + theme_classic()
-p + theme_void()
+p + theme_rgbg()
+p + theme_dark()
 }
 

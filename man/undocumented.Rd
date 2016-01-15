@@ -9,6 +9,7 @@
 \alias{ifthenelse}
 \alias{is.numericor}
 \alias{joinCharacterSeries}
+\alias{scales_add_missing_tern}
 \alias{scales_list}
 \alias{tern_dep}
 \alias{zzz-internal}
@@ -33,6 +34,8 @@ joinCharacterSeries(x, lastWord = "and")
 identityInv(z)
 
 getFormulaVars(x, dependent = TRUE)
+
+scales_add_missing_tern(plot)
 }
 \arguments{
 \item{x}{logical input to check}
@@ -69,6 +72,8 @@ getFormulaVars(x, dependent = TRUE)
 \item{sep}{the seperator between label and suffix}
 
 \item{dependent}{whether to return the dependent variables (TRUE) or the indpenedent variables (FALSE)}
+
+\item{plot}{object}
 
 \item{x}{character vector}
 
@@ -111,8 +116,12 @@ it can be used within transformation logic via \code{do.call(...)} in the same w
 
 \code{getFormulaVars} is a function that returns a list of either dependent or independent variables used
 in an input formula
+
+Function to add missing scales and other items to the plot and its coordinates sytem
 }
 \author{
+Nicholas Hamilton
+
 Nicholas Hamilton
 
 Nicholas Hamilton

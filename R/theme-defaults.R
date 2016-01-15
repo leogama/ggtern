@@ -1,4 +1,44 @@
-#' ggplot2 themes
+#' Complete Themes
+#' 
+#' \code{ggtern} ships with a number of complete themes:
+#' \itemize{
+#'  \item{ Black and White Theme:}{ 
+#'    \code{\link[=theme_tern_bw]{theme_bw(...)}}
+#'  }
+#'  \item{Minimal Theme:}{
+#'    \code{\link[=theme_tern_minimal]{theme_minimal(...)}}
+#'  }
+#'  \item{Classic Theme:}{
+#'    \code{\link[=theme_tern_classic]{theme_classic(...)}}
+#'  }
+#'  \item{Gray and White Theme:}{
+#'    \code{\link[=theme_tern_gray]{theme_gray(...)}}
+#'  }
+#'  \item{Red, Green, Blue and White Theme:}{
+#'    \code{\link[=theme_tern_rgbw]{theme_rgbw(...)}}
+#'  }
+#'  \item{Red, Green, Blue and Gray Theme:}{
+#'    \code{\link[=theme_tern_rgbg]{theme_rgbg(...)}}
+#'  }
+#'  \item{Dark Theme:}{
+#'    \code{\link[=theme_dark]{theme_dark(...)}}
+#'  }
+#'  \item{Darker Theme:}{
+#'    \code{\link[=theme_darker]{theme_darker(...)}}
+#'  }
+#'  \item{Light Theme:}{
+#'    \code{\link[=theme_light]{theme_light(...)}}
+#'  }
+#'  \item{Theme with Only Black Lines:}{
+#'    \code{\link[=theme_linedraw]{theme_linedraw(...)}}
+#'  }
+#' }
+#' @rdname theme_complete
+#' @name theme_complete
+#' @author Nicholas Hamilton
+NULL
+
+#' ggtern themes
 #'
 #' Themes set the general aspect of the plot such as the colour of the
 #' background, gridlines, the size and colour of fonts.
@@ -31,7 +71,7 @@
 #' Useful to make thin coloured lines pop out.
 #' }
 #'
-#' \item{code{theme_darker}}{
+#' \item{\code{theme_darker}}{
 #' A darker cousing to \code{theme_dark}, with a dark panel background.
 #' }
 #'
@@ -58,21 +98,18 @@
 #' \item{\code{theme_custom}}{
 #' Theme with custom basic colours
 #' }
-#' 
 #' }
 #'
 #' @examples
-#' p <- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg,
-#'      colour=factor(gear))) + facet_wrap(~am)
-#'
-#' p
+#' data(Feldspar)
+#' p <- ggtern(Feldspar,aes(Ab,An,Or)) + 
+#'      geom_point(aes(colour=T.C,size=P.Gpa)) + 
+#'      facet_wrap(~Feldspar)
+#' 
+#' #Uncomment to run
 #' p + theme_gray()
-#' p + theme_bw()
-#' p + theme_linedraw()
-#' p + theme_light()
-#' p + theme_minimal()
-#' p + theme_classic()
-#' p + theme_void()
+#' p + theme_rgbg()
+#' p + theme_dark()
 #' @aliases theme_tern_gray theme_tern_grey theme_grey theme_tern_bw theme_tern_classic theme_tern_rgbg theme_tern_rgbw theme_tern_minimal
 #' @name ggtern_themes
 #' @rdname ggtern_themes
@@ -177,37 +214,6 @@ theme_void <- function(base_size = 12, base_family = "") {
     text =               element_blank(),
     complete = TRUE
   )
-}
-
-#' @param col.T colour of top axis, ticks labels and major gridlines
-#' @param col.L colour of left axis, ticks, labels and major gridlines
-#' @param col.R colour of right axis, ticks, labels and major gridlines
-#' @param col.BG colour of the plot background area
-#' @param plot.background.tern colour of background colour to plot area
-#' @param col.grid.minor the colour of the minor grid
-#' \code{theme_custom} is a convenience function to allow the user to control the basic theme colours very easily.
-#' @rdname ggtern_themes
-#' @export
-theme_custom  <- function(base_size = 12,
-                          base_family = "",
-                          plot.background.tern = 'gray92',
-                          col.T='gray95',
-                          col.L='gray95',
-                          col.R='gray95',
-                          col.BG="transparent",
-                          col.grid.minor="gray90"){
-  .theme_tern(base_size=base_size, base_family=base_family, 
-              plot.background.tern = plot.background.tern,
-              col.T      = col.T,
-              col.L      = col.L,
-              col.R      = col.R,
-              col.grid.T = col.T,
-              col.grid.L = col.L,
-              col.grid.R = col.R,
-              col.grid.minor = col.grid.minor,
-              grid.linetype=6,
-              grid.linetype.minor=1,
-              grid.major.size=0.25)
 }
 
 #' A theme with grey background, red, green and blue axes and white gridlines
@@ -427,6 +433,37 @@ theme_light <- function(base_size = 12, base_family = "") {
       panel.tern.rotate       = 0,
       panel.grid.tern.ontop   = FALSE
     )
+}
+
+#' @param col.T colour of top axis, ticks labels and major gridlines
+#' @param col.L colour of left axis, ticks, labels and major gridlines
+#' @param col.R colour of right axis, ticks, labels and major gridlines
+#' @param col.BG colour of the plot background area
+#' @param plot.background.tern colour of background colour to plot area
+#' @param col.grid.minor the colour of the minor grid
+#' \code{theme_custom} is a convenience function to allow the user to control the basic theme colours very easily.
+#' @rdname ggtern_themes
+#' @export
+theme_custom  <- function(base_size = 12,
+                          base_family = "",
+                          plot.background.tern = 'gray92',
+                          col.T='gray95',
+                          col.L='gray95',
+                          col.R='gray95',
+                          col.BG="transparent",
+                          col.grid.minor="gray90"){
+  .theme_tern(base_size=base_size, base_family=base_family, 
+              plot.background.tern = plot.background.tern,
+              col.T      = col.T,
+              col.L      = col.L,
+              col.R      = col.R,
+              col.grid.T = col.T,
+              col.grid.L = col.L,
+              col.grid.R = col.R,
+              col.grid.minor = col.grid.minor,
+              grid.linetype=6,
+              grid.linetype.minor=1,
+              grid.major.size=0.25)
 }
 
 
