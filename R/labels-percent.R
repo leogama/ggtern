@@ -13,7 +13,7 @@ NULL
 #' @description \code{percent_weight} adds 'Wt. \%' to the arrow marker label as a suffix
 #' @rdname suffix_arrow
 #' @export
-percent_weight <- function(){labs(W="Wt. '%'")}
+percent_weight <- function(){labs(W="Wt.%")}
 
 #' @description \code{weight_percent} is an alias for \code{percent_weight()}
 #' @rdname suffix_arrow
