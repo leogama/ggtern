@@ -1,5 +1,3 @@
-#' @param base transform to cartesian space ('identity') or isometric-log ratio ('ilr') before conducting the smoothing
-#' operation
 #' @rdname geom_smooth_tern
 #' @export
 stat_smooth_tern <- function(mapping = NULL, data = NULL,

@@ -8,11 +8,19 @@
 #' @aliases GeomSmoothTern geom_smooth
 #' @inheritParams ggplot2::geom_smooth
 #' @rdname geom_smooth_tern
+#' @param base transform to cartesian space ('\code{identity}') or isometric-log ratio ('\code{\link{ilr}}') 
+#' before conducting the smoothing operation
+#' @examples 
+#' data(Feldspar)
+#' ggtern(data=Feldspar,aes(Ab,An,Or)) +  
+#'   geom_smooth_tern(base='ilr',method=lm,colour='red') + 
+#'   geom_point() +
+#'   labs(title="Example Smoothing")
 #' @export
 geom_smooth_tern <- function(mapping = NULL, data = NULL,
                         method = "auto", formula = y ~ x, se = TRUE,
                         position = "identity", na.rm = FALSE,
-                        show.legend = NA, inherit.aes = TRUE,...) {
+                        show.legend = NA, inherit.aes = TRUE,base='ilr',...) {
   layer(
     data        = data,
     mapping     = mapping,
@@ -26,6 +34,7 @@ geom_smooth_tern <- function(mapping = NULL, data = NULL,
       method  = method,
       formula = formula,
       se      = se,
+      base    = base,
       ...
     )
   )
