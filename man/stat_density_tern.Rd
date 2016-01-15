@@ -8,8 +8,8 @@
 \usage{
 stat_density_tern(mapping = NULL, data = NULL, geom = "density_tern",
   position = "identity", contour = TRUE, n = 100, h = NULL,
-  na.rm = FALSE, expand = c(0.5, 0.5), show.legend = NA,
-  inherit.aes = TRUE, weight = 1, base = "ilr", ...)
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, weight = 1,
+  base = "ilr", expand = c(0.5, 0.5), ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -37,9 +37,6 @@ estimation}
 \item{na.rm}{If \code{FALSE} (the default), removes missing values with
 a warning.  If \code{TRUE} silently removes missing values.}
 
-\item{expand}{Calculate on a mesh which extends beyond the grid of the plot region by this amount
-If \code{NULL}, estimated using \code{\link[MASS]{bandwidth.nrd}}.}
-
 \item{show.legend}{logical. Should this layer be included in the legends?
 \code{NA}, the default, includes if any aesthetics are mapped.
 \code{FALSE} never includes, and \code{TRUE} always includes.}
@@ -53,6 +50,9 @@ the default plot specification, e.g. \code{\link{borders}}.}
 
 \item{base}{the base transformation of the data, options include 'identity' (ie direct on the cartesian space), or 'ilr'
 which means to use the isometric log ratio transformation.}
+
+\item{expand}{Calculate on a mesh which extends beyond the grid of the plot region by this amount
+If \code{NULL}, estimated using \code{\link[MASS]{bandwidth.nrd}}.}
 
 \item{...}{other arguments passed on to \code{\link{layer}}. There are
   three types of arguments you can use here:

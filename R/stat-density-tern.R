@@ -22,8 +22,8 @@
 #' @export
 stat_density_tern <- function(mapping = NULL, data = NULL, geom = "density_tern",
                             position = "identity",contour = TRUE,
-                            n = 100, h = NULL, na.rm = FALSE, expand = c(.5,.5),
-                            show.legend = NA, inherit.aes = TRUE,weight=1,base='ilr',...) {
+                            n = 100, h = NULL, na.rm = FALSE,
+                            show.legend = NA, inherit.aes = TRUE,weight=1,base='ilr',expand = c(.5,.5),...) {
   layer(
     data        = data,
     mapping     = mapping,
