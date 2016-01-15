@@ -6,8 +6,8 @@
 #'   \item \code{\link[=data_USDA]{USDA Textural Classification Data}}
 #'   \item \code{\link[=data_Fragments]{Grantham and Valbel Rock Fragment Data}}
 #' }
-#' @name  data_ggtern_package
-#' @rdname data_ggtern_package
+#' @name  data_ggtern
+#' @rdname data_ggtern
 #' @author Nicholas Hamilton
 NULL
 
@@ -26,8 +26,8 @@ NULL
 #'  summary(Feldspar)
 #'  ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
 #' @seealso \link[=data]{ggtern datasets}
-#' @name data_Feldspar
-#' @rdname data_Feldspar
+#' @name data_sets_Feldspar
+#' @rdname data_sets_Feldspar
 #' @aliases Feldspar
 #' @author Nicholas Hamilton
 NULL
@@ -64,8 +64,8 @@ NULL
 #' weight_percent() + guides(fill='none') + 
 #' theme(legend.justification=c(0,1),legend.position=c(0,1),axis.tern.padding=unit(.15,"npc")) +
 #' labs(title="USDA Textural Classification Chart",fill="Textural Class",color="Textural Class")
-#' @name data_USDA
-#' @rdname data_USDA
+#' @name data_sets_USDA
+#' @rdname data_sets_USDA
 #' @aliases USDA
 #' @author Nicholas Hamilton
 NULL
@@ -108,8 +108,8 @@ NULL
 #' \item \strong{Rf}: Rock Fragments Amount, percentage
 #' \item \strong{M}: Mica Amount, percentage
 #' }
-#' @name data_Fragments
-#' @rdname data_Fragments
+#' @name data_sets_Fragments
+#' @rdname data_sets_Fragments
 #' @aliases Fragments fragments
 #' @author Jeremy Hummon Grantham and Michael Anthony Velbel
 #' @examples 
