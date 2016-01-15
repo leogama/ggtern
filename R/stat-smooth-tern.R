@@ -4,7 +4,7 @@ stat_smooth_tern <- function(mapping = NULL, data = NULL,
                         position = "identity", method = "auto",formula = y ~ x,
                         se = TRUE, n = 80, span = 0.75, fullrange = FALSE,
                         level = 0.95, method.args = list(),
-                        na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,base='ilr', ...) {
+                        na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,expand=c(0.5,0.5),...) {
   layer(
     data        = data,
     mapping     = mapping,
@@ -23,7 +23,8 @@ stat_smooth_tern <- function(mapping = NULL, data = NULL,
       na.rm       = na.rm,
       method.args = method.args,
       span        = span,
-      base        = base,
+      base        = 'identity',
+      expand      = expand,
       ...
     )
   )
@@ -41,11 +42,12 @@ StatSmoothTern <- ggproto("StatSmoothTern", Stat,
   compute_group = function(self,data, scales, method = "auto", formula=y~x,
                            se = TRUE, n = 80, span = 0.75, fullrange = FALSE,
                            xseq = NULL, level = 0.95, method.args = list(),
-                           na.rm = FALSE,base='ilr'){
-    
+                           na.rm = FALSE,expand=c(0.5,0.5)){
+    base='identity' ##FIXED FOR MOMENT
     if (!base %in% c('identity','ilr')) stop('base must be either identity or ilr',call.=FALSE)
     if (is.character(method))  method  <- match.fun(method)
     if (is.character(formula)) formula <- as.formula(formula)
+    if (length(expand) != 2)   expand  <- rep(expand[1],2); stopifnot(is.numeric(expand))
     
     #Variables
     coord       = coord_tern()
@@ -62,14 +64,21 @@ StatSmoothTern <- ggproto("StatSmoothTern", Stat,
     else
       data = tlr2xy(data,coord,inverse=FALSE,scale=TRUE)
     
+    #Backup, This is a hack
+    bupxlims = scales$x$limits; bupylims = scales$y$limits
+    if(fullrange){
+      scales$x$limits = expand_range(range(data$x),expand)
+      scales$y$limits = expand_range(range(data$y),expand)
+    }
+    
     #Do the computation
     data = StatSmooth$compute_group(data,scales,method,formula,se,n,span,fullrange,xseq,level,method.args,na.rm)
     
     #Add necessary columns
-    if(se){ 
-      data$xmin = data$x;  
-      data$xmax = data$x; 
-    }
+    if(se){  data$xmin = data$x; data$xmax = data$x; }
+    
+    #Restore
+    scales$x$limits = bupxlims; scales$y$limits = bupylims
     
     #Transform back to ternary space
     if(base == 'ilr'){

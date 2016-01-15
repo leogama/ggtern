@@ -11,12 +11,12 @@
 \usage{
 geom_smooth_tern(mapping = NULL, data = NULL, method = "auto",
   formula = y ~ x, se = TRUE, position = "identity", na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE, base = "ilr", ...)
+  show.legend = NA, inherit.aes = TRUE, expand = c(0.5, 0.5), ...)
 
 stat_smooth_tern(mapping = NULL, data = NULL, position = "identity",
   method = "auto", formula = y ~ x, se = TRUE, n = 80, span = 0.75,
   fullrange = FALSE, level = 0.95, method.args = list(), na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE, base = "ilr", ...)
+  show.legend = NA, inherit.aes = TRUE, expand = c(0.5, 0.5), ...)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -54,8 +54,7 @@ rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link{borders}}.}
 
-\item{base}{transform to cartesian space ('\code{identity}') or isometric-log ratio ('\code{\link{ilr}}') 
-before conducting the smoothing operation}
+\item{expand}{expand the range of values by this much (vector of length 2) when fullrange is set to TRUE}
 
 \item{...}{other arguments passed on to \code{\link{layer}}. There are
   three types of arguments you can use here:
@@ -91,7 +90,7 @@ display the results with a non-standard geom.
 \examples{
 data(Feldspar)
 ggtern(data=Feldspar,aes(Ab,An,Or)) +  
-  geom_smooth_tern(base='ilr',method=lm,colour='red') + 
+  geom_smooth_tern(base='ilr',method=lm,fullrange=F,colour='red') + 
   geom_point() +
   labs(title="Example Smoothing")
 }
