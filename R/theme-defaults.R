@@ -121,10 +121,16 @@ theme_gray  <- function(base_size = 12, base_family = ""){
   .theme_tern(base_size=base_size, base_family=base_family, 
               panel.background.tern = 'white',
               plot.background.tern  = 'grey92',
-              col.T ="gray50",col.L="gray50",col.R="gray50",
-              col.axis.T="grey92",col.axis.L="grey92",col.axis.R="grey92",
-              col.title.T="black",col.title.L="black",col.title.R="black",
-              axis.tern.size = 0.25,ticklength.minor = unit(0,"npc"),
+              col.T                 = "gray50",
+              col.L                 = "gray50",
+              col.R                 = "gray50",
+              col.axis.T            = "grey92",
+              col.axis.L            = "grey92",
+              col.axis.R            = "grey92",
+              col.title.T           = "black",
+              col.title.L           = "black",
+              col.title.R           = "black",
+              axis.tern.size = 0.50,ticklength.minor = unit(0,"npc"),
               showarrow=FALSE,
               col.arrow.text.T="black",col.arrow.text.L="black",col.arrow.text.R="black")
 }
@@ -138,25 +144,17 @@ theme_grey <- theme_gray
 #' @rdname ggtern_themes
 #' @export
 theme_bw <- function(base_size = 12, base_family = "") {
-  # Starts with theme_grey and then modify some parts
   theme_grey(base_size = base_size, base_family = base_family) %+replace%
     theme(
-      axis.text                  = element_text(size = rel(0.8)),
-      axis.tern.line             = element_line(size=0.5),
+      axis.text                  = element_text(size   = rel(0.8)),
       axis.ticks                 = element_line(colour = "black"),
       legend.key                 = element_rect(colour = "grey80"),
-      panel.background.tern      = element_rect(fill = "white", colour = NA),
-      plot.background.tern       = element_rect(fill = NA, colour = 'grey50'),
-      panel.border               = element_rect(fill = NA, colour = "grey50",size=0.5),
+      panel.background.tern      = element_rect(fill   = 'white', colour = 'white'),
+      plot.background.tern       = element_rect(fill   = 'white', colour = 'white'),
+      axis.tern.line             = element_line(colour = 'grey50',size=1.0),
       panel.grid.tern.major      = element_line(colour = "grey90"),
-      panel.grid.tern.major.T    = element_line(),
-      panel.grid.tern.major.L    = element_line(),
-      panel.grid.tern.major.R    = element_line(),
       panel.grid.tern.minor      = element_line(colour = "grey98", size = 0.25),
-      panel.grid.tern.minor.T    = element_line(),
-      panel.grid.tern.minor.L    = element_line(),
-      panel.grid.tern.minor.R    = element_line(),
-      strip.background           = element_rect(fill =  "grey80", colour = "grey50", size = 0.2)
+      strip.background           = element_rect(fill   = "grey80", colour = "grey50", size = 0.2)
     )
 }
 theme_tern_bw <- function(base_size = 12, base_family = ""){
@@ -168,12 +166,12 @@ theme_tern_bw <- function(base_size = 12, base_family = ""){
 #' @rdname ggtern_themes
 #' @export
 theme_linedraw <- function(base_size = 12, base_family = "") {
-  # Starts with theme_grey and then modify some parts
   half_line <- base_size / 2
   theme_bw(base_size = base_size, base_family = base_family) %+replace%
     theme(
+      axis.tern.line    = element_line(colour = 'black', size = 1.0),
       legend.key        = element_rect(colour = "black", size = 0.25),
-      strip.background  = element_rect(fill = "black", colour = NA),
+      strip.background  = element_rect(fill   = "black", colour = NA),
       strip.text.x      = element_text(
         colour = "white",
         margin = margin(t = half_line, b = half_line)
@@ -226,7 +224,7 @@ theme_rgbg  <- function(base_size = 12, base_family = ""){
     theme(
       panel.background.tern    = element_rect(fill='white'),
       plot.background.tern     = element_rect(fill='gray92'),
-      panel.grid.tern.minor    = element_line(colour='white')
+      panel.grid.tern.minor    = element_line(colour='white',size=0.25)
     )
 }
 theme_tern_rgbg <- function(base_size = 12, base_family = ""){
@@ -240,12 +238,12 @@ theme_rgb <- theme_rgbg
 theme_rgbw  <- function(base_size = 12, base_family = ""){
   .theme_tern(base_size=base_size, base_family=base_family,
               plot.background.tern ="white",
-              col.T="darkred",
-              col.L="darkblue",
-              col.R="darkgreen",
-              col.grid.T ="darkred",
-              col.grid.L="darkblue",
-              col.grid.R="darkgreen",
+              col.T          ="darkred",
+              col.L          ="darkblue",
+              col.R          ="darkgreen",
+              col.grid.T     ="darkred",
+              col.grid.L     ="darkblue",
+              col.grid.R     ="darkgreen",
               col.grid.minor ="gray90",grid.linetype=6,grid.linetype.minor=1,grid.major.size=0.25)
 }
 theme_tern_rgbw <- function(base_size = 12, base_family = ""){
@@ -344,7 +342,7 @@ theme_light <- function(base_size = 12, base_family = "") {
                              col.arrow.text.T    = col.T,
                              col.arrow.text.L    = col.L,
                              col.arrow.text.R    = col.R,
-                             col.ticks.major     = "black",
+                             #col.ticks.major     = "black",
                              axis.tern.size      = 0.5,
                              showarrow           = getOption("tern.showarrows"),
                              ticks.outside       = getOption("tern.ticks.outside"),
@@ -352,10 +350,11 @@ theme_light <- function(base_size = 12, base_family = "") {
                              ticks.showprimary   = getOption("tern.ticks.showprimary"),
                              grid.linetype       = 1,
                              grid.linetype.minor = grid.linetype,
-                             grid.major.size     = NULL,
+                             grid.major.size     = axis.tern.size,
+                             grid.minor.size     = grid.major.size / 2,
                              ticklength.major    = unit(0.010,"npc"),
-                             ticklength.minor    = unit(0.005,"npc")){ #,
-  #margin.tern         = unit(2,"lines")){  
+                             ticklength.minor    = unit(0.005,"npc")){
+  
   #TEXT SIZES
   size.base      <- max(base_size-4,2)
   size.text      <- max(base_size-2,4)
@@ -372,43 +371,42 @@ theme_light <- function(base_size = 12, base_family = "") {
       axis.tern.showlabels       = getOption("tern.showlabels"),
       axis.tern.arrowstart       = getOption("tern.arrowstart"),
       axis.tern.arrowfinish      = getOption("tern.arrowfinish"),
-      axis.tern.padding          = unit(c(2,0,0,0),"lines"),
       axis.tern.hshift           = getOption("tern.hshift"),
       axis.tern.vshift           = getOption("tern.vshift"),
       axis.tern.arrowsep         = as.numeric(getOption("tern.arrowsep")),
       
-      axis.tern               = element_line(size=axis.tern.size,linetype="solid"),
-      axis.tern.line          = element_line(),
-      axis.tern.line.T        = element_line(colour=col.axis.T),
-      axis.tern.line.L        = element_line(colour=col.axis.L),
-      axis.tern.line.R        = element_line(colour=col.axis.R),
+      axis.tern                  = element_line(size=axis.tern.size,linetype="solid"),
+      axis.tern.line             = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,0)),
+      axis.tern.line.T           = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,1)),
+      axis.tern.line.L           = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,2)),
+      axis.tern.line.R           = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,3)),
       
-      axis.tern.arrow         = element_line(lineend=arrow(length=unit(2.5,"mm"))),
-      axis.tern.arrow.T       = element_line(colour=col.arrow.T),
-      axis.tern.arrow.L       = element_line(colour=col.arrow.L),
-      axis.tern.arrow.R       = element_line(colour=col.arrow.R),
+      axis.tern.arrow         = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,0),lineend=arrow(length=unit(2.5,"mm"))),
+      axis.tern.arrow.T       = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,1)),
+      axis.tern.arrow.L       = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,2)),
+      axis.tern.arrow.R       = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,3)),
       
-      axis.tern.text          = element_text(size=size.base,face="plain"),
-      axis.tern.text.T        = element_text(colour=col.T), #,hjust=-0.2),
-      axis.tern.text.L        = element_text(colour=col.L), #,hjust=+1.2),
-      axis.tern.text.R        = element_text(colour=col.R), #,hjust=+1.2),
+      axis.tern.text          = element_text(colour=.resolveCol(col.T,col.L,col.R,0),size=size.base,face="plain"),
+      axis.tern.text.T        = element_text(colour=.resolveCol(col.T,col.L,col.R,1)),
+      axis.tern.text.L        = element_text(colour=.resolveCol(col.T,col.L,col.R,2)),
+      axis.tern.text.R        = element_text(colour=.resolveCol(col.T,col.L,col.R,3)),
       
-      axis.tern.arrow.text    = element_text(size=size.text,face="plain"),
-      axis.tern.arrow.text.T  = element_text(colour=col.arrow.text.T),#, vjust=-0.2),
-      axis.tern.arrow.text.L  = element_text(colour=col.arrow.text.L),#, vjust=-0.2),
-      axis.tern.arrow.text.R  = element_text(colour=col.arrow.text.R),#, vjust= 1.2),
+      axis.tern.arrow.text    = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,0),size=size.text,face="plain"),
+      axis.tern.arrow.text.T  = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,1)),
+      axis.tern.arrow.text.L  = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,2)),
+      axis.tern.arrow.text.R  = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,3)),
       
-      axis.tern.title         = element_text(size=size.title,face="bold"),
-      axis.tern.title.T       = element_text(colour=col.title.T),#,vjust=NULL,hjust=NULL),#,vjust= -0.1),
-      axis.tern.title.L       = element_text(colour=col.title.L),#,vjust=NULL,hjust=NULL),#,hjust= +1.1),
-      axis.tern.title.R       = element_text(colour=col.title.R),#,vjust=NULL,hjust=NULL),#,hjust= -0.1),
+      axis.tern.title         = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,0),size=size.title,face="bold"),
+      axis.tern.title.T       = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,1)),
+      axis.tern.title.L       = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,2)),
+      axis.tern.title.R       = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,3)),
       
       panel.grid.tern         = element_line(linetype=grid.linetype),
-      panel.grid.tern.major   = element_line(color="black",size=grid.major.size),
-      panel.grid.tern.major.T = element_line(colour=col.grid.T),
-      panel.grid.tern.major.L = element_line(colour=col.grid.L),
-      panel.grid.tern.major.R = element_line(colour=col.grid.R),
-      panel.grid.tern.minor   = element_line(size=0.25,colour=col.grid.minor,linetype=grid.linetype.minor),
+      panel.grid.tern.major   = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,0),size=grid.major.size),
+      panel.grid.tern.major.T = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,1)),
+      panel.grid.tern.major.L = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,2)),
+      panel.grid.tern.major.R = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,3)),
+      panel.grid.tern.minor   = element_line(colour = col.grid.minor,size=grid.minor.size,linetype=grid.linetype.minor),
       
       axis.tern.ticks.outside       = ticks.outside,
       axis.tern.ticks.showsecondary = ticks.showsecondary,
@@ -417,16 +415,16 @@ theme_light <- function(base_size = 12, base_family = "") {
       axis.tern.ticklength.major    = ticklength.major,
       axis.tern.ticklength.minor    = ticklength.minor,
       
-      axis.tern.ticks         = element_line(),
-      axis.tern.ticks.major   = element_line(color=col.ticks.major),
-      axis.tern.ticks.major.T = element_line(colour=col.T),
-      axis.tern.ticks.major.L = element_line(colour=col.L),
-      axis.tern.ticks.major.R = element_line(colour=col.R),
+      axis.tern.ticks               = element_line(),
+      axis.tern.ticks.major         = element_line(colour = .resolveCol(col.T,col.L,col.R,0), size = grid.major.size ),
+      axis.tern.ticks.major.T       = element_line(colour = .resolveCol(col.T,col.L,col.R,1)),
+      axis.tern.ticks.major.L       = element_line(colour = .resolveCol(col.T,col.L,col.R,2)),
+      axis.tern.ticks.major.R       = element_line(colour = .resolveCol(col.T,col.L,col.R,3)),
       
-      axis.tern.ticks.minor   = element_line(size=0.20),
-      axis.tern.ticks.minor.T = element_line(colour=col.T),
-      axis.tern.ticks.minor.L = element_line(colour=col.L),
-      axis.tern.ticks.minor.R = element_line(colour=col.R),
+      axis.tern.ticks.minor         = element_line(colour = .resolveCol(col.T,col.L,col.R,0), size=grid.minor.size),
+      axis.tern.ticks.minor.T       = element_line(colour = .resolveCol(col.T,col.L,col.R,1)),
+      axis.tern.ticks.minor.L       = element_line(colour = .resolveCol(col.T,col.L,col.R,2)),
+      axis.tern.ticks.minor.R       = element_line(colour = .resolveCol(col.T,col.L,col.R,3)),
       
       panel.tern.expand       = getOption('tern.expand'),
       #panel.margin.tern      = margin.tern
@@ -464,6 +462,13 @@ theme_custom  <- function(base_size = 12,
               grid.linetype=6,
               grid.linetype.minor=1,
               grid.major.size=0.25)
+}
+
+.resolveCol <- function(t,l,r,ix=0){
+  stopifnot( (ix %in% 0:3) )
+  if(t == l && l == r) ##ALL THE SAME
+    if(ix == 0) return(t) else return(NULL)
+  else if(ix == 0) return(NULL) else return( c(t,l,r)[ix])
 }
 
 
