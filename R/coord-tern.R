@@ -280,9 +280,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                               )
         )
       }
-  },error = function(e){ 
-    warning(e)  
-  })
+  },error = function(e){  warning(e) })
   items[[length(items) + 1]] <- grob
   items
 }
@@ -292,7 +290,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   .render.border = function(name,s,f,items){
     grob = zeroGrob()
     tryCatch({
-      e    = calc_element(name,theme=theme,verbose=FALSE)
+      e = calc_element(name,theme=theme,verbose=FALSE)
       if(identical(e,element_blank()))return(items)
       grob = segmentsGrob(
           x0 = data.extreme$x[s], x1 = data.extreme$x[f], y0 = data.extreme$y[s], y1 = data.extreme$y[f],
@@ -310,17 +308,26 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   }
   
   #Render the Border
-  e  = calc_element('plot.background.tern',theme,verbose=F)
-  grob     <- polygonGrob(  x = data.extreme$x,
-                            y = data.extreme$y,
-                            default.units = "npc",
-                            id   = rep(1,nrow(data.extreme)),
-                            gp   = gpar(  col  = e$colour, 
-                                          fill = NA, 
-                                          lwd  = e$size*find_global_tern(".pt"), 
-                                          lty  = e$linetype)
-  )
-  items[[length(items) + 1]] = grob
+  .render.mainborder <- function(items){
+    tryCatch({
+      e  = calc_element('plot.background.tern',theme,verbose=F)
+      if(identical(e,element_blank())) return(items)
+      grob     <- polygonGrob(  x = data.extreme$x,
+                                y = data.extreme$y,
+                                default.units = "npc",
+                                id   = rep(1,nrow(data.extreme)),
+                                gp   = gpar(  col  = e$colour, 
+                                              fill = NA, 
+                                              lwd  = is.numericor(e$size,0)*find_global_tern(".pt"), 
+                                              lty  = e$linetype)
+      )
+      items[[length(items) + 1]] = grob
+    },error=function(e){})
+    items
+  }
+  
+  #Process the main border
+  items <- .render.mainborder(items)
   
   #process the axes
   if(.theme.get.clockwise(theme)){
@@ -332,8 +339,6 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     items <- .render.border("axis.tern.line.L",1,2,items)
     items <- .render.border("axis.tern.line.R",2,3,items)
   }
-  
-  
   
   items
 }
