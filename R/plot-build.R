@@ -33,6 +33,7 @@ ggplot_build <- function(plot) {
   layer_data <- lapply(layers, function(y) y$data)
   
   scales <- plot$scales
+  
   # Apply function to layer and matching data
   by_layer <- function(f) {
     out <- vector("list", length(data))
@@ -41,6 +42,7 @@ ggplot_build <- function(plot) {
     }
     out
   }
+  
   
   # Initialise panels, add extra data for margins & missing facetting
   # variables, and add on a PANEL variable to data
