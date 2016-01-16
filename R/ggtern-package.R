@@ -80,7 +80,7 @@
 #' @rdname  ggtern_package
 #' 
 #' @import ggplot2 gtable plyr proto lattice
-#' @importFrom scales rescale censor squish_infinite expand_range squish
+#' @importFrom scales rescale censor squish_infinite expand_range squish fullseq
 #' @importFrom latex2exp TeX
 #' @importFrom compositions ilr ilrInv clr clrInv acomp
 #' @importFrom MASS bandwidth.nrd

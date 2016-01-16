@@ -80,6 +80,8 @@ Collate:
     'geom-errorbarX.R'
     'geom-smooth-tern.R'
     'stat-smooth-tern.R'
+    'geom-interpolate-tern.R'
+    'stat-interpolate-tern.R'
 NeedsCompilation: no
 Author: Nicholas Hamilton [aut, cre]
 Maintainer: Nicholas Hamilton <nick@ggtern.com>

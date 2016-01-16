@@ -8,7 +8,7 @@
                          'is.layer','is.facet','is.Coord','GeomSegment',
                          '.element_tree','el_def','combine_elements','aes_to_scale',
                          'is.Coord','is.facet','is.layer','make_labels',
-                         'predictdf',
+                         'predictdf','contour_lines','check_required_aesthetics','snake_class',
                          'ggname','camelize')
 .functions.gridExtra  = c('latticeGrob')
   .functions          = rbind(data.frame(p='ggplot2',  f=unique(.functions.ggplot2)),

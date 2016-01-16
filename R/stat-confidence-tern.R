@@ -45,8 +45,11 @@ stat_confidence <- function(...){
 StatConfidenceTern <- ggproto("StatConfidenceTern", 
   Stat, 
   retransform  = FALSE,
-  required_aes = c("x","y","z","breaks"),
+  required_aes = c("x","y","z"),
   compute_group = function(self,data, scales, na.rm = FALSE, h = NULL, contour = TRUE, n = 100, breaks=c(0.50,0.90,0.95)) {
+    
+    #Check required aesthetics
+    ggint$check_required_aesthetics(self$required_aes, names(data), ggint$snake_class(self))
     
     #Start with an initially empty dataframe
     ret    = data.frame()

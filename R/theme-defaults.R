@@ -299,7 +299,9 @@ theme_dark <- function(base_size = 12, base_family = "") {
 theme_darker <- function(base_size = 12, base_family = "") {
   base = theme_dark(base_size=base_size,base_family=base_family) 
   base %+replace%
-    theme(tern.panel.background = element_rect(fill='grey75'))
+    theme(tern.panel.background = element_rect(fill='grey75',colour=NULL),
+          plot.background       = element_rect(fill='grey75',colour=NULL),
+          legend.background     = element_rect(fill='grey50',colour=NULL))
 }
 
 #' @rdname ggtern_themes

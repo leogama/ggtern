@@ -85,46 +85,48 @@ strip_unapproved <- function(layers){
 }
 
 #LIST OF APPROVED GEOMS
-.approvedgeom      <- c(point         = "GeomPoint",
-                        path          = "GeomPath",
-                        line          = "GeomLine",
-                        label         = "GeomLabel",
-                        text          = "GeomText",
-                        jitter        = "GeomPoint",
-                        Tline         = "GeomTline",
-                        Rline         = "GeomRline",
-                        Lline         = "GeomLline",
-                        polygon       = "GeomPolygon",
-                        segment       = "GeomSegment",
-                        count         = "GeomCount",
-                        errorbarT     = "GeomErrorbart",
-                        errorbarL     = "GeomErrorbarl",
-                        errorbarR     = "GeomErrorbarr",
-                        density_tern  = "GeomDensityTern",
-                        confidence    = "GeomConfidenceTern",
-                        curve         = "GeomCurve",
-                        mask          = "GeomMask",
-                        smooth_tern   = "GeomSmoothTern",
-                        blank         = "GeomBlank",
-                        jitter        = "GeomJitter",
-                        Tisoprop      = "GeomTisoprop",
-                        Lisoprop      = "GeomLisoprop",
-                        Risoprop      = "GeomRisoprop"
+.approvedgeom      <- c(point            = "GeomPoint",
+                        path             = "GeomPath",
+                        line             = "GeomLine",
+                        label            = "GeomLabel",
+                        text             = "GeomText",
+                        jitter           = "GeomPoint",
+                        Tline            = "GeomTline",
+                        Rline            = "GeomRline",
+                        Lline            = "GeomLline",
+                        polygon          = "GeomPolygon",
+                        segment          = "GeomSegment",
+                        count            = "GeomCount",
+                        errorbarT        = "GeomErrorbart",
+                        errorbarL        = "GeomErrorbarl",
+                        errorbarR        = "GeomErrorbarr",
+                        density_tern     = "GeomDensityTern",
+                        confidence       = "GeomConfidenceTern",
+                        curve            = "GeomCurve",
+                        mask             = "GeomMask",
+                        smooth_tern      = "GeomSmoothTern",
+                        blank            = "GeomBlank",
+                        jitter           = "GeomJitter",
+                        Tisoprop         = "GeomTisoprop",
+                        Lisoprop         = "GeomLisoprop",
+                        Risoprop         = "GeomRisoprop",
+                        interpolate_tern = "GeomInterpolateTern"
 )
 
 #LIST OF APPROVED STATS
-.approvedstat     <- c( identity     = "StatIdentity",
-                        confidence   = "StatConfidenceTern",
-                        density_tern = "StatDensityTern",
-                        smooth_tern  = "StatSmoothTern",
-                        sum          = "StatSum",
-                        unique       = "StatUnique"
+.approvedstat     <- c( identity         = "StatIdentity",
+                        confidence       = "StatConfidenceTern",
+                        density_tern     = "StatDensityTern",
+                        smooth_tern      = "StatSmoothTern",
+                        sum              = "StatSum",
+                        unique           = "StatUnique",
+                        interpolate_tern = "StatInterpolateTern"
 )
 
 #LIST OF APPROVED POSITIONS
-.approvedposition <- c(identity     = "PositionIdentity",
-                       nudge_tern   = "PositionNudgeTern",
-                       jitter_tern  = "PositionJitterTern"
+.approvedposition <- c(identity          = "PositionIdentity",
+                       nudge_tern        = "PositionNudgeTern",
+                       jitter_tern       = "PositionJitterTern"
 )
 
 #Method for building rd file
