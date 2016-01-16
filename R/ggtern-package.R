@@ -79,7 +79,7 @@
 #' @name    ggtern_package
 #' @rdname  ggtern_package
 #' 
-#' @import ggplot2 gtable plyr proto lattice
+#' @import ggplot2 gtable plyr proto lattice gridExtra
 #' @importFrom scales rescale censor squish_infinite expand_range squish fullseq
 #' @importFrom latex2exp TeX
 #' @importFrom compositions ilr ilrInv clr clrInv acomp
