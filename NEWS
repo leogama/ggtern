@@ -5,10 +5,13 @@ ggtern 2.0.0
 * Implements the use of a manual clipping mask, rather than exclusion of points outside of the plot area
 * Inclusion of several new gemetries
 * Compatable with a larger number of base geometries from ggplot2
-* Now uses a custom rendering mask, which is added by default in the foreground, however, can be placed manually as
-a layer
-* Standardised the naming of the theme elements
-* Added geom_Xisoprop new geometry
+* Now uses a custom rendering mask, which is added by default in the foreground, however, can be placed manually as a layer via geom_mask(...)
+* Standardised the naming / heirachy of the theme elements
+* Added geom_Xisoprop new geometry, for plotting isoproportion lines
+* Implementation of appropriate orthogonal coordinate systems for many of the geometries such as geom_density_ternand geom_interpolation_tern
+* Greater control over the labelling, including expressions and TeX parsing.
+* The function grid.arrange now works perfectly
+* Plots can be rotated using theme_rotate(angle) method
 
 ggtern 1.0.6.1
 ----------------------------------------------------------------
