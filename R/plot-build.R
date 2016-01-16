@@ -158,7 +158,7 @@ ggplot_gtable <- function(data) {
   plot_table <- ggint$facet_render(plot$facet, panel, plot$coordinates,theme, geom_grobs) ##NH
   
   #Function to Add Padding / Margins ##NH
-  if(isTernary){
+  if(FALSE & isTernary){
     addMargin <- function(table,margin){ #,...,et=unit(0,"pt"),er=unit(0,"pt"),eb=unit(0,"pt"),el=unit(0,"pt")){
       for(x in c(1:4)){
         args = list(x=table, pos = if(x == 1 | x == 4){0}else{-1})
