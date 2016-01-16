@@ -48,7 +48,7 @@ GeomMask <- ggproto("GeomMask", Geom,
       for(ixEl in c(1:2)){
         e  = calc_element(themeElements[ixEl],coord$theme %||% theme_get(),verbose=F)
         if(!identical(e,element_blank())){
-          a  = c(0,1); if(ixEl == 1){ a = expand_range(a,-0.05) }; b = 0.5
+          a  = c(0,1); b = 0.5; if(ixEl == 2){ a = expand_range(a,0.01) }; #EXPAND THE TOP MASK SLIGHTLY
           ex = extrm
           if(ixEl == 1){
             ex  = data.frame(diag(1,3,3)); colnames(ex) = as.character(coord$mapping)
@@ -66,6 +66,9 @@ GeomMask <- ggproto("GeomMask", Geom,
                                                     lwd  = if(ix==1){0}else{ifthenelse(!is.numeric(e$size),0,e$size)*find_global_tern(".pt")},
                                                     lty  = e$linetype)
             )
+            
+            vp <- viewport(x = 0.5, y = 0.5, width = 1, height = 1, just = c("center","center"),clip=if(ixEl == 1) 'inherit' else 'off')
+            grob = editGrob(grob, vp = vp, name = sprintf("mask-%i-%i",ixEl,ix))
             items[[length(items) + 1]] = grob
           }
         }

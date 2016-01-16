@@ -118,7 +118,7 @@ NULL
 #' @rdname ggtern_themes
 #' @export
 theme_gray  <- function(base_size = 12, base_family = ""){
-  .theme_tern(base_size=base_size, base_family=base_family, 
+  .theme_tern(base_size=base_size, base_family=base_family,
               tern.panel.background = 'white',
               tern.plot.background  = 'grey92',
               col.T                 = "gray50",
