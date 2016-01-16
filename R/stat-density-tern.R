@@ -60,11 +60,8 @@ StatDensityTern  = ggproto("StatDensityTern",
   compute_group  = function(self,data, scales, na.rm = FALSE, h = NULL, contour = TRUE, n = 100, base='ilr', expand = c(.5,.5), weight=NULL) {
     
     if(!base %in% c('identity','ilr')) stop('base must be either identity or ilr',call.=FALSE)
-    
-    #Start with an initially empty dataframe
-    ret    = data.frame()
-    data   = remove_missing(data,na.rm=TRUE,name='StatConfidence',finite=TRUE)
-    if(empty(data)) return(ret)
+    data   = remove_missing(data,vars=self$required_aes,na.rm=TRUE,name='StatConfidence',finite=TRUE)
+    if(empty(data)) return(data.frame())
     
     coord = coord_tern()
     raes  = self$required_aes

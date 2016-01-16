@@ -58,11 +58,10 @@ StatConfidenceTern <- ggproto("StatConfidenceTern",
     tryCatch({
       
       #Remove incomplete rows
-      data = remove_missing(data,na.rm=na.rm,name=class(self)[1],finite=TRUE)
+      data = remove_missing(data,vars=self$required_aes,na.rm=na.rm,name=class(self)[1],finite=TRUE)
       
       #Check that there is data to process
-      if(length(breaks) == 0 | !is.numeric(breaks)) 
-        return(ret)
+      if(length(breaks) == 0 | !is.numeric(breaks)) return(ret)
       
       #Merge the breaks with the data frame, if it hasnt been added
       if(!'breaks' %in% names(data)){ 
