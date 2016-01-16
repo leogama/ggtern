@@ -10,14 +10,14 @@
 #' 
 #' @details
 #' If the ternary arrows are switched OFF 
-#' (via the \code{\link{theme_hidearrows}} command, or the \code{theme(tern.axis.showarrows=FALSE)} theme element), then under such circumstance,
-#' these convenience functions will turn ON the ternary arrows, essentially running \code{\link{theme_showarrows}} or \code{theme(tern.axis.showarrows=TRUE)}
+#' (via the \code{\link{theme_hidearrows}} command, or the \code{theme(tern.axis.arrow.show=FALSE)} theme element), then under such circumstance,
+#' these convenience functions will turn ON the ternary arrows, essentially running \code{\link{theme_showarrows}} or \code{theme(tern.axis.arrow.show=TRUE)}
 #' 
 #' @details
 #' If for some reason, the \code{start} and \code{finish} arguments are identical, then the ternary arrows will be switched OFF, tantamount to
 #' running the \code{\link{theme_hidearrows}} convenience function.
 #' 
-#' @seealso \code{\link{theme_arrowbaseline}} and \code{theme(\link{tern.axis.arrowsep}=X)} for methods to adjust the separation distance of the ternary arrows 
+#' @seealso \code{\link{theme_arrowbaseline}} and \code{theme(\link{tern.axis.arrow.sep}=X)} for methods to adjust the separation distance of the ternary arrows 
 #' from the ternary axes.
 #' @examples
 #'  #Create base plot
@@ -45,7 +45,7 @@ NULL
 #' the axis where the arrow/s should FINISH.
 #' @rdname themearrowlength
 #' @export
-theme_arrowcustomlength <- function(start=getOption("tern.arrowstart"),finish=getOption("tern.arrowfinish")){
+theme_arrowcustomlength <- function(start=getOption("tern.arrow.start"),finish=getOption("tern.arrow.finish")){
   #Execute
   .theme_arrowsize(s=start,f=finish)
 }
@@ -67,10 +67,10 @@ theme_arrowshort <- theme_arrowsmall
 
 #' @section Normal/Default Arrow Length:
 #' \code{theme_arrownormal} or \code{theme_arrowdefault}(alias) reduces the ternary arrows to normally sized arrows, occupying a length between 
-#' \code{getOption("tern.arrowstart")} and \code{getOption("tern.arrowfinish")} global option values, whatever they may be.
+#' \code{getOption("tern.arrow.start")} and \code{getOption("tern.arrow.finish")} global option values, whatever they may be.
 #' @rdname themearrowlength
 #' @export
-theme_arrownormal<- function(){.theme_arrowsize(s=getOption("tern.arrowstart"),f=getOption("tern.arrowfinish"))}
+theme_arrownormal<- function(){.theme_arrowsize(s=getOption("tern.arrow.start"),f=getOption("tern.arrow.finish"))}
 
 #' @rdname themearrowlength
 #' @export
@@ -88,12 +88,12 @@ theme_arrowlong  <- theme_arrowlarge
 
 
 #Internal function
-.theme_arrowsize <- function(s=getOption("tern.arrowstart"),f=getOption("tern.arrowfinish")){
+.theme_arrowsize <- function(s=getOption("tern.arrow.start"),f=getOption("tern.arrow.finish")){
   
   #Check numeric
-  s = is.numericor(s,getOption("tern.arrowstart") )#[1]
-  f= is.numericor(f,getOption("tern.arrowfinish"))#[1]
+  s = is.numericor(s,getOption("tern.arrow.start") )#[1]
+  f= is.numericor(f,getOption("tern.arrow.finish"))#[1]
   
   #Execute
-  theme(tern.axis.showarrows= (s!=f), tern.axis.arrowstart=s,tern.axis.arrowfinish=f)
+  theme(tern.axis.arrow.show= (s!=f), tern.axis.arrow.start=s,tern.axis.arrow.finish=f)
 }

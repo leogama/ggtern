@@ -12,11 +12,11 @@
 \alias{themearrowlength}
 \title{Change the Length of the Ternary Arrows}
 \usage{
-theme_arrowcustomlength(start = getOption("tern.arrowstart"),
-  finish = getOption("tern.arrowfinish"))
+theme_arrowcustomlength(start = getOption("tern.arrow.start"),
+  finish = getOption("tern.arrow.finish"))
 
-theme_arrowlength(start = getOption("tern.arrowstart"),
-  finish = getOption("tern.arrowfinish"))
+theme_arrowlength(start = getOption("tern.arrow.start"),
+  finish = getOption("tern.arrow.finish"))
 
 theme_arrowsmall()
 
@@ -46,8 +46,8 @@ of length three (3), one for each arrow respectively.
 }
 \details{
 If the ternary arrows are switched OFF 
-(via the \code{\link{theme_hidearrows}} command, or the \code{theme(tern.axis.showarrows=FALSE)} theme element), then under such circumstance,
-these convenience functions will turn ON the ternary arrows, essentially running \code{\link{theme_showarrows}} or \code{theme(tern.axis.showarrows=TRUE)}
+(via the \code{\link{theme_hidearrows}} command, or the \code{theme(tern.axis.arrow.show=FALSE)} theme element), then under such circumstance,
+these convenience functions will turn ON the ternary arrows, essentially running \code{\link{theme_showarrows}} or \code{theme(tern.axis.arrow.show=TRUE)}
 
 If for some reason, the \code{start} and \code{finish} arguments are identical, then the ternary arrows will be switched OFF, tantamount to
 running the \code{\link{theme_hidearrows}} convenience function.
@@ -68,7 +68,7 @@ length of the ternary axis.
 \section{Normal/Default Arrow Length}{
 
 \code{theme_arrownormal} or \code{theme_arrowdefault}(alias) reduces the ternary arrows to normally sized arrows, occupying a length between 
-\code{getOption("tern.arrowstart")} and \code{getOption("tern.arrowfinish")} global option values, whatever they may be.
+\code{getOption("tern.arrow.start")} and \code{getOption("tern.arrow.finish")} global option values, whatever they may be.
 }
 
 \section{Long Arrow Length}{
@@ -89,7 +89,7 @@ length of the ternary axis.
  #plot + theme_arrowlength(start=c(.1,.2,.3),finish=c(.9,.8,.7))
 }
 \seealso{
-\code{\link{theme_arrowbaseline}} and \code{theme(\link{tern.axis.arrowsep}=X)} for methods to adjust the separation distance of the ternary arrows 
+\code{\link{theme_arrowbaseline}} and \code{theme(\link{tern.axis.arrow.sep}=X)} for methods to adjust the separation distance of the ternary arrows 
 from the ternary axes.
 }
 

@@ -7,7 +7,8 @@
 theme_legend_position(x = "topleft")
 }
 \arguments{
-\item{x}{the position, valid values are topleft, middleleft, bottomleft, topright, middleright and bottomright}
+\item{x}{the position, valid values are topleft, middleleft, bottomleft, topright, middleright and bottomright, or the shortened versions 
+respecitvely, tl, ml, bl, tr, mr, br}
 }
 \description{
 A convenience function to position the legend at various internal positions

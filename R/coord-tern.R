@@ -202,7 +202,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 #Internals >>>> Theme flags.
 #----------------------------------------------------------------------------------
 .theme.get.clockwise <- function(theme){
-  clockwise <- calc_element('tern.axis.clockwise',theme)
+  clockwise = calc_element('tern.axis.clockwise',theme)
   ifthenelse(is.logical(clockwise),clockwise[1],getOption("tern.clockwise"))
 }
 .theme.get.gridsontop <- function(theme){
@@ -210,39 +210,39 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   ifthenelse(is.logical(ret),ret[1],FALSE)
 }
 .theme.get.showtitles <- function(theme){
-  showtitles <- calc_element("tern.axis.showtitles",theme=theme)
+  showtitles = calc_element("tern.axis.title.show",theme=theme)
   ifthenelse(is.logical(showtitles),showtitles[1],getOption("tern.showtitles"))
 }
 .theme.get.showlabels <- function(theme){
-  showlabels <- calc_element("tern.axis.showlabels",theme=theme)
+  showlabels = calc_element("tern.axis.text.show",theme=theme)
   ifthenelse(is.logical(showlabels),showlabels[1],getOption("tern.showlabels"))
 }
 .theme.get.showgrid.major <- function(theme){
-  showgrid <- calc_element("tern.axis.showgrid.major",theme=theme)
+  showgrid   = calc_element("tern.panel.grid.major.show",theme=theme)
   ifthenelse(is.logical(showgrid),showgrid[1],getOption("tern.showgrid.major"))
 }
 .theme.get.showgrid.minor <- function(theme){
-  showgrid <- calc_element("tern.axis.showgrid.minor",theme=theme)
+  showgrid   = calc_element("tern.panel.grid.minor.show",theme=theme)
   ifthenelse(is.logical(showgrid),showgrid[1],getOption("tern.showgrid.minor"))
 }
-.theme.get.outside    <- function(theme){
-  outside       <- calc_element("tern.axis.ticks.outside",theme=theme)
+.theme.get.outside       <- function(theme){
+  outside     = calc_element("tern.axis.ticks.outside",theme=theme)
   ifthenelse(is.logical(outside),outside[1],getOption("tern.ticks.outside"))
 }
-.theme.get.showprimary <- function(theme){
-  showprimary   <- calc_element("tern.axis.ticks.showprimary",theme=theme)
+.theme.get.showprimary   <- function(theme){
+  showprimary = calc_element("tern.axis.ticks.primary.show",theme=theme)
   ifthenelse(is.logical(showprimary), showprimary[1],getOption("tern.ticks.showprimary"))
 }
 .theme.get.showsecondary <- function(theme){
-  showsecondary <- calc_element("tern.axis.ticks.showsecondary",theme=theme)
+  showsecondary = calc_element("tern.axis.ticks.secondary.show",theme=theme)
   ifthenelse(is.logical(showsecondary),showsecondary[1],getOption("tern.ticks.showsecondary"))
 }
-.theme.get.showarrows <- function(theme){
-  showarrows <- calc_element('tern.axis.showarrows',theme=theme)
+.theme.get.showarrows    <- function(theme){
+  showarrows   = calc_element('tern.axis.arrow.show',theme=theme)
   ifthenelse(is.logical(showarrows),showarrows[1],getOption("tern.showarrows"))
 }
 .theme.get.label <- function(self,n,d=n,suffix=''){
-  x <- function(n,s) sprintf("%s%s",n,s)
+  x = function(n,s) sprintf("%s%s",n,s)
   if(!is.character(n)) return('')
   theMaps = self$mapping[[n]]; theLabs = self$labels_coord
   c(theLabs[[ x(n,suffix) ]], if(is.character(theMaps)){ c(theLabs[[ x(theMaps,suffix)  ]], theLabs[[ theMaps ]]) }else{NULL},d)[1]
@@ -251,9 +251,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   tryCatch({
     angle = calc_element('tern.panel.rotate',self$theme)
     return(ifthenelse(is.finite(angle),angle,0)[1])
-  },error=function(e){
-    warning(e)
-  })
+  },error=function(e){ warning(e) })
   return(0)
 }
 
@@ -356,8 +354,8 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   #major & minor ticklength
   tl.major <- tl.minor <- 0
   tryCatch({
-    tl.major <- convertUnit(theme$tern.axis.ticklength.major,"npc",valueOnly=T)
-    tl.minor <- convertUnit(theme$tern.axis.ticklength.minor,"npc",valueOnly=T)
+    tl.major <- convertUnit(theme$tern.axis.ticks.length.major,"npc",valueOnly=T)
+    tl.minor <- convertUnit(theme$tern.axis.ticks.length.minor,"npc",valueOnly=T)
   },error=function(e){  warning(e) })
   
   #Top, Left Right sequence.
@@ -596,8 +594,8 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     sidelength = sqrt( diff(data.extreme$x[1:2])^2 + diff(data.extreme$y[1:2])^2)
     
     #arrow start and finish proportions
-    arrowstart = calc_element('tern.axis.arrowstart', theme)
-    arrowfinish= calc_element('tern.axis.arrowfinish',theme)
+    arrowstart = calc_element('tern.axis.arrow.start', theme)
+    arrowfinish= calc_element('tern.axis.arrow.finish',theme)
     
     #Ensure arrow start and finish length is 3.
     if(length(arrowstart) != 3 && length(arrowstart) >= 1)
@@ -609,18 +607,18 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     for(i in c(1:3)){
       #Put in correct order.
       if(arrowfinish[i] < arrowstart[i]){
-        warning(paste("Arrow size theme 'element tern.axis.arrowfinish[",i,"]' (",arrowfinish[i],") is < 'tern.axis.arrowstart[",i,"]' (",arrowstart[i],"), values will be swapped.",sep=""),call.=FALSE)
+        warning(paste("Arrow size theme 'element tern.axis.arrow.finish[",i,"]' (",arrowfinish[i],") is < 'tern.axis.arrow.start[",i,"]' (",arrowstart[i],"), values will be swapped.",sep=""),call.=FALSE)
         #swapvalues
         tmp  = arrowstart[i]; arrowstart[i]  = arrowfinish[i]; arrowfinish[i] = tmp
       }
       #Check finish
       if(arrowfinish[i] > 1.0){
-        warning(paste("Arrow size theme 'element tern.axis.arrowfinish[",i,"]' (",arrowfinish[i],") is > 1.0 and will be truncated",sep=""),call.=FALSE)
+        warning(paste("Arrow size theme 'element tern.axis.arrow.finish[",i,"]' (",arrowfinish[i],") is > 1.0 and will be truncated",sep=""),call.=FALSE)
         arrowfinish[i] = 1.0
       }
       #Check start
       if(arrowstart[i] < 0.0){
-        warning(paste("Arrow size theme 'element tern.axis.arrowstart[",i,"]' (",arrowstart[i],") is < 0.0 and will be truncated",sep=""),call.=FALSE)
+        warning(paste("Arrow size theme 'element tern.axis.arrow.start[",i,"]' (",arrowstart[i],") is < 0.0 and will be truncated",sep=""),call.=FALSE)
         arrowstart[i] = 0.0
       }
     }
@@ -640,9 +638,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     rownames(d) <- ixrow; colnames(d) <- ixcol
     
     #The arrow seperation in npc units.
-    arrowsep      <- calc_element("tern.axis.arrowsep",theme=theme,verbose=F)
-    ticklength    <- max(calc_element("tern.axis.ticklength.major",theme=theme,verbose=F),
-                         calc_element("tern.axis.ticklength.minor",theme=theme,verbose=F))
+    arrowsep      <- calc_element("tern.axis.arrow.sep",theme=theme,verbose=F)
+    ticklength    <- max(calc_element("tern.axis.ticks.length.major",theme=theme,verbose=F),
+                         calc_element("tern.axis.ticks.length.minor",theme=theme,verbose=F))
     
     #Ensure there are EXACTLY 3 values for each metric
     if(length(arrowsep)   != 3 && length(arrowsep)   >= 1){ arrowsep   = rep(arrowsep[1],3)   }

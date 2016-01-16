@@ -60,12 +60,12 @@ clipPolygons <- function(df,coord,plyon=c('level','piece','group'),op="intersect
 
 #' Set The Ternary Arrow Baseline
 #' 
-#' \strong{DEPRECIATED:} \code{theme_arrowbaseline(\dots)} The ternary arrows can have an offset unit value (see \code{\link{tern.axis.arrowsep}}), however, it is convenient to set this relative
+#' \strong{DEPRECIATED:} \code{theme_arrowbaseline(\dots)} The ternary arrows can have an offset unit value (see \code{\link{tern.axis.arrow.sep}}), however, it is convenient to set this relative
 #' to either the axis, ticks or axis ticklabels (since the latter two can be hidden / removed.). This function permits this to be set
 #' @rdname zzz-depreciated
 #' @export
 theme_arrowbaseline <- function(label='labels'){
-  tern_dep('1.0.6.1','theme_arrowbaseline() is no longer used, consider the tern.axis.arrowsep theme element')
+  tern_dep('1.0.6.1','theme_arrowbaseline() is no longer used, consider the tern.axis.arrow.sep theme element')
 }
 
 
@@ -73,15 +73,15 @@ theme_arrowbaseline <- function(label='labels'){
 #' 
 #' \strong{DEPRECIATED:} \code{element_ternary(\dots)} Replaced by individual theme elements:
 #' \enumerate{
-#'   \item \code{\link{tern.axis.showarrows}}
-#'   \item \code{\link{tern.axis.padding}}
-#'   \item \code{\link{tern.axis.arrowsep}}
-#'   \item \code{\link{tern.axis.arrowstart}}
-#'   \item \code{\link{tern.axis.arrowfinish}}
+#'   \item \code{\link{tern.axis.arrow.show}}
+#'   \item \code{tern.axis.padding}
+#'   \item \code{\link{tern.axis.arrow.sep}}
+#'   \item \code{\link{tern.axis.arrow.start}}
+#'   \item \code{\link{tern.axis.arrow.finish}}
 #'   \item \code{\link{tern.axis.vshift}}
 #'   \item \code{\link{tern.axis.hshift}}
-#'   \item \code{\link{tern.axis.ticklength.major}}
-#'   \item \code{\link{tern.axis.ticklength.minor}}
+#'   \item \code{\link{tern.axis.ticks.length.major}}
+#'   \item \code{\link{tern.axis.ticks.length.minor}}
 #' }
 #' 
 #' Used to define the layout of some of the ggtern plot features which are unique to the ternary diagrams , and hence, this package.
@@ -99,23 +99,23 @@ element_ternary <- function(showarrows,
                             ticklength.minor){
   tern_dep('1.0.1.3','element_ternary is no longer in use')
   if(!missing(ticklength.major))
-    tern_dep("1.0.1.3","ticklength.major has been replaced by element 'tern.axis.ticklength.major'")
+    tern_dep("1.0.1.3","ticklength.major has been replaced by element 'tern.axis.ticks.length.major'")
   if(!missing(ticklength.minor))
-    tern_dep("1.0.1.3","ticklength.minor has been replaced by element 'tern.axis.ticklength.minor'")
+    tern_dep("1.0.1.3","ticklength.minor has been replaced by element 'tern.axis.ticks.length.minor'")
   if(!missing(showarrows))
-    tern_dep("1.0.1.3","showarrows has been replaced by element 'tern.axis.showarrows'")
+    tern_dep("1.0.1.3","showarrows has been replaced by element 'tern.axis.arrow.show'")
   if(!missing(padding))
-    tern_dep("1.0.1.3","padding has been replaced by element 'tern.axis.showarrows'")
+    tern_dep("1.0.1.3","padding has been replaced by element 'tern.axis.arrow.show'")
   if(!missing(arrowsep))
-    tern_dep("1.0.1.3","arrowsep has been replaced by element 'tern.axis.arrowsep'")
+    tern_dep("1.0.1.3","arrowsep has been replaced by element 'tern.axis.arrow.sep'")
   if(!missing(vshift))
     tern_dep("1.0.1.3","vshift has been replaced by element 'tern.axis.vshift'")
   if(!missing(hshift))
     tern_dep("1.0.1.3","hshift has been replaced by element 'tern.axis.hshift'")
   if(!missing(arrowstart))
-    tern_dep("1.0.1.3","arrowstart has been replaced by element 'tern.axis.arrowstart'")
+    tern_dep("1.0.1.3","arrowstart has been replaced by element 'tern.axis.arrow.start'")
   if(!missing(arrowfinish))
-    tern_dep("1.0.1.3","hshift has been replaced by element 'tern.axis.arrowfinish'")
+    tern_dep("1.0.1.3","hshift has been replaced by element 'tern.axis.arrow.finish'")
   
   #Return the object.
   structure(

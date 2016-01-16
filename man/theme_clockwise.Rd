@@ -26,6 +26,6 @@ tern_counterclockwise()
 precession to be clockwise or anticlockwise respectively.
 }
 \details{
-If the \code{\link{tern.axis.showarrows}} value is \code{FALSE}, these functions will set it to \code{TRUE}.
+If the \code{\link{tern.axis.arrow.show}} value is \code{FALSE}, these functions will set it to \code{TRUE}.
 }
 

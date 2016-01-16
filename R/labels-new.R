@@ -38,9 +38,9 @@
 #' 
 #' @param label the desired label
 #' @param labelarrow the desired label, if different to label, for the markers along the procession arrows 
-#' @aliases llab tlab rlab wlab tarrowlab larrowlab rarrowlab
-#' @rdname ggtern-labels
-#' @name TLRWlab
+#' @aliases llab tlab rlab wlab tarrowlab larrowlab rarrowlab ggtern-labels
+#' @rdname ggtern_labels
+#' @name ggtern_labels
 #' @seealso ggplot2 \code{\link[ggplot2]{labs}}
 #' @examples
 #' data(Feldspar)
@@ -54,44 +54,44 @@
 NULL
 
 #' \code{Tlab} modifies the label of the TOP apex species
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 Tlab <- function(label,labelarrow=label){labs(T=label,Tarrow=labelarrow)}
 tlab <- Tlab
 
 #' \code{Llab} modifies the label of the LHS apex species
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 Llab <- function(label,labelarrow=label){labs(L=label,Larrow=labelarrow)}
 llab <- Llab
 
 #' \code{Rlab} modifies the label of the RHS apex species
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 Rlab <- function(label,labelarrow=label){labs(R=label,Rarrow=labelarrow)}
 rlab <- Rlab
 
 #' \code{Wlab} modifies the label of the arrow suffix
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 Wlab <- function(label){labs(W=label)}
 wlab <- Wlab
 
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 zlab <- function(label){labs(z=label)}
 
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 Tarrowlab <- function(label) labs(Tarrow = label)
 tarrowlab <- Tarrowlab
 
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 Larrowlab <- function(label) labs(Larrow = label)
 larrowlab <- Larrowlab
 
-#' @rdname ggtern-labels
+#' @rdname ggtern_labels
 #' @export
 Rarrowlab <- function(label) labs(Rarrow = label)
 rarrowlab <- Rarrowlab

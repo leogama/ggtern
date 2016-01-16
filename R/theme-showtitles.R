@@ -26,5 +26,5 @@ theme_hidetitles <- function(){.theme_showtitles(FALSE)}
 theme_notitles <- theme_hidetitles
 
 #Internals
-.theme_showtitles <- function(show=TRUE){theme(tern.axis.showtitles=show)}
+.theme_showtitles <- function(show=TRUE){theme(tern.axis.title.show=show)}
 

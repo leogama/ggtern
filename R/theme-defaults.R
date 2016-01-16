@@ -130,8 +130,11 @@ theme_gray  <- function(base_size = 12, base_family = ""){
               col.title.T           = "black",
               col.title.L           = "black",
               col.title.R           = "black",
-              tern.axis.size = 0.50,ticklength.minor = unit(0,"npc"),
-              showarrow=FALSE,
+              tern.axis.size        = 0.50,
+              col.grid.minor        = 'gray99',
+              #col.grid.minor        = 'white',
+              ticklength.minor      = unit(0,"npc"),
+              showarrow             = FALSE,
               col.arrow.text.T="black",col.arrow.text.L="black",col.arrow.text.R="black")
 }
 theme_tern_gray <- function(base_size = 12, base_family = ""){
@@ -361,59 +364,59 @@ theme_light <- function(base_size = 12, base_family = "") {
   size.title     <- max(base_size-0,6)
   
   get(base_ggplot2_theme,asNamespace("ggplot2"))(
-    base_size=base_size,base_family=base_family)            %+replace%
+    base_size=base_size,base_family=base_family) %+replace%
     theme(
-      tern.panel.background      = element_rect(fill=tern.panel.background,color=NA),
-      tern.plot.background       = element_rect(fill=tern.plot.background,color=NA),
-      tern.axis.clockwise        = getOption("tern.clockwise"),
-      tern.axis.showarrows       = showarrow,
-      tern.axis.showtitles       = getOption("tern.showtitles"),
-      tern.axis.showlabels       = getOption("tern.showlabels"),
-      tern.axis.arrowstart       = getOption("tern.arrowstart"),
-      tern.axis.arrowfinish      = getOption("tern.arrowfinish"),
-      tern.axis.hshift           = getOption("tern.hshift"),
-      tern.axis.vshift           = getOption("tern.vshift"),
-      tern.axis.arrowsep         = as.numeric(getOption("tern.arrowsep")),
+      tern.panel.background         = element_rect(fill=tern.panel.background,color=NA),
+      tern.plot.background          = element_rect(fill=tern.plot.background,color=NA),
+      tern.axis.clockwise           = getOption("tern.clockwise"),
+      tern.axis.arrow.show          = showarrow,
+      tern.axis.title.show          = getOption("tern.showtitles"),
+      tern.axis.text.show           = getOption("tern.showlabels"),
+      tern.axis.arrow.start         = getOption("tern.arrow.start"),
+      tern.axis.arrow.finish        = getOption("tern.arrow.finish"),
+      tern.axis.hshift              = getOption("tern.hshift"),
+      tern.axis.vshift              = getOption("tern.vshift"),
+      tern.axis.arrow.sep           = as.numeric(getOption("tern.arrowsep")),
       
-      tern.axis                  = element_line(size=tern.axis.size,linetype="solid"),
-      tern.axis.line             = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,0)),
-      tern.axis.line.T           = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,1)),
-      tern.axis.line.L           = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,2)),
-      tern.axis.line.R           = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,3)),
+      tern.axis                     = element_line(size=tern.axis.size,linetype="solid"),
+      tern.axis.line                = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,0)),
+      tern.axis.line.T              = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,1)),
+      tern.axis.line.L              = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,2)),
+      tern.axis.line.R              = element_line(colour=.resolveCol(col.axis.T,col.axis.L,col.axis.R,3)),
       
-      tern.axis.arrow         = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,0),lineend=arrow(length=unit(2.5,"mm"))),
-      tern.axis.arrow.T       = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,1)),
-      tern.axis.arrow.L       = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,2)),
-      tern.axis.arrow.R       = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,3)),
+      tern.axis.arrow               = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,0),lineend=arrow(length=unit(2.5,"mm"))),
+      tern.axis.arrow.T             = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,1)),
+      tern.axis.arrow.L             = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,2)),
+      tern.axis.arrow.R             = element_line(colour=.resolveCol(col.arrow.T,col.arrow.L,col.arrow.R,3)),
       
-      tern.axis.text          = element_text(colour=.resolveCol(col.T,col.L,col.R,0),size=size.base,face="plain"),
-      tern.axis.text.T        = element_text(colour=.resolveCol(col.T,col.L,col.R,1)),
-      tern.axis.text.L        = element_text(colour=.resolveCol(col.T,col.L,col.R,2)),
-      tern.axis.text.R        = element_text(colour=.resolveCol(col.T,col.L,col.R,3)),
+      tern.axis.text                = element_text(colour=.resolveCol(col.T,col.L,col.R,0),size=size.base,face="plain"),
+      tern.axis.text.T              = element_text(colour=.resolveCol(col.T,col.L,col.R,1)),
+      tern.axis.text.L              = element_text(colour=.resolveCol(col.T,col.L,col.R,2)),
+      tern.axis.text.R              = element_text(colour=.resolveCol(col.T,col.L,col.R,3)),
       
-      tern.axis.arrow.text    = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,0),size=size.text,face="plain"),
-      tern.axis.arrow.text.T  = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,1)),
-      tern.axis.arrow.text.L  = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,2)),
-      tern.axis.arrow.text.R  = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,3)),
+      tern.axis.arrow.text          = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,0),size=size.text,face="plain"),
+      tern.axis.arrow.text.T        = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,1)),
+      tern.axis.arrow.text.L        = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,2)),
+      tern.axis.arrow.text.R        = element_text(colour=.resolveCol(col.arrow.text.T,col.arrow.text.L,col.arrow.text.R,3)),
       
-      tern.axis.title         = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,0),size=size.title,face="bold"),
-      tern.axis.title.T       = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,1)),
-      tern.axis.title.L       = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,2)),
-      tern.axis.title.R       = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,3)),
+      tern.axis.title               = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,0),size=size.title,face="bold"),
+      tern.axis.title.T             = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,1)),
+      tern.axis.title.L             = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,2)),
+      tern.axis.title.R             = element_text(colour=.resolveCol(col.title.T,col.title.L,col.title.R,3)),
       
-      tern.panel.grid         = element_line(linetype=grid.linetype),
-      tern.panel.grid.major   = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,0),size=grid.major.size),
-      tern.panel.grid.major.T = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,1)),
-      tern.panel.grid.major.L = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,2)),
-      tern.panel.grid.major.R = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,3)),
-      tern.panel.grid.minor   = element_line(colour = col.grid.minor,size=grid.minor.size,linetype=grid.linetype.minor),
+      tern.panel.grid               = element_line(linetype=grid.linetype),
+      tern.panel.grid.major         = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,0),size=grid.major.size),
+      tern.panel.grid.major.T       = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,1)),
+      tern.panel.grid.major.L       = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,2)),
+      tern.panel.grid.major.R       = element_line(colour = .resolveCol(col.grid.T,col.grid.L,col.grid.R,3)),
+      tern.panel.grid.minor         = element_line(colour = col.grid.minor,size=grid.minor.size,linetype=grid.linetype.minor),
       
       tern.axis.ticks.outside       = ticks.outside,
-      tern.axis.ticks.showsecondary = ticks.showsecondary,
-      tern.axis.ticks.showprimary   = ticks.showprimary,
+      tern.axis.ticks.secondary.show= ticks.showsecondary,
+      tern.axis.ticks.primary.show  = ticks.showprimary,
       
-      tern.axis.ticklength.major    = ticklength.major,
-      tern.axis.ticklength.minor    = ticklength.minor,
+      tern.axis.ticks.length.major  = ticklength.major,
+      tern.axis.ticks.length.minor  = ticklength.minor,
       
       tern.axis.ticks               = element_line(),
       tern.axis.ticks.major         = element_line(colour = .resolveCol(col.T,col.L,col.R,0), size = grid.major.size ),
@@ -426,9 +429,9 @@ theme_light <- function(base_size = 12, base_family = "") {
       tern.axis.ticks.minor.L       = element_line(colour = .resolveCol(col.T,col.L,col.R,2)),
       tern.axis.ticks.minor.R       = element_line(colour = .resolveCol(col.T,col.L,col.R,3)),
       
-      tern.panel.expand       = getOption('tern.expand'),
-      tern.panel.rotate       = 0,
-      tern.panel.grid.ontop   = FALSE
+      tern.panel.expand             = getOption('tern.expand'),
+      tern.panel.rotate             = 0,
+      tern.panel.grid.ontop         = FALSE
     )
 }
 

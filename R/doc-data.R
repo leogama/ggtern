@@ -49,7 +49,7 @@ NULL
 #' theme_showsecondary() +
 #' theme_showarrows() +
 #' weight_percent() + guides(fill='none') + 
-#' theme(legend.justification=c(0,1),legend.position=c(0,1),tern.axis.padding=unit(.15,"npc")) +
+#' theme_legend_position("topleft")
 #' labs(title="USDA Textural Classification Chart",fill="Textural Class",color="Textural Class")
 #' @name data_sets_USDA
 #' @rdname data_sets_USDA

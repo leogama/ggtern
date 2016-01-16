@@ -7,7 +7,7 @@ ggtern 2.0.0
 * Compatable with a larger number of base geometries from ggplot2
 * Now uses a custom rendering mask, which is added by default in the foreground, however, can be placed manually as
 a layer
-* 
+* Standardised the naming of the theme elements
 
 ggtern 1.0.6.1
 ----------------------------------------------------------------
