@@ -13,5 +13,5 @@ theme_ticksinside  <- function(){.theme_ticksoutside(FALSE)}
 
 #Internal
 .theme_ticksoutside <- function(x){
-  theme(axis.tern.ticks.outside=x)
+  theme(tern.axis.ticks.outside=x)
 }

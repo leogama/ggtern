@@ -36,7 +36,7 @@ theme_rgbw() +
 theme_showsecondary() +
 theme_showarrows() +
 weight_percent() + guides(fill='none') + 
-theme(legend.justification=c(0,1),legend.position=c(0,1),axis.tern.padding=unit(.15,"npc")) +
+theme(legend.justification=c(0,1),legend.position=c(0,1),tern.axis.padding=unit(.15,"npc")) +
 labs(title="USDA Textural Classification Chart",fill="Textural Class",color="Textural Class")
 }
 \author{

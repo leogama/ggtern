@@ -11,8 +11,8 @@
 #' @param expand expand the range of values by this much (vector of length 2) when fullrange is set to TRUE
 #' @examples 
 #' data(Feldspar)
-#' ggtern(data=Feldspar,aes(Ab,An,Or)) +  
-#'   geom_smooth_tern(base='ilr',method=lm,fullrange=F,colour='red') + 
+#' ggtern(data=Feldspar,aes(Ab,An,Or,group=Feldspar)) +  
+#'   geom_smooth_tern(method=lm,fullrange=TRUE,colour='red') + 
 #'   geom_point() +
 #'   labs(title="Example Smoothing")
 #' @export

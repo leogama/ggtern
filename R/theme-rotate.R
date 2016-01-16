@@ -11,4 +11,4 @@
 #' for(a in seq(0,60,by=15))
 #' print(x + theme_rotate(a))
 #' @export
-theme_rotate = function(degrees=60,radians=degrees*pi/180){ theme(panel.tern.rotate = radians*180/pi) }
+theme_rotate = function(degrees=60,radians=degrees*pi/180){ theme(tern.panel.rotate = radians*180/pi) }

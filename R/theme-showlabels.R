@@ -23,5 +23,5 @@ theme_nolabels   <- theme_hidelabels
 
 #Internal Function
 .theme_showlabels <- function(show){
-  theme(axis.tern.showlabels=show)
+  theme(tern.axis.showlabels=show)
 }

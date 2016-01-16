@@ -58,8 +58,9 @@
 #' @section  \code{ggtern} Provided Datasets:
 #' \code{ggtern} ships with a number of datasets, including:
 #' \enumerate{
-#'   \item \code{\link[=data_Feldspar]{Elkin and Groves Feldspar Data}}
-#'   \item \code{\link[=data_USDA]{USDA Textural Classification Data}}
+#'   \item \code{\link[=data_sets_Feldspar]{Elkin and Groves Feldspar Data}}
+#'   \item \code{\link[=data_sets_USDA]{USDA Textural Classification Data}}
+#'   \item \code{\link[=data_sets_Fragments]{Grantham and Valbel Rock Fragment Data}}
 #' }
 #' @examples
 #' ##-----------------------------------------------

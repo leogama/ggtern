@@ -89,8 +89,8 @@ display the results with a non-standard geom.
 }
 \examples{
 data(Feldspar)
-ggtern(data=Feldspar,aes(Ab,An,Or)) +  
-  geom_smooth_tern(base='ilr',method=lm,fullrange=F,colour='red') + 
+ggtern(data=Feldspar,aes(Ab,An,Or,group=Feldspar)) +  
+  geom_smooth_tern(method=lm,fullrange=TRUE,colour='red') + 
   geom_point() +
   labs(title="Example Smoothing")
 }

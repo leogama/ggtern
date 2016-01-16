@@ -44,7 +44,7 @@ GeomMask <- ggproto("GeomMask", Geom,
     if(!inherits(coord,'CoordTern'))return(items)
     extrm = .get.tern.extremes(coord,panel_scales,transform=T)
     tryCatch({
-      themeElements = c('plot.background.tern','panel.background.tern')
+      themeElements = c('tern.plot.background','tern.panel.background')
       for(ixEl in c(1:2)){
         e  = calc_element(themeElements[ixEl],coord$theme %||% theme_get(),verbose=F)
         if(!identical(e,element_blank())){
@@ -75,11 +75,3 @@ GeomMask <- ggproto("GeomMask", Geom,
   },
   draw_key = FALSE
 )
-
-
-#' @rdname geom_mask
-#' @name geom_mask
-#' @export
-theme_nomask = function(){
-  theme(panel.tern.suppress.mask=TRUE)
-}

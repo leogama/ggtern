@@ -1,16 +1,3 @@
-#' Data Sets
-#' 
-#' \code{ggtern} ships with a number of datasets, including:
-#' \enumerate{
-#'   \item \code{\link[=data_Feldspar]{Elkin and Groves Feldspar Data}}
-#'   \item \code{\link[=data_USDA]{USDA Textural Classification Data}}
-#'   \item \code{\link[=data_Fragments]{Grantham and Valbel Rock Fragment Data}}
-#' }
-#' @name  data_ggtern
-#' @rdname data_ggtern
-#' @author Nicholas Hamilton
-NULL
-
 #' @title Elkin and Groves Feldspar Data
 #' 
 #' @description This dataset represents the experiments conducted by Elkins and Groves
@@ -62,7 +49,7 @@ NULL
 #' theme_showsecondary() +
 #' theme_showarrows() +
 #' weight_percent() + guides(fill='none') + 
-#' theme(legend.justification=c(0,1),legend.position=c(0,1),axis.tern.padding=unit(.15,"npc")) +
+#' theme(legend.justification=c(0,1),legend.position=c(0,1),tern.axis.padding=unit(.15,"npc")) +
 #' labs(title="USDA Textural Classification Chart",fill="Textural Class",color="Textural Class")
 #' @name data_sets_USDA
 #' @rdname data_sets_USDA

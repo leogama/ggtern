@@ -5,5 +5,5 @@
 #' @rdname theme_gridsontop
 #' @export
 theme_gridsontop = function(){
-  theme(panel.grid.tern.ontop=TRUE)
+  theme(tern.panel.grid.ontop=TRUE)
 }

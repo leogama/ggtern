@@ -169,7 +169,7 @@ ggplot_gtable <- function(data) {
     }
     #Inject Margin inside the facets.
     panelIndexes = which(plot_table$layout$name == 'panel')
-    clipping     = calc_element('panel.background.tern',theme) ##NH
+    clipping     = calc_element('tern.panel.background',theme) ##NH
     for(pix in panelIndexes){
       if(!identical(clipping,element_blank())){
         subtable = gtable_add_grob(gtable(unit(1,"null"),unit(1,"null")),plot_table$grobs[[pix]],1,1, 

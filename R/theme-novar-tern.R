@@ -60,14 +60,14 @@ theme_novar_tern <- function(species, ...) {
   }
   
   outfxn <- function() theme(    
-    axis.tern.title       = element_blank(),
-    axis.tern.text        = element_blank(),
-    axis.tern.ticks.major = element_blank(),
-    axis.tern.ticks.minor = element_blank(),
-    panel.grid.tern.major = element_blank(),
-    panel.grid.tern.minor = element_blank(),
-    axis.tern.arrow       = element_blank(),  
-    axis.tern.arrow.text  = element_blank()
+    tern.axis.title       = element_blank(),
+    tern.axis.text        = element_blank(),
+    tern.axis.ticks.major = element_blank(),
+    tern.axis.ticks.minor = element_blank(),
+    tern.panel.grid.major = element_blank(),
+    tern.panel.grid.minor = element_blank(),
+    tern.axis.arrow       = element_blank(),  
+    tern.axis.arrow.text  = element_blank()
   )
   
   names(body(outfxn))[-1] <- paste(names(body(outfxn))[-1], species, sep = ".")

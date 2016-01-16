@@ -64,7 +64,7 @@ StatSmoothTern <- ggproto("StatSmoothTern", Stat,
     else
       data = tlr2xy(data,coord,inverse=FALSE,scale=TRUE)
     
-    #Backup, This is a hack
+    #Backup, This is a hack if data was not provided where it sums to 1, the ranges can be out.
     bupxlims = scales$x$limits; bupylims = scales$y$limits
     if(fullrange){
       scales$x$limits = expand_range(range(data$x),expand)

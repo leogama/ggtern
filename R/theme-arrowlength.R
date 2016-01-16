@@ -10,14 +10,14 @@
 #' 
 #' @details
 #' If the ternary arrows are switched OFF 
-#' (via the \code{\link{theme_hidearrows}} command, or the \code{theme(axis.tern.showarrows=FALSE)} theme element), then under such circumstance,
-#' these convenience functions will turn ON the ternary arrows, essentially running \code{\link{theme_showarrows}} or \code{theme(axis.tern.showarrows=TRUE)}
+#' (via the \code{\link{theme_hidearrows}} command, or the \code{theme(tern.axis.showarrows=FALSE)} theme element), then under such circumstance,
+#' these convenience functions will turn ON the ternary arrows, essentially running \code{\link{theme_showarrows}} or \code{theme(tern.axis.showarrows=TRUE)}
 #' 
 #' @details
 #' If for some reason, the \code{start} and \code{finish} arguments are identical, then the ternary arrows will be switched OFF, tantamount to
 #' running the \code{\link{theme_hidearrows}} convenience function.
 #' 
-#' @seealso \code{\link{theme_arrowbaseline}} and \code{theme(\link{axis.tern.arrowsep}=X)} for methods to adjust the separation distance of the ternary arrows 
+#' @seealso \code{\link{theme_arrowbaseline}} and \code{theme(\link{tern.axis.arrowsep}=X)} for methods to adjust the separation distance of the ternary arrows 
 #' from the ternary axes.
 #' @examples
 #'  #Create base plot
@@ -95,5 +95,5 @@ theme_arrowlong  <- theme_arrowlarge
   f= is.numericor(f,getOption("tern.arrowfinish"))#[1]
   
   #Execute
-  theme(axis.tern.showarrows= (s!=f), axis.tern.arrowstart=s,axis.tern.arrowfinish=f)
+  theme(tern.axis.showarrows= (s!=f), tern.axis.arrowstart=s,tern.axis.arrowfinish=f)
 }

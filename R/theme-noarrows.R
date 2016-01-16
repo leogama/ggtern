@@ -17,5 +17,5 @@ theme_showarrows <- function(){.theme_arrows(TRUE)}
 
 #internal function
 .theme_arrows <- function(show){
-  theme(axis.tern.showarrows = show)
+  theme(tern.axis.showarrows = show)
 }

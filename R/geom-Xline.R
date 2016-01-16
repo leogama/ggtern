@@ -201,7 +201,7 @@ rline <- Rline
   data          = coord$transform(data,scale_details)
   grob          = zeroGrob()
   tryCatch({
-    cw   = calc_element('axis.tern.clockwise',coord$theme) ##Clockwise
+    cw   = calc_element('tern.axis.clockwise',coord$theme) ##Clockwise
     grob = segmentsGrob(if(!cw) data$x else data$xend, 
                         if(!cw) data$y else data$yend, 
                         if( cw) data$x else data$xend, 

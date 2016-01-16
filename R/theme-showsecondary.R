@@ -11,7 +11,7 @@
 #' 
 #' For example, considering the TOP apex species, in a plot with 'clockwise' axis precession, the primary ticks would run along the 
 #' LHS, whilst, the secondary ticks, woudl run along the RHS. By default, the primary ticks are switched ON, whilst the secondary ticks are switched OFF and are
-#' controlled by the \code{\link{axis.tern.ticks.showprimary}} and \code{\link{axis.tern.ticks.showsecondary}} theme elements respectively.
+#' controlled by the \code{\link{tern.axis.ticks.showprimary}} and \code{\link{tern.axis.ticks.showsecondary}} theme elements respectively.
 #' 
 #' \code{theme_showsecondary} is a function that apends to the current theme a flag to switch ON the secondary ticks
 #' \code{theme_showticks(), themehideticks(), theme_noticks()} are functions that switch ON or OFF BOTH the primary or secondary ticks.
@@ -64,5 +64,5 @@ theme_hideticks <- function(){theme_hideprimary() + theme_hidesecondary()}
 theme_noticks   <- theme_hideticks
 
 #internals
-.theme_showsecondary <- function(show){theme(axis.tern.ticks.showsecondary = show)}
-.theme_showprimary   <- function(show){theme(axis.tern.ticks.showprimary   = show)}
+.theme_showsecondary <- function(show){theme(tern.axis.ticks.showsecondary = show)}
+.theme_showprimary   <- function(show){theme(tern.axis.ticks.showprimary   = show)}

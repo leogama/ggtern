@@ -95,5 +95,5 @@ theme_tern_nogrid_minor <- function(){
 }
 
 #Internals
-.theme.showgrid.major <- function(show){theme(axis.tern.showgrid.major = show)}
-.theme.showgrid.minor <- function(show){theme(axis.tern.showgrid.minor = show)}
+.theme.showgrid.major <- function(show){theme(tern.axis.showgrid.major = show)}
+.theme.showgrid.minor <- function(show){theme(tern.axis.showgrid.minor = show)}

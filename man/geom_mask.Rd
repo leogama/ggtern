@@ -4,12 +4,9 @@
 \name{geom_mask}
 \alias{GeomMask}
 \alias{geom_mask}
-\alias{theme_nomask}
 \title{Apply Manual Clipping Mask}
 \usage{
 geom_mask()
-
-theme_nomask()
 }
 \description{
 This function creates a manual clipping mask, which in turn suppresses the standard clipping mask that would otherwise
