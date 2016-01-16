@@ -8,6 +8,7 @@ ggtern 2.0.0
 * Now uses a custom rendering mask, which is added by default in the foreground, however, can be placed manually as
 a layer
 * Standardised the naming of the theme elements
+* Added geom_Xisoprop new geometry
 
 ggtern 1.0.6.1
 ----------------------------------------------------------------

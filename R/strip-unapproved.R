@@ -106,7 +106,10 @@ strip_unapproved <- function(layers){
                         mask          = "GeomMask",
                         smooth_tern   = "GeomSmoothTern",
                         blank         = "GeomBlank",
-                        jitter        = "GeomJitter"
+                        jitter        = "GeomJitter",
+                        Tisoprop      = "GeomTisoprop",
+                        Lisoprop      = "GeomLisoprop",
+                        Risoprop      = "GeomRisoprop"
 )
 
 #LIST OF APPROVED STATS

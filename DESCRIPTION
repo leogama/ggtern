@@ -74,6 +74,7 @@ Collate:
     'stat-density-tern.R'
     'geom-mask.R'
     'geom-Xline.R'
+    'geom-Xisoprop.R'
     'geom-confidence-tern.R'
     'stat-confidence-tern.R'
     'geom-errorbarX.R'
