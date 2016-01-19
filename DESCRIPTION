@@ -83,6 +83,7 @@ Collate:
     'stat-smooth-tern.R'
     'geom-interpolate-tern.R'
     'stat-interpolate-tern.R'
+    'stat-interpolate-methods.R'
 NeedsCompilation: no
 Author: Nicholas Hamilton [aut, cre]
 Maintainer: Nicholas Hamilton <nick@ggtern.com>
