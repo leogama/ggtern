@@ -4,6 +4,7 @@ ggtern 2.0.2
 * Better haldling of the 'fullrange' case within the stat_interpolation_tern method
 * Added GeomDl for direct.label
 * Applied label formatter to all labels (title, legend etc...), not just ternary specific labels
+* Fixed bug in theme_custom(...)
 
 ggtern 2.0.1
 ----------------------------------------------------------------
