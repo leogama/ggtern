@@ -5,6 +5,7 @@ ggtern 2.0.2
 * Added GeomDl for direct.label
 * Applied label formatter to all labels (title, legend etc...), not just ternary specific labels
 * Fixed bug in theme_custom(...)
+* Fixed bug in how the order of axis label preferences ie, Tarrow << yarrow << T << y << default etc...
 
 ggtern 2.0.1
 ----------------------------------------------------------------

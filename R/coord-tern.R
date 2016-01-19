@@ -242,10 +242,12 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   ifthenelse(is.logical(showarrows),showarrows[1],getOption("tern.showarrows"))
 }
 .theme.get.label <- function(self,n,d=n,suffix=''){
-  x = function(n,s) sprintf("%s%s",n,s)
+  x      = function(n,s) sprintf("%s%s",n,s)
   if(!is.character(n)) return('')
-  theMaps = self$mapping[[n]]; theLabs = self$labels_coord
-  c(theLabs[[ x(n,suffix) ]], if(is.character(theMaps)){ c(theLabs[[ x(theMaps,suffix)  ]], theLabs[[ theMaps ]]) }else{NULL},d)[1]
+  labels = self$labels_coord
+  ix     = unique(c(x(n,suffix),x(self$mapping[[n]],suffix),n,self$mapping[[n]])) 
+  id     = which(ix %in% names(labels))
+  if(length(id) == 0) d else labels[[ix[id[1]]]]
 }
 .theme.get.rotation <- function(self){
   tryCatch({
@@ -661,7 +663,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     d$xmn = rowMeans(d[,ixcol[c(1,3)]])
     d$ymn = rowMeans(d[,ixcol[c(2,4)]])
     d$L   = unlist(lapply(ixseq,function(n){ .theme.get.label(self,n)  }))
-    d$LA  = unlist(lapply(ixseq,function(n){ c(self$labels_coord[[ sprintf('%sarrow',n) ]],.theme.get.label(self,n,suffix='arrow'))[1] }))
+    d$LA  = unlist(lapply(ixseq,function(n){ 
+      #c(self$labels_coord[[ sprintf('%sarrow',n) ]],)[1]
+      .theme.get.label(self,n,suffix='arrow')
+    }))
     d$W   = unlist(lapply('W',function(n){  .theme.get.label(self,n,'')  }))
     d$A   = .get.angles.arrowmarker(clockwise)
     d$AL  = .valid.angle(d$A + .theme.get.rotation(self))
