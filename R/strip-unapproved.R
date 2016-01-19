@@ -110,7 +110,8 @@ strip_unapproved <- function(layers){
                         Tisoprop         = "GeomTisoprop",
                         Lisoprop         = "GeomLisoprop",
                         Risoprop         = "GeomRisoprop",
-                        interpolate_tern = "GeomInterpolateTern"
+                        interpolate_tern = "GeomInterpolateTern",
+                        direct.label     = "GeomDl"
 )
 
 #LIST OF APPROVED STATS
