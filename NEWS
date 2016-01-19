@@ -3,6 +3,7 @@ ggtern 2.0.2
 * Fixed the stat_interpolation_tern to handle the different modelling methods
 * Better haldling of the 'fullrange' case within the stat_interpolation_tern method
 * Added GeomDl for direct.label
+* Applied label formatter to all labels (title, legend etc...), not just ternary specific labels
 
 ggtern 2.0.1
 ----------------------------------------------------------------

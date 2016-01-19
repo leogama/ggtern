@@ -185,6 +185,10 @@ ggplot_gtable <- function(data) {
     y = ggint$ylabel(panel, plot$labels)  ##NH
   ))
   
+  #Parse the labels
+  if(isTernary) 
+    plot$labels = lapply(plot$labels,label_formatter)
+  
   if(!isTernary){ ##NH
     xlabel <- ggint$element_render(theme, "axis.title.x", labels$x, expand_y = TRUE) ##NH
     ylabel <- ggint$element_render(theme, "axis.title.y", labels$y, expand_x = TRUE) ##NH
