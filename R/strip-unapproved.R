@@ -111,7 +111,8 @@ strip_unapproved <- function(layers){
                         Lisoprop         = "GeomLisoprop",
                         Risoprop         = "GeomRisoprop",
                         interpolate_tern = "GeomInterpolateTern",
-                        direct.label     = "GeomDl"
+                        crosshair_tern   = "GeomCrosshairTern",
+                        "GeomDl"
 )
 
 #LIST OF APPROVED STATS
@@ -135,7 +136,12 @@ strip_unapproved <- function(layers){
   if(!type %in% c('geom','stat','position')) stop("Invalid type",call.=FALSE)
   paste(sprintf("The following %ss have been approved so far, including a combination of existing %ss and newly created %ss for the ggtern package\n",type,type,type),
         sprintf("APPROVED %ss in \\code{ggtern} are as follows:\n\n\\itemize{\n",type),
-        paste(sprintf("\\item\\code{\\link{%s_",type),names(get(sprintf(".approved%s",type))),"}}",
-              collapse="\n", sep = ""),
+        paste( sprintf("\\item\\code{\\link{%s_",type),.nonBlankNames(type),"}}",collapse="\n", sep = ""),
         "\n}\n",sep = "")
 }
+
+.nonBlankNames <- function(type){
+  ret = names(get(sprintf(".approved%s",type)))
+  ret[which(ret != '')]
+}
+

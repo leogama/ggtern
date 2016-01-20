@@ -84,6 +84,7 @@ Collate:
     'geom-interpolate-tern.R'
     'stat-interpolate-tern.R'
     'stat-interpolate-methods.R'
+    'geom-crosshair-tern.R'
 NeedsCompilation: no
 Author: Nicholas Hamilton [aut, cre]
 Maintainer: Nicholas Hamilton <nick@ggtern.com>

@@ -6,6 +6,7 @@ ggtern 2.0.2
 * Applied label formatter to all labels (title, legend etc...), not just ternary specific labels
 * Fixed bug in theme_custom(...)
 * Fixed bug in how the order of axis label preferences ie, Tarrow << yarrow << T << y << default etc...
+* Created geom_ternary_crosshar new geometry
 
 ggtern 2.0.1
 ----------------------------------------------------------------
