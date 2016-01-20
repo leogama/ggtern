@@ -54,7 +54,7 @@ StatInterpolateTern <- ggproto("StatInterpolateTern",
     data[,self$required_aes[1:3]] = as.data.frame(acomp(data[,self$required_aes[1:3]]))
     
     #Build the ternary grid
-    theGrid = .getGrid(data,n,fullrange,expand=0.0)
+    theGrid = .getGrid(data,n,fullrange,expand=0)
     
     #Transform the data into the orthonormal space
     data[,self$required_aes[1:2]] = as.data.frame(ilr(data[,self$required_aes[1:3]]))
@@ -63,13 +63,16 @@ StatInterpolateTern <- ggproto("StatInterpolateTern",
     base.args = list(quote(formula), data = quote(data))
     model     = do.call(method, c(base.args, method.args))
     
+    ##Check expand is vector of 2
+    expand   = if(length(expand) != 2) rep(expand[1],2) else expand
+    
     #New Data to Predict
-    xrng      = expand_range(range(theGrid$x),expand)
-    yrng      = expand_range(range(theGrid$y),expand)
+    xrng    = expand_range(range(theGrid$x),expand[1])
+    yrng    = expand_range(range(theGrid$y),expand[2])
     
     #Predict the data
-    data = predictdf2d(model,
-                       xseq = seq(xrng[1],xrng[2],length.out=n),
+    data = predictdf2d(model, 
+                       xseq = seq(xrng[1],xrng[2],length.out=n), 
                        yseq = seq(yrng[1],yrng[2],length.out=n))
     
     #Draw the contours
@@ -94,7 +97,7 @@ StatInterpolateTern <- ggproto("StatInterpolateTern",
   theGrid   = expand.grid(x=seqx,y=seqy)
   theGrid$z = 1 - theGrid$x - theGrid$y
   
-  invalid   = apply(theGrid,1,function(x) max(x) > 1 | min(x) < 0)
+  invalid   = apply(theGrid,1,function(x) max(x) > (1 - 1/n) | min(x) < 1/n)
   if(length(invalid) > 0) theGrid = theGrid[-which(invalid),]
   
   #Convert to ilr coordinates
