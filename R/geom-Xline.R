@@ -56,7 +56,7 @@ GeomTline <- ggproto("GeomTline",Geom,
                      },
                      default_aes = aes(colour = "black", size = 0.5, linetype = 1, alpha = NA,arrow=NULL),
                      required_aes = c("Tintercept"),
-                     draw_key = draw_key_Xline
+                     draw_key = draw_key_Tline
 )
 
 #' @export
@@ -106,7 +106,7 @@ GeomLline <- ggproto("GeomLline",Geom,
                      },
                      default_aes = aes(colour = "black", size = 0.5, linetype = 1, alpha = NA,arrow=NULL),
                      required_aes = c("Lintercept"),
-                     draw_key = draw_key_Xline
+                     draw_key = draw_key_Lline
 )
 
 #' @export
@@ -156,7 +156,7 @@ GeomRline <- ggproto("GeomRline",Geom,
                      },
                      default_aes = aes(colour = "black", size = 0.5, linetype = 1, alpha = NA,arrow=NULL),
                      required_aes = c("Rintercept"),
-                     draw_key = draw_key_Xline
+                     draw_key = draw_key_Rline
 )
 
 #' @export

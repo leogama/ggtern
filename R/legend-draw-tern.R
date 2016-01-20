@@ -15,7 +15,6 @@ NULL
 #' @export
 #' @rdname draw_key_tern
 draw_key_crosshair_tern <- function(data, params, size) {
-  .ratio = function(){ 0.5*tan(60*pi/180) }
   dx = (1 - .ratio())/2
   segmentsGrob(c(0.5,0.5,0.5),
                c(0.5,0.5,0.5),
@@ -33,7 +32,94 @@ draw_key_crosshair_tern <- function(data, params, size) {
 
 #' @export
 #' @rdname draw_key_tern
-draw_key_Xline <- function(data,params,size){
-  draw_key_crosshair_tern(data,params,size)
+draw_key_Tline <- function(data,params,size){
+  r = .ratio()/2
+  segmentsGrob(.5-r,.5,.5+r,.5,
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
 }
 
+#' @export
+#' @rdname draw_key_tern
+draw_key_Lline <- function(data,params,size){
+  r = .ratio()/2
+  segmentsGrob(.5 - r*sin(30*pi/180),.5 + r*cos(30*pi/180),
+               .5 + r*sin(30*pi/180),.5 - r*cos(30*pi/180),
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+#' @export
+#' @rdname draw_key_tern
+draw_key_Rline <- function(data,params,size){
+  r = .ratio()/2
+  segmentsGrob(.5 + r*sin(30*pi/180),.5 + r*cos(30*pi/180),
+               .5 - r*sin(30*pi/180),.5 - r*cos(30*pi/180),
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+#' @export
+#' @rdname draw_key_tern
+draw_key_Tiso <- function(data,params,size){
+  dy = 0.5*(1 - tan(30*pi/180))
+  segmentsGrob(.5,min(.ratio()+dy,1),.5,0+dy,
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+#' @export
+#' @rdname draw_key_tern
+draw_key_Liso <- function(data,params,size){
+  dy = 0.5*(1 - tan(30*pi/180))
+  segmentsGrob(0,0+dy,.ratio()*cos(pi*30/180),.ratio()*sin(pi*30/180)+dy,
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+#' @export
+#' @rdname draw_key_tern
+draw_key_Riso <- function(data,params,size){
+  dy = 0.5*(1 - tan(30*pi/180))
+  segmentsGrob(1,0+dy,1-.ratio()*cos(pi*30/180),.ratio()*sin(pi*30/180)+dy,
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+.ratio = function(){ 0.5*tan(60*pi/180) }
