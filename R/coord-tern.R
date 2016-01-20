@@ -53,6 +53,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     angle            = .theme.get.rotation(self)
     addOrigin        = function(d,ix,o){  d[,ix] = t(t(d[,ix,drop=FALSE]) + o); d }
     data             = tlr2xy(data,self)
+    coordShift       = sapply(c('tern.axis.hshift','tern.axis.vshift'),function(x){ calc_element(x,self$theme) %||% 0})
     
     #For each coordinate group, conduct the re-centering, translation / rotation process
     for(group in .get.sets(ix,names(data)) ){
@@ -83,7 +84,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       
       #Re-Center
       origin         = apply(xtrm[,ix],2,function(x){ mean(range(x))} ) ##ORIGIN TO BE MEDIAN
-      target         = c(mean(scale_details$x.range),mean(scale_details$y.range))
+      target         = c(mean(scale_details$x.range),mean(scale_details$y.range)) + coordShift
       data           = addOrigin(data,ix.comb,(target - origin))
     }
     
@@ -153,9 +154,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       train_cartesian(scale_details$y, self$limits$y - shift[2],"y",c(expand.amount,0) )
     )
     
-    #Apply the Vertical and Horizontal Shift
-    ret$x.range = ret$x.range -convertX(calc_element("tern.axis.hshift",theme=self$theme),'npc',valueOnly=T)
-    ret$y.range = ret$y.range -convertY(calc_element("tern.axis.vshift",theme=self$theme),'npc',valueOnly=T)
+    #Done
     ret
   }
 )
