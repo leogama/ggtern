@@ -3,15 +3,24 @@
 \name{draw_key_tern}
 \alias{draw_key_Liso}
 \alias{draw_key_Lline}
+\alias{draw_key_Lmark}
 \alias{draw_key_Riso}
 \alias{draw_key_Rline}
+\alias{draw_key_Rmark}
 \alias{draw_key_Tiso}
 \alias{draw_key_Tline}
+\alias{draw_key_Tmark}
 \alias{draw_key_crosshair_tern}
 \alias{draw_key_tern}
 \title{Key drawing functions}
 \usage{
 draw_key_crosshair_tern(data, params, size)
+
+draw_key_Tmark(data, params, size)
+
+draw_key_Lmark(data, params, size)
+
+draw_key_Rmark(data, params, size)
 
 draw_key_Tline(data, params, size)
 

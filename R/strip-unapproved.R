@@ -112,6 +112,9 @@ strip_unapproved <- function(layers){
                         Risoprop         = "GeomRisoprop",
                         interpolate_tern = "GeomInterpolateTern",
                         crosshair_tern   = "GeomCrosshairTern",
+                        Tmark            = "GeomTmark",
+                        Lmark            = "GeomLmark",
+                        Rmark            = "GeomRmark",
                         "GeomDl"
 )
 

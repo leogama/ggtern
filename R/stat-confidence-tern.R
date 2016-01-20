@@ -73,7 +73,7 @@ StatConfidenceTern <- ggproto("StatConfidenceTern",
       ret = ddply(data,c("PANEL","group","breaks"),function(df){
         #if(nrow(df) <= 1) return(data.frame)
         ix    = c('x','y','z')
-        z     = ilr(as.matrix( df[,ix]) )
+        z     = ilr(as.matrix(df[,ix]) )
         z     = z[is.finite(z[,1]) & is.finite(z[,2]),,drop=FALSE]
         if(!nrow(z) | !ncol(z)) return(data.frame())
         mu    = colMeans(z); cm = cov(z)

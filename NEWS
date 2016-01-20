@@ -9,6 +9,7 @@ ggtern 2.0.2
 * Created geom_ternary_crosshar new geometry
 * Added some custom legend keys for new geometries
 * Fixed bug with the hshift and vshift theme elements, reduced them to numeric candidates
+* Added Tmark, Lmark and Rmark, new geometries being the components of the geom_crosshair_tern.
 
 ggtern 2.0.1
 ----------------------------------------------------------------

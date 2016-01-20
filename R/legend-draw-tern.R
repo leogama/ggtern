@@ -32,6 +32,51 @@ draw_key_crosshair_tern <- function(data, params, size) {
 
 #' @export
 #' @rdname draw_key_tern
+draw_key_Tmark <- function(data,params,size){
+  dx = (1 - .ratio())/2
+  segmentsGrob(0.5,0.5,1.0-dx,0.5,
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+#' @export
+#' @rdname draw_key_tern
+draw_key_Lmark <- function(data,params,size){
+  dx = (1 - .ratio())/2
+  segmentsGrob(0.5,0.5,dx,1.0,
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+#' @export
+#' @rdname draw_key_tern
+draw_key_Rmark <- function(data,params,size){
+  dx = (1 - .ratio())/2
+  segmentsGrob(0.5,0.5,dx,0.0,
+               gp = gpar(
+                 col = alpha(data$colour, data$alpha),
+                 lwd = data$size * .pt,
+                 lty = data$linetype,
+                 lineend = "butt"
+               ),
+               arrow = params$arrow
+  )
+}
+
+#' @export
+#' @rdname draw_key_tern
 draw_key_Tline <- function(data,params,size){
   r = .ratio()/2
   segmentsGrob(.5-r,.5,.5+r,.5,

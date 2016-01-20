@@ -3,10 +3,28 @@
 \docType{data}
 \name{geom_crosshair_tern}
 \alias{GeomCrosshairTern}
+\alias{GeomLmark}
+\alias{GeomRmark}
+\alias{GeomTmark}
+\alias{geom_Lmark}
+\alias{geom_Rmark}
+\alias{geom_Tmark}
 \alias{geom_crosshair_tern}
 \title{Ternary Crosshairs}
 \usage{
 geom_crosshair_tern(mapping = NULL, data = NULL, stat = "identity",
+  position = "identity", arrow = NULL, lineend = "butt", na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE, ...)
+
+geom_Tmark(mapping = NULL, data = NULL, stat = "identity",
+  position = "identity", arrow = NULL, lineend = "butt", na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE, ...)
+
+geom_Lmark(mapping = NULL, data = NULL, stat = "identity",
+  position = "identity", arrow = NULL, lineend = "butt", na.rm = FALSE,
+  show.legend = NA, inherit.aes = TRUE, ...)
+
+geom_Rmark(mapping = NULL, data = NULL, stat = "identity",
   position = "identity", arrow = NULL, lineend = "butt", na.rm = FALSE,
   show.legend = NA, inherit.aes = TRUE, ...)
 }
@@ -54,11 +72,26 @@ the default plot specification, e.g. \code{\link{borders}}.}
   }}
 }
 \description{
-Geometry that marks on the respective axes, the values of each point.
+A new geometry, \code{geom_crosshair_tern} is one that that marks on the respective axes, 
+the values of each data point. We also include additional geometries \code{geom_Tmark}, 
+\code{geom_Rmark} and \code{geom_Lmark} -- to render only the respective axis component 
+of the abovementioned crosshair.
 }
 \section{Aesthetics}{
 
 \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom", "crosshair_tern")}
+}
+\examples{
+set.seed(1)
+df = data.frame(x=runif(10),y=runif(10),z=runif(10))
+base = ggtern(df,aes(x,y,z)) + geom_point()
+base + geom_crosshair_tern()
+base + geom_Tmark()
+base + geom_Rmark()
+base + geom_Lmark()
+}
+\author{
+Nicholas Hamilton
 }
 \keyword{datasets}
 
