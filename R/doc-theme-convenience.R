@@ -36,8 +36,7 @@
 #' @examples
 #' 
 #' #Load data and create the base plot.
-#' data(Feldspar)
-#' plot <- ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point() + theme_bw()
+#' plot <- ggtern(data=data.frame(x=1,y=1,z=1),aes(x,y,z)) + geom_point() + theme_bw()
 #' plot
 #' 
 #' #Show or Hide Arrows
