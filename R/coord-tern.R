@@ -469,6 +469,8 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     items[[length(items) + 1]] <- grob
     return(items)
   }
+  
+  #Axis labels, ie labels next to ticks
   .render.labels <- function(name,items,d){ 
     grob = zeroGrob()
     tryCatch({
@@ -562,6 +564,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                        hjust  = e$hjust - 0.5*cos(angle), 
                        vjust  = e$vjust - 0.5*sin(angle),
                        rot    = e$angle,
+                       vp     = viewport(clip='inherit'),   #Change to off???
                        gp     = gpar(col        = e$colour, 
                                    fontsize   = e$size,
                                    fontfamily = ifthenelse(is.character(e$family),e$family,"sans"), 

@@ -39,6 +39,7 @@ Collate:
     'depreciated.R'
     'labels-new.R'
     'labels-percent.R'
+    'legend-draw-tern.R'
     'ggtern-constructor.R'
     'gg-internal.R'
     'modifications-gridExtra.R'

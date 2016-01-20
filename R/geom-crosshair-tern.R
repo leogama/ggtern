@@ -45,7 +45,7 @@ GeomCrosshairTern <- ggproto("GeomCrosshairTern",Geom,
                      },
                      default_aes = aes(colour = "black", size = 0.5, linetype = 1, alpha = NA),
                      required_aes = c("x","y","z"),
-                     draw_key = draw_key_vline
+                     draw_key = draw_key_crosshair_tern 
 )
 
 #internal function
