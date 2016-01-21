@@ -241,6 +241,7 @@ theme_rgb <- theme_rgbg
 theme_rgbw  <- function(base_size = 12, base_family = ""){
   .theme_tern(base_size=base_size, base_family=base_family,
               tern.plot.background ="white",
+              tern.panel.background = 'white',
               col.T          ="darkred",
               col.L          ="darkblue",
               col.R          ="darkgreen",
