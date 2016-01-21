@@ -10,7 +10,6 @@
 \alias{geom_errorbarT}
 \alias{geom_errorbarX}
 \title{Ternary Error Bars}
-\format{An object of class \code{GeomErrorbart} (inherits from \code{GeomSegment}, \code{Geom}, \code{ggproto}) of length 3.}
 \usage{
 geom_errorbarT(mapping = NULL, data = NULL, stat = "identity",
   position = "identity", arrow = NULL, lineend = "butt", na.rm = FALSE,
@@ -23,12 +22,6 @@ geom_errorbarL(mapping = NULL, data = NULL, stat = "identity",
 geom_errorbarR(mapping = NULL, data = NULL, stat = "identity",
   position = "identity", arrow = NULL, lineend = "butt", na.rm = FALSE,
   show.legend = NA, inherit.aes = TRUE, ...)
-
-GeomErrorbart
-
-GeomErrorbarl
-
-GeomErrorbarr
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
