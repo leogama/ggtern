@@ -198,7 +198,7 @@ scales_add_missing_tern <- function(plot){
   
   #Ensure required scales have been added
   rs = plot$coordinates$required_scales
-  scales_add_missing(plot,rs,plot$plot_env) ##NH
+  ggint$scales_add_missing(plot,rs,plot$plot_env) ##NH
   
   #Push some details to the coordinates
   plot$coordinates$scales        = sapply(rs,plot$scales$get_scales) ##NH

@@ -30,7 +30,8 @@ ggplot_build <- function(plot) {
   
   #Check the Layers
   layers <- plot$layers
-  layer_data <- lapply(layers, function(y) y$data)
+  #layer_data <- lapply(layers, function(y) y$data)
+  layer_data <- lapply(layers, function(y) y$layer_data(plot$data))
   
   scales <- plot$scales
   
@@ -43,18 +44,20 @@ ggplot_build <- function(plot) {
     out
   }
   
-  
   # Initialise panels, add extra data for margins & missing facetting
   # variables, and add on a PANEL variable to data
   panel <- ggint$new_panel() ##NH
   panel <- ggint$train_layout(panel, plot$facet, layer_data, plot$data) ##NH
-  data  <- ggint$map_layout(panel, plot$facet, layer_data, plot$data) ##NH
+  data  <- ggint$map_layout(panel, plot$facet, layer_data) ##NH
   
   # Compute aesthetics to produce data with generalised variable names
   data <- by_layer(function(l, d) l$compute_aesthetics(d, plot))
   
+  #Remoe Null scales
+  if(isTernary) scales$scales = scales$scales[!sapply(scales$scales,is.null)]
+  
   # Transform all scales
-  data <- lapply(data, scales_transform_df, scales = scales)
+  data <- lapply(data, ggint$scales_transform_df, scales = scales) ##NH
   
   # Map and train positions so that statistics have access to ranges
   # and all positions are numeric
@@ -69,7 +72,7 @@ ggplot_build <- function(plot) {
   data <- by_layer(function(l, d) l$map_statistic(d, plot))
   
   # Make sure missing (but required) aesthetics are added
-  scales_add_missing(plot, c("x", "y"), plot$plot_env)
+  ggint$scales_add_missing(plot, c("x", "y"), plot$plot_env)
   
   # Make sure missing (but required) ternary aesthetics are added, and ensure the limits are common
   if(isTernary) plot = scales_add_missing_tern(plot)
@@ -85,13 +88,13 @@ ggplot_build <- function(plot) {
   # displayed, or does it include the range of underlying data
   ggint$reset_scales(panel) ##NH
   panel <- ggint$train_position(panel, data, scale_x(), scale_y()) ##NH
-  data  <- ggint$map_position(panel, data, scale_x(), scale_y()) ##NH
+  data  <- ggint$map_position(panel, data, scale_x(), scale_y())   ##NH
   
   # Train and map non-position scales
   npscales <- scales$non_position_scales()
   if (npscales$n() > 0) {
-    lapply(data, scales_train_df, scales = npscales)
-    data <- lapply(data, scales_map_df, scales = npscales)
+    lapply(data, ggint$scales_train_df, scales = npscales)       ##NH
+    data <- lapply(data, ggint$scales_map_df, scales = npscales) ##NH
   }
   
   # Train coordinate system
