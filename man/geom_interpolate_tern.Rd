@@ -10,13 +10,13 @@
 \format{An object of class \code{StatInterpolateTern} (inherits from \code{Stat}, \code{ggproto}) of length 6.}
 \usage{
 geom_interpolate_tern(mapping = NULL, data = NULL,
-  stat = "InterpolateTern", position = "identity", method = "auto",
-  lineend = "butt", linejoin = "round", linemitre = 1, na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE, formula = value ~ poly(x, y,
-  degree = 1), ...)
+  stat = "InterpolateTern", position = "identity", lineend = "butt",
+  linejoin = "round", linemitre = 1, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE, method = "auto", formula = value ~ poly(x, y, degree
+  = 1), ...)
 
 stat_interpolate_tern(mapping = NULL, data = NULL,
-  geom = "InterpolateTern", position = "identity", method = "auto",
+  geom = "interpolate_tern", position = "identity", method = "auto",
   na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, n = 80,
   formula = value ~ poly(x, y, degree = 1), ...)
 
@@ -48,11 +48,6 @@ layer, as a string.}
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
 
-\item{method}{smoothing method (function) to use, eg. lm, glm, gam, loess,
-rlm. For datasets with n < 1000 default is \code{\link{loess}}. For datasets
-with 1000 or more observations defaults to gam, see \code{\link[mgcv]{gam}}
-for more details.}
-
 \item{lineend}{Line end style (round, butt, square)}
 
 \item{linejoin}{Line join style (round, mitre, bevel)}
@@ -70,6 +65,11 @@ a warning.  If \code{TRUE} silently removes missing values.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link{borders}}.}
+
+\item{method}{smoothing method (function) to use, eg. lm, glm, gam, loess,
+rlm. For datasets with n < 1000 default is \code{\link{loess}}. For datasets
+with 1000 or more observations defaults to gam, see \code{\link[mgcv]{gam}}
+for more details.}
 
 \item{formula}{formula to use in smoothing function, eg. \code{y ~ x},
 \code{y ~ poly(x, 2)}, \code{y ~ log(x)}}
