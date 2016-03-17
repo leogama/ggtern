@@ -51,7 +51,6 @@ Collate:
     'position-nudge-tern.R'
     'position-jitter-tern.R'
     'save.R'
-    'scales-.R'
     'scales-tern.R'
     'strip-unapproved.R'
     'tern-limits.R'
