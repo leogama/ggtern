@@ -16,7 +16,6 @@
 #' @keywords internal
 #' @export
 ggplot_build <- function(plot) {
-  
   #Check if plot is ternary plot
   isTernary = 'CoordTern' %in% class(plot$coordinates) ##NH
   
@@ -30,10 +29,10 @@ ggplot_build <- function(plot) {
   
   #Check the Layers
   layers <- plot$layers
-  #layer_data <- lapply(layers, function(y) y$data)
   layer_data <- lapply(layers, function(y) y$layer_data(plot$data))
   
   scales <- plot$scales
+  #scales$scales = scales$scales[!sapply(scales$scales,is.null)]
   
   # Apply function to layer and matching data
   by_layer <- function(f) {
@@ -53,8 +52,8 @@ ggplot_build <- function(plot) {
   # Compute aesthetics to produce data with generalised variable names
   data <- by_layer(function(l, d) l$compute_aesthetics(d, plot))
   
-  #Remoe Null scales
-  if(isTernary) scales$scales = scales$scales[!sapply(scales$scales,is.null)]
+  #Remove Null scales, z is being called
+  #if(isTernary) scales$scales = scales$scales[!sapply(scales$scales,is.null)] ##NH
   
   # Transform all scales
   data <- lapply(data, ggint$scales_transform_df, scales = scales) ##NH
@@ -92,6 +91,10 @@ ggplot_build <- function(plot) {
   
   # Train and map non-position scales
   npscales <- scales$non_position_scales()
+  
+  #Remove Null scales, z is being called
+  #if(isTernary) npscales$scales = npscales$scales[!sapply(npscales$scales,is.null)]
+  
   if (npscales$n() > 0) {
     lapply(data, ggint$scales_train_df, scales = npscales)       ##NH
     data <- lapply(data, ggint$scales_map_df, scales = npscales) ##NH
@@ -157,44 +160,22 @@ ggplot_gtable <- function(data) {
   panel      <- data$panel
   data       <- data$data
   theme      <- ggint$plot_theme(plot) #NH
-  geom_grobs <- Map(function(l, d) l$draw_geom(d, panel, plot$coordinates),plot$layers, data)
-  plot_table <- ggint$facet_render(plot$facet, panel, plot$coordinates,theme, geom_grobs) ##NH
   
-  #Function to Add Padding / Margins ##NH
-  if(FALSE & isTernary){
-    addMargin <- function(table,margin){ #,...,et=unit(0,"pt"),er=unit(0,"pt"),eb=unit(0,"pt"),el=unit(0,"pt")){
-      for(x in c(1:4)){
-        args = list(x=table, pos = if(x == 1 | x == 4){0}else{-1})
-        args[[if(x %% 2){"heights"}else{"widths"}]] = margin[ if(length(margin) < 4){1}else{x} ]
-        table <- do.call(paste0("gtable_add_",if(x %% 2){"rows"}else{"cols"}),args=args, quote=FALSE)
-      }
-      table
-    }
-    #Inject Margin inside the facets.
-    panelIndexes = which(plot_table$layout$name == 'panel')
-    clipping     = calc_element('tern.panel.background',theme) ##NH
-    for(pix in panelIndexes){
-      if(!identical(clipping,element_blank())){
-        subtable = gtable_add_grob(gtable(unit(1,"null"),unit(1,"null")),plot_table$grobs[[pix]],1,1, 
-                                   clip=ifthenelse(!is.na(clipping$fill) & !is.null(clipping$fill),"on","on")) ##NH
-        plot_table$grobs[[pix]] = addMargin(subtable,getOption('tern.margin'))
-      }
-    }
-  }
+  geom_grobs <- Map(function(l, d) l$draw_geom(d, panel, plot$coordinates),
+    plot$layers, data)
+  plot_table <- ggint$facet_render(plot$facet, panel, plot$coordinates,
+    theme, geom_grobs) ##NH
   
   # Axis labels
   labels <- plot$coordinates$labels(list(
     x = ggint$xlabel(panel, plot$labels), ##NH
     y = ggint$ylabel(panel, plot$labels)  ##NH
   ))
-  
-  #Parse the labels
-  if(isTernary) 
-    plot$labels = lapply(plot$labels,label_formatter)
-  
   if(!isTernary){ ##NH
     xlabel <- ggint$element_render(theme, "axis.title.x", labels$x, expand_y = TRUE) ##NH
     ylabel <- ggint$element_render(theme, "axis.title.y", labels$y, expand_x = TRUE) ##NH
+  }else{
+    plot$labels = lapply(plot$labels,label_formatter)
   }
   
   # helper function return the position of panels in plot_table

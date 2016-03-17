@@ -1,9 +1,9 @@
 #' @name geom_interpolate_tern
 #' @rdname geom_interpolate_tern
 #' @export
-stat_interpolate_tern <- function(mapping = NULL, data = NULL, geom = "InterpolateTern",
+stat_interpolate_tern <- function(mapping = NULL, data = NULL, geom = "interpolate_tern",
                          position = "identity", method='auto', na.rm = FALSE, show.legend = NA,
-                         inherit.aes = TRUE,n=80, formula=value~poly(x,y,degree=1), ...) {
+                         inherit.aes = TRUE, n=80, formula=value~poly(x,y,degree=1), ...) {
   layer(
     data        = data,
     mapping     = mapping,
@@ -37,7 +37,6 @@ StatInterpolateTern <- ggproto("StatInterpolateTern",
         params$method <- "loess"
       } else {
         params$method <- "glm" ##NH
-        #params$formula <- y ~ s(x, bs = "cs") ##NH
       }
     }
     #if (identical(params$method, "gam")) { params$method <- mgcv::gam } ##NH
