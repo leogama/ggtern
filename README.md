@@ -1,5 +1,5 @@
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggtern)](http://cran.r-project.org/web/packages/ggtern)
-[![Downloads](http://cranlogs.r-pkg.org/badges/ggtern)](http://cran.rstudio.com/package=ggtern)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/ggtern)](https://cran.r-project.org/package=ggtern)
+[![Downloads](http://cranlogs.r-pkg.org/badges/ggtern)](https://cran.r-project.org/package=ggtern)
 
 ggtern
 ======
