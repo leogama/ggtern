@@ -115,6 +115,7 @@ strip_unapproved <- function(layers){
                         Tmark            = "GeomTmark",
                         Lmark            = "GeomLmark",
                         Rmark            = "GeomRmark",
+                        point_swap       = "GeomPointSwap",
                         "GeomDl"
 )
 
