@@ -37,8 +37,7 @@ coord_tern <- function(Tlim   = NULL, Llim   = NULL, Rlim   = NULL,expand=TRUE){
           expand          = expand,
           scales          = list(),
           labels_coord    = list(),
-          theme           = theme_get(),
-          manual_mask     = FALSE
+          theme           = theme_get()
   )
 }
 
@@ -95,9 +94,6 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   render_fg     = function(self,scale_details, theme){
     items = list()
     extrm = .get.tern.extremes(self,scale_details)
-    if(!self$manual_mask){
-       items[[length(items) + 1]] = GeomMask$draw_panel(NULL,scale_details,self)
-    }
     if(.theme.get.gridsontop(theme)){
       items = .render.grids(self,extrm,scale_details,theme,items,onBackground = TRUE)
       items = .render.borders(self,extrm,theme,items)
