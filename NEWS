@@ -1,6 +1,7 @@
 ggtern 2.1.1
 ----------------------------------------------------------------
 * Fixed bug introduced in previous update, where the manual mask addition was being ignored.
+* Fixed is.logical(na.rm) bug to do with bad ellipsis placement in stats and geoms
 
 ggtern 2.1.0
 ----------------------------------------------------------------
