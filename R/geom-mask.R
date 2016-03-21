@@ -58,7 +58,8 @@ GeomMask <- ggproto("GeomMask", Geom,
           for(ix in c(1:2)){
             xvals = c(a[1],a[1],b[1],if(ix==1){ ex$x }else{NULL},b[1],a[2],a[2],a[1])
             yvals = c(a[1],a[2],a[2],if(ix==1){ ex$y }else{NULL},a[2],a[2],a[1],a[1])
-            grob     <- polygonGrob(  x = xvals,y = yvals,
+            grob     <- polygonGrob(  x = xvals,
+                                      y = yvals,
                                       default.units = "npc",
                                       id   = rep(1,length(xvals)),
                                       gp   = gpar(  col  = if(ix==1       | is.null(e$colour)){NA}else{ e$colour },

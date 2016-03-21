@@ -7,7 +7,7 @@
 \title{Annotation: High-performance rectangular tiling, ggtern version}
 \usage{
 annotation_raster_tern(raster, xmin = 0, xmax = 1, ymin = 0, ymax = 1,
-  interpolate = FALSE)
+  interpolate = FALSE, position = "identity")
 }
 \arguments{
 \item{raster}{raster object to display}
@@ -20,6 +20,9 @@ location of raster}
 
 \item{interpolate}{If \code{TRUE} interpolate linearly, if \code{FALSE}
 (the default) don't interpolate.}
+
+\item{position}{Position adjustment, either as a string, or the result of
+a call to a position adjustment function.}
 }
 \description{
 This is a special version of \code{\link{geom_raster}} optimised for static
@@ -29,6 +32,17 @@ of the raster, and the raster must already have its own colours).
 }
 \details{
 Most useful for adding bitmap images.
+}
+\examples{
+data(Feldspar)
+data(FeldsparRaster)
+ggtern(Feldspar,aes(Ab,An,Or)) + 
+theme_rgbw() + 
+annotation_raster_tern(FeldsparRaster,xmin=0,xmax=1,ymin=0,ymax=1) +
+geom_mask() + 
+geom_point(size=5,aes(shape=Feldspar,fill=Feldspar),color='black') +
+scale_shape_manual(values=c(21,24)) +
+labs(title="Demonstration of Raster Annotation")
 }
 \keyword{datasets}
 

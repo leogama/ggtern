@@ -64,7 +64,7 @@ GeomRasterAnnTern <- ggproto("GeomRasterAnnTern", Geom,
                                   call. = FALSE)
                            }
                            corners <- data.frame(x = c(xmin,(xmin+xmax/2),xmax),
-                                                 y = c(ymin,ymax*.ratio(),ymin))
+                                                 y = c(ymin,ymax,ymin)*.ratio())
                            data    <- coord$transform(tlr2xy(corners,coord,inverse=TRUE), 
                                                       panel_scales)
                            x_rng   <- range(data$x, na.rm = TRUE)

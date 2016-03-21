@@ -60,6 +60,7 @@ Collate:
     'theme-defaults.R'
     'theme-elements.R'
     'theme-gridsontop.R'
+    'theme-bordersontop.R'
     'theme-legend-position.R'
     'theme-noarrows.R'
     'theme-novar-tern.R'

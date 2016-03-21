@@ -94,11 +94,12 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   render_fg     = function(self,scale_details, theme){
     items = list()
     extrm = .get.tern.extremes(self,scale_details)
-    if(.theme.get.gridsontop(theme)){
+    if(.theme.get.gridsontop(theme))
       items = .render.grids(self,extrm,scale_details,theme,items,onBackground = TRUE)
+    else
+      items = .render.grids(self,extrm,scale_details,theme,items,onBackground = FALSE)
+    if(.theme.get.bordersontop(theme))
       items = .render.borders(self,extrm,theme,items)
-    }
-    items = .render.grids(self,extrm,scale_details,theme,items,onBackground = FALSE)
     items = .render.arrows(self,extrm,scale_details,theme,items)
     items = .render.titles(self,extrm,scale_details,theme,items)
     gTree(children = do.call("gList", items))
@@ -107,10 +108,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     items = list()
     extrm = .get.tern.extremes(self,scale_details)
     items = .render.background(self,extrm,theme,items)
-    if(!.theme.get.gridsontop(theme)){
+    if(!.theme.get.gridsontop(theme))
       items = .render.grids(self,extrm,scale_details,theme,items,onBackground = TRUE)
+    if(!.theme.get.bordersontop(theme))
       items = .render.borders(self,extrm,theme,items)
-    }
     gTree(children = do.call("gList",items))
   },
   train = function(self, scale_details) {
@@ -204,6 +205,12 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   ret = calc_element('tern.panel.grid.ontop',theme)
   ifthenelse(is.logical(ret),ret[1],FALSE)
 }
+
+.theme.get.bordersontop <- function(theme){
+  ret = calc_element('tern.axis.line.ontop',theme)
+  ifthenelse(is.logical(ret),ret[1],FALSE)
+}
+
 .theme.get.showtitles <- function(theme){
   showtitles = calc_element("tern.axis.title.show",theme=theme)
   ifthenelse(is.logical(showtitles),showtitles[1],getOption("tern.showtitles"))
