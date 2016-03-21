@@ -2,7 +2,8 @@
 % Please edit documentation in R/doc-data.R
 \docType{data}
 \name{data_sets_Feldspar}
-\alias{Feldspar}
+\alias{Feldspar,}
+\alias{FeldsparRaster}
 \alias{data_sets_Feldspar}
 \title{Elkin and Groves Feldspar Data}
 \format{One (1) row per Feldspar composition}
@@ -10,12 +11,15 @@
 data(Feldspar)
 }
 \description{
-This dataset represents the experiments conducted by Elkins and Groves
+This dataset represents the experiments conducted by Elkins and Groves. Also included is 
+the raster data for Fig. 6 in the referenced paper.
 }
 \examples{
  data(Feldspar)
  summary(Feldspar)
  ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
+ 
+ data(FeldsparRaster)
 }
 \author{
 Nicholas Hamilton

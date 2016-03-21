@@ -1,6 +1,7 @@
 #' @title Elkin and Groves Feldspar Data
 #' 
-#' @description This dataset represents the experiments conducted by Elkins and Groves
+#' @description This dataset represents the experiments conducted by Elkins and Groves. Also included is 
+#' the raster data for Fig. 6 in the referenced paper.
 #' @references 
 #' Elkins, L. T. & Grove, T. L. 
 #' Ternary Feldspar Experiments and Thermodynamic Models 
@@ -12,10 +13,12 @@
 #'  data(Feldspar)
 #'  summary(Feldspar)
 #'  ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
+#'  
+#'  data(FeldsparRaster)
 #' @seealso \link[=data]{ggtern datasets}
 #' @name data_sets_Feldspar
 #' @rdname data_sets_Feldspar
-#' @aliases Feldspar
+#' @aliases Feldspar, FeldsparRaster
 #' @author Nicholas Hamilton
 NULL
 
