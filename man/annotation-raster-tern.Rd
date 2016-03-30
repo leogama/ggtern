@@ -7,7 +7,7 @@
 \title{Annotation: High-performance rectangular tiling, ggtern version}
 \usage{
 annotation_raster_tern(raster, xmin = 0, xmax = 1, ymin = 0, ymax = 1,
-  interpolate = FALSE, position = "identity")
+  interpolate = FALSE)
 }
 \arguments{
 \item{raster}{raster object to display}
@@ -20,9 +20,6 @@ location of raster}
 
 \item{interpolate}{If \code{TRUE} interpolate linearly, if \code{FALSE}
 (the default) don't interpolate.}
-
-\item{position}{Position adjustment, either as a string, or the result of
-a call to a position adjustment function.}
 }
 \description{
 This is a special version of \code{\link{geom_raster}} optimised for static
