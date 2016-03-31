@@ -13,12 +13,35 @@
 #'  data(Feldspar)
 #'  summary(Feldspar)
 #'  ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
-#'  
-#'  data(FeldsparRaster)
 #' @seealso \link[=data]{ggtern datasets}
 #' @name data_sets_Feldspar
 #' @rdname data_sets_Feldspar
-#' @aliases Feldspar, FeldsparRaster
+#' @aliases Feldspar
+#' @author Nicholas Hamilton
+NULL
+
+#' @title Elkins and Groves Feldspar Data -- Raster Image Data
+#' @description Raster data for Fig. 6 in the referenced paper.
+#' @references 
+#' Elkins, L. T. & Grove, T. L. 
+#' Ternary Feldspar Experiments and Thermodynamic Models 
+#' American Mineralogist, Mineral Soc America, 1990, 75, 544-559
+#' @docType data
+#' @usage data(FeldsparRaster)
+#' @format One (1) row per Feldspar composition
+#' @examples
+#' data(Feldspar)
+#' data(FeldsparRaster)
+#' ggtern(Feldspar,aes(Ab,An,Or)) + 
+#' theme_rgbw() + 
+#' annotation_raster_tern(FeldsparRaster,xmin=0,xmax=1,ymin=0,ymax=1) +
+#' geom_point(size=5,aes(shape=Feldspar,fill=Feldspar),color='black') +
+#' scale_shape_manual(values=c(21,24)) +
+#' labs(title="Demonstration of Raster Annotation")
+#' @seealso \link[=data]{ggtern datasets}
+#' @name data_sets_Feldspar
+#' @rdname data_sets_Feldspar
+#' @aliases FeldsparRaster
 #' @author Nicholas Hamilton
 NULL
 

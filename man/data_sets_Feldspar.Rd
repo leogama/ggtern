@@ -2,34 +2,52 @@
 % Please edit documentation in R/doc-data.R
 \docType{data}
 \name{data_sets_Feldspar}
-\alias{Feldspar,}
+\alias{Feldspar}
 \alias{FeldsparRaster}
 \alias{data_sets_Feldspar}
 \title{Elkin and Groves Feldspar Data}
 \format{One (1) row per Feldspar composition}
 \usage{
 data(Feldspar)
+
+data(FeldsparRaster)
 }
 \description{
 This dataset represents the experiments conducted by Elkins and Groves. Also included is 
 the raster data for Fig. 6 in the referenced paper.
+
+Raster data for Fig. 6 in the referenced paper.
 }
 \examples{
  data(Feldspar)
  summary(Feldspar)
  ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
- 
- data(FeldsparRaster)
+data(Feldspar)
+data(FeldsparRaster)
+ggtern(Feldspar,aes(Ab,An,Or)) + 
+theme_rgbw() + 
+annotation_raster_tern(FeldsparRaster,xmin=0,xmax=1,ymin=0,ymax=1) +
+geom_point(size=5,aes(shape=Feldspar,fill=Feldspar),color='black') +
+scale_shape_manual(values=c(21,24)) +
+labs(title="Demonstration of Raster Annotation")
 }
 \author{
+Nicholas Hamilton
+
 Nicholas Hamilton
 }
 \references{
 Elkins, L. T. & Grove, T. L. 
 Ternary Feldspar Experiments and Thermodynamic Models 
 American Mineralogist, Mineral Soc America, 1990, 75, 544-559
+
+Elkins, L. T. & Grove, T. L. 
+Ternary Feldspar Experiments and Thermodynamic Models 
+American Mineralogist, Mineral Soc America, 1990, 75, 544-559
 }
 \seealso{
+\link[=data]{ggtern datasets}
+
 \link[=data]{ggtern datasets}
 }
 
