@@ -1,36 +1,31 @@
 #' @title Elkin and Groves Feldspar Data
 #' 
-#' @description This dataset represents the experiments conducted by Elkins and Groves. Also included is 
-#' the raster data for Fig. 6 in the referenced paper.
+#' @description Data relating to Elkins and Groves Feldspar Data, the following datasets include 
+#' the experimental data and sample raster data from one of the images in the 
+#' referenced paper.
+#' \code{Feldspar} - Experimental Data
+#' \code{FeldsparRaster} - Raster Data for Fig. 6.
+#' 
 #' @references 
 #' Elkins, L. T. & Grove, T. L. 
 #' Ternary Feldspar Experiments and Thermodynamic Models 
 #' American Mineralogist, Mineral Soc America, 1990, 75, 544-559
 #' @docType data
-#' @usage data(Feldspar)
-#' @format One (1) row per Feldspar composition
-#' @examples
-#'  data(Feldspar)
-#'  summary(Feldspar)
-#'  ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
-#' @seealso \link[=data]{ggtern datasets}
-#' @name data_sets_Feldspar
-#' @rdname data_sets_Feldspar
-#' @aliases Feldspar
-#' @author Nicholas Hamilton
-NULL
-
-#' @title Elkins and Groves Feldspar Data -- Raster Image Data
-#' @description Raster data for Fig. 6 in the referenced paper.
-#' @references 
-#' Elkins, L. T. & Grove, T. L. 
-#' Ternary Feldspar Experiments and Thermodynamic Models 
-#' American Mineralogist, Mineral Soc America, 1990, 75, 544-559
-#' @docType data
-#' @usage data(FeldsparRaster)
-#' @format One (1) row per Feldspar composition
-#' @examples
+#' @usage 
+#' #Experimental Data
 #' data(Feldspar)
+#' 
+#' #Raster data
+#' data(FeldsparRaster)
+#' @format 
+#' \code{Feldsdpar} - One (1) row per Feldspar composition, \code{FeldsdparRaster} - Raster Matrix
+#' @examples
+#' #Plot Felspar Data
+#' data(Feldspar)
+#' summary(Feldspar)
+#' ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point()
+#' 
+#' # Plot Feldspar data and Underlying Raster Image
 #' data(FeldsparRaster)
 #' ggtern(Feldspar,aes(Ab,An,Or)) + 
 #' theme_rgbw() + 
@@ -38,10 +33,10 @@ NULL
 #' geom_point(size=5,aes(shape=Feldspar,fill=Feldspar),color='black') +
 #' scale_shape_manual(values=c(21,24)) +
 #' labs(title="Demonstration of Raster Annotation")
-#' @seealso \link[=data]{ggtern datasets}
+#' @seealso \link[=data]{Data}
 #' @name data_sets_Feldspar
 #' @rdname data_sets_Feldspar
-#' @aliases FeldsparRaster
+#' @aliases Feldspar FeldsparRaster
 #' @author Nicholas Hamilton
 NULL
 
