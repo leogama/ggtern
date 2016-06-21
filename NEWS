@@ -1,3 +1,8 @@
+ggtern 2.1.2
+----------------------------------------------------------------
+* Fixed bug in themes, some of the theme elements were being ignored
+* Added convenience function, and theme element, to turn on or off the clipping mask automatic addition
+
 ggtern 2.1.1
 ----------------------------------------------------------------
 * Fixed bug introduced in previous update, where the manual mask addition was being ignored.
