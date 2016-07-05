@@ -8,12 +8,6 @@
 #' @inheritParams ggplot2::geom_point
 #' @inheritParams ggplot2::geom_path
 #' @inheritParams ggplot2:::geom_density2d
-#' @param base the base transformation of the data, options include 'identity' (ie direct on the cartesian space), or 'ilr'
-#' which means to use the isometric log ratio transformation.
-#' @param h Bandwidth (vector of length two) as a multiple of the best estimate, estimated using \code{\link[MASS]{bandwidth.nrd}}. 
-#' @param weight weighting for weighted kde2d esimate, default's to 1, which is non-weighted and equivalent to the usual kde2d calculation
-#' @param expand Calculate on a mesh which extends beyond the grid of the plot region by this amount
-#' If \code{NULL}, estimated using \code{\link[MASS]{bandwidth.nrd}}.
 #' @name geom_density_tern
 #' @rdname geom_density_tern
 #' @author Nicholas Hamilton

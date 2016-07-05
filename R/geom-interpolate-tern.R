@@ -25,8 +25,7 @@
 geom_interpolate_tern <- function( mapping = NULL, data = NULL, stat = "InterpolateTern", position = "identity", 
                                    ...,
                                    lineend = "butt",linejoin = "round", linemitre = 1,
-                                   na.rm = FALSE, show.legend = NA,inherit.aes = TRUE, 
-                                   method='auto', formula=value~poly(x,y,degree=1),base='ilr') {
+                                   na.rm = FALSE, show.legend = NA,inherit.aes = TRUE) {
   layer(
     data        = data,
     mapping     = mapping,
@@ -40,9 +39,6 @@ geom_interpolate_tern <- function( mapping = NULL, data = NULL, stat = "Interpol
       linejoin    = linejoin,
       linemitre   = linemitre,
       na.rm       = na.rm,
-      formula     = formula,
-      method      = method,
-      base        = base,
       ...
     )
   )

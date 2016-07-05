@@ -47,8 +47,7 @@ estimation}
 
 \item{n}{number of grid points in each direction}
 
-\item{h}{Bandwidth (vector of length two). If \code{NULL}, estimated
-using \code{\link[MASS]{bandwidth.nrd}}.}
+\item{h}{Bandwidth (vector of length two) as a multiple of the best estimate, estimated using \code{\link[MASS]{bandwidth.nrd}}.}
 
 \item{na.rm}{If \code{FALSE} (the default), removes missing values with
 a warning.  If \code{TRUE} silently removes missing values.}

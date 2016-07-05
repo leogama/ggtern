@@ -1,3 +1,4 @@
+#' @inheritParams stat_density_tern
 #' @name geom_interpolate_tern
 #' @rdname geom_interpolate_tern
 #' @export

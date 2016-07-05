@@ -7,6 +7,12 @@
 #' \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("stat", "density_tern")}
 #' @inheritParams ggplot2::stat_density2d
 #' @inheritParams geom_density_tern
+#' @param base the base transformation of the data, options include 'identity' (ie direct on the cartesian space), or 'ilr'
+#' which means to use the isometric log ratio transformation.
+#' @param h Bandwidth (vector of length two) as a multiple of the best estimate, estimated using \code{\link[MASS]{bandwidth.nrd}}. 
+#' @param weight weighting for weighted kde2d esimate, default's to 1, which is non-weighted and equivalent to the usual kde2d calculation
+#' @param expand Calculate on a mesh which extends beyond the grid of the plot region by this amount
+#' If \code{NULL}, estimated using \code{\link[MASS]{bandwidth.nrd}}.
 #' @name stat_density_tern
 #' @rdname stat_density_tern
 #' @examples 
