@@ -318,7 +318,7 @@ theme_light <- function(base_size = 12, base_family = "") {
   base = ggplot2::theme_light(base_size=base_size,base_family=base_family) 
   base %+replace%
     theme(
-      tern.panel.background    = element_rect(fill   = "white", colour = NA),
+      tern.panel.background    = element_rect(fill = "white", colour = NA),
       tern.plot.background     = base$panel.background,
       tern.panel.grid.major    = base$panel.grid.major,
       tern.panel.grid.major.T  = element_line(),

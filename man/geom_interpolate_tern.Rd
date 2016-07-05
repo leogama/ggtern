@@ -13,14 +13,12 @@ geom_interpolate_tern(mapping = NULL, data = NULL,
   stat = "InterpolateTern", position = "identity", ..., lineend = "butt",
   linejoin = "round", linemitre = 1, na.rm = FALSE, show.legend = NA,
   inherit.aes = TRUE, method = "auto", formula = value ~ poly(x, y, degree
-  = 1))
+  = 1), base = "ilr")
 
 stat_interpolate_tern(mapping = NULL, data = NULL,
   geom = "interpolate_tern", position = "identity", ..., method = "auto",
   na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, n = 80,
-  formula = value ~ poly(x, y, degree = 1))
-
-StatInterpolateTern
+  formula = value ~ poly(x, y, degree = 1), base = "ilr")
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -78,6 +76,9 @@ for more details.}
 
 \item{formula}{formula to use in smoothing function, eg. \code{y ~ x},
 \code{y ~ poly(x, 2)}, \code{y ~ log(x)}}
+
+\item{base}{the base transformation of the data, options include 'identity' (ie direct on the cartesian space), or 'ilr'
+which means to use the isometric log ratio transformation.}
 
 \item{geom}{Use to override the default connection between
 \code{geom_smooth} and \code{stat_smooth}.}

@@ -58,6 +58,16 @@ a warning.  If \code{TRUE} silently removes missing values.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link{borders}}.}
+
+\item{base}{the base transformation of the data, options include 'identity' (ie direct on the cartesian space), or 'ilr'
+which means to use the isometric log ratio transformation.}
+
+\item{h}{Bandwidth (vector of length two) as a multiple of the best estimate, estimated using \code{\link[MASS]{bandwidth.nrd}}.}
+
+\item{weight}{weighting for weighted kde2d esimate, default's to 1, which is non-weighted and equivalent to the usual kde2d calculation}
+
+\item{expand}{Calculate on a mesh which extends beyond the grid of the plot region by this amount
+If \code{NULL}, estimated using \code{\link[MASS]{bandwidth.nrd}}.}
 }
 \description{
 Perform a 2D kernel density estimatation using kde2d and display the results with contours. This can be 
