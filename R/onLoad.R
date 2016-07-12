@@ -13,6 +13,7 @@
 .setOptionsCurrent <- function(){
   options("tern.expand"                = 0.2)
   options('tern.margin'                = unit(0,'pt'))
+  options('tern.arrow'                 = arrow(length=unit(2.5,"mm")))
   options("tern.default.T"             = "y")
   options("tern.default.L"             = "x")
   options("tern.default.R"             = "z")
@@ -24,7 +25,7 @@
   options('tern.arrowsep'              = 0.1)
   options('tern.vshift'                = 0.0)
   options('tern.hshift'                = 0.0)
-  options("tern.showarrows"            = TRUE)
+  options("tern.showarrows"            = FALSE)
   options("tern.showgrid.major"        = TRUE)
   options("tern.showgrid.minor"        = TRUE)
   options("tern.ticks.outside"         = TRUE)

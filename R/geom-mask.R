@@ -43,9 +43,10 @@ GeomMask <- ggproto("GeomMask", Geom,
     items = gList()
     if(!inherits(coord,'CoordTern'))return(items)
     tryCatch({
-      themeElements = c('tern.plot.background','tern.panel.background')
+      theme = coord$theme %||% theme_get()
+      themeElements = c('tern.panel.background','tern.plot.background')
       for(ixEl in c(1:2)){
-        e  = calc_element(themeElements[ixEl],coord$theme %||% theme_get(),verbose=F)
+        e  = calc_element(themeElements[ixEl],theme,verbose=F)
         if(!identical(e,element_blank())){
           a  = c(0,1); b = 0.5; if(ixEl == 2){ a = expand_range(a,0.01) }; #EXPAND THE TOP MASK SLIGHTLY
           if(ixEl == 1){
@@ -62,7 +63,7 @@ GeomMask <- ggproto("GeomMask", Geom,
                                       y = yvals,
                                       default.units = "npc",
                                       id   = rep(1,length(xvals)),
-                                      gp   = gpar(  col  = if(ix==1       | is.null(e$colour)){NA}else{ e$colour },
+                                      gp   = gpar(  col  = NA, #if(ix == 1       | is.null(e$colour)){NA}else{ e$colour },
                                                     fill = alpha(if(ix==2 | is.null(e$fill)){NA}else{e$fill},is.numericor(e$alpha,1)),
                                                     lwd  = if(ix==1){0}else{ifthenelse(!is.numeric(e$size),0,e$size)*find_global_tern(".pt")},
                                                     lty  = e$linetype)
@@ -74,7 +75,13 @@ GeomMask <- ggproto("GeomMask", Geom,
           }
         }
       }
-    },error=function(e){writeLines(as.character(e))})
+      #Render the borders on top of mask
+      extrm = .get.tern.extremes(coord,panel_scales,transform=TRUE)
+      items = .render.borders(self,extrm,theme,items)
+      
+    },error=function(e){
+      writeLines(as.character(e))
+    })
     items
   },
   draw_key = FALSE

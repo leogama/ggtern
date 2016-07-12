@@ -141,8 +141,6 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     #Adjust for rotation
     extremes        = .get.tern.extremes(self,list(x.range=self$limits$x,
                                                    y.range=self$limits$y))[,c('x','y')]
-    #print(extremes)
-    #print(self$limits)
     currentMidpoint = c(mean(self$limits$x),mean(self$limits$y))
     ternaryMidpoint = apply(extremes,2,function(x){mean(range(x))})
     shift           = 0*(currentMidpoint - ternaryMidpoint)
@@ -257,7 +255,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   tryCatch({
     angle = calc_element('tern.panel.rotate',self$theme)
     return(ifthenelse(is.finite(angle),angle,0)[1])
-  },error=function(e){ warning(e) })
+  },error=function(e){ 
+    warning(e) 
+  })
   return(0)
 }
 
@@ -272,7 +272,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 .render.background <- function(self,data.extreme,theme,items){
   grob  <- zeroGrob()
   tryCatch({
-      e     <- calc_element('tern.plot.background',theme=theme,verbose=F)
+      e     <- calc_element('tern.panel.background',theme=theme,verbose=F)
       if(!identical(e,element_blank())){
         grob  <- polygonGrob( data.extreme$x, data.extreme$y, 
                               default.units = "npc",
@@ -284,7 +284,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                               )
         )
       }
-  },error = function(e){  warning(e) })
+  },error = function(e){ 
+    warning(e) 
+  })
   items[[length(items) + 1]] <- grob
   items
 }
@@ -314,7 +316,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   #Render the Border
   .render.mainborder <- function(items){
     tryCatch({
-      e  = calc_element('tern.plot.background',theme,verbose=F)
+      e  = calc_element('tern.panel.background',theme,verbose=F)
       if(identical(e,element_blank())) return(items)
       grob     <- polygonGrob(  x = data.extreme$x,
                                 y = data.extreme$y,
@@ -362,7 +364,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   tryCatch({
     tl.major <- convertUnit(theme$tern.axis.ticks.length.major,"npc",valueOnly=T)
     tl.minor <- convertUnit(theme$tern.axis.ticks.length.minor,"npc",valueOnly=T)
-  },error=function(e){  warning(e) })
+  },error=function(e){  
+    warning(e) 
+  })
   
   #Top, Left Right sequence.
   seq.tlr <- c("T","L","R")
@@ -499,7 +503,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                                                   fontfamily = ifthenelse(is.character(e$family),e$family,"sans"), 
                                                   fontface   = e$face, 
                                                   lineheight = ifthenelse(is.numeric(e$lineheight),e$lineheight,1)))
-    },error = function(e){  warning(e)  })
+    },error = function(e){  
+      warning(e)  
+    })
     items[[length(items) + 1]] <- grob
     return(items)
   }
@@ -683,7 +689,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     .render.arrow <- function(name,ix,items){
       grob = zeroGrob()
       tryCatch({  
-        e    = calc_element(name,theme=theme,verbose=F)
+        e = calc_element(name,theme=theme,verbose=F)
         if(identical(e,element_blank()))return(items)
         grob = segmentsGrob(x0 = d$x[ix], x1 = d$xend[ix], y0 = d$y[ix], y1 = d$yend[ix],
                             default.units ="npc",
@@ -719,7 +725,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                                      fontfamily = e$family, 
                                      fontface   = e$face, 
                                      lineheight = e$lineheight))
-      },error = function(e){ warning(e) })
+      },error = function(e){ 
+        warning(e) 
+      })
       items[[length(items) + 1]] <- grob
       items
     }
@@ -727,9 +735,12 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     #process the axes
     for(i in 1:length(ixseq)){
       items <- .render.arrow(paste0("tern.axis.arrow.",     ixseq[i]),i,items) #Arrows
+    }
+    for(i in 1:length(ixseq)){
       items <- .render.label(paste0("tern.axis.arrow.text.",ixseq[i]),i,items) #Markers
     }
-  },error=function(e){ 
+  },error=function(e){
+    writeLines("Error Render Arrows")
     message(e)
   })
   items
