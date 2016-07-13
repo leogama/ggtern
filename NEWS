@@ -1,10 +1,11 @@
 ggtern 2.1.3
 ----------------------------------------------------------------
 * Reverted Method arguments in geom_interpolate_tern, errors being raised when 'auto' set as
-* Completely reworked the theme inheritence tree, and theme construction methods, including a base 'dummy' theme (theme_ggtern), which appends and includes all the additional theme elements to the default ggplot2 theme.
+* Completely reworked the theme inheritence tree, and theme construction methods, including a base 'dummy' theme (theme_ggtern, which appends and includes all the additional theme elements to the default ggplot2 theme.
 * Removed the root theme elements for ggtern, in favour of inheriting from ggplot2
 * Swapped the theme elements, tern.plot.background and tern.panel.background to be more in-line with the corresponding
 plot.background and panel.background in the parent package.
+* Provided ggtern version for the 'annotate' function
 
 ggtern 2.1.2
 ----------------------------------------------------------------

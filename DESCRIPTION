@@ -88,6 +88,7 @@ Collate:
     'stat-interpolate-methods.R'
     'geom-crosshair-tern.R'
     'geom-point-swap.R'
+    'annotation-tern.R'
     'annotation-raster-tern.R'
 NeedsCompilation: no
 Author: Nicholas Hamilton [aut, cre]
