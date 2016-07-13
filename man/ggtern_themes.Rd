@@ -58,6 +58,21 @@ theme_rgbg(base_size = 12, base_family = "")
 \item{base_size}{base font size}
 
 \item{base_family}{base font family}
+
+\item{tern.plot.background}{colour of background colour to plot area}
+
+\item{tern.panel.background}{colour of panel background of plot area}
+
+\item{col.T}{colour of top axis, ticks labels and major gridlines}
+
+\item{col.L}{colour of left axis, ticks, labels and major gridlines}
+
+\item{col.R}{colour of right axis, ticks, labels and major gridlines}
+
+\item{col.grid.minor}{the colour of the minor grid
+\code{theme_custom} is a convenience function to allow the user to control the basic theme colours very easily.}
+
+\item{col.BG}{colour of the plot background area}
 }
 \description{
 Themes set the general aspect of the plot such as the colour of the
