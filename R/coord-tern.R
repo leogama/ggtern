@@ -213,19 +213,19 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 
 .theme.get.showtitles <- function(theme){
   showtitles = calc_element("tern.axis.title.show",theme=theme)
-  ifthenelse(is.logical(showtitles),showtitles[1],getOption("tern.showtitles"))
+  ifthenelse(is.logical(showtitles),showtitles[1],getOption("tern.title.show"))
 }
 .theme.get.showlabels <- function(theme){
   showlabels = calc_element("tern.axis.text.show",theme=theme)
-  ifthenelse(is.logical(showlabels),showlabels[1],getOption("tern.showlabels"))
+  ifthenelse(is.logical(showlabels),showlabels[1],getOption("tern.text.show"))
 }
 .theme.get.showgrid.major <- function(theme){
   showgrid   = calc_element("tern.panel.grid.major.show",theme=theme)
-  ifthenelse(is.logical(showgrid),showgrid[1],getOption("tern.showgrid.major"))
+  ifthenelse(is.logical(showgrid),showgrid[1],getOption("tern.grid.major.show"))
 }
 .theme.get.showgrid.minor <- function(theme){
   showgrid   = calc_element("tern.panel.grid.minor.show",theme=theme)
-  ifthenelse(is.logical(showgrid),showgrid[1],getOption("tern.showgrid.minor"))
+  ifthenelse(is.logical(showgrid),showgrid[1],getOption("tern.grid.minor.show"))
 }
 .theme.get.outside       <- function(theme){
   outside     = calc_element("tern.axis.ticks.outside",theme=theme)
@@ -233,15 +233,15 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 }
 .theme.get.showprimary   <- function(theme){
   showprimary = calc_element("tern.axis.ticks.primary.show",theme=theme)
-  ifthenelse(is.logical(showprimary), showprimary[1],getOption("tern.ticks.showprimary"))
+  ifthenelse(is.logical(showprimary), showprimary[1],getOption("tern.ticks.primary.show"))
 }
 .theme.get.showsecondary <- function(theme){
   showsecondary = calc_element("tern.axis.ticks.secondary.show",theme=theme)
-  ifthenelse(is.logical(showsecondary),showsecondary[1],getOption("tern.ticks.showsecondary"))
+  ifthenelse(is.logical(showsecondary),showsecondary[1],getOption("tern.ticks.secondary.show"))
 }
 .theme.get.showarrows    <- function(theme){
   showarrows   = calc_element('tern.axis.arrow.show',theme=theme)
-  ifthenelse(is.logical(showarrows),showarrows[1],getOption("tern.showarrows"))
+  ifthenelse(is.logical(showarrows),showarrows[1],getOption("tern.arrow.show"))
 }
 .theme.get.label <- function(self,n,d=n,suffix=''){
   x      = function(n,s) sprintf("%s%s",n,s)
@@ -270,7 +270,6 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 # _Apex Titles
 #----------------------------------------------------------------------------------
 .render.background <- function(self,data.extreme,theme,items){
-  grob  <- zeroGrob()
   tryCatch({
       e     <- calc_element('tern.panel.background',theme=theme,verbose=F)
       if(!identical(e,element_blank())){
@@ -283,18 +282,17 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                                             lty  = e$linetype
                               )
         )
+        items[[length(items) + 1]] <- grob
       }
   },error = function(e){ 
     warning(e) 
   })
-  items[[length(items) + 1]] <- grob
   items
 }
 
 .render.borders    <- function(self,data.extreme,theme,items){
   
   .render.border = function(name,s,f,items){
-    grob = zeroGrob()
     tryCatch({
       e = calc_element(name,theme=theme,verbose=FALSE)
       if(identical(e,element_blank()))return(items)
@@ -306,10 +304,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                     lineend = e$lineend,
                     lwd     = e$size*find_global_tern(".pt"))
       )
+      items[[length(items) + 1]] <- grob
     },error=function(e){
       warning(e)
     })
-    items[[length(items) + 1]] <- grob
     items
   }
   
@@ -456,7 +454,6 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   
   #FUNCTION TO RENDER TICKS AND LABELS
   .render.ticks  <- function(name,items,d,primary=TRUE){
-    grob = zeroGrob()
     tryCatch({  
       e <- calc_element(name,theme=theme,verbose=F)
       if(identical(e,element_blank()))return(items)
@@ -471,16 +468,15 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                   lineend = e$lineend,
                   lwd     = e$size*find_global_tern(".pt"))
       )
+      items[[length(items) + 1]] <- grob
     },error = function(e){
       warning(e)
     })
-    items[[length(items) + 1]] <- grob
     return(items)
   }
   
   #Axis labels, ie labels next to ticks
   .render.labels <- function(name,items,d){ 
-    grob = zeroGrob()
     tryCatch({
       d         = d[which(d$Labels != ''),]
       e         = calc_element(name,theme=theme,verbose=F)
@@ -503,16 +499,15 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                                                   fontfamily = ifthenelse(is.character(e$family),e$family,"sans"), 
                                                   fontface   = e$face, 
                                                   lineheight = ifthenelse(is.numeric(e$lineheight),e$lineheight,1)))
+      items[[length(items) + 1]] <- grob
     },error = function(e){  
       warning(e)  
     })
-    items[[length(items) + 1]] <- grob
     return(items)
   }
   
   .render.grid   <- function(name,items,d,showgrid.major=TRUE,showgrid.minor=TRUE){
     if((unique(d$Major) & showgrid.major) | (!unique(d$Major) & showgrid.minor)){
-      grob = zeroGrob()
       tryCatch({  
         e    = calc_element(name,theme=theme,verbose=F)
         if(identical(e,element_blank()))return(items)
@@ -527,12 +522,12 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                     lineend = e$lineend,
                     lwd     = e$size*find_global_tern(".pt"))
         )
+        items[[length(items) + 1]] <- grob
       },error = function(e){ 
         warning(e)
       })
-      items[[length(items) + 1]] <- grob
     }
-    return(items)
+    items
   }
   
   #PROCESS TICKS AND LABELS
@@ -554,10 +549,13 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 }
 
 .render.titles     <- function(self,data.extreme,scale_details,theme,items){
+  
+  if(!.theme.get.showtitles(theme)) 
+    return(items)
+  
   sidelength = sqrt( diff(data.extreme$x[1:2])^2 + diff(data.extreme$y[1:2])^2)
-  if(!.theme.get.showtitles(theme)) return(items)
+  
   .render.title = function(name,ix,items){
-    grob = zeroGrob()
     tryCatch({
       e     <- calc_element(name,theme=theme,verbose=F)
       if(identical(e,element_blank()))return(items)
@@ -581,7 +579,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                                    fontfamily = ifthenelse(is.character(e$family),e$family,"sans"), 
                                    fontface   = e$face, 
                                    lineheight = e$lineheight))
-    items[[length(items) + 1]] <- grob
+      items[[length(items) + 1]] <- grob
     },error = function(e){
       warning(e)
     })
@@ -592,10 +590,13 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   items <- .render.title("tern.axis.title.T",1,items)
   items <- .render.title("tern.axis.title.L",2,items)
   items <- .render.title("tern.axis.title.R",3,items)
+  items
 }
 
 .render.arrows     <- function(self,data.extreme,details,theme,items){
-  if(!.theme.get.showarrows(theme))return(items)
+  if(!.theme.get.showarrows(theme))
+    return(items)
+  
   tryCatch({
     
     #clockwise or anticlockwise precession
@@ -640,10 +641,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     }
     
     #Cut down to relative proportion.
-    dx = (d.f - d.s)
+    dx   = (d.f - d.s)
     d.f <- d.f - (1-arrowfinish)*dx
     d.s <- d.s +      arrowstart*dx
-    d <- rbind(d.s,d.f)
+    d   <- rbind(d.s,d.f)
     
     #Determine the start and end positions
     ixseq <- names(self$mapping)
@@ -687,7 +688,6 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     
     ##Function to create new arrow grob
     .render.arrow <- function(name,ix,items){
-      grob = zeroGrob()
       tryCatch({  
         e = calc_element(name,theme=theme,verbose=F)
         if(identical(e,element_blank()))return(items)
@@ -699,16 +699,15 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                                                  lineend = 'butt',
                                                  lwd     = e$size*find_global_tern(".pt"))
         )
+        items[[length(items) + 1]] <- grob
       },error = function(e){
         warning(e)
       })
-      items[[length(items) + 1]] <- grob
-      return(items)
+      items
     }
     
     #Function to greate new label grob
     .render.label <- function(name,ix,items){
-      grob = zeroGrob()
       tryCatch({  
         e    = calc_element(name,theme=theme,verbose=F)
         if(identical(e,element_blank()))return(items)
@@ -725,10 +724,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                                      fontfamily = e$family, 
                                      fontface   = e$face, 
                                      lineheight = e$lineheight))
+        items[[length(items) + 1]] <- grob
       },error = function(e){ 
         warning(e) 
       })
-      items[[length(items) + 1]] <- grob
       items
     }
   
@@ -739,8 +738,8 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     for(i in 1:length(ixseq)){
       items <- .render.label(paste0("tern.axis.arrow.text.",ixseq[i]),i,items) #Markers
     }
+    
   },error=function(e){
-    writeLines("Error Render Arrows")
     message(e)
   })
   items

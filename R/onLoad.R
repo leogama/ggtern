@@ -1,10 +1,18 @@
 .onLoad <- function(libname, pkgname){
+
   #Set the options
   .setOptionsCurrent()
   .setOptionsDepreciated()
   
   #Set the theme and the last coordinates.
   theme_set(theme_gray())
+}
+
+.onAttach <- function(libname, pkgname){
+  lines = c(sprintf("Note: If the '%s' package has helped, consider donating at http://ggtern.com, Even small amounts (say $10-50) are highly appreciated!",pkgname),
+            sprintf("Please remember to cite if used within books, publications etc..., Run citation('%s') for further information.",pkgname))
+  msg = paste(lines,collapse="\n")
+  packageStartupMessage(msg)
 }
 
 #------------------------------------------------------------------------------
@@ -18,21 +26,25 @@
   options("tern.default.L"             = "x")
   options("tern.default.R"             = "z")
   options("tern.clockwise"             = FALSE)
-  options("tern.showtitles"            = TRUE)
-  options("tern.showlabels"            = TRUE)
+  options("tern.title.show"            = TRUE)
+  options("tern.text.show"             = TRUE)
+  options("tern.axis.ontop"            = FALSE)
   options("tern.arrow.start"           = 0.3)
   options("tern.arrow.finish"          = 0.7)
-  options('tern.arrowsep'              = 0.1)
+  options("tern.arrow.show"            = FALSE)
+  options('tern.arrow.sep'             = 0.1)
   options('tern.vshift'                = 0.0)
   options('tern.hshift'                = 0.0)
-  options("tern.showarrows"            = FALSE)
-  options("tern.showgrid.major"        = TRUE)
-  options("tern.showgrid.minor"        = TRUE)
   options("tern.ticks.outside"         = TRUE)
-  options("tern.ticks.showprimary"     = TRUE)
-  options("tern.ticks.showsecondary"   = FALSE)
+  options("tern.ticks.primary.show"    = TRUE)
+  options("tern.ticks.secondary.show"  = FALSE)
   options("tern.breaks.default"        = seq(0.2, 1.0,by=0.2))
   options("tern.breaks.default.minor"  = seq(0.1, 0.9,by=0.2))
+  options("tern.grid.major.show"       = TRUE)
+  options("tern.grid.minor.show"       = TRUE)
+  options("tern.grid.ontop"            = FALSE)
+  options("tern.mask.show"             = TRUE)
+  options("tern.rotate"                = 0)
 }
 
 #------------------------------------------------------------------------------
