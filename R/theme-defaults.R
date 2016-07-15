@@ -358,7 +358,6 @@ theme_darker <- function(base_size = 12, base_family = "") {
 #' @param col.T colour of top axis, ticks labels and major gridlines
 #' @param col.L colour of left axis, ticks, labels and major gridlines
 #' @param col.R colour of right axis, ticks, labels and major gridlines
-#' @param col.BG colour of the plot background area
 #' @param tern.plot.background colour of background colour to plot area
 #' @param tern.panel.background colour of panel background of plot area
 #' @param col.grid.minor the colour of the minor grid
