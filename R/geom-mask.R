@@ -40,7 +40,8 @@ geom_mask <- function() {
 GeomMask <- ggproto("GeomMask", Geom,
   default_aes = aes("x","y","z"),
   draw_panel  = function(self, data, panel_scales, coord){
-    items = gList()
+    
+    items = list()
     
     #Only for coord tern
     if(!inherits(coord,'CoordTern'))
@@ -100,6 +101,7 @@ GeomMask <- ggproto("GeomMask", Geom,
             
             #Local Fill Variable
             fillLoc = if(ix == 2 | is.null(fill)) NA else fill
+            sizeLoc = if(ix == 1) 0 else is.numericor(e$size,0)
             
             #Build the Grob with the custom viewport
             grob     <- polygonGrob(  x = xvals,
@@ -108,9 +110,9 @@ GeomMask <- ggproto("GeomMask", Geom,
                                       id   = rep(1,length(xvals)),
                                       vp   = vp,
                                       name = sprintf("mask-%i-%i",ixEl,ix),
-                                      gp   = gpar(  col  = NA,
-                                                    fill = alpha(fillLoc,is.numericor(e$alpha,1) ),
-                                                    lwd  = as.numeric(ix != 1)*is.numericor(e$size,0)*find_global_tern(".pt"),
+                                      gp   = gpar(  col  = if(ix != 1){ e$colour }else{ fillLoc },
+                                                    fill = alpha(fillLoc, is.numericor(e$alpha,1) ),
+                                                    lwd  = sizeLoc*find_global_tern(".pt"),
                                                     lty  = e$linetype)
                                       
             )
@@ -121,14 +123,17 @@ GeomMask <- ggproto("GeomMask", Geom,
         }
       }
       
-      #Render the axis borders on top of mask
-      extrm = .get.tern.extremes(coord,panel_scales,transform=TRUE)
-      items = .render.borders(self,extrm,theme,items)
+      #Render Foreground on top of the mask
+      if(!.theme.get.gridsontop(theme)){
+        extrm = .get.tern.extremes(coord,panel_scales,transform=TRUE)
+        items = .render.fgset(coord,extrm,scale_details,theme,items)
+      }
       
     },error=function(e){
       writeLines(as.character(e))
     })
-    items
+    
+    do.call("gList",items)
   },
   draw_key = FALSE
 )
