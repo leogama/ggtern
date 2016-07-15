@@ -4,10 +4,10 @@
 \alias{theme_mesh}
 \title{Create Grid Mesh}
 \usage{
-theme_mesh(number = 5)
+theme_mesh(n = 5)
 }
 \arguments{
-\item{number}{the number of major breaks.}
+\item{n}{the number of major breaks.}
 }
 \description{
 Convenience function for creation of a grid mesh of 'n' major breaks.
