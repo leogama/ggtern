@@ -9,7 +9,7 @@
 }
 
 .onAttach <- function(libname, pkgname){
-  lines = c(sprintf("Note: If the '%s' package has helped, consider donating at http://ggtern.com, Even small amounts (say $10-50) are highly appreciated!",pkgname),
+  lines = c(sprintf("Note: If '%s' has helped, please donate at http://ggtern.com, Even small amounts (say $10-50) are very much appreciated!",pkgname),
             sprintf("Please remember to cite if used within books, publications etc..., Run citation('%s') for further information.",pkgname))
   msg = paste(lines,collapse="\n")
   packageStartupMessage(msg)
