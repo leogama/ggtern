@@ -71,8 +71,6 @@ theme_rgbg(base_size = 12, base_family = "")
 
 \item{col.grid.minor}{the colour of the minor grid
 \code{theme_custom} is a convenience function to allow the user to control the basic theme colours very easily.}
-
-\item{col.BG}{colour of the plot background area}
 }
 \description{
 Themes set the general aspect of the plot such as the colour of the

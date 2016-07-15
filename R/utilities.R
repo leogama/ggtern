@@ -70,7 +70,7 @@ getBreaks <- function(limits,isMajor,nMajor=5,nMinor=2*nMajor){
       minor = minor[which(minor >= min(limits) & minor <= max(limits))]
       ret   = minor[which(!minor %in% ret)]
     }
-    ret = ret[which(!ret %in% min(limits))]
+    #ret = ret[which(!ret %in% min(limits))]
     ret
   }
 }

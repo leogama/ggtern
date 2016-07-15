@@ -38,7 +38,7 @@
   options("tern.ticks.outside"         = TRUE)
   options("tern.ticks.primary.show"    = TRUE)
   options("tern.ticks.secondary.show"  = FALSE)
-  options("tern.breaks.default"        = seq(0.2, 1.0,by=0.2))
+  options("tern.breaks.default"        = seq(0.0, 1.0,by=0.2))
   options("tern.breaks.default.minor"  = seq(0.1, 0.9,by=0.2))
   options("tern.grid.major.show"       = TRUE)
   options("tern.grid.minor.show"       = TRUE)
