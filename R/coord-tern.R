@@ -576,8 +576,8 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     outside     = .theme.get.outside(theme)
     clockwise   = .theme.get.clockwise(theme)
     showprimary = .theme.get.showprimary(theme)
-    angle       = (.get.angles(clockwise) + (!outside)*180)
-    angle.text  = (.get.angles.ticklabels(clockwise) + .theme.get.rotation(self))
+    angle       = .get.angles(clockwise) + (!outside)*180
+    angle.text  = .get.angles.ticklabels(clockwise) + .theme.get.rotation(self)
 
     #Generate the data
     df = ldply(X,function(x){
@@ -660,6 +660,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   
   items
 }
+
 
 .render.titles <- function(self,data.extreme,scale_details,theme,items){
   
@@ -859,6 +860,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   })
   items
 }
+
 
 .rotation = function (xy, angle, degrees=TRUE) {
   if(degrees) angle = pi*angle/180
