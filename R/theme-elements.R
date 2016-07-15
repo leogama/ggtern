@@ -54,7 +54,7 @@ ggint$.element_tree$tern.axis.line                 = .el_def("element_line", "ax
 ggint$.element_tree$tern.axis.line.T               = .el_def("element_line", "tern.axis.line",       description="Line for TOP Axis") #
 ggint$.element_tree$tern.axis.line.L               = .el_def("element_line", "tern.axis.line",       description="Line for LHS Axis") #
 ggint$.element_tree$tern.axis.line.R               = .el_def("element_line", "tern.axis.line",       description="Line for RHS Axis") #
-ggint$.element_tree$tern.axis.line.ontop           = .el_def("logical",                              description="Bring Axis Borders on Top of Everything")
+ggint$.element_tree$tern.axis.line.ontop           = .el_def("logical",                              description="Bring Axis Borders on Top of Everything (Depreciated)")
 
 #Axis Text
 ggint$.element_tree$tern.axis.text                 = .el_def("element_text", "axis.text",            description="Base Text") #
@@ -112,7 +112,7 @@ ggint$.element_tree$tern.panel.grid.minor.T        = .el_def("element_line", "te
 ggint$.element_tree$tern.panel.grid.minor.L        = .el_def("element_line", "tern.panel.grid.minor",description="Minor Gridline for LHS Axis") #
 ggint$.element_tree$tern.panel.grid.minor.R        = .el_def("element_line", "tern.panel.grid.minor",description="Minor Gridline for RHS Axis") #
 ggint$.element_tree$tern.panel.grid.minor.show     = .el_def("logical",                              description="Show or Hide Minor Gridline")
-ggint$.element_tree$tern.panel.grid.ontop          = .el_def("logical",                              description="Bring grids on top of everything else")
+ggint$.element_tree$tern.panel.grid.ontop          = .el_def("logical",                              description="Bring grids, axis and axis labels on top of everything else")
 
 ggint$.element_tree$tern.panel.mask.show           = .el_def("logical",                              description="Bring grids on top of everything else")
 ggint$.element_tree$tern.panel.expand              = .el_def("numeric",                              description="The amount to expand the ternary plotting panel, in ratio to npc units")
