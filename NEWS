@@ -10,6 +10,7 @@ plot.background and panel.background in the parent package.
 * Merged theme_bordersontop with theme_gridsontop
 * Changed the default breaks to now include the minimum value, permitting the next item:
 * Modification of the theme_novar_tern to also discard the tern.axis.line.X (X=T,L,R) theme element.
+* Modified plot construction routine to remove the clipping mask (say if they have been manually added) if the 'tern.panel.mask.show' theme element is set to FALSE. This ensures the convenience function theme_nomask() strictly means "Don't Show Clipping Mask"
 
 ggtern 2.1.2
 ----------------------------------------------------------------
