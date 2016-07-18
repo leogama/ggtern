@@ -5,6 +5,8 @@ ggtern 2.1.4
 * Added Some Basic Demo's under /demo
 * Minor fixes to themes
 * Reviewed the geom_mask, removing two of the hidden layers, as they are now unnessessary
+* Moved seq.tlr to coord proto member
+* Included find_subclass to also now include coord
 
 ggtern 2.1.3
 ----------------------------------------------------------------
