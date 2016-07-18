@@ -4,6 +4,7 @@ ggtern 2.1.4
 * Created getLabels function to better handle the creation of the ternary labels, from the known breaks. Have set the earliest label to empty (ie ""), so it doesn't interfere with the axis titles, particularly if the axis titles and first label are wide (ie something like "Top Species" and "50.%" respectively). This is not generally a problem for the default plot where the axis titles and first label are trivial (ie something like "T" and "0")
 * Added Some Basic Demo's under /demo
 * Minor fixes to themes
+* Reviewed the geom_mask, removing two of the hidden layers, as they are now unnessessary
 
 ggtern 2.1.3
 ----------------------------------------------------------------
