@@ -7,9 +7,11 @@
 theme_mesh(n = 5)
 }
 \arguments{
-\item{n}{the number of major breaks.}
+\item{n}{the 'target' number of major breaks}
 }
 \description{
-Convenience function for creation of a grid mesh of 'n' major breaks.
+Convenience function for creation of a grid mesh of an ideal number of 'n' major breaks. Note that 
+the value of 'n' is the target number of breaks, and due to the use of the \code{\link{pretty}} function
+within \code{\link{getBreaks}} convenience function, may not be strictly adhered or reflected.
 }
 
