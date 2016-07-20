@@ -7,6 +7,7 @@ ggtern 2.1.4
 * Reviewed the geom_mask, removing two of the hidden layers, as they are now unnessessary
 * Moved seq.tlr to coord proto member
 * Included find_subclass to also now include coord
+* Added a debug option to highlight what is going on with clipping mask
 
 ggtern 2.1.3
 ----------------------------------------------------------------

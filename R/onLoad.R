@@ -44,6 +44,7 @@
   options("tern.grid.minor.show"       = TRUE)
   options("tern.grid.ontop"            = FALSE)
   options("tern.mask.show"             = TRUE)
+  options("tern.mask.debug"            = FALSE)
   options("tern.rotate"                = 0)
 }
 

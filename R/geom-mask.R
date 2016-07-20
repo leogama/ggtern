@@ -48,10 +48,13 @@ GeomMask <- ggproto("GeomMask", Geom,
     if(inherits(coord,'CoordTern')){
       
       tryCatch({
-        theme         = coord$theme %||% theme_get()
-        e  = calc_element('tern.plot.background',theme,verbose=F)
+        theme = coord$theme %||% theme_get()
+        e     = calc_element('tern.plot.background',theme,verbose=FALSE)
         
         if(!identical(e,element_blank())){
+          
+          #Debug Mode
+          dbg   = getOption('tern.mask.debug',FALSE)
           
           #1st pass is master triangle.
           ex  = .get.tern.extremes(coord,panel_scales,transform=FALSE)
@@ -82,8 +85,15 @@ GeomMask <- ggproto("GeomMask", Geom,
             
             #Local Fill Variable
             fillLoc = if(ix == 2 | is.null(e$fill)) NA else e$fill
-            sizeLoc = if(ix == 2) is.numericor(e$size,0) else 0
-            colLoc  = if(ix == 2) e$colour else fillLoc
+            
+            #Draw the full set of mask lines if in debug mode, for debugging.
+            if(dbg){
+              sizeLoc = if(ix == 2) 0.5 else 1
+              colLoc  = if(ix == 2) 'black' else 'red'
+            }else{
+              sizeLoc = if(ix == 2) is.numericor(e$size,0) else 0
+              colLoc  = if(ix == 2) e$colour else fillLoc
+            }
             
             #Build the Grob with the custom viewport
             grob     <- polygonGrob(  x = xvals,
@@ -93,7 +103,7 @@ GeomMask <- ggproto("GeomMask", Geom,
                                       vp   = vp,
                                       name = sprintf("mask-%i",ix),
                                       gp   = gpar(  col  = colLoc,
-                                                    fill = alpha(fillLoc, is.numericor(e$alpha,1) ),
+                                                    fill = fillLoc,
                                                     lwd  = sizeLoc*find_global_tern(".pt"),
                                                     lty  = e$linetype)
                                       
