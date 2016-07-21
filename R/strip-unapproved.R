@@ -138,10 +138,19 @@ strip_unapproved <- function(layers){
 
 #Method for building rd file
 .rd_approvedX <- function(type="geom"){
-  if(!type %in% c('geom','stat','position')) stop("Invalid type",call.=FALSE)
+  if(!type %in% c('geom','stat','position')) 
+    stop("Invalid type",call.=FALSE)
+  
+  theNames = .nonBlankNames(type)
+  theObjs  = unlist(lapply(theNames,function(x){
+    o = sprintf("%s_%s",type,x)
+    #if(find(o) != 'package:ggplot2') 
+    o = sprintf("\\link{%s}",o)
+    o
+  }))
   paste(sprintf("The following %ss have been approved so far, including a combination of existing %ss and newly created %ss for the ggtern package\n",type,type,type),
         sprintf("APPROVED %ss in \\code{ggtern} are as follows:\n\n\\itemize{\n",type),
-        paste( sprintf("\\item\\code{\\link{%s_",type),.nonBlankNames(type),"}}",collapse="\n", sep = ""),
+        paste("\\item\\code{",theObjs,"}",collapse="\n",sep=""),
         "\n}\n",sep = "")
 }
 
