@@ -70,14 +70,6 @@ ggplot.data.frame <- function(data, mapping = aes(), ...,
   p
 }
 
-#' @rdname ggplot
-#' @export
-plot_clone <- function(plot) {
-  p <- plot
-  p$scales <- plot$scales$clone()
-  p
-}
-
 #' Draw plot on current graphics device.
 #'
 #' @param x plot to display

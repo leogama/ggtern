@@ -5,13 +5,10 @@
 \alias{ggplot.data.frame}
 \alias{ggplot.default}
 \alias{plot.ggplot}
-\alias{plot_clone}
 \alias{print.ggplot}
 \title{Create a new ggplot plot.}
 \usage{
 ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
-
-plot_clone(plot)
 
 \method{print}{ggplot}(x, newpage = is.null(vp), vp = NULL, ...)
 
