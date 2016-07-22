@@ -538,58 +538,41 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     tryCatch({
       df        = df[which(df$Labels != ''),]
       e         = calc_element(name,theme=theme,verbose=F)
-      
       if(empty(df) || identical(e,element_blank())) 
         return(items)
       
-      xts       = ifthenelse(outside,df$x,   df$xend)
-      xtf       = ifthenelse(outside,df$xend,df$x) 
-      yts       = ifthenelse(outside,df$y,   df$yend)
-      ytf       = ifthenelse(outside,df$yend,df$y) 
-      a         = is.numericor(e$angle,0) + is.numericor(unique(df$Angle.Text)[1],0)
-      dA        = a - atan2(ytf-yts,xtf-xts)*180/pi                   #DEGREES, Angle Difference between Ticks and Labels
-      hj        = +cos((dA-180)*pi/180)*0.5 + is.numericor(e$hjust,0) #BACK TO RADIANS
-      vj        = -sin((dA-180)*pi/180)*0.5 + is.numericor(e$vjust,0) #BACK TO RADIANS
-      
-      grob      = textGrob( label         = label_formatter(as.character(df$Labels)), 
-                            x             = ifthenelse(showprimary || !outside,xtf,xts) + convertX(cos(pi*(df$Angle + (!outside)*180)/180)*unit(2,'pt'),'npc',valueOnly = T),
-                            y             = ifthenelse(showprimary || !outside,ytf,yts) + convertY(sin(pi*(df$Angle + (!outside)*180)/180)*unit(2,'pt'),'npc',valueOnly = T),
-                            default.units ="npc", 
-                            hjust         = is.numericor(hj,0.5),
-                            vjust         = is.numericor(vj,0.5),
-                            rot           = a, 
-                            gp            = gpar(col        = e$colour, 
-                                                 fontsize   = e$size,
-                                                 fontfamily = ifthenelse(is.character(e$family),e$family,"sans"), 
-                                                 fontface   = e$face, 
-                                                 lineheight = ifthenelse(is.numeric(e$lineheight),e$lineheight,1)))
+      xts       = if(outside) df$x else df$xend
+      xtf       = if(outside) df$xend else df$x
+      yts       = if(outside) df$y else df$yend
+      ytf       = if(outside) df$yend else df$y 
+      angle     = is.numericor(e$angle,0) + is.numericor(unique(df$Angle.Text)[1],0)
+      dA        = angle - atan2(ytf - yts, xtf - xts)*180/pi #DEGREES, Angle Difference between Ticks and Labels
+      grob      = element_render(theme, name,
+                                 label = label_formatter(as.character(df$Labels)),
+                                 angle = angle,
+                                 x     = ifthenelse(showprimary || !outside,xtf,xts) + convertX(cos(pi*(df$Angle/180 + !outside))*unit(2,'pt'),'npc',valueOnly = T),
+                                 y     = ifthenelse(showprimary || !outside,ytf,yts) + convertY(sin(pi*(df$Angle/180 + !outside))*unit(2,'pt'),'npc',valueOnly = T),
+                                 hjust = +cos((dA-180)*pi/180)*0.5 + is.numericor(e$hjust,0), #BACK TO RADIANS
+                                 vjust = -sin((dA-180)*pi/180)*0.5 + is.numericor(e$vjust,0)) #BACK TO RADIANS
       items[[length(items) + 1]] <- grob
-      
-    },error = function(e){
-      warning(e)  
-    })
+    },error = function(e){ warning(e) })
     items
   }
   
   if(.theme.get.showlabels(theme)){
-    
     outside     = .theme.get.outside(theme)
     showprimary = .theme.get.showprimary(theme)
     clockwise   = .theme.get.clockwise(theme)
     angle       = .get.angles(clockwise) + (!outside)*180
     angle.text  = .get.angles.ticklabels(clockwise) + .theme.get.rotation(self)
-
     #Generate the data
     df = ldply(X,function(x){
       ix =  which(seq.tlr == x)
       .get.grid.data(self,theme,data.extreme,X = x, major = TRUE, angle = angle[ix], angle.text = angle.text[ix])
     })
-    
-    for(name in unique(df$NameText)){
-      items <- grobs(name=name,items=items,df=df[which(df$NameText  == name),,drop=F],outside,showprimary)
-    }
+    for(name in unique(df$NameText))
+      items = grobs(name=name,items=items,df=df[which(df$NameText  == name),,drop=F],outside,showprimary)
   }
-  
   items
 }
 
