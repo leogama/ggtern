@@ -676,6 +676,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   #Build the local function for building the grobs
   grobs = function(name,ix,items){
     tryCatch({
+      
       e = calc_element(name,theme=theme,verbose=F)
       if(identical(e,element_blank()))
         return(items)
@@ -685,20 +686,13 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       base  <- as.numeric(apply(data.extreme[-ix,ixc],2,mean))
       angle <- atan2((point[2]-base[2])*.ratio(),point[1]-base[1])
       n     <- regmatches(name,regexpr(".$",name)) 
-      l     <- c(self$scales[[n]]$name,self$labels_coord[[n]],self$labels_coord[[ self$mapping[[n]] ]],n)
-      x     <- data.extreme$x[ix] + 0.05*sidelength*cos(angle)
-      y     <- data.extreme$y[ix] + 0.05*sidelength*sin(angle)
-      grob  <- textGrob(label = label_formatter(l[1]), 
-                       x = x, y = y,
-                       hjust  = e$hjust - 0.5*cos(angle), 
-                       vjust  = e$vjust - 0.5*sin(angle),
-                       rot    = e$angle,
-                       vp     = viewport(clip='inherit'),   #Change to off???
-                       gp     = gpar(col        = e$colour, 
-                                   fontsize   = e$size,
-                                   fontfamily = ifthenelse(is.character(e$family),e$family,"sans"), 
-                                   fontface   = e$face, 
-                                   lineheight = e$lineheight))
+      label <- c(self$scales[[n]]$name, self$labels_coord[[n]], self$labels_coord[[ self$mapping[[n]] ]], n)[1]
+      grob  <- element_render(theme, name,
+                              label = label_formatter(label),
+                              x     = data.extreme$x[ix] + 0.05*sidelength*cos(angle),
+                              y     = data.extreme$y[ix] + 0.05*sidelength*sin(angle),
+                              hjust = e$hjust - 0.5*cos(angle),
+                              vjust = e$vjust - 0.5*sin(angle))
       items[[length(items) + 1]] <- grob
     },error = function(e){
       warning(e)
