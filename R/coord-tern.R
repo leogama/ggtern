@@ -422,23 +422,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   
   grobs = function(name,s,f,items){
     tryCatch({
-      e = calc_element(name,theme=theme,verbose=FALSE)
-      if(identical(e,element_blank()))return(items)
-      grob = segmentsGrob(
-          x0 = data.extreme$x[s], 
-          x1 = data.extreme$x[f], 
-          y0 = data.extreme$y[s], 
-          y1 = data.extreme$y[f],
-          default.units="npc",
-          gp = gpar(col     = e$colour, 
-                    lty     = e$linetype,
-                    lineend = e$lineend,
-                    lwd     = e$size*find_global_tern(".pt"))
-      )
+      grob = element_render(theme,name, x = data.extreme$x[c(s,f)], y = data.extreme$y[c(s,f)])
       items[[length(items) + 1]] <- grob
-    },error=function(e){
-      warning(e)
-    })
+    },error=function(e){ warning(e) })
     items
   }
  
