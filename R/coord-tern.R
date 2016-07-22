@@ -370,9 +370,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 
 .render.background <- function(self,data.extreme,theme,items){
   tryCatch({
-      e     <- calc_element('tern.panel.background',theme=theme,verbose=F)
+      e <- calc_element('tern.panel.background',theme=theme,verbose=F)
       if(!identical(e,element_blank())){
-        grob  <- polygonGrob( data.extreme$x, data.extreme$y, 
+        grob  <- polygonGrob( data.extreme$x, 
+                              data.extreme$y, 
                               default.units = "npc",
                               id   = rep(1,nrow(data.extreme)),
                               gp   = gpar(  col  = e$colour,
@@ -390,24 +391,11 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 }
 
 .render.border.main <- function(self,data.extreme,theme,items){
-  
   tryCatch({
-    e  = calc_element('tern.panel.background',theme,verbose=F)
-    if(identical(e,element_blank())) 
-      return(items)
-    
-    grob     <- polygonGrob(  x = data.extreme$x,
-                              y = data.extreme$y,
-                              default.units = "npc",
-                              id   = rep(1,nrow(data.extreme)),
-                              gp   = gpar(  col  = e$colour, 
-                                            fill = NA, 
-                                            lwd  = is.numericor(e$size,0)*find_global_tern(".pt"), 
-                                            lty  = e$linetype)
-    )
+    el   = calc_element('tern.panel.background',theme,verbose=F)
+    grob = element_grob.element_line(el,x=data.extreme$x,y=data.extreme$y)
     items[[length(items) + 1]] = grob
   },error=function(e){})
-  
   items
 }
 
@@ -455,35 +443,14 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   
   #Function to render the grobs
   grobs  <- function(name,items,df,primary=TRUE){
-    
     tryCatch({  
-      
-      e <- calc_element(name,theme=theme,verbose=F)
-      
-      if(identical(e,element_blank()))
-        return(items)
-      
-      grob     <- segmentsGrob(
-        x0 = ifthenelse(!primary,df$x.sec,   df$x), 
-        x1 = ifthenelse(!primary,df$xend.sec,df$xend),
-        y0 = ifthenelse(!primary,df$y.sec,   df$y), 
-        y1 = ifthenelse(!primary,df$yend.sec,df$yend),
-        default.units="npc",
-        gp = gpar(col     = e$colour, 
-                  lty     = e$linetype,
-                  lineend = e$lineend,
-                  lwd     = e$size*find_global_tern(".pt"))
-      )
-      
-      items[[length(items) + 1]] <- grob
-      
-    },error = function(e){
-      warning(e)
-    })
-    
+      ixx   = c('x','xend'); if(!primary) ixx = paste0(ixx,'.sec')
+      ixy   = c('y','yend'); if(!primary) iyy = paste0(iyy,'.sec')
+      grob  = lapply(1:nrow(df),function(x){ element_render(theme,name,x=df[x,ixx],y=df[x,ixy]) })
+      items = c(items,grob)
+    },error = function(e){ warning(e) })
     items
   }
-  
   
   #Iterate over the values of X
   for(x in X){
@@ -596,7 +563,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     if((unique(df$Major) & showgrid.major) | (!unique(df$Major) & showgrid.minor)){
       tryCatch({  
         ixx   = c('x','xend.grid'); ixy = c('y','yend.grid')
-        grob  = lapply(1:nrow(df),function(x){ element_render(theme,name,x=df[x,ixx],y=df[x,ixy]) })
+        grob  = lapply(1:nrow(df),function(x){ 
+          element_render(theme,name,x=df[x,ixx],y=df[x,ixy]) 
+        })
         items = c(items,grob)
       },error = function(e){ warning(e) })
     }
