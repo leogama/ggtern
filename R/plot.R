@@ -97,7 +97,7 @@ print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, ...) {
   
   data <- ggplot_build(x)
   
-  gtable <- ggplot_gtable(data)
+  gtable <- ggint$ggplot_gtable(data)
   if (is.null(vp)) {
     grid.draw(gtable)
   } else {

@@ -1,3 +1,7 @@
+ggtern 2.1.5
+----------------------------------------------------------------
+* Fixed bug to do with theme element rendering, some properties were being ignored (Thanks to Ivan Galvan for picking up on this)
+
 ggtern 2.1.4
 ----------------------------------------------------------------
 * Create grid_mesh convenience function

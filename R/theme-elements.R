@@ -36,6 +36,18 @@
 NULL
 
 
+# Given a theme object and element name, return a grob for the element
+element_render <- function(theme, element, ..., name = NULL) {
+  # Get the element from the theme, calculating inheritance
+  el <- calc_element(element, theme)
+  if (is.null(el)) {
+    message("Theme element ", element, " missing")
+    return(zeroGrob())
+  }
+  ggint$ggname(paste(element, name, sep = "."), element_grob(el, ...))
+}
+
+
 #SEARCH FOR THE ORIGINAL FUNCTIONS
 #ggint$.element_tree     <- find_global_tern(".element_tree")
 ggint$.element_tree.orig <- ggint$.element_tree #To determine the new set relative to the existing.

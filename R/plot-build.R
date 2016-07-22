@@ -173,8 +173,8 @@ ggplot_gtable <- function(data) {
     y = ggint$ylabel(panel, plot$labels)  ##NH
   ))
   if(!isTernary){ ##NH
-    xlabel <- ggint$element_render(theme, "axis.title.x", labels$x, expand_y = TRUE) ##NH
-    ylabel <- ggint$element_render(theme, "axis.title.y", labels$y, expand_x = TRUE) ##NH
+    xlabel <- element_render(theme, "axis.title.x", labels$x, expand_y = TRUE) ##NH
+    ylabel <- element_render(theme, "axis.title.y", labels$y, expand_x = TRUE) ##NH
   }else{
     plot$labels = lapply(plot$labels,label_formatter)
   }
@@ -273,7 +273,7 @@ ggplot_gtable <- function(data) {
   }
   
   # Title
-  title <- ggint$element_render(theme, "plot.title", plot$labels$title, expand_y = TRUE) ##NH
+  title <- element_render(theme, "plot.title", plot$labels$title, expand_y = TRUE) ##NH
   title_height <- grobHeight(title)
   
   pans <- plot_table$layout[grepl("^panel", plot_table$layout$name), ,
@@ -291,7 +291,7 @@ ggplot_gtable <- function(data) {
   
   if (inherits(theme$plot.background, "element")) {
     plot_table <- gtable_add_grob(plot_table,
-                                  ggint$element_render(theme, "plot.background"), ##NH
+                                  element_render(theme, "plot.background"), ##NH
                                   t = 1, l = 1, b = -1, r = -1, name = "background", z = -Inf)
     plot_table$layout <- plot_table$layout[c(nrow(plot_table$layout), 1:(nrow(plot_table$layout) - 1)),]
     plot_table$grobs <- plot_table$grobs[c(nrow(plot_table$layout), 1:(nrow(plot_table$layout) - 1))]
