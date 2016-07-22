@@ -626,27 +626,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   grobs   <- function(name,items,df,showgrid.major=TRUE,showgrid.minor=TRUE){
     if((unique(df$Major) & showgrid.major) | (!unique(df$Major) & showgrid.minor)){
       tryCatch({  
-        e    = calc_element(name,theme=theme,verbose=F)
-        
-        if(identical(e,element_blank()))
-          return(items)
-        
-        grob = segmentsGrob(
-          x0 = df$x, 
-          x1 = df$xend.grid,
-          y0 = df$y, 
-          y1 = df$yend.grid,
-          default.units="npc",
-          gp = gpar(col     = e$colour, 
-                    lty     = e$linetype,
-                    lineend = e$lineend,
-                    lwd     = e$size*find_global_tern(".pt"))
-        )
-        items[[length(items) + 1]] <- grob
-        
-      },error = function(e){ 
-        warning(e)
-      })
+        ixx   = c('x','xend.grid'); ixy = c('y','yend.grid')
+        grob  = lapply(1:nrow(df),function(x){ element_render(theme,name,x=df[x,ixx],y=df[x,ixy]) })
+        items = c(items,grob)
+      },error = function(e){ warning(e) })
     }
     items
   }
