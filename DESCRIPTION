@@ -62,6 +62,7 @@ Collate:
     'theme-gridsontop.R'
     'theme-bordersontop.R'
     'theme-legend-position.R'
+    'theme-latex.R'
     'theme-mesh.R'
     'theme-noarrows.R'
     'theme-nomask.R'

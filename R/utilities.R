@@ -156,20 +156,24 @@ tern_dep <- function(version, msg) {
 #' @param label character label
 #' @param suffix chacater suffix behind each label
 #' @param sep the seperator between label and suffix 
+#' @param ... additional arguments
+#' @param latex logical as to whether latex formats should be parsed
 #' @keywords internal
 #' @rdname undocumented
-arrow_label_formatter             = function(label,suffix=NULL,sep="/") UseMethod("arrow_label_formatter")
-arrow_label_formatter.default     = function(label,suffix=NULL,sep="/") arrow_label_formatter.character( as.character(label), suffix,sep)
-arrow_label_formatter.call        = function(label,suffix=NULL,sep="/") arrow_label_formatter.expression(as.expression(label),suffix,sep)    
-arrow_label_formatter.expression  = function(label,suffix=NULL,sep="/"){
+arrow_label_formatter             = function(label,suffix=NULL,sep="/",...) UseMethod("arrow_label_formatter")
+arrow_label_formatter.default     = function(label,suffix=NULL,sep="/",...) arrow_label_formatter.character( as.character(label), suffix, sep, ...)
+arrow_label_formatter.call        = function(label,suffix=NULL,sep="/",...) arrow_label_formatter.expression(as.expression(label),suffix, sep, ...)    
+arrow_label_formatter.expression  = function(label,suffix=NULL,sep="/",...){
   suffix = if(suffix  == "")   NULL else suffix
   sep    = if(is.null(suffix)) ""   else .trimAndPad(sep)
   parse(text=paste(as.character(label),suffix,sep))
 }
-arrow_label_formatter.character   = function(label,suffix=NULL,sep="/") {
+arrow_label_formatter.character   = function(label,suffix=NULL,sep="/",latex = FALSE,...) {
   suffix = if(suffix  == "")   NULL else suffix
   sep    = if(is.null(suffix)) ""   else .trimAndPad(sep)
-  TeX(paste(label,suffix,sep=sep)) 
+  result = paste(label,suffix,sep=sep)
+  if(latex[1]) result = TeX(result)
+  result
 }
 .trimAndPad <- function(x){
   x = gsub("^(\\s+)","",gsub("(\\s+)$","",x))
@@ -180,7 +184,8 @@ arrow_label_formatter.character   = function(label,suffix=NULL,sep="/") {
 
 #' \code{label_formatter} is a function that formats / parses labels for use in the grid.
 #' @param label character label
-label_formatter = function(label){ arrow_label_formatter(label,suffix="",sep="") }
+#' @param additional arguments
+label_formatter = function(label,...){ arrow_label_formatter(label,suffix="",sep="",...) }
 
 
 #' \code{joinCharacterSeries} is a function will turn a character vector 

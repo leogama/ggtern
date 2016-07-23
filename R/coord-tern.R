@@ -494,6 +494,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       if(empty(df) || identical(e,element_blank())) 
         return(items)
       
+      latex     = calc_element('tern.plot.latex',theme)
       xts       = if(outside) df$x else df$xend
       xtf       = if(outside) df$xend else df$x
       yts       = if(outside) df$y else df$yend
@@ -501,7 +502,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       angle     = is.numericor(e$angle,0) + is.numericor(unique(df$Angle.Text)[1],0)
       dA        = angle - atan2(ytf - yts, xtf - xts)*180/pi #DEGREES, Angle Difference between Ticks and Labels
       grob      = element_render(theme, name,
-                                 label = label_formatter(as.character(df$Labels)),
+                                 label = label_formatter(df$Labels,latex=latex),
                                  angle = angle,
                                  x     = ifthenelse(showprimary || !outside,xtf,xts) + convertX(cos(pi*(df$Angle/180 + !outside))*unit(2,'pt'),'npc',valueOnly = T),
                                  y     = ifthenelse(showprimary || !outside,ytf,yts) + convertY(sin(pi*(df$Angle/180 + !outside))*unit(2,'pt'),'npc',valueOnly = T),
@@ -603,13 +604,14 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
         return(items)
       
       ixc   <- c('x','y')
+      latex <- calc_element('tern.plot.latex',theme)
       point <- as.numeric(data.extreme[ix,ixc])
       base  <- as.numeric(apply(data.extreme[-ix,ixc],2,mean))
       angle <- atan2((point[2]-base[2])*.ratio(),point[1]-base[1])
       n     <- regmatches(name,regexpr(".$",name)) 
       label <- c(self$scales[[n]]$name, self$labels_coord[[n]], self$labels_coord[[ self$mapping[[n]] ]], n)[1]
       grob  <- element_render(theme, name,
-                              label = label_formatter(label),
+                              label = label_formatter(label,latex=latex),
                               x     = data.extreme$x[ix] + 0.05*sidelength*cos(angle),
                               y     = data.extreme$y[ix] + 0.05*sidelength*sin(angle),
                               hjust = e$hjust - 0.5*cos(angle),
@@ -749,8 +751,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       tryCatch({  
         e    = calc_element(name,theme=theme,verbose=F)
         if(identical(e,element_blank()))return(items)
-        dA   = e$angle + d$AL - 180*(atan2((d$yend - d$y)*.ratio(), d$xend - d$x)/pi + as.numeric(clockwise))
-        grob = textGrob( label = arrow_label_formatter(d$LA[ix],d$W[ix]), 
+        latex = calc_element('tern.plot.latex',theme)
+        dA    = e$angle + d$AL - 180*(atan2((d$yend - d$y)*.ratio(), d$xend - d$x)/pi + as.numeric(clockwise))
+        grob  = textGrob( label = arrow_label_formatter(d$LA[ix],d$W[ix],latex=latex), 
                          x     = d$xmn[ix] + convertX(cos(pi*(d$angle[ix] + rotation)/180)*unit(2,'pt'),'npc',valueOnly = T), 
                          y     = d$ymn[ix] + convertY(sin(pi*(d$angle[ix] + rotation)/180)*unit(2,'pt'),'npc',valueOnly = T), 
                          hjust = e$hjust + 0.5*sin(dA[ix]*pi/180), 

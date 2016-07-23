@@ -140,9 +140,10 @@ theme_ggtern <- function(base_size = 11, base_family = ""){
     ##TERNARY PANEL
     tern.panel.background          = element_rect(),  #Panel is the triangular region
     tern.plot.background           = element_rect(), #Plot  is the rectangular outer region
+    tern.plot.latex                = getOption('tern.latex'), #Parse Labels as Latex
     
     ##AXIS ARROWS
-    #tern.axis                      = element_line(),
+    #tern.axis                     = element_line(),
     tern.axis.hshift               = getOption("tern.hshift"),
     tern.axis.vshift               = getOption("tern.vshift"),
     tern.axis.clockwise            = getOption("tern.clockwise"),

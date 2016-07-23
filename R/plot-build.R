@@ -155,7 +155,7 @@ layer_grob <- function(plot, i = 1L) {
 #' @export
 ggplot_gtable <- function(data) {
   #Check if plot is ternary plot
-  isTernary  <- ('CoordTern' %in% class(data$plot$coordinates)) ##NH
+  isTernary  <- inherits(data$plot$coordinates,'CoordTern') ##NH
   
   plot       <- data$plot
   panel      <- data$panel
@@ -176,7 +176,8 @@ ggplot_gtable <- function(data) {
     xlabel <- element_render(theme, "axis.title.x", labels$x, expand_y = TRUE) ##NH
     ylabel <- element_render(theme, "axis.title.y", labels$y, expand_x = TRUE) ##NH
   }else{
-    plot$labels = lapply(plot$labels,label_formatter)
+    latex = calc_element('tern.plot.latex', theme, verbose = FALSE)
+    plot$labels = lapply(plot$labels,function(x) label_formatter(x,latex = latex))
   }
   
   # helper function return the position of panels in plot_table

@@ -22,7 +22,7 @@ find_global_tern(name, env = environment())
 
 tern_dep(version, msg)
 
-arrow_label_formatter(label, suffix = NULL, sep = "/")
+arrow_label_formatter(label, suffix = NULL, sep = "/", ...)
 
 joinCharacterSeries(x, lastWord = "and")
 
@@ -60,9 +60,13 @@ layers_add_or_remove_mask(plot)
 
 \item{sep}{the seperator between label and suffix}
 
+\item{...}{additional arguments}
+
 \item{dependent}{whether to return the dependent variables (TRUE) or the indpenedent variables (FALSE)}
 
 \item{plot}{ggplot object}
+
+\item{latex}{logical as to whether latex formats should be parsed}
 
 \item{x}{character vector}
 

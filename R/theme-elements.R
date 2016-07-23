@@ -56,6 +56,7 @@ ggint$.element_tree.orig <- ggint$.element_tree #To determine the new set relati
 ##TERNARY PANEL
 ggint$.element_tree$tern.panel.background          = .el_def("element_rect", "panel.background",     description="Background of Ternary Plot Area**")
 ggint$.element_tree$tern.plot.background           = .el_def("element_rect", "plot.background",      description="Background of Ternary Clipping Area**")
+ggint$.element_tree$tern.plot.latex                = .el_def("logical",                              description="Whether to parse characters as latex commands")
 
 ##AXIS ARROWS
 ggint$.element_tree$tern.axis.hshift               = .el_def("numeric",                              description="Amount to nudge the plot horizontally") #

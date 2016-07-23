@@ -49,6 +49,7 @@
   options("tern.mask.show"             = TRUE)
   options("tern.mask.debug"            = FALSE)
   options("tern.rotate"                = 0)
+  options("tern.latex"                 = FALSE)
 }
 
 #------------------------------------------------------------------------------
