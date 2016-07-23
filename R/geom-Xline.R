@@ -193,9 +193,10 @@ rline <- Rline
   featIntercept = sprintf("%sintercept",feat)
   for(x in c(0:1) ){
     s = if(x == 0) "" else "end"
+    limits = coord$scales[[ names(others)[2-x] ]]$limits %||% c(0,1)
     data[,sprintf("%s%s",mapping[[feat]],s) ] = data[,featIntercept]
-    data[,sprintf("%s%s",  others[[1+x]],s) ] = 1 - data[, mapping[[feat]] ] - min(coord$scales[[ names(others)[2-x] ]]$limits)
-    data[,sprintf("%s%s",  others[[2-x]],s) ] = min(coord$scales[[ names(others)[2-x] ]]$limits)
+    data[,sprintf("%s%s",  others[[1+x]],s) ] = 1 - data[, mapping[[feat]] ] - min(limits)
+    data[,sprintf("%s%s",  others[[2-x]],s) ] = min(limits)
   }
   scale_details = list( x.range = ranges[['x']], y.range = ranges[['y']] )
   data          = coord$transform(data,scale_details)

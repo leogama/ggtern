@@ -403,7 +403,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 .render.border.main <- function(self,data.extreme,theme,items){
   tryCatch({
     el   = calc_element('tern.panel.background',theme,verbose=F)
-    grob = element_grob.element_line(el,x=data.extreme$x,y=data.extreme$y)
+    grob = ggint$element_grob.element_line(el,x=data.extreme$x,y=data.extreme$y)
     items[[length(items) + 1]] = grob
   },error=function(e){})
   items

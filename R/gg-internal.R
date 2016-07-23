@@ -12,6 +12,7 @@
                          'scales_add_missing','scales_list','scales_transform_df','scales_map_df','scales_train_df',
                          'predictdf','contour_lines','check_required_aesthetics','snake_class',
                          'ggname','ggplot_gtable','camelize',
+                         'element_grob.element_line','element_grob.element_rect','element_grob.element_text','element_grob.element_blank',
                          'plot_clone')
 .functions.gridExtra  = c('latticeGrob')
   .functions          = rbind(data.frame(p='ggplot2',  f=unique(.functions.ggplot2)),

@@ -7,7 +7,7 @@
 #' @export
 theme_nomask   <- function(){.theme_mask(FALSE)}
 
-#' @rdname themeshowhidearrows
+#' @rdname themeshowhidemask
 #' @export
 theme_hidemask <- theme_nomask
 

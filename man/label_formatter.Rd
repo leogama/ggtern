@@ -9,7 +9,7 @@ label_formatter(label, ...)
 \arguments{
 \item{label}{character label}
 
-\item{additional}{arguments}
+\item{...}{additional arguments}
 }
 \description{
 \code{label_formatter} is a function that formats / parses labels for use in the grid.

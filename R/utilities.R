@@ -184,7 +184,7 @@ arrow_label_formatter.character   = function(label,suffix=NULL,sep="/",latex = F
 
 #' \code{label_formatter} is a function that formats / parses labels for use in the grid.
 #' @param label character label
-#' @param additional arguments
+#' @param ... additional arguments
 label_formatter = function(label,...){ arrow_label_formatter(label,suffix="",sep="",...) }
 
 

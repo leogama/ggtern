@@ -60,7 +60,11 @@
 #'       yarrow  = "Anorthite (Na,K)AlSi_3O_8",
 #'       z       = "KAlSi_3O_8",
 #'       zarrow  = "Orthoclase KAlSi_3O_8") + 
-#' geom_point() + theme_showarrows() + theme_clockwise() + weight_percent()
+#' theme_latex(TRUE) + 
+#' geom_point() + 
+#' theme_showarrows() + 
+#' theme_clockwise() + 
+#' weight_percent()
 NULL
 
 #' \code{Tlab} modifies the label of the TOP apex species

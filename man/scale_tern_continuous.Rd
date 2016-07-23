@@ -8,7 +8,7 @@
 \title{Continuous position scales (T, L & R).}
 \usage{
 scale_T_continuous(name = waiver(), limits = NULL, breaks = waiver(),
-  minor_breaks = waiver(), labels = waiver(), expand = waiver(), ...)
+  minor_breaks = waiver(), labels = waiver(), ...)
 
 scale_L_continuous(name = waiver(), limits = NULL, breaks = waiver(),
   minor_breaks = waiver(), labels = waiver(), ...)
@@ -49,12 +49,6 @@ Use \code{NA} to refer to the existing minimum or maximum.}
   \item A function that takes the breaks as input and returns labels
     as output
 }}
-
-\item{expand}{A numeric vector of length two giving multiplicative and
-additive expansion constants. These constants ensure that the data is
-placed some distance away from the axes. The defaults are
-\code{c(0.05, 0)} for continuous variables, and \code{c(0, 0.6)} for
-discrete variables.}
 
 \item{...}{not used}
 }
