@@ -2,6 +2,7 @@ ggtern 2.1.5
 ----------------------------------------------------------------
 * Fixed bug to do with theme element rendering, some properties were being ignored (Thanks to Ivan Galvan for picking up on this)
 * Created new theme element, and convenience functions, to enable or disable the parsing of text objects into expressions using latex markup. Previously, the parsing was done by default, however now, they are rendered without parsing unless the user states that they wish it to be parsed via the 'tern.plot.latex' theme element, or theme_latex() convenience functions.
+* Improved the logic in handling the breaks / minor breaks and labels when they are to be calculated automatically.
 
 ggtern 2.1.4
 ----------------------------------------------------------------

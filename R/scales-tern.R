@@ -5,11 +5,10 @@
 #' @param ... not used
 #' @export
 scale_T_continuous <- function(name         = waiver(), 
-                               limits       = c(0,1), 
-                               breaks       = getBreaks(limits,TRUE),
-                               minor_breaks = getBreaks(limits,FALSE),
-                               labels       = getLabels(breaks=breaks),
-                               expand       = waiver(),...) {
+                               limits       = NULL,
+                               breaks       = waiver(),
+                               minor_breaks = waiver(),
+                               labels       = waiver(),...) {
   sc <- continuous_scale(
     c("T"),
     "tern_T", identity, name = name, breaks = breaks,
@@ -29,11 +28,10 @@ scale_T_continuous <- function(name         = waiver(),
 #' @rdname scale_tern_continuous
 #' @export
 scale_L_continuous <- function(name         = waiver(), 
-                               limits       = c(0,1), 
-                               breaks       = getBreaks(limits,TRUE),
-                               minor_breaks = getBreaks(limits,FALSE),
-                               labels       = getLabels(breaks=breaks),
-                               expand       = waiver(),...) {
+                               limits       = NULL,
+                               breaks       = waiver(),
+                               minor_breaks = waiver(),
+                               labels       = waiver(),...) {
   sc <- continuous_scale(
     c("L"),
     "tern_L", identity, name = name, breaks = breaks,
@@ -52,11 +50,10 @@ scale_L_continuous <- function(name         = waiver(),
 #' @rdname scale_tern_continuous
 #' @export
 scale_R_continuous <- function(name         = waiver(), 
-                               limits       = c(0,1), 
-                               breaks       = getBreaks(limits,TRUE),
-                               minor_breaks = getBreaks(limits,FALSE),
-                               labels       = getLabels(breaks=breaks),
-                               expand       = waiver(),...) {
+                               limits       = NULL,
+                               breaks       = waiver(),
+                               minor_breaks = waiver(),
+                               labels       = waiver(),...) {
   sc <- continuous_scale(
     c("R"),
     "tern_R", identity, name = name, breaks = breaks,

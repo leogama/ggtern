@@ -282,57 +282,67 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   tryCatch({
     scale = self$scales[[X]]
     
-    #DETERMINE THE BREAKS
-    breaks <- if(major) scale$breaks else scale$minor_breaks
+    #Determine the limits
+    limits = (if(inherits(scale$limits,'waiver')) NULL else scale$limits) %||% c(0,1)
     
-    #BYPASS IF NECESSARY
+    #Determine the Breaks
+    breaks <- if(major) scale$breaks else scale$minor_breaks
+    if(inherits(breaks,'waiver')){
+      breaks = getBreaks(limits = limits, isMajor = major)
+    }
+    
+    #Bypass if necessary
     if(length(breaks) == 0) 
       return(existing)
     
-    labels <- ifthenelse(major,scale$labels,"")
-    labels <- as.character(ifthenelse(identical(labels,waiver()),100*breaks,labels))
+    #Determine the labels
+    labels <- if(major) scale$labels else ""
+    if(inherits(labels,'waiver'))
+      labels = getLabels(limits=limits,breaks=breaks)
     
-    #major & minor ticklength
-    tl.major <- tl.minor <- 0
+    #major ticklength
+    tl.major <- 0
     tryCatch({
       tl.major <- convertUnit(theme$tern.axis.ticks.length.major,"npc",valueOnly=T)
     },error=function(e){ warning(e) })
+    
+    #minor ticklength
+    tl.minor <- 0
     tryCatch({
       tl.minor <- convertUnit(theme$tern.axis.ticks.length.minor,"npc",valueOnly=T)
     },error=function(e){  warning(e) })
     
     #Assign new id.
     id     <- (max(existing$ID,0) + 1)
-    limits <- is.numericor(scale$limits,c(0,1))
     ix     <- min(ix,ifthenelse(major,length(tl.major),length(tl.minor)))
-    majmin <- ifthenelse(major,"major","minor")  #Major or Minor Element Name part.
+    majmin <- if(major) 'major' else 'minor' #Major or Minor Element Name part.
     
     #The new dataframe
-    new            <- data.frame(ID = id,Scale=X,breaks,Labels=labels,Major=major)
-    new            <- subset(new,breaks >= min(limits) & breaks <= max(limits))
+    new            <- data.frame(ID = id,Scale = X, breaks, Labels = labels, Major = major)
+    new            <- subset(new, breaks >= min(limits) & breaks <= max(limits))
     new$Prop       <- (new$breaks - min(limits)) / abs(diff(limits))
     new$TickLength <- ifthenelse(major,tl.major[ix],tl.minor[ix])
-    new$NameText   <- paste0("tern.axis.text.",X)
-    new$NameTicks  <- paste0("tern.axis.ticks.",majmin,".",X)
-    new$NameGrid   <- paste0("tern.panel.grid.",majmin,".",X)
+    new$NameText   <- sprintf("tern.axis.text.%s",X)
+    new$NameTicks  <- sprintf("tern.axis.ticks.%s.%s",majmin,X)
+    new$NameGrid   <- sprintf("tern.panel.grid.%s.%s",majmin,X)
     new$Major      <- major
     
     ##Start and finish positions of scale.
-    out       <- c("x","y")
+    out            <- c("x","y")
     
     #Start indexes.
-    ix.s <- which(seq.tlr == X);
-    finish <- as.numeric(data.extreme[ix.s,out])
+    ix.s           <- which(seq.tlr == X);
+    finish         <- as.numeric(data.extreme[ix.s,out])
     
     #For Ticks
-    ix.f <- ifthenelse(clockwise,if(ix.s == 3){1}else{ix.s+1},if(ix.s == 1){3}else{ix.s-1})
-    start  <- as.numeric(data.extreme[ix.f,out])
+    ix.f           <- ifthenelse(clockwise,if(ix.s == 3){1}else{ix.s+1},if(ix.s == 1){3}else{ix.s-1})
+    start          <- as.numeric(data.extreme[ix.f,out])
     for(i in 1:length(out))
       new[,out[i]] <- new$Prop*(finish[i]-start[i]) + start[i]
     
     #FOR GRID
-    ix.f <- ifthenelse(clockwise,if(ix.s == 1){3}else{ix.s-1},if(ix.s == 3){1}else{ix.s+1})
-    start  <- as.numeric(data.extreme[ix.f,out])
+    ix.f           <- ifthenelse(clockwise,if(ix.s == 1){3}else{ix.s-1},if(ix.s == 3){1}else{ix.s+1})
+    start          <- as.numeric(data.extreme[ix.f,out])
     for(i in 1:length(out))
       new[,paste0(out[i],"end.grid")] <- new$Prop*(finish[i]-start[i]) + start[i]
     
@@ -341,14 +351,14 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     new$Angle.Text <- .valid.angle(angle.text)
     
     #Determine the tick finish positions for segments.
-    new$xend <- cos(new$Angle*pi/180)*new$TickLength + new$x
-    new$yend <- sin(new$Angle*pi/180)*new$TickLength + new$y
+    new$xend       <- cos(new$Angle*pi/180)*new$TickLength + new$x
+    new$yend       <- sin(new$Angle*pi/180)*new$TickLength + new$y
     
     #Determine the secondary tick start and finish positions.
-    new$x.sec    <- new$xend.grid
-    new$y.sec    <- new$yend.grid
-    new$xend.sec <- cos((new$Angle+180)*pi/180)*new$TickLength + new$x.sec
-    new$yend.sec <- sin((new$Angle+180)*pi/180)*new$TickLength + new$y.sec
+    new$x.sec      <- new$xend.grid
+    new$y.sec      <- new$yend.grid
+    new$xend.sec   <- cos((new$Angle+180)*pi/180)*new$TickLength + new$x.sec
+    new$yend.sec   <- sin((new$Angle+180)*pi/180)*new$TickLength + new$y.sec
     
     return(new)
     

@@ -7,17 +7,14 @@
 \alias{scale_tern_continuous}
 \title{Continuous position scales (T, L & R).}
 \usage{
-scale_T_continuous(name = waiver(), limits = c(0, 1),
-  breaks = getBreaks(limits, TRUE), minor_breaks = getBreaks(limits, FALSE),
-  labels = getLabels(breaks = breaks), expand = waiver(), ...)
+scale_T_continuous(name = waiver(), limits = NULL, breaks = waiver(),
+  minor_breaks = waiver(), labels = waiver(), expand = waiver(), ...)
 
-scale_L_continuous(name = waiver(), limits = c(0, 1),
-  breaks = getBreaks(limits, TRUE), minor_breaks = getBreaks(limits, FALSE),
-  labels = getLabels(breaks = breaks), expand = waiver(), ...)
+scale_L_continuous(name = waiver(), limits = NULL, breaks = waiver(),
+  minor_breaks = waiver(), labels = waiver(), ...)
 
-scale_R_continuous(name = waiver(), limits = c(0, 1),
-  breaks = getBreaks(limits, TRUE), minor_breaks = getBreaks(limits, FALSE),
-  labels = getLabels(breaks = breaks), expand = waiver(), ...)
+scale_R_continuous(name = waiver(), limits = NULL, breaks = waiver(),
+  minor_breaks = waiver(), labels = waiver(), ...)
 }
 \arguments{
 \item{name}{The name of the scale. Used as axis or legend title. If
