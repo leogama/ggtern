@@ -77,7 +77,7 @@ getBreaks <- function(limits = c(0,1), isMajor = TRUE, n = 5){
     r = range(ret)
     d = diff(r)/(length(ret)-1)
     minor = seq(min(ret)-d,max(ret)+d,by=d/2)
-    minor = minor[which(minor >= min(limits) & minor <= max(limits))]
+    minor = minor[which(minor > min(limits) & minor < max(limits))]
     ret   = minor[which(!minor %in% ret)]
   }
   ret
@@ -91,7 +91,7 @@ getLabels = function(limits = c(0,1), breaks = getBreaks(limits), format = "%g",
     stop("'breaks' must be numeric",call.=FALSE)
   
   #Default Result
-  result = 100*breaks
+  result = factor[1]*breaks
   
   #Try and process...
   tryCatch({
@@ -100,7 +100,7 @@ getLabels = function(limits = c(0,1), breaks = getBreaks(limits), format = "%g",
     result = sprintf(format,factor[1]*breaks)
     
     #Stop First Label interfering with the main label
-    if(length(result) > 1) 
+    if(breaks[1] == min(limits))
       result[1] = ''
     
   },error=function(e){ })
