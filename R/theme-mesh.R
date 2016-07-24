@@ -5,6 +5,14 @@
 #' within \code{\link{getBreaks}} convenience function, may not be strictly adhered or reflected.
 #' @param n the 'target' number of major breaks
 #' @param ... additional arguments to be passed through to \code{\link{tern_limits}}
+#' @examples 
+#' #Default example of a target n=10 mesh
+#' ggtern() + 
+#'  theme_mesh(10)
+#' 
+#' #Default example, of a target n=5 mesh, with limiting region
+#' ggtern() + 
+#'  theme_mesh(5,T=.5,L=.5,R=.5)
 #' @export
 theme_mesh = function(n = 5,...){
   
