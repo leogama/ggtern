@@ -4,10 +4,12 @@
 \alias{theme_mesh}
 \title{Create Grid Mesh}
 \usage{
-theme_mesh(n = 5)
+theme_mesh(n = 5, ...)
 }
 \arguments{
 \item{n}{the 'target' number of major breaks}
+
+\item{...}{additional arguments to be passed through to \code{\link{tern_limits}}}
 }
 \description{
 Convenience function for creation of a grid mesh of an ideal number of 'n' major breaks. Note that 

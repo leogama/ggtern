@@ -296,7 +296,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       return(existing)
     
     #Determine the labels
-    labels <- if(major) scale$labels else ""
+    labels <- if(major) (scale$labels %||% waiver()) else ""
     if(inherits(labels,'waiver'))
       labels = getLabels(limits=limits,breaks=breaks)
     

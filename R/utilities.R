@@ -76,7 +76,7 @@ getBreaks <- function(limits = c(0,1), isMajor = TRUE, n = 5){
   if(!isMajor){
     r = range(ret)
     d = diff(r)/(length(ret)-1)
-    minor = seq(min(ret)-d,max(ret)+d,by=d/2)
+    minor = seq(min(ret)-d/2,max(ret)+d/2,by = d)
     minor = minor[which(minor > min(limits) & minor < max(limits))]
     ret   = minor[which(!minor %in% ret)]
   }
