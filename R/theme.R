@@ -75,33 +75,6 @@ theme <- function(..., complete = FALSE, validate = TRUE) {
 plot_theme <- function(x) {defaults(x$theme, ggtern::theme_get())}
 
 
-.theme_new <- (function() {
-  theme <- theme_gray()
-  list(
-    get = function(){theme},
-    set = function(new){
-      ggplot2::theme_set(new) ##HACK
-      thm <- theme_gray()
-      missing <- setdiff(names(thm),names(new))
-      if (length(missing) > 0)
-        warning("New theme missing the following elements: ",paste(missing, collapse = ", "), call. = FALSE)
-      old <- theme
-      theme <<- new
-      invisible(old)
-    }
-  )
-})()
-
-#' @rdname overloaded
-#' @export
-theme_get <- .theme_new$get
-
-#' @rdname overloaded
-#' @export
-theme_set <- .theme_new$set
-
-
-
 #' \code{add_theme} is a local copy of the ggplot2 function which modifies the current theme, by a proposed theme. 
 #' It is slightly modified to handle 'logical' values the same way it handles 'character' or 'numeric' values, 
 #' which do not inherit from 'element' objects.
