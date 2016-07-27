@@ -5,6 +5,7 @@ ggtern 2.1.5
 * Improved the logic in handling the breaks / minor breaks and labels when they are to be calculated automatically.
 * Reworked the theme_mesh function, to now accept an ellipsis term, which is passed through to limits_tern. By this token, theme_mesh now works over a restricted plotting region.
 * Improved logic of the getBreaks function, when determining minor breaks
+* Fixed bug in validate_element, when validating plot.margin theme elements, thanks to Degang Wu for picking up the problem
 
 ggtern 2.1.4
 ----------------------------------------------------------------

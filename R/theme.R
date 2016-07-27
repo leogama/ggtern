@@ -19,7 +19,7 @@ validate_element <- function(el, elname) {
   eldef <- ggint$.element_tree[[elname]]
   
   if (is.null(eldef)) {
-    stop('"', elname, '" is not a valid theme element name...')
+    stop('"', elname, '" is not a valid theme element name.')
   }
   
   # NULL values for elements are OK
@@ -30,7 +30,9 @@ validate_element <- function(el, elname) {
     # but sometimes its a vector like c(0,0)
     if (!is.character(el) && !is.numeric(el))
       stop("Element ", elname, " must be a string or numeric vector.")
-    
+  } else if (eldef$class == "margin") {
+    if (!is.unit(el) && length(el) == 4)
+      stop("Element ", elname, " must be a unit vector of length 4.")
   } else if (!inherits(el, eldef$class) && !inherits(el, "element_blank")) {
     stop("Element ", elname, " must be a ", eldef$class, " object.")
   }
@@ -48,11 +50,22 @@ theme_update <- function(...) {
 #' @rdname theme_elements
 #' @inheritParams ggplot2::theme
 #' @export
-theme <- function(..., complete = FALSE) {
+theme <- function(..., complete = FALSE, validate = TRUE) {
   elements <- list(...)
+  
+  if (!is.null(elements$axis.ticks.margin)) {
+    warning("`axis.ticks.margin` is deprecated. Please set `margin` property ",
+            " of `axis.text` instead", call. = FALSE)
+    elements$axis.ticks.margin <- NULL
+  }
+  
   # Check that all elements have the correct class (element_text, unit, etc)
-  mapply(validate_element, elements, names(elements))
-  structure(elements, class = c("theme", "gg"), complete = complete)
+  if (validate) {
+    mapply(validate_element, elements, names(elements))
+  }
+  
+  structure(elements, class = c("theme", "gg"),
+            complete = complete, validate = validate)
 }
 
 

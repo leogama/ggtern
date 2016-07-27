@@ -74,7 +74,7 @@
 \alias{themeelements}
 \title{New Theme Elements}
 \usage{
-theme(..., complete = FALSE)
+theme(..., complete = FALSE, validate = TRUE)
 }
 \arguments{
 \item{...}{a list of element name, element pairings that modify the
@@ -83,6 +83,8 @@ existing theme.}
 \item{complete}{set this to TRUE if this is a complete theme, such as
 the one returned \code{by theme_grey()}. Complete themes behave
 differently when added to a ggplot object.}
+
+\item{validate}{TRUE to run validate_element, FALSE to bypass checks.}
 }
 \description{
 \code{ggtern} creates many new theme elements and inheritances, the following is an outline:
