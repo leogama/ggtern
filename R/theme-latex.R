@@ -31,7 +31,11 @@
 #'  
 #' @seealso \code{\link[latex2exp]{TeX}}
 #' @export
-theme_latex = function(value = getOption('tern.latex')){ theme(tern.plot.latex = value) }
+theme_latex = function(value = TRUE){ theme(tern.plot.latex = value) }
+
+#' @rdname theme_latex
+#' @export
+theme_showlatex = function(){ theme_latex(TRUE) } 
 
 #' @rdname theme_latex
 #' @export
@@ -40,7 +44,3 @@ theme_nolatex = function(){ theme_latex(FALSE) }
 #' @rdname theme_latex
 #' @export
 theme_hidelatex = function(){ theme_latex(FALSE) }
-
-#' @rdname theme_latex
-#' @export
-theme_showlatex = function(){ theme_latex(TRUE) } 

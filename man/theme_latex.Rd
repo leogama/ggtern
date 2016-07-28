@@ -7,13 +7,13 @@
 \alias{theme_showlatex}
 \title{Parse Labels w Latex Markup}
 \usage{
-theme_latex(value = getOption("tern.latex"))
+theme_latex(value = TRUE)
+
+theme_showlatex()
 
 theme_nolatex()
 
 theme_hidelatex()
-
-theme_showlatex()
 }
 \arguments{
 \item{value}{logical as to whether to enable latex parsing or not}

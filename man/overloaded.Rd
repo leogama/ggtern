@@ -5,6 +5,7 @@
 \alias{add_theme}
 \alias{calc_element}
 \alias{combine_elements}
+\alias{plot_theme}
 \alias{theme_update}
 \alias{update_theme}
 \alias{validate_element}
@@ -15,6 +16,8 @@
 validate_element(el, elname)
 
 theme_update(...)
+
+plot_theme(x)
 
 add_theme(t1, t2, t2name)
 
@@ -32,6 +35,8 @@ calc_element(element, theme, verbose = FALSE)
 \item{elname}{the element name}
 
 \item{...}{named list of theme settings}
+
+\item{x}{gg object}
 
 \item{t1}{A theme object}
 
@@ -62,6 +67,8 @@ Patches were mainly to do with handling the new theme elements and heirarchies.
 \code{validate_element} is a local copy of the ggplot2 function which checks the validity of a given theme element 
 against the elements table. Since the \code{.elements_tree} is an internal function, which is not exported, and modifications could not be made, 
 a new (and equivalent) \code{.element_tree} is created within ggtern to handle the new theme elements created within this package.
+
+\code{plot_theme} is a local copy of the method that determines the net theme between a plot and the current global theme.
 
 \code{add_theme} is a local copy of the ggplot2 function which modifies the current theme, by a proposed theme. 
 It is slightly modified to handle 'logical' values the same way it handles 'character' or 'numeric' values, 

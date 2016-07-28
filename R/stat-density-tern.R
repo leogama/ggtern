@@ -53,8 +53,8 @@ stat_density_tern <- function(mapping = NULL, data = NULL, geom = "density_tern"
 #' @export
 StatDensityTern  = ggproto("StatDensityTern", 
   Stat,
-  retransform    = FALSE,
-  required_aes   = c("x",'y',"z"),
+  retransform  = FALSE,
+  required_aes = c("x",'y',"z"),
   setup_data = function(data, params) {
     data$weight = data$weight %||% params$weight %||% numeric(nrow(data)) + 1
     data
@@ -63,7 +63,7 @@ StatDensityTern  = ggproto("StatDensityTern",
                             h = NULL, contour = TRUE, n = 100, 
                             base='ilr', expand = 0.5, weight=NULL, bins=NULL, binwidth=NULL,breaks=NULL) {
     
-    if(!base %in% c('identity','ilr')) 
+    if(!c(base) %in% c('identity','ilr')) 
       stop('base must be either identity or ilr',call.=FALSE)
     
     data   = remove_missing(data,vars=self$required_aes,na.rm=TRUE,name='StatConfidence',finite=TRUE)
