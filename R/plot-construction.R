@@ -14,8 +14,7 @@
 }
 
 add_ggplot <- function(p, object, objectname) {
-  if (is.null(object)) return(p)
-  if (is.theme(object)) {
+  if(is.theme(object)){
     p <- ggint$plot_clone(p)
     p$theme <- update_theme(p$theme, object)
     ggint$set_last_plot(p)
