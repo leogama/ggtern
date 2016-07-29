@@ -453,8 +453,9 @@ theme_rgb <- theme_rgbg
 #' @rdname ggtern_themes
 #' @export
 theme_matrix = function(base_size = 12, base_family = ""){
-    featA = 'green'; featB = 'darkgreen'; featC = 'black'; featD = 'grey10'; featE = 'grey15'
-    theme_custom(base_size, base_family, 
+    featA = 'green'; featB = 'darkgreen'; featC = 'grey15'; featD = 'grey10'; featE = 'grey15'
+    theme_custom(base_size             = base_size, 
+                 base_family           = base_family, 
                  tern.plot.background  = featD, 
                  tern.panel.background = featC,
                  col.T                 = featA,
