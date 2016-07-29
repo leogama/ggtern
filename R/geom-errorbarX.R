@@ -161,7 +161,7 @@ GeomErrorbarr <- ggproto("GeomErrorbarr",
   excl      = setdiff(total,feat)
   
   #Ensure the data is normalized
-  data = tlr2xy(tlr2xy(data,coord),coord,inverse = TRUE)
+  #data = tlr2xy(tlr2xy(data,coord),coord,inverse = TRUE)
   
   #Determine the deltas
   deltaMin  = data[,mapping[[feat]]] - data[,sprintf("%smin",feat)]
