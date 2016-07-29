@@ -8,6 +8,7 @@ ggtern 2.1.5
 * Fixed bug in validate_element, when validating plot.margin theme elements, thanks to Degang Wu for picking up the problem
 * Eliminated some masked functions (theme_get, theme_set), reverting back to the ggplot2 originals.
 * Fixed bug with normalisation of data for errorbars, thanks to Andy London for picking up the issue.
+* Added new custom theme, theme_matrix
 
 ggtern 2.1.4
 ----------------------------------------------------------------

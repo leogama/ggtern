@@ -32,6 +32,9 @@
 #'  \item{Theme with Only Black Lines:}{
 #'    \code{\link[=theme_linedraw]{theme_linedraw(...)}}
 #'  }
+#'  \item{Matrix Theme:}{
+#'    \code{\link[=theme_matrix]{theme_matrix(...)}}
+#'  }
 #' }
 #' @rdname theme_complete
 #' @name theme_complete
@@ -98,6 +101,9 @@ NULL
 #' \item{\code{theme_custom}}{
 #' Theme with custom basic colours
 #' }
+#' 
+#' \item{\code{theme_matrix}}
+#' Theme with very dark background and bright green features
 #' }
 #'
 #' @examples
@@ -383,6 +389,7 @@ theme_custom <- function(base_size             = 12,
   
   #Elements to replace
   theme(
+    tern.plot.background    = element_rect(fill  = tern.plot.background),
     tern.panel.background   = element_rect(fill  = tern.panel.background),
     tern.panel.grid.major   = element_line(linetype=6,size=0.50),
     tern.panel.grid.major.T = element_line(color = col.T),
@@ -442,6 +449,25 @@ theme_rgbg <- function(base_size = 12, base_family = ""){
   )
 }
 theme_rgb <- theme_rgbg
+
+#' @rdname ggtern_themes
+#' @export
+theme_matrix = function(base_size = 12, base_family = ""){
+    featA = 'green'; featB = 'darkgreen'; featC = 'black'; featD = 'grey10'; featE = 'grey15'
+    theme_custom(base_size, base_family, 
+                 tern.plot.background  = featD, 
+                 tern.panel.background = featC,
+                 col.T                 = featA,
+                 col.L                 = featA,
+                 col.R                 = featA,
+                 col.grid.minor        = featB) +
+    theme(text                 = element_text(color = featA),
+          plot.background      = element_rect(fill  = featD),
+          tern.plot.background = element_rect(color = featD),
+          strip.background     = element_rect(color = featA, fill = featE),
+          strip.text           = element_text(color = featA),
+          tern.axis.arrow.show = TRUE)
+}
 
 #-------------------------------------------------------------
 # REDUNDANT THEMES

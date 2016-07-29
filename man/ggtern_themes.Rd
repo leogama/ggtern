@@ -12,6 +12,7 @@
 \alias{theme_grey}
 \alias{theme_light}
 \alias{theme_linedraw}
+\alias{theme_matrix}
 \alias{theme_minimal}
 \alias{theme_rgbg}
 \alias{theme_rgbw}
@@ -53,6 +54,8 @@ theme_custom(base_size = 12, base_family = "",
 theme_rgbw(base_size = 12, base_family = "")
 
 theme_rgbg(base_size = 12, base_family = "")
+
+theme_matrix(base_size = 12, base_family = "")
 }
 \arguments{
 \item{base_size}{base font size}
@@ -129,6 +132,9 @@ A completely empty theme.
 \item{\code{theme_custom}}{
 Theme with custom basic colours
 }
+
+\item{\code{theme_matrix}}
+Theme with very dark background and bright green features
 }
 }
 \examples{

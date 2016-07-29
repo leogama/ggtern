@@ -36,6 +36,9 @@
  \item{Theme with Only Black Lines:}{
    \code{\link[=theme_linedraw]{theme_linedraw(...)}}
  }
+ \item{Matrix Theme:}{
+   \code{\link[=theme_matrix]{theme_matrix(...)}}
+ }
 }
 }
 \author{

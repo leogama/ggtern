@@ -68,7 +68,6 @@ theme <- function(..., complete = FALSE, validate = TRUE) {
             complete = complete, validate = validate)
 }
 
-
 #' \code{plot_theme} is a local copy of the method that determines the net theme between a plot and the current global theme.
 #' @param x gg object
 #' @rdname overloaded
