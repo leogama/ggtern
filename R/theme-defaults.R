@@ -133,15 +133,20 @@ NULL
 #' }
 #'
 #' @examples
-#' data(Feldspar)
-#' p <- ggtern(Feldspar,aes(Ab,An,Or)) + 
-#'      geom_point(aes(colour=T.C,size=P.Gpa)) + 
-#'      facet_wrap(~Feldspar)
+#' #Create a list of the theme suffixes
+#' themes = c('gray','bw','linedraw','light','dark','minimal','classic','void',
+#' 'custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark')
 #' 
-#' #Uncomment to run
-#' p + theme_gray()
-#' p + theme_rgbg()
-#' p + theme_dark()
+#' #Iterate over all the suffixes, creating a new plot for each theme
+#' grobs = lapply(themes,function(x){
+#'  thmName = sprintf("theme_%s",x)
+#'  thm = do.call(thmName,args=list(base_size=10))
+#'  df  = data.frame(label=thmName)
+#'  ggtern(df) + facet_wrap(~label) + thm
+#' })
+#' 
+#' #Arrange the list of grobs, using the grid.arrange function
+#' grid.arrange(grobs=grobs,top="Collection of Themes")
 #' @aliases theme_tern_gray theme_tern_grey theme_grey theme_tern_bw theme_tern_classic theme_tern_rgbg theme_tern_rgbw theme_tern_minimal
 #' @name ggtern_themes
 #' @rdname ggtern_themes
