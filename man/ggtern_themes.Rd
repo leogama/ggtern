@@ -2,6 +2,8 @@
 % Please edit documentation in R/theme-defaults.R
 \name{ggtern_themes}
 \alias{ggtern_themes}
+\alias{theme_bluedark}
+\alias{theme_bluelight}
 \alias{theme_bw}
 \alias{theme_classic}
 \alias{theme_custom}
@@ -59,6 +61,10 @@ theme_rgbg(base_size = 12, base_family = "")
 theme_matrix(base_size = 12, base_family = "")
 
 theme_tropical(base_size = 12, base_family = "")
+
+theme_bluedark(base_size = 12, base_family = "")
+
+theme_bluelight(base_size = 12, base_family = "")
 }
 \arguments{
 \item{base_size}{base font size}
@@ -145,6 +151,14 @@ Theme with very dark background and bright green features
 
 \item{\code{theme_tropical}}{
 Theme with tropical colours
+}
+
+\item{\code{theme_bluelight}}{
+A blue theme with light background and dark features
+}
+
+\item{\code{theme_bluedark}}{
+A blue theme with dark background and light features
 }
 
 }

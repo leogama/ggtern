@@ -38,6 +38,12 @@
 #'  \item{Tropical Theme:}{
 #'    \code{\link[=theme_tropical]{theme_tropical(...)}}
 #'  }
+#'  \item{BlueLight Theme:}{
+#'    \code{\link[=theme_bluelight]{theme_bluelight(...)}}
+#'  }
+#'  \item{BlueDark Theme:}{
+#'    \code{\link[=theme_bluedark]{theme_bluedark(...)}}
+#'  }
 #' }
 #' @rdname theme_complete
 #' @name theme_complete
@@ -114,6 +120,14 @@ NULL
 #' 
 #' \item{\code{theme_tropical}}{
 #' Theme with tropical colours
+#' }
+#' 
+#' \item{\code{theme_bluelight}}{
+#' A blue theme with light background and dark features
+#' }
+#' 
+#' \item{\code{theme_bluedark}}{
+#' A blue theme with dark background and light features
 #' }
 #' 
 #' }
@@ -504,6 +518,52 @@ theme_tropical = function(base_size = 12, base_family = ""){
           strip.background           = element_rect(color = col.text, fill = col.bg.strip),
           strip.text                 = element_text(color = col.text),
           tern.axis.arrow.show       = TRUE)
+}
+
+#' @rdname ggtern_themes
+#' @export
+theme_bluedark = function(base_size = 12, base_family = ""){
+  featA = 'white'; featAG = 'white'; featB = NA; 
+  featC = '#000080'; featD = '#000040'; featE = '#000060'
+  theme_custom(base_size             = base_size, 
+               base_family           = base_family, 
+               tern.plot.background  = NULL, #FORCE INHERIT
+               tern.panel.background = featC,
+               col.T                 = featA,
+               col.L                 = featA,
+               col.R                 = featA,
+               col.grid.minor        = featB) +
+    theme(text                    = element_text(color = featA),
+          plot.background         = element_rect(fill  = featD),
+          strip.background        = element_rect(color = featA, fill = featE, size=1),
+          strip.text              = element_text(color = featA),
+          tern.panel.grid.major.T = element_line(color = featAG),
+          tern.panel.grid.major.L = element_line(color = featAG),
+          tern.panel.grid.major.R = element_line(color = featAG),
+          tern.axis.arrow.show    = TRUE)
+}
+
+#' @rdname ggtern_themes
+#' @export
+theme_bluelight = function(base_size = 12, base_family = ""){
+  featA = '#000040'; featAG = 'white'; featB = NA; 
+  featC = '#000080'; featD = 'white'; featE = 'white'
+  theme_custom(base_size             = base_size, 
+               base_family           = base_family, 
+               tern.plot.background  = NULL, #FORCE INHERIT
+               tern.panel.background = featC,
+               col.T                 = featA,
+               col.L                 = featA,
+               col.R                 = featA,
+               col.grid.minor        = featB) +
+    theme(text                    = element_text(color = featA),
+          plot.background         = element_rect(fill  = featD),
+          strip.background        = element_rect(color = featC, fill = featE, size=1),
+          strip.text              = element_text(color = featC),
+          tern.panel.grid.major.T = element_line(color = featAG),
+          tern.panel.grid.major.L = element_line(color = featAG),
+          tern.panel.grid.major.R = element_line(color = featAG),
+          tern.axis.arrow.show    = TRUE)
 }
 
 #-------------------------------------------------------------

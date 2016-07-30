@@ -42,6 +42,12 @@
  \item{Tropical Theme:}{
    \code{\link[=theme_tropical]{theme_tropical(...)}}
  }
+ \item{BlueLight Theme:}{
+   \code{\link[=theme_bluelight]{theme_bluelight(...)}}
+ }
+ \item{BlueDark Theme:}{
+   \code{\link[=theme_bluedark]{theme_bluedark(...)}}
+ }
 }
 }
 \author{
