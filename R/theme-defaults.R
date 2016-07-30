@@ -241,6 +241,7 @@ theme_gray  <- function(base_size = 11, base_family = ""){
   base = theme_ggtern(base_size = base_size, base_family = base_family) 
   base %+replace%
   theme(
+    tern.plot.background  = element_rect(size=NA,color=NA),
     tern.axis.arrow       = element_line(
       color               = calc_element('axis.text',base)$colour,
       lineend             = getOption('tern.arrow')
@@ -256,10 +257,10 @@ theme_grey <- theme_gray
 #' @export
 theme_bw <- function(base_size = 12, base_family = "") {
   base = ggplot2::theme_bw(base_size,base_family)
-  
   theme_ggtern(base_size,base_family) %+replace% 
   base %+replace%
   theme(
+    tern.plot.background  = element_rect(size=NA,color=NA),
     tern.axis.line = element_line(color = base$panel.border$colour)
   )
 }
@@ -290,6 +291,7 @@ theme_light <- function(base_size = 12, base_family = "") {
   theme_ggtern() %+replace%
     base %+replace%
     theme(
+      tern.plot.background  = element_rect(size=NA,color=NA),
       tern.axis.line        = baseline,
       tern.axis.ticks       = base$axis.ticks,
       tern.axis.ticks.minor = element_blank(),
@@ -305,17 +307,17 @@ theme_light <- function(base_size = 12, base_family = "") {
 #' @export
 theme_minimal <- function(base_size = 12, base_family = "") {
   theme_bw(base_size,base_family) %+replace%
-    ggplot2::theme_minimal(base_size,base_family) %+replace%
-    theme(
-      tern.axis.line        = element_line(),
-      tern.axis.line.T      = element_blank(),
-      tern.axis.line.L      = element_blank(),
-      tern.axis.line.R      = element_blank(),
-      tern.axis.ticks.major = element_blank(),
-      tern.axis.ticks.minor = element_blank(),
-      tern.axis.arrow       = element_blank(),
-      tern.axis.arrow.text  = element_blank()
-    )
+  ggplot2::theme_minimal(base_size,base_family) %+replace%
+  theme(
+    tern.axis.line        = element_line(),
+    tern.axis.line.T      = element_blank(),
+    tern.axis.line.L      = element_blank(),
+    tern.axis.line.R      = element_blank(),
+    tern.axis.ticks.major = element_blank(),
+    tern.axis.ticks.minor = element_blank(),
+    tern.axis.arrow       = element_blank(),
+    tern.axis.arrow.text  = element_blank()
+  )
 }
 
 #' @rdname ggtern_themes
@@ -346,6 +348,7 @@ theme_dark <- function(base_size = 12, base_family = "") {
   theme_ggtern(base_size,base_family) %+replace% 
   base %+replace%
   theme(
+    tern.plot.background  = element_rect(size=NA,color=NA),
     tern.axis.line  = element_line( colour = "grey40", size = 0.25),
     tern.axis.ticks = element_line( colour = "grey40", size = 0.25),
     tern.axis.ticks.minor = element_blank()
@@ -389,8 +392,8 @@ theme_darker <- function(base_size = 12, base_family = "") {
 #' @export
 theme_custom <- function(base_size             = 12,
                          base_family           = "",
-                         tern.plot.background  = 'white',
-                         tern.panel.background = 'grey92',
+                         tern.plot.background  = NULL,
+                         tern.panel.background = NULL,
                          col.T                 = 'black',
                          col.L                 = 'black',
                          col.R                 = 'black',
@@ -401,7 +404,7 @@ theme_custom <- function(base_size             = 12,
   
   #Elements to replace
   theme(
-    tern.plot.background    = element_rect(fill  = tern.plot.background),
+    tern.plot.background    = element_rect(fill  = tern.plot.background,size=NA,color=NA),
     tern.panel.background   = element_rect(fill  = tern.panel.background),
     tern.panel.grid.major   = element_line(linetype=6,size=0.50),
     tern.panel.grid.major.T = element_line(color = col.T),
@@ -468,7 +471,7 @@ theme_matrix = function(base_size = 12, base_family = ""){
     featA = 'green'; featAG = 'darkgreen'; featB = NA; featC = 'grey15'; featD = 'grey10'; featE = 'grey15'
     theme_custom(base_size             = base_size, 
                  base_family           = base_family, 
-                 tern.plot.background  = featD, 
+                 tern.plot.background  = NULL, #FORCE INHERIT
                  tern.panel.background = featC,
                  col.T                 = featA,
                  col.L                 = featA,
@@ -476,7 +479,6 @@ theme_matrix = function(base_size = 12, base_family = ""){
                  col.grid.minor        = featB) +
     theme(text                    = element_text(color = featA),
           plot.background         = element_rect(fill  = featD),
-          tern.plot.background    = element_rect(color = featD),
           strip.background        = element_rect(color = featA, fill = featE),
           strip.text              = element_text(color = featA),
           tern.panel.grid.major.T = element_line(color = featAG),
@@ -492,7 +494,7 @@ theme_tropical = function(base_size = 12, base_family = ""){
   col.bg.strip = 'gray90'; col.bg = 'white'; 
   theme_custom(base_size             = base_size, 
                base_family           = base_family, 
-               tern.plot.background  = col.bg, 
+               tern.plot.background  = NULL, 
                tern.panel.background = col.bg,
                col.T                 = col.T,
                col.L                 = col.L,

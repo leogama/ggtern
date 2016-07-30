@@ -48,7 +48,7 @@ theme_void(base_size = 12, base_family = "")
 theme_darker(base_size = 12, base_family = "")
 
 theme_custom(base_size = 12, base_family = "",
-  tern.plot.background = "white", tern.panel.background = "grey92",
+  tern.plot.background = NULL, tern.panel.background = NULL,
   col.T = "black", col.L = "black", col.R = "black",
   col.grid.minor = "white")
 

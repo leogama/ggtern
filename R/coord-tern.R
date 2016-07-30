@@ -388,7 +388,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                               id   = rep(1,nrow(data.extreme)),
                               gp   = gpar(  col  = e$colour,
                                             fill = alpha(e$fill,ifthenelse(!is.numeric(e$alpha),1,e$alpha)),
-                                            lwd  = ifthenelse(!is.numeric(e$size),0,e$size)*find_global_tern(".pt"),
+                                            lwd  = 0, #ifthenelse(!is.numeric(e$size),0,e$size)*find_global_tern(".pt"),
                                             lty  = e$linetype
                               )
         )
@@ -402,8 +402,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 
 .render.border.main <- function(self,data.extreme,theme,items){
   tryCatch({
-    el   = calc_element('tern.panel.background',theme,verbose=F)
-    grob = ggint$element_grob.element_line(el,x=data.extreme$x,y=data.extreme$y)
+    e = calc_element('tern.panel.background',theme,verbose=F)
+    if(identical(e,element_blank())) return(items)
+    ex   = rbind(data.extreme,data.extreme[1,])
+    grob = ggint$element_grob.element_line(e,x=ex$x,y=ex$y)
     items[[length(items) + 1]] = grob
   },error=function(e){})
   items
