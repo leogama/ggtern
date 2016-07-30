@@ -488,8 +488,8 @@ theme_matrix = function(base_size = 12, base_family = ""){
 #' @rdname ggtern_themes
 #' @export
 theme_tropical = function(base_size = 12, base_family = ""){
-  col.T = '#fe8f0f'; col.L = '#f7325e'; col.R = '#7dc410'
-  col.text  = 'black'; col.bg.strip = 'gray90'; col.bg = 'white'; 
+  col.T = '#fe8f0f'; col.L = '#f7325e'; col.R = '#7dc410'; col.text  = '#0264ed'; 
+  col.bg.strip = 'gray90'; col.bg = 'white'; 
   theme_custom(base_size             = base_size, 
                base_family           = base_family, 
                tern.plot.background  = col.bg, 
@@ -498,10 +498,10 @@ theme_tropical = function(base_size = 12, base_family = ""){
                col.L                 = col.L,
                col.R                 = col.R,
                col.grid.minor        = col.bg.strip) +
-    theme(text                    = element_text(color = col.text),
-          strip.background        = element_rect(color = col.text, fill = col.bg.strip),
-          strip.text              = element_text(color = col.text),
-          tern.axis.arrow.show    = TRUE)
+    theme(text                       = element_text(color = col.text),
+          strip.background           = element_rect(color = col.text, fill = col.bg.strip),
+          strip.text                 = element_text(color = col.text),
+          tern.axis.arrow.show       = TRUE)
 }
 
 #-------------------------------------------------------------
