@@ -39,6 +39,9 @@
  \item{Matrix Theme:}{
    \code{\link[=theme_matrix]{theme_matrix(...)}}
  }
+ \item{Tropical Theme:}{
+   \code{\link[=theme_tropical]{theme_tropical(...)}}
+ }
 }
 }
 \author{

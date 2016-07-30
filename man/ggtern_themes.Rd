@@ -23,6 +23,7 @@
 \alias{theme_tern_minimal}
 \alias{theme_tern_rgbg}
 \alias{theme_tern_rgbw}
+\alias{theme_tropical}
 \alias{theme_void}
 \title{ggtern themes}
 \usage{
@@ -56,6 +57,8 @@ theme_rgbw(base_size = 12, base_family = "")
 theme_rgbg(base_size = 12, base_family = "")
 
 theme_matrix(base_size = 12, base_family = "")
+
+theme_tropical(base_size = 12, base_family = "")
 }
 \arguments{
 \item{base_size}{base font size}
@@ -84,11 +87,13 @@ background, gridlines, the size and colour of fonts.
 
 \item{\code{theme_gray}}{
 The signature ggplot2 theme with a grey background and white gridlines,
-designed to put the data forward yet make comparisons easy.}
+designed to put the data forward yet make comparisons easy.
+}
 
 \item{\code{theme_bw}}{
 The classic dark-on-light ggplot2 theme. May work better for presentations
-displayed with a projector.}
+displayed with a projector.
+}
 
 \item{\code{theme_linedraw}}{
 A theme with only black lines of various widths on white backgrounds,
@@ -98,7 +103,8 @@ may refuse.}
 
 \item{\code{theme_light}}{
 A theme similar to \code{theme_linedraw} but with light grey lines and axes,
-to direct more attention towards the data.}
+to direct more attention towards the data.
+}
 
 \item{\code{theme_dark}}{
 The dark cousin of \code{theme_light}, with similar line sizes but a dark background. 
@@ -133,8 +139,14 @@ A completely empty theme.
 Theme with custom basic colours
 }
 
-\item{\code{theme_matrix}}
+\item{\code{theme_matrix}}{
 Theme with very dark background and bright green features
+}
+
+\item{\code{theme_tropical}}{
+Theme with tropical colours
+}
+
 }
 }
 \examples{

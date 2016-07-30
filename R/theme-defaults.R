@@ -35,6 +35,9 @@
 #'  \item{Matrix Theme:}{
 #'    \code{\link[=theme_matrix]{theme_matrix(...)}}
 #'  }
+#'  \item{Tropical Theme:}{
+#'    \code{\link[=theme_tropical]{theme_tropical(...)}}
+#'  }
 #' }
 #' @rdname theme_complete
 #' @name theme_complete
@@ -53,11 +56,13 @@ NULL
 #'
 #' \item{\code{theme_gray}}{
 #' The signature ggplot2 theme with a grey background and white gridlines,
-#' designed to put the data forward yet make comparisons easy.}
+#' designed to put the data forward yet make comparisons easy.
+#' }
 #'
 #' \item{\code{theme_bw}}{
 #' The classic dark-on-light ggplot2 theme. May work better for presentations
-#' displayed with a projector.}
+#' displayed with a projector.
+#' }
 #'
 #' \item{\code{theme_linedraw}}{
 #' A theme with only black lines of various widths on white backgrounds,
@@ -67,7 +72,8 @@ NULL
 #'
 #' \item{\code{theme_light}}{
 #' A theme similar to \code{theme_linedraw} but with light grey lines and axes,
-#' to direct more attention towards the data.}
+#' to direct more attention towards the data.
+#' }
 #'
 #' \item{\code{theme_dark}}{
 #' The dark cousin of \code{theme_light}, with similar line sizes but a dark background. 
@@ -102,8 +108,14 @@ NULL
 #' Theme with custom basic colours
 #' }
 #' 
-#' \item{\code{theme_matrix}}
+#' \item{\code{theme_matrix}}{
 #' Theme with very dark background and bright green features
+#' }
+#' 
+#' \item{\code{theme_tropical}}{
+#' Theme with tropical colours
+#' }
+#' 
 #' }
 #'
 #' @examples
@@ -470,6 +482,25 @@ theme_matrix = function(base_size = 12, base_family = ""){
           tern.panel.grid.major.T = element_line(color = featAG),
           tern.panel.grid.major.L = element_line(color = featAG),
           tern.panel.grid.major.R = element_line(color = featAG),
+          tern.axis.arrow.show    = TRUE)
+}
+
+#' @rdname ggtern_themes
+#' @export
+theme_tropical = function(base_size = 12, base_family = ""){
+  col.T = '#fe8f0f'; col.L = '#f7325e'; col.R = '#7dc410'
+  col.text  = 'black'; col.bg.strip = 'gray90'; col.bg = 'white'; 
+  theme_custom(base_size             = base_size, 
+               base_family           = base_family, 
+               tern.plot.background  = col.bg, 
+               tern.panel.background = col.bg,
+               col.T                 = col.T,
+               col.L                 = col.L,
+               col.R                 = col.R,
+               col.grid.minor        = col.bg.strip) +
+    theme(text                    = element_text(color = col.text),
+          strip.background        = element_rect(color = col.text, fill = col.bg.strip),
+          strip.text              = element_text(color = col.text),
           tern.axis.arrow.show    = TRUE)
 }
 
