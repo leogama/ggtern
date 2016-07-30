@@ -453,7 +453,7 @@ theme_rgb <- theme_rgbg
 #' @rdname ggtern_themes
 #' @export
 theme_matrix = function(base_size = 12, base_family = ""){
-    featA = 'green'; featB = 'darkgreen'; featC = 'grey15'; featD = 'grey10'; featE = 'grey15'
+    featA = 'green'; featAG = 'darkgreen'; featB = NA; featC = 'grey15'; featD = 'grey10'; featE = 'grey15'
     theme_custom(base_size             = base_size, 
                  base_family           = base_family, 
                  tern.plot.background  = featD, 
@@ -462,12 +462,15 @@ theme_matrix = function(base_size = 12, base_family = ""){
                  col.L                 = featA,
                  col.R                 = featA,
                  col.grid.minor        = featB) +
-    theme(text                 = element_text(color = featA),
-          plot.background      = element_rect(fill  = featD),
-          tern.plot.background = element_rect(color = featD),
-          strip.background     = element_rect(color = featA, fill = featE),
-          strip.text           = element_text(color = featA),
-          tern.axis.arrow.show = TRUE)
+    theme(text                    = element_text(color = featA),
+          plot.background         = element_rect(fill  = featD),
+          tern.plot.background    = element_rect(color = featD),
+          strip.background        = element_rect(color = featA, fill = featE),
+          strip.text              = element_text(color = featA),
+          tern.panel.grid.major.T = element_line(color = featAG),
+          tern.panel.grid.major.L = element_line(color = featAG),
+          tern.panel.grid.major.R = element_line(color = featAG),
+          tern.axis.arrow.show    = TRUE)
 }
 
 #-------------------------------------------------------------
