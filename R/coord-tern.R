@@ -113,6 +113,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       items = .render.fgset(self,extrm,scale_details,theme,items)
     }
     items = .render.titles(self,extrm,scale_details,theme,items)
+    items[[length(items) + 1]] = element_render(theme, "panel.border")
     gTree(children = do.call("gList", items))
   },
   train = function(self, scale_details) {
@@ -371,8 +372,8 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 
 .render.fgset <- function(self,data.extreme,scale_details,theme,items){
   items = .render.ticks(      self,data.extreme,scale_details,theme,items)
-  items = .render.border.main(self,data.extreme,              theme,items)
   items = .render.border.axis(self,data.extreme,              theme,items)
+  items = .render.border.main(self,data.extreme,              theme,items)
   items = .render.labels(     self,data.extreme,scale_details,theme,items)
   items = .render.arrows(     self,data.extreme,scale_details,theme,items)
   items
@@ -402,12 +403,12 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 
 .render.border.main <- function(self,data.extreme,theme,items){
   tryCatch({
-    e = calc_element('tern.panel.background',theme,verbose=F)
+    e      = calc_element('tern.panel.background',theme,verbose=F)
     if(identical(e,element_blank())) return(items)
-    ex   = rbind(data.extreme,data.extreme[1,])
-    grob = ggint$element_grob.element_line(e,x=ex$x,y=ex$y)
+    ex     = rbind(data.extreme,data.extreme[1,])
+    grob   = ggint$element_grob.element_line(e,size=e$size/2,x=ex$x,y=ex$y)
     items[[length(items) + 1]] = grob
-  },error=function(e){})
+  },error=function(e){ })
   items
 }
 
