@@ -62,3 +62,16 @@
   options("tern.mesh.buffer"           = 1.50)
   options("tern.mesh.size"             = 200)
 }
+
+#------------------------------------------------------------------------------
+#MANUAL EXECUTION -- RUN MANUALLY
+#------------------------------------------------------------------------------
+if(FALSE){
+  library(staticdocs)
+  dir = "./insta/staticdocs"
+  if(!dir.exists(dir))dir.create(dir,recursive=TRUE)
+  build_site(pkg = ".")
+}
+
+
+
