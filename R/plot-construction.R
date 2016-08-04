@@ -44,7 +44,7 @@ add_ggplot <- function(p, object, objectname) {
   } else if (inherits(object, "labels")) {
     p <- ggint$update_labels(p, object)
   } else if (inherits(object, "guides")) {
-    p <- ggupdate_guides(p, object)
+    p <- ggint$update_guides(p, object)
   } else if (inherits(object, "uneval")) {
     p$mapping <- defaults(object, p$mapping)
     
