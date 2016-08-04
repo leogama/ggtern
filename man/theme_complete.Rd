@@ -2,27 +2,29 @@
 % Please edit documentation in R/theme-defaults.R
 \name{theme_complete}
 \alias{theme_complete}
-\title{Complete Themes}
+\title{List of Available Themes}
 \description{
-\code{ggtern} ships with a number of complete themes:
+\code{ggtern} ships with a number of complete themes, summarized as follows. 
+These themes combine the base themes available to \code{ggplot2} and a number of NEW themes, which
+are unique to \code{ggtern}.
 \itemize{
  \item{ Black and White Theme:}{ 
-   \code{\link[=theme_tern_bw]{theme_bw(...)}}
+   \code{\link[=theme_bw]{theme_bw(...)}}
  }
  \item{Minimal Theme:}{
-   \code{\link[=theme_tern_minimal]{theme_minimal(...)}}
+   \code{\link[=theme_minimal]{theme_minimal(...)}}
  }
  \item{Classic Theme:}{
-   \code{\link[=theme_tern_classic]{theme_classic(...)}}
+   \code{\link[=theme_classic]{theme_classic(...)}}
  }
  \item{Gray and White Theme:}{
-   \code{\link[=theme_tern_gray]{theme_gray(...)}}
+   \code{\link[=theme_gray]{theme_gray(...)}}
  }
  \item{Red, Green, Blue and White Theme:}{
-   \code{\link[=theme_tern_rgbw]{theme_rgbw(...)}}
+   \code{\link[=theme_rgbw]{theme_rgbw(...)}}
  }
  \item{Red, Green, Blue and Gray Theme:}{
-   \code{\link[=theme_tern_rgbg]{theme_rgbg(...)}}
+   \code{\link[=theme_rgbg]{theme_rgbg(...)}}
  }
  \item{Dark Theme:}{
    \code{\link[=theme_dark]{theme_dark(...)}}
@@ -52,5 +54,8 @@
 }
 \author{
 Nicholas Hamilton
+}
+\seealso{
+\code{\link{ggtern_themes}}
 }
 

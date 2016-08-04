@@ -1,24 +1,26 @@
-#' Complete Themes
+#' List of Available Themes
 #' 
-#' \code{ggtern} ships with a number of complete themes:
+#' \code{ggtern} ships with a number of complete themes, summarized as follows. 
+#' These themes combine the base themes available to \code{ggplot2} and a number of NEW themes, which
+#' are unique to \code{ggtern}.
 #' \itemize{
 #'  \item{ Black and White Theme:}{ 
-#'    \code{\link[=theme_tern_bw]{theme_bw(...)}}
+#'    \code{\link[=theme_bw]{theme_bw(...)}}
 #'  }
 #'  \item{Minimal Theme:}{
-#'    \code{\link[=theme_tern_minimal]{theme_minimal(...)}}
+#'    \code{\link[=theme_minimal]{theme_minimal(...)}}
 #'  }
 #'  \item{Classic Theme:}{
-#'    \code{\link[=theme_tern_classic]{theme_classic(...)}}
+#'    \code{\link[=theme_classic]{theme_classic(...)}}
 #'  }
 #'  \item{Gray and White Theme:}{
-#'    \code{\link[=theme_tern_gray]{theme_gray(...)}}
+#'    \code{\link[=theme_gray]{theme_gray(...)}}
 #'  }
 #'  \item{Red, Green, Blue and White Theme:}{
-#'    \code{\link[=theme_tern_rgbw]{theme_rgbw(...)}}
+#'    \code{\link[=theme_rgbw]{theme_rgbw(...)}}
 #'  }
 #'  \item{Red, Green, Blue and Gray Theme:}{
-#'    \code{\link[=theme_tern_rgbg]{theme_rgbg(...)}}
+#'    \code{\link[=theme_rgbg]{theme_rgbg(...)}}
 #'  }
 #'  \item{Dark Theme:}{
 #'    \code{\link[=theme_dark]{theme_dark(...)}}
@@ -45,6 +47,7 @@
 #'    \code{\link[=theme_bluedark]{theme_bluedark(...)}}
 #'  }
 #' }
+#' @seealso \code{\link{ggtern_themes}}
 #' @rdname theme_complete
 #' @name theme_complete
 #' @author Nicholas Hamilton
@@ -134,30 +137,30 @@ NULL
 #'
 #' @examples
 #' #Create a list of the theme suffixes
-#' themes = c('gray','bw','linedraw','light','dark','minimal','classic','void',
-#' 'custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark')
+#' themesOrg = c('gray','bw','linedraw','light','dark','minimal','classic','void')
+#' themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark')
 #' 
-#' #Iterate over all the suffixes, creating a new plot for each theme
-#' grobs = lapply(themes,function(x){
-#'  thmName = sprintf("theme_%s",x)
-#'  thm = do.call(thmName,args=list(base_size=10))
-#'  df  = data.frame(label=thmName)
-#'  ggtern(df) + facet_wrap(~label) + thm
-#' })
+#' #Iterate over all the suffixes, creating a list of plots
+#' plotThemes = function(themes){
+#'    grobs = lapply(themes,function(x){
+#'      thmName = sprintf("theme_%s",x)
+#'      thm = do.call(thmName,args=list(base_size=9))
+#'      df  = data.frame(label=thmName)
+#'      ggtern(df) + facet_wrap(~label) + thm
+#'    })
+#'    grobs
+#' }
 #' 
-#' #Arrange the list of grobs, using the grid.arrange function
-#' grid.arrange(grobs=grobs,top="Collection of Themes")
-#' @aliases theme_tern_gray theme_tern_grey theme_grey theme_tern_bw theme_tern_classic theme_tern_rgbg theme_tern_rgbw theme_tern_minimal
+#' #Arrange the Original Themes
+#' grid.arrange(grobs=plotThemes(themesOrg),top = "Collection of Themes (Original)")
+#' 
+#' #Arrange the New Themes
+#' grid.arrange(grobs=plotThemes(themesNew),top = "Collection of Themes (New Themes)")
+#' 
+#' @author Nicholas Hamilton
 #' @name ggtern_themes
 #' @rdname ggtern_themes
 NULL
-
-#thm = base_ggtern_theme()
-#result = lapply(ls(thm),function(x){
-#  print(x)
-#  calc_element(x,thm)
-#})
-
 
 #' @rdname ggtern_themes
 #' @export

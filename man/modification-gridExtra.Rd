@@ -23,7 +23,7 @@ grid.arrange(..., newpage = TRUE)
 
 \item{name}{argument of gtable}
 
-\item{as.table}{logical: bottom-left to top-right or top-left to bottom-right}
+\item{as.table}{logical: bottom-left to top-right (TRUE) or top-left to bottom-right (FALSE)}
 
 \item{respect}{argument of gtable}
 

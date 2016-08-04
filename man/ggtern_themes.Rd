@@ -11,20 +11,12 @@
 \alias{theme_darker}
 \alias{theme_ggtern}
 \alias{theme_gray}
-\alias{theme_grey}
 \alias{theme_light}
 \alias{theme_linedraw}
 \alias{theme_matrix}
 \alias{theme_minimal}
 \alias{theme_rgbg}
 \alias{theme_rgbw}
-\alias{theme_tern_bw}
-\alias{theme_tern_classic}
-\alias{theme_tern_gray}
-\alias{theme_tern_grey}
-\alias{theme_tern_minimal}
-\alias{theme_tern_rgbg}
-\alias{theme_tern_rgbw}
 \alias{theme_tropical}
 \alias{theme_void}
 \title{ggtern themes}
@@ -165,18 +157,28 @@ A blue theme with dark background and light features
 }
 \examples{
 #Create a list of the theme suffixes
-themes = c('gray','bw','linedraw','light','dark','minimal','classic','void',
-'custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark')
+themesOrg = c('gray','bw','linedraw','light','dark','minimal','classic','void')
+themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark')
 
-#Iterate over all the suffixes, creating a new plot for each theme
-grobs = lapply(themes,function(x){
- thmName = sprintf("theme_\%s",x)
- thm = do.call(thmName,args=list(base_size=10))
- df  = data.frame(label=thmName)
- ggtern(df) + facet_wrap(~label) + thm
-})
+#Iterate over all the suffixes, creating a list of plots
+plotThemes = function(themes){
+   grobs = lapply(themes,function(x){
+     thmName = sprintf("theme_\%s",x)
+     thm = do.call(thmName,args=list(base_size=9))
+     df  = data.frame(label=thmName)
+     ggtern(df) + facet_wrap(~label) + thm
+   })
+   grobs
+}
 
-#Arrange the list of grobs, using the grid.arrange function
-grid.arrange(grobs=grobs,top="Collection of Themes")
+#Arrange the Original Themes
+grid.arrange(grobs=plotThemes(themesOrg),top = "Collection of Themes (Original)")
+
+#Arrange the New Themes
+grid.arrange(grobs=plotThemes(themesNew),top = "Collection of Themes (New Themes)")
+
+}
+\author{
+Nicholas Hamilton
 }
 
