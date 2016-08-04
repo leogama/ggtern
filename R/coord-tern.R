@@ -113,7 +113,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       items = .render.fgset(self,extrm,scale_details,theme,items)
     }
     items = .render.titles(self,extrm,scale_details,theme,items)
-    items[[length(items) + 1]] = element_render(theme, "panel.border")
+    #items[[length(items) + 1]] = element_render(theme, "panel.border")
     gTree(children = do.call("gList", items))
   },
   train = function(self, scale_details) {
@@ -372,8 +372,8 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 
 .render.fgset <- function(self,data.extreme,scale_details,theme,items){
   items = .render.ticks(      self,data.extreme,scale_details,theme,items)
-  items = .render.border.axis(self,data.extreme,              theme,items)
   items = .render.border.main(self,data.extreme,              theme,items)
+  items = .render.border.axis(self,data.extreme,              theme,items)
   items = .render.labels(     self,data.extreme,scale_details,theme,items)
   items = .render.arrows(     self,data.extreme,scale_details,theme,items)
   items
@@ -403,10 +403,11 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
 
 .render.border.main <- function(self,data.extreme,theme,items){
   tryCatch({
-    e      = calc_element('tern.panel.background',theme,verbose=F)
+    #e      = calc_element('tern.panel.background',theme,verbose=F)
+    e      = calc_element('panel.border',theme,verbose=F)
     if(identical(e,element_blank())) return(items)
     ex     = rbind(data.extreme,data.extreme[1,])
-    grob   = ggint$element_grob.element_line(e,size=e$size/2,x=ex$x,y=ex$y)
+    grob   = ggint$element_grob.element_line(e,size=e$size,x=ex$x,y=ex$y)
     items[[length(items) + 1]] = grob
   },error=function(e){ })
   items
@@ -457,9 +458,9 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
   #Function to render the grobs
   grobs  <- function(name,items,df,primary=TRUE){
     tryCatch({  
-      ixx   = c('x','xend'); if(!primary) ixx = paste0(ixx,'.sec')
-      ixy   = c('y','yend'); if(!primary) iyy = paste0(iyy,'.sec')
-      grob  = lapply(1:nrow(df),function(x){ element_render(theme,name,x=df[x,ixx],y=df[x,ixy]) })
+      ix.x   = c('x','xend'); if(!primary) ix.x = paste0(ix.x,'.sec')
+      ix.y   = c('y','yend'); if(!primary) ix.y = paste0(ix.y,'.sec')
+      grob  = lapply(1:nrow(df),function(x){ element_render(theme,name,x=df[x,ix.x],y=df[x,ix.y]) })
       items = c(items,grob)
     },error = function(e){ warning(e) })
     items
@@ -514,13 +515,16 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       ytf       = if(outside) df$yend else df$y 
       angle     = is.numericor(e$angle,0) + is.numericor(unique(df$Angle.Text)[1],0)
       dA        = angle - atan2(ytf - yts, xtf - xts)*180/pi #DEGREES, Angle Difference between Ticks and Labels
+      adj       = as.numeric(!outside)
       grob      = element_render(theme, name,
                                  label = label_formatter(df$Labels,latex=latex),
                                  angle = angle,
-                                 x     = ifthenelse(showprimary || !outside,xtf,xts) + convertX(cos(pi*(df$Angle/180 + !outside))*unit(2,'pt'),'npc',valueOnly = T),
-                                 y     = ifthenelse(showprimary || !outside,ytf,yts) + convertY(sin(pi*(df$Angle/180 + !outside))*unit(2,'pt'),'npc',valueOnly = T),
-                                 hjust = +cos((dA-180)*pi/180)*0.5 + is.numericor(e$hjust,0), #BACK TO RADIANS
-                                 vjust = -sin((dA-180)*pi/180)*0.5 + is.numericor(e$vjust,0)) #BACK TO RADIANS
+                                 x     = ifthenelse(showprimary || !outside,xtf,xts) + 
+                                   convertX(cos(pi*(df$Angle/180 + adj))*unit(2,'pt'),'npc',valueOnly = T),
+                                 y     = ifthenelse(showprimary || !outside,ytf,yts) + 
+                                   convertY(sin(pi*(df$Angle/180 + adj))*unit(2,'pt'),'npc',valueOnly = T),
+                                 hjust = +0.5*cos(pi*(dA/180 - 1)) + is.numericor(e$hjust,0), #BACK TO RADIANS
+                                 vjust = -0.5*sin(pi*(dA/180 - 1)) + is.numericor(e$vjust,0)) #BACK TO RADIANS
       items[[length(items) + 1]] <- grob
     },error = function(e){ warning(e) })
     items
