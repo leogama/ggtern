@@ -1,3 +1,6 @@
+#' Confidence Interval
+#' 
+#' Statistic
 #' @param contour If \code{TRUE}, contour the results of the 2d density estimation
 #' @param n number of grid points in each direction
 #' @param h Bandwidth (vector of length two). If \code{NULL}, estimated using \code{\link[MASS]{bandwidth.nrd}}.

@@ -48,22 +48,18 @@ find_global_tern <- function (name, env=environment()){
   NULL
 }
 
-#' Generate Axis Breaks and Labels
+#' Generate Axis Breaks
 #' 
-#' Calculates the Breaks for Major or Minor Gridlines based 
-#' on the input limits.
+#' Calculates the Breaks for Major or Minor Gridlines based on the input limits.
 #' @param limits the scale limits
 #' @param isMajor major or minor grids
 #' @param n number of breaks
-#' @param breaks numeric denoting the breaks
-#' @param format the formatting string to be passed through to the \code{\link{sprintf}} function
-#' @param factor the multiplicative factor
-#' @rdname getBreaks
-#' @name getBreaks
-
-#' @rdname getBreaks
+#' @rdname breaks_tern
+#' @examples 
+#'  breaks_tern()
+#'  breaks_tern(limits = c(0,.5),FALSE,10)
 #' @export
-getBreaks <- function(limits = c(0,1), isMajor = TRUE, n = 5){
+breaks_tern <- function(limits = c(0,1), isMajor = TRUE, n = 5){
   if(is.null(limits) || !all(is.numeric(limits)))
     limits = c(0,1)
   
@@ -83,10 +79,31 @@ getBreaks <- function(limits = c(0,1), isMajor = TRUE, n = 5){
   ret
 }
 
-#' @rdname getBreaks
-#' @name getLabels
+
+#' @rdname breaks_tern
+#' @name breaks_tern
+#' @usage NULL
+#' @format NULL
 #' @export
-getLabels = function(limits = c(0,1), breaks = getBreaks(limits), format = "%g", factor = 100){
+getBreaks = function(limits = c(0,1), isMajor = TRUE, n = 5){
+  tern_dep("2.1.4","'getBreaks' has been superceded by the 'breaks' function")
+  breaks_tern(limits,isMajor,n)
+}
+
+#' Generate Axis Labels
+#' 
+#' Calculates the Labels for Major or Minor Gridlines based on the input limits.
+#' @param breaks numeric denoting the breaks to produce corresponding labels
+#' @inheritParams breaks_tern
+#' @param format the formatting string to be passed through to the \code{\link{sprintf}} function
+#' @param factor the multiplicative factor
+#' @examples 
+#' labels_tern()
+#' labels_tern(limits = c(0,.5))
+#' @author Nicholas Hamilton
+#' @rdname labels_tern
+#' @export
+labels_tern = function(limits = c(0,1), breaks = breaks_tern(limits), format = "%g", factor = 100){
   if(!is.numeric(breaks)) 
     stop("'breaks' must be numeric",call.=FALSE)
   
@@ -109,8 +126,16 @@ getLabels = function(limits = c(0,1), breaks = getBreaks(limits), format = "%g",
   result
 }
 
-#' 
-#'
+#' @rdname labels_tern
+#' @name labels_tern
+#' @usage NULL
+#' @format NULL
+#' @export
+getLabels = function(limits = c(0,1), breaks = breaks_tern(limits), format = "%g", factor = 100){
+  tern_dep("2.1.4","'getBreaks' has been superceded by the 'breaks' function")
+  labels_tern(limits,breaks,format,factor)
+}
+
 #' \code{tern_dep} is a function that gives a deprecation error, warning, or messsage, 
 #' depending on version number, it is based of the \code{\link[ggplot2]{gg_dep}} function which is
 #' used inside the \code{ggplot2} package

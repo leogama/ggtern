@@ -35,9 +35,9 @@
 #'   \item \code{\link[=theme_complete]{Complete Themes}} 
 #' }
 #' 
-#' @aliases theme_convenience convenience convenience_functions
-#' @name convenience_functions
-#' @rdname convenience_functions
+#' @aliases convenience_functions theme_convenience
+#' @name theme_convenience_functions
+#' @rdname theme_convenience_functions
 #' @examples
 #' 
 #' #Load data and create the base plot.

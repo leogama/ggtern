@@ -1,10 +1,3 @@
-#' Density Estimate
-#' 
-#' Perform a 2D kernel density estimatation using kde2d and display the results with contours. This can be 
-#' useful for dealing with overplotting. Additional weight aesthetic (see aesthetic section below) permits better weighting if desired
-#' 
-#' @section Aesthetics:
-#' \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("stat", "density_tern")}
 #' @inheritParams ggplot2::stat_density2d
 #' @inheritParams geom_density_tern
 #' @param base the base transformation of the data, options include 'identity' (ie direct on the cartesian space), or 'ilr'
@@ -14,12 +7,18 @@
 #' @param expand Calculate on a mesh which extends beyond the grid of the plot region by this amount
 #' If \code{NULL}, estimated using \code{\link[MASS]{bandwidth.nrd}}.
 #' @examples 
-#' #Plot Density Estimate, on isometric log ratio transformation of original data
-#' data(Feldspar)
-#' ggtern(Feldspar,aes(Ab,An,Or)) + 
-#' stat_density_tern(aes(fill=..level..),geom='polygon',base='ilr')
+#' #Plot Density Estimate w/ Polygon Geometry
+#' data('Feldspar')
+#' ggtern(data=Feldspar,aes(Ab,An,Or)) + 
+#'     stat_density_tern(
+#'         geom='polygon',
+#'         aes(fill=..level..),
+#'         bins=5,
+#'         color='grey') +
+#'     geom_point()
+#'         
 #' @author Nicholas Hamilton
-#' @rdname stat_density_tern
+#' @rdname geom_density_tern
 #' @export
 stat_density_tern <- function(mapping = NULL, data = NULL, geom = "density_tern",position = "identity",
                               ...,
@@ -47,7 +46,7 @@ stat_density_tern <- function(mapping = NULL, data = NULL, geom = "density_tern"
   )
 }
 
-#' @rdname stat_density_tern
+#' @rdname geom_density_tern
 #' @format NULL
 #' @usage NULL
 #' @export

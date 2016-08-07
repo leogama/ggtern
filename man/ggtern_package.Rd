@@ -62,7 +62,7 @@ The full list of new elements can is provided \link[=theme_elements]{HERE}.
 \section{\code{ggtern} Theme Element Convenience Functions}{
 
 \code{ggtern} has made available a number of convenience functions, for rapid tweaking of common theme elements, for a comprehensive list, 
-see \link[=convenience]{HERE}.
+see \link[=theme_convenience]{HERE}.
 }
 
 \section{\code{ggtern} Modification to Required Aesthetics}{

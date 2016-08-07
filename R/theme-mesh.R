@@ -2,7 +2,7 @@
 #' 
 #' Convenience function for creation of a grid mesh of an ideal number of 'n' major breaks. Note that 
 #' the value of 'n' is the target number of breaks, and due to the use of the \code{\link{pretty}} function
-#' within \code{\link{getBreaks}} convenience function, may not be strictly adhered or reflected.
+#' within \code{\link{breaks_tern}} convenience function, may not be strictly adhered or reflected.
 #' @param n the 'target' number of major breaks
 #' @param ... additional arguments to be passed through to \code{\link{tern_limits}}
 #' @examples 
@@ -47,7 +47,7 @@ theme_mesh = function(n = 5,...){
     
     # Inject the calculated major and minor breaks
     for(ix in seq_along(items))
-      sc[[ items[ix] ]] = getBreaks(limits = limits, isMajor = (ix == 1) , n = n)
+      sc[[ items[ix] ]] = breaks_tern(limits = limits, isMajor = (ix == 1) , n = n)
     
     # Check labels are valid for major breaks, reset if not.
     if(!inherits(labels,'waiver') && !is.null(labels)){

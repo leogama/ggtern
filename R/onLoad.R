@@ -64,12 +64,17 @@
 }
 
 #------------------------------------------------------------------------------
-#MANUAL EXECUTION -- RUN MANUALLY
+#MANUAL EXECUTION -- BUILD STATICDOCS
 #------------------------------------------------------------------------------
 if(FALSE){
+  library(ggtern)
   library(staticdocs)
-  dir = "./insta/staticdocs"
-  if(!dir.exists(dir))dir.create(dir,recursive=TRUE)
+  library(knitr)
+  knit(input = "./inst/staticdocs/README.rmd", output = "./inst/staticdocs/README.md")
+  templates_path = "./inst/staticdocs/"
+  site_path      = "~/Desktop/ggtern/"
+  if(!dir.exists(site_path))
+    dir.create(site_path,recursive=TRUE)
   build_site(pkg = ".")
 }
 

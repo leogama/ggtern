@@ -43,6 +43,9 @@ coord_tern <- function(Tlim = NULL, Llim = NULL, Rlim = NULL, expand = TRUE){
 }
 
 #' @rdname coord_tern
+#' @name coord_tern
+#' @usage NULL
+#' @format NULL
 #' @export
 CoordTern <- ggproto("CoordTern", CoordCartesian,
   required_aes    = c("x","y","z"),
@@ -289,7 +292,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     #Determine the Breaks
     breaks <- if(major) scale$breaks else scale$minor_breaks
     if(inherits(breaks,'waiver')){
-      breaks = getBreaks(limits = limits, isMajor = major)
+      breaks = breaks_tern(limits = limits, isMajor = major)
     }
     
     #Bypass if necessary
@@ -299,7 +302,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     #Determine the labels
     labels <- if(major) (scale$labels %||% waiver()) else ""
     if(inherits(labels,'waiver'))
-      labels = getLabels(limits=limits,breaks=breaks)
+      labels = labels_tern(limits=limits,breaks=breaks)
     
     #major ticklength
     tl.major <- 0

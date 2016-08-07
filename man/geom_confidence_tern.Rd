@@ -81,6 +81,8 @@ the default plot specification, e.g. \code{\link{borders}}.}
 }
 \description{
 Calculates the confidence intervals, via the Mahalnobis Distance and use of the \code{\link[=ilr]{Log-Ratio}} Transformation
+
+Statistic
 }
 \section{Aesthetics}{
 

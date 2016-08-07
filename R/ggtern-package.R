@@ -47,7 +47,7 @@
 #'
 #' @section  \code{ggtern} Theme Element Convenience Functions:
 #' \code{ggtern} has made available a number of convenience functions, for rapid tweaking of common theme elements, for a comprehensive list, 
-#' see \link[=convenience]{HERE}.
+#' see \link[=theme_convenience]{HERE}.
 #'
 #' @section  \code{ggtern} Modification to Required Aesthetics:
 #' Each geometry has a pre-determined set of \strong{required} aesthetics. These have been modifid such that where \code{x} and \code{y} were previously 
