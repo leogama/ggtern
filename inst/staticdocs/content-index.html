@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="span8">
+    {{{readme}}}
+
+    <h2>Help topics</h2>
+
+    {{#sections}}
+      <h3>{{title}}</h3>
+      {{{description}}}
+      
+      <ul class="index">
+      {{#items}}
+      {{#icon}}
+        <li class = "icon">
+          <a href="{{file_out}}"><img src="{{icon}}" width = "40" height = "40" /></a><code><a href="{{file_out}}">{{name}}</a></code>{{aliases}}<br /> 
+          {{{title}}}</li>
+      {{/icon}}
+      {{^icon}}
+        <li>
+          <code><a href="{{file_out}}">{{name}}</a></code>{{aliases}}<br />{{{title}}}</li>
+      {{/icon}}
+      {{/items}}
+      </ul>
+    {{/sections}}
+  </div>
+  
+  <div class="span4" id="sideBar">
+    {{#package}}
+      <h2>Version</h2>
+      <b>{{version}}</b> (Development)
+    {{/package}}
+    {{#vignettes}}
+    <h2>Vignettes</h2>
+    <ul>
+    {{#vignette}}
+      <li><a href="vignettes/{{filename}}">{{title}}</a></li>
+    {{/vignette}}
+    </ul>
+    {{/vignettes}}
+
+    {{#demos}}
+    <h2>Demos</h2>
+    <ul>
+    {{#demo}}
+      <li><a href="{{filename}}">{{title}}</a></li>
+    {{/demo}}
+    </ul>
+    {{/demos}}
+
+    {{#dependencies}}
+    <h2>Dependencies</h2>
+    <ul>
+      {{#depends}}<li><strong>Depends</strong>: {{depends}}</li>{{/depends}}
+      {{#imports}}<li><strong>Imports</strong>: {{imports}}</li>{{/imports}}
+      {{#suggests}}<li><strong>Suggests</strong>: {{suggests}}</li>{{/suggests}}
+      {{#extends}}<li><strong>Extends</strong>: {{extends}}</li>{{/extends}}
+    </ul>
+    {{/dependencies}}
+
+    <h2>Authors</h2>
+    <ul>
+    {{#authors}}
+      <li>{{{.}}}</li>
+    {{/authors}}
+    </ul>
+    
+    <div id="sticker">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- ggtern_responsive_TD -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3633876528346053"
+           data-ad-slot="9923422573"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
