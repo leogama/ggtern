@@ -102,5 +102,8 @@ ggtern(data=tmp,aes(x,y,z)) +
   geom_errorbarL(aes(Lmin=Min,Lmax=Max),colour='green')+
   geom_errorbarR(aes(Rmin=Min,Rmax=Max),colour='blue') 
 }
+\author{
+Nicholas Hamilton
+}
 \keyword{datasets}
 

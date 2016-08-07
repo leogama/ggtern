@@ -25,4 +25,7 @@ ggtern() +
 ggtern() + 
  theme_mesh(5,T=.5,L=.5,R=.5)
 }
+\author{
+Nicholas Hamilton
+}
 

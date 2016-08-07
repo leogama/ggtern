@@ -34,8 +34,8 @@
 #' scale_shape_manual(values=c(21,24)) +
 #' labs(title="Demonstration of Raster Annotation")
 #' @seealso \link[=data]{Data}
-#' @name data_sets_Feldspar
-#' @rdname data_sets_Feldspar
+#' @name data_Feldspar
+#' @rdname data_Feldspar
 #' @aliases Feldspar FeldsparRaster
 #' @author Nicholas Hamilton
 NULL
@@ -72,8 +72,8 @@ NULL
 #' weight_percent() + guides(fill='none') + 
 #' theme_legend_position("topleft")
 #' labs(title="USDA Textural Classification Chart",fill="Textural Class",color="Textural Class")
-#' @name data_sets_USDA
-#' @rdname data_sets_USDA
+#' @name data_USDA
+#' @rdname data_USDA
 #' @aliases USDA
 #' @author Nicholas Hamilton
 NULL
@@ -116,8 +116,8 @@ NULL
 #' \item \strong{Rf}: Rock Fragments Amount, percentage
 #' \item \strong{M}: Mica Amount, percentage
 #' }
-#' @name data_sets_Fragments
-#' @rdname data_sets_Fragments
+#' @name data_Fragments
+#' @rdname data_Fragments
 #' @aliases Fragments fragments
 #' @author Jeremy Hummon Grantham and Michael Anthony Velbel
 #' @examples 

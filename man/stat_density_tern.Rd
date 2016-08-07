@@ -83,5 +83,8 @@ data(Feldspar)
 ggtern(Feldspar,aes(Ab,An,Or)) + 
 stat_density_tern(aes(fill=..level..),geom='polygon',base='ilr')
 }
+\author{
+Nicholas Hamilton
+}
 \keyword{datasets}
 

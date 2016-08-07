@@ -47,6 +47,9 @@ last_plot() +
  theme_latex(FALSE)
  
 }
+\author{
+Nicholas Hamilton
+}
 \seealso{
 \code{\link[latex2exp]{TeX}}
 }

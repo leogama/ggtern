@@ -88,8 +88,11 @@ length of the ternary axis.
  plot + theme_arrowcustomlength(.1,.8)
  plot + theme_arrowlength(start=c(.1,.25,.4),finish=c(.9,.75,.6))
 }
+\author{
+Nicholas Hamilton
+}
 \seealso{
-\code{\link{theme_arrowbaseline}} and \code{theme(\link{tern.axis.arrow.sep}=X)} for methods to adjust the separation distance of the ternary arrows 
+\code{theme_arrowbaseline} and \code{theme(tern.axis.arrow.sep=X)} for methods to adjust the separation distance of the ternary arrows 
 from the ternary axes.
 }
 

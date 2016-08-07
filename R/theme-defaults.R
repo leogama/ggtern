@@ -48,9 +48,9 @@
 #'  }
 #' }
 #' @seealso \code{\link{ggtern_themes}}
+#' @author Nicholas Hamilton
 #' @rdname theme_complete
 #' @name theme_complete
-#' @author Nicholas Hamilton
 NULL
 
 #' ggtern themes

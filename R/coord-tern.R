@@ -19,7 +19,7 @@
 #' @param Rlim the range of R in the ternary space
 #' @inheritParams ggplot2:::coord_cartesian
 #' @return \code{coord_tern} returns a CoordTern ggproto
-#' @rdname coord-tern
+#' @rdname coord_tern
 #' @author Nicholas Hamilton
 #' @export
 coord_tern <- function(Tlim = NULL, Llim = NULL, Rlim = NULL, expand = TRUE){
@@ -42,7 +42,7 @@ coord_tern <- function(Tlim = NULL, Llim = NULL, Rlim = NULL, expand = TRUE){
   )
 }
 
-#' @rdname coord-tern
+#' @rdname coord_tern
 #' @export
 CoordTern <- ggproto("CoordTern", CoordCartesian,
   required_aes    = c("x","y","z"),

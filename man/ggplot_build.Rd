@@ -5,7 +5,7 @@
 \alias{layer_data}
 \alias{layer_grob}
 \alias{layer_scales}
-\title{Build ggplot for rendering.}
+\title{Build ggplot for rendering (ggtern version).}
 \usage{
 ggplot_build(plot)
 
@@ -28,6 +28,9 @@ contain all information about axis limits, breaks etc.
 \code{layer_data}, \code{layer_grob}, and \code{layer_scales} are helper
 functions that returns the data, grob, or scales associated with a given
 layer. These are useful for tests.
+}
+\author{
+Nicholas Hamilton
 }
 \seealso{
 \code{\link{print.ggplot}} and \code{\link{benchplot}} for

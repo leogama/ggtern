@@ -1,9 +1,5 @@
 # ################################################################
 # ### start code
-
-#' @name
-#' theme_novar_tern
-#'
 #' @title
 #' Blank one variable's annotations in ternary plot
 #'
@@ -40,11 +36,12 @@
 #' base = ggtern() + theme_rgbg()
 #' base + theme_novar_tern("L")
 #' base + theme_novar_tern(c("T","L"))
-#' base + theme_novar_tern(T,L)
+#' base + theme_novar_tern('L',R)
+
 #'
 #' @author
 #' Nicholas Hamilton, John Szumiloski
-
+#' @rdname theme_novar_tern
 #' @export
 theme_novar_tern <- function(species, ...) {
   

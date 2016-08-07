@@ -1,8 +1,11 @@
-#' Continuous position scales (T, L & R).
+#' Ternary Position Scales
 #' 
-#' @rdname scale_tern_continuous
+#' Define the ternary continuous position scales (T, L & R).
 #' @inheritParams ggplot2::scale_x_continuous
 #' @param ... not used
+#' @author Nicholas Hamilton
+#' @rdname scale_X_continuous
+#' @name scale_X_continuous
 #' @export
 scale_T_continuous <- function(name         = waiver(), 
                                limits       = NULL,
@@ -24,8 +27,7 @@ scale_T_continuous <- function(name         = waiver(),
 }
 
 
-#' @name scale_tern_continuous
-#' @rdname scale_tern_continuous
+#' @rdname scale_X_continuous
 #' @export
 scale_L_continuous <- function(name         = waiver(), 
                                limits       = NULL,
@@ -46,8 +48,7 @@ scale_L_continuous <- function(name         = waiver(),
   sc
 }
 
-#' @name scale_tern_continuous
-#' @rdname scale_tern_continuous
+#' @rdname scale_X_continuous
 #' @export
 scale_R_continuous <- function(name         = waiver(), 
                                limits       = NULL,

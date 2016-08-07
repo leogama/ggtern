@@ -1,11 +1,8 @@
-#' @section Aesthetics:
-#' 
-#' @title 
 #' Modified Aesthetic Mappings
 #' 
 #' @details 
-#' An extension to the base aes functin from ggplot2, this is modified to handle a default z mapping for application in ternary phase diagrams.
-#' Does not alter the standard behaviour. 
+#' An extension to the base aes functin from ggplot2, this is modified to handle a default z mapping 
+#' for application in ternary phase diagrams. Does not alter the standard behaviour. 
 #' 
 #' @param x x value
 #' @param y y value
@@ -13,7 +10,6 @@
 #' @param ... other arguments as per \code{\link[ggplot2]{aes}}
 #' @seealso Parent \code{\link[ggplot2]{aes}} function.
 #' @rdname aes
-#' @name aesthetics
 #' @export
 aes <- function(x,y,z,...) {
   aes <- structure(as.list(match.call()[-1]), class = "uneval")
@@ -38,6 +34,6 @@ aes_to_scale_tern = function (var){
 
 # Figure out if an aesthetic is a position aesthetic or not
 is_position_aes <- function(vars) {
-  aes_to_scale(vars) %in% c("x", "y", "z")
+  aes_to_scale_tern(vars) %in% c("x", "y", "z")
 }
 

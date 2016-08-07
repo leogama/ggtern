@@ -35,7 +35,7 @@ the \pkg{ggplot2} framework.
 base = ggtern() + theme_rgbg()
 base + theme_novar_tern("L")
 base + theme_novar_tern(c("T","L"))
-base + theme_novar_tern(T,L)
+base + theme_novar_tern('L',R)
 
 }
 \author{

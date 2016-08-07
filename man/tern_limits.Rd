@@ -41,6 +41,8 @@ ggtern(df,aes(x,y,z)) + geom_point() + tern_limits(0.7,0.3,0.4)
 }
 \author{
 Nicholas Hamilton
+
+Nicholas Hamilton
 }
 \seealso{
 \code{\link{scale_T_continuous}}, \code{\link{scale_L_continuous}} and \code{\link{scale_R_continuous}}

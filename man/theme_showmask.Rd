@@ -17,4 +17,7 @@ Convenience Function to Show or Hide the Clipping Mask, \code{theme_showmask} is
 appends to the current theme a flag to switch ON the clipping mask, whilst, \code{theme_nomask} (or \code{theme_hidemask}) is a function 
 that appends to the current theme a flag to switch OFF the clipping mask
 }
+\author{
+Nicholas Hamilton
+}
 

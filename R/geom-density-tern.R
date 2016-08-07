@@ -8,13 +8,12 @@
 #' @inheritParams ggplot2::geom_point
 #' @inheritParams ggplot2::geom_path
 #' @inheritParams ggplot2:::geom_density2d
-#' @name geom_density_tern
-#' @rdname geom_density_tern
-#' @author Nicholas Hamilton
 #' @examples
 #' data(Feldspar); Feldspar$weight= 0*c(1:nrow(Feldspar))^2
 #' ggtern(Feldspar,aes(Ab,An,Or,weight=weight)) + 
 #' geom_density_tern(aes(colour=..level..),expand=0.5,base='identity')
+#' @author Nicholas Hamilton
+#' @rdname geom_density_tern
 #' @export
 geom_density_tern <- function(mapping = NULL, data = NULL, stat='DensityTern', position='identity',
                               ...,

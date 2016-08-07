@@ -14,4 +14,7 @@
 \description{
 \code{"+.gg"} is a local copy of the ggplot2 add function, no change other than exporting from the ggtern namespace
 }
+\author{
+Nicholas Hamilton
+}
 

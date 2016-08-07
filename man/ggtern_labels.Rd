@@ -120,6 +120,9 @@ theme_showarrows() +
 theme_clockwise() + 
 weight_percent()
 }
+\author{
+Nicholas Hamilton
+}
 \seealso{
 ggplot2 \code{\link[ggplot2]{labs}}
 }

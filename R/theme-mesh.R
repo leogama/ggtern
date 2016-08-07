@@ -13,6 +13,8 @@
 #' #Default example, of a target n=5 mesh, with limiting region
 #' ggtern() + 
 #'  theme_mesh(5,T=.5,L=.5,R=.5)
+#' @author Nicholas Hamilton
+#' @rdname theme_mesh
 #' @export
 theme_mesh = function(n = 5,...){
   

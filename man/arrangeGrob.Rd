@@ -53,4 +53,7 @@ grid.arrange(..., newpage = TRUE)
 A very slight modification to the original function, removing the explicit direction to use the ggplotGrob function
 from the ggplot2 namespace
 }
+\author{
+Nicholas Hamilton
+}
 

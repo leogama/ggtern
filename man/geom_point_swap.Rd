@@ -69,5 +69,8 @@ scale_shape_manual(values=c(21,24)) +
 scale_color_gradient(low='green',high='red') +
 labs(title="Feldspar",color="Temperature",fill='Confidence')
 }
+\author{
+Nicholas Hamilton
+}
 \keyword{datasets}
 

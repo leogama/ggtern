@@ -6,8 +6,6 @@
 #' latex parsing is enabled, this can override specific formatting directives from the element tree, see the third 
 #' and fourth example below.
 #' @param value logical as to whether to enable latex parsing or not
-#' @aliases theme_nolatex theme_showlatex theme_hidelatex
-#' @rdname theme_latex
 #' @examples 
 #' 
 #' #Demonstrate  without latex parsing
@@ -30,6 +28,8 @@
 #'  theme_latex(FALSE)
 #'  
 #' @seealso \code{\link[latex2exp]{TeX}}
+#' @author Nicholas Hamilton
+#' @rdname theme_latex
 #' @export
 theme_latex = function(value = TRUE){ theme(tern.plot.latex = value) }
 

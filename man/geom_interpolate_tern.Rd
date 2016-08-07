@@ -7,7 +7,6 @@
 \alias{geom_interpolate_tern}
 \alias{stat_interpolate_tern}
 \title{Ternary Interpolation}
-\format{An object of class \code{StatInterpolateTern} (inherits from \code{Stat}, \code{ggproto}) of length 6.}
 \usage{
 geom_interpolate_tern(mapping = NULL, data = NULL,
   stat = "InterpolateTern", position = "identity", ..., method = "auto",
@@ -102,6 +101,9 @@ stat_interpolate_tern(geom="polygon",
                      breaks=seq(0,1000,by=100),
                      aes(fill=..level..),expand=1) +
                      geom_point()
+}
+\author{
+Nicholas Hamilton
 }
 \keyword{datasets}
 

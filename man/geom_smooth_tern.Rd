@@ -4,7 +4,6 @@
 \name{geom_smooth_tern}
 \alias{GeomSmoothTern}
 \alias{StatSmoothTern}
-\alias{geom_smooth}
 \alias{geom_smooth_tern}
 \alias{stat_smooth_tern}
 \title{Add a Smoothed Conditional Mean.}
@@ -97,6 +96,9 @@ ggtern(data=Feldspar,aes(Ab,An,Or,group=Feldspar)) +
   geom_smooth_tern(method=lm,fullrange=TRUE,colour='red') + 
   geom_point() +
   labs(title="Example Smoothing")
+}
+\author{
+Nicholas Hamilton
 }
 \keyword{datasets}
 

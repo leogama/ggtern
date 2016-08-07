@@ -19,9 +19,9 @@
 #' progress with regards to the \code{ggtern} package.
 #' 
 #' @aliases approved_stat approved_geom approved_position
+#' @author Nicholas Hamilton
 #' @name approved_layers
 #' @rdname approved_layers
-#' @author Nicholas Hamilton
 NULL
 
 #' Strip Unapproved Layers
@@ -33,8 +33,6 @@ NULL
 #' 
 #' @param layers list of the layers to strip unnaproved layers from.
 #' @return \code{strip_unapproved} returns a list of approved layers (may be empty if none are approved).
-#' @author Nicholas Hamilton
-#' @keywords internal
 strip_unapproved <- function(layers){  
   ##Remove Unapproved Ternary Layers:
   tryCatch({

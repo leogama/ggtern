@@ -1,4 +1,3 @@
-#' @title
 #' Change the Length of the Ternary Arrows
 #' 
 #' @description
@@ -17,7 +16,7 @@
 #' If for some reason, the \code{start} and \code{finish} arguments are identical, then the ternary arrows will be switched OFF, tantamount to
 #' running the \code{\link{theme_hidearrows}} convenience function.
 #' 
-#' @seealso \code{\link{theme_arrowbaseline}} and \code{theme(\link{tern.axis.arrow.sep}=X)} for methods to adjust the separation distance of the ternary arrows 
+#' @seealso \code{theme_arrowbaseline} and \code{theme(tern.axis.arrow.sep=X)} for methods to adjust the separation distance of the ternary arrows 
 #' from the ternary axes.
 #' @examples
 #'  #Create base plot
@@ -31,6 +30,7 @@
 #'  plot + theme_arrowlarge()
 #'  plot + theme_arrowcustomlength(.1,.8)
 #'  plot + theme_arrowlength(start=c(.1,.25,.4),finish=c(.9,.75,.6))
+#' @author Nicholas Hamilton
 #' @name theme_arrowlength
 #' @rdname theme_arrowlength
 NULL

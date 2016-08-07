@@ -7,7 +7,7 @@
 \title{Theme Convenience Functions}
 \description{
 \code{ggtern} has made available a number of convenience functions for rapid tweaking of the various theme elements, 
-for a full list of the available theme elements which can be manually modified, see \link[=themeelements]{HERE}.
+for a full list of the available theme elements which can be manually modified, see \link[=theme_elements]{HERE}.
 }
 \section{Convenience Functions}{
 
@@ -53,22 +53,18 @@ plot <- ggtern() + theme_bw() +
        tern.axis.ticks.length.minor=unit(1.5,'mm'))
 plot
 
-#Show or Hide Arrows
+#Show Arrows
 last_plot() + theme_showarrows()
-last_plot() + theme_hidearrows()
 
 #Major/Minor Grids?
 last_plot() + theme_nogrid_minor()
 last_plot() + theme_nogrid_major()
 last_plot() + theme_showgrid()
-last_plot() + theme_nogrid()
 
 #Clockwise/Anticlockwise Precession
 last_plot() + theme_clockwise()
-last_plot() + theme_anticlockwise()
 
 #Ticks Inside or Outside
-last_plot() + theme_ticksoutside()
 last_plot() + theme_ticksinside()
 
 #Show/Hide BOTH Primary and Secondary Ticks
@@ -78,15 +74,12 @@ last_plot() + theme_hideticks()
 #Show/Hide EITHER Primary OR Secondary Ticks.
 last_plot() + theme_showprimary() + theme_hidesecondary()
 last_plot() + theme_hideprimary() + theme_showsecondary()
-last_plot() + theme_showprimary() + theme_showsecondary()
 
 #Atomic / Weight Percent
-last_plot() + theme_showarrows() + atomic_percent()
-last_plot() + theme_showarrows() + weight_percent()
+last_plot() + theme_showarrows() + atomic_percent() #+weight_percent()
 last_plot() + theme_showarrows() + custom_percent("Atomic Percent")
 
 #Rotation
-last_plot() + theme_rotate(30)
 last_plot() + theme_rotate(60)
 }
 

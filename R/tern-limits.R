@@ -20,6 +20,7 @@
 #' @examples 
 #' df = data.frame(x=runif(10),y=runif(10),z=runif(10))
 #' ggtern(df,aes(x,y,z)) + geom_point() + tern_limits(0.7,0.3,0.4)
+#' @author Nicholas Hamilton
 #' @name tern_limits
 #' @rdname tern_limits
 NULL

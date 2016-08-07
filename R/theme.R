@@ -14,6 +14,7 @@ NULL
 #' a new (and equivalent) \code{.element_tree} is created within ggtern to handle the new theme elements created within this package.
 #' @param el the element
 #' @param elname the element name
+#' @author Nicholas Hamilton
 #' @rdname overloaded
 validate_element <- function(el, elname) {
   eldef <- ggint$.element_tree[[elname]]
@@ -47,8 +48,12 @@ theme_update <- function(...) {
   theme_set(theme_get() %+replace% do.call(theme, list(...)))
 }
 
-#' @rdname theme_elements
+#' Set theme elements (ggtern version)
+#' 
+#' Use this function to modify theme settings.
 #' @inheritParams ggplot2::theme
+#' @author Nicholas Hamilton
+#' @rdname theme
 #' @export
 theme <- function(..., complete = FALSE, validate = TRUE) {
   elements <- list(...)
@@ -71,7 +76,7 @@ theme <- function(..., complete = FALSE, validate = TRUE) {
 #' \code{plot_theme} is a local copy of the method that determines the net theme between a plot and the current global theme.
 #' @param x gg object
 #' @rdname overloaded
-plot_theme <- function(x) {defaults(x$theme, ggtern::theme_get())}
+plot_theme <- function(x) {defaults(x$theme, theme_get())}
 
 
 #' \code{add_theme} is a local copy of the ggplot2 function which modifies the current theme, by a proposed theme. 

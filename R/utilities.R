@@ -2,8 +2,8 @@
 #'
 #'@description INTERNAL FUNCTIONS: \code{ggtern} makes use of several non-exported internal functions, list are as follows:
 #'@keywords internal
-#'@name zzz-internal
 #'@rdname undocumented
+#'@name zzz-internal
 NULL
 
 #' \code{ifthenelse} function takes input arguments \code{x}, \code{a} and \code{b} and returns \code{a} if \code{x} is \code{TRUE}, else, returns \code{b}

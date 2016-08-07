@@ -9,6 +9,7 @@ ggtern 2.1.5
 * Eliminated some masked functions (theme_get, theme_set), reverting back to the ggplot2 originals.
 * Fixed bug with normalisation of data for errorbars, thanks to Andy London for picking up the issue.
 * Added new custom themes: theme_matrix, theme_tropical, theme_bluedark, theme_bluelight
+* Review of documentation for use in staticdocs for website.
 
 ggtern 2.1.4
 ----------------------------------------------------------------

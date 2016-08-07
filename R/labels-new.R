@@ -39,6 +39,7 @@
 #' @param label the desired label
 #' @param labelarrow the desired label, if different to label, for the markers along the procession arrows 
 #' @aliases llab tlab rlab wlab tarrowlab larrowlab rarrowlab ggtern-labels
+#' @author Nicholas Hamilton
 #' @rdname ggtern_labels
 #' @name ggtern_labels
 #' @seealso ggplot2 \code{\link[ggplot2]{labs}}

@@ -9,7 +9,9 @@ Description: Extends the functionality of 'ggplot2', providing the capability
     standard 'ggplot2' release. For further examples and documentation, please
     proceed to the 'ggtern' website.
 Authors@R:
-  person("Nicholas","Nicholas", ,"nick@ggtern.com", role = c("aut", "cre"))
+  person("Nicholas","Hamilton", ,"nick@ggtern.com", role = c("aut", "cre"))
+Author: Nicholas Hamilton [aut, cre]
+Maintainer: Nicholas Hamilton <nick@ggtern.com>
 Depends:
     ggplot2 (>= 2.1.0)
 Imports:
@@ -95,7 +97,5 @@ Collate:
     'annotation-tern.R'
     'annotation-raster-tern.R'
 NeedsCompilation: no
-Author: Nicholas Hamilton [aut, cre]
-Maintainer: Nicholas Hamilton <nick@ggtern.com>
 Repository: CRAN
 RoxygenNote: 5.0.1

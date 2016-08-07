@@ -82,6 +82,9 @@ which do not inherit from 'element' objects.
 
 \code{calc_element} is a local copy of the ggplot2 function which determines the net element based on inheritances, given input theme.
 }
+\author{
+Nicholas Hamilton
+}
 \seealso{
 \code{\link[ggplot2]{theme_update}}
 

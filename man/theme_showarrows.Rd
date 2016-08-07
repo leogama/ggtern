@@ -19,4 +19,7 @@ theme_showarrows()
 
 \code{theme_showarrows} is a function that appends to the current theme a flag to switch ON the ternary arrows
 }
+\author{
+Nicholas Hamilton
+}
 
