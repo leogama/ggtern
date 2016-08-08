@@ -27,11 +27,11 @@ sd_section("Geoms",
             "geom_confidence_tern",
             "geom_density_tern",
             "geom_interpolate_tern",
-            "geom_errorbarX",
+            "geom_Xline",
             "geom_Xisoprop",
+            "geom_errorbarX",
             "geom_smooth_tern",
             "geom_point_swap",
-            "geom_Xline",
             "geom_mask"
           )
 )
