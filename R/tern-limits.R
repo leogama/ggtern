@@ -35,6 +35,9 @@ tern_limit <- function(T=1,L=1,R=1,...){
   ret <- list()
   tryCatch({
     
+    #Put the argments in a list, to pass on
+    args = list(...)
+    
     #Solve the linear equations Ax = B
     A    <- diag(-1,3,3) + 1  #All 1's and 0's down diagonal
     B    <- c( 1-T ,1-L ,1-R)
@@ -48,18 +51,25 @@ tern_limit <- function(T=1,L=1,R=1,...){
       stop("Invalid limits, solution produces zero ranges on some scales",call.=FALSE)
     if(any(sapply(lims,max) > 1 | sapply(lims,min) < 0))
       warning("Solution to limits produces range outside of [0,1] for some scales",call.=FALSE)
+    if('limits' %in% names(args))
+      warning("Explicit 'limits' argument will be discarded by calculated values.",call.=FALSE)
+    
+    #Funcion to construct the scales
+    scaleX = function(X,a = args){
+      a$limits = lims[[X]]
+      do.call(sprintf("scale_%s_continuous",X),a)
+    }
     
     #Build the collection of scales
-    ret <- list( scale_T_continuous(limits=lims$T,...),
-                 scale_L_continuous(limits=lims$L,...),
-                 scale_R_continuous(limits=lims$R,...))
+    ret <- list( scaleX('T'), scaleX('L'), scaleX('R'))
+    
   },error=function(e){ warning(e)  })
   invisible(ret)
 }
 
 #'@rdname tern_limits
 #'@export 
-limit_tern <- function(...) tern_limits(...) 
+limit_tern <- function(...) tern_limit(...) 
 
 #'@rdname tern_limits
 #'@usage NULL
@@ -71,6 +81,6 @@ limits_tern <- function(...) tern_limit(...)
 #'@usage NULL
 #'@format NULL
 #'@export 
-tern_limits <- function(...) tern_limits(...) 
+tern_limits <- function(...) tern_limit(...) 
 
 
