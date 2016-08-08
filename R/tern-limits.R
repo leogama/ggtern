@@ -61,7 +61,7 @@ tern_limits <- function(T=1,L=1,R=1,...){
 #'@export 
 limit_tern <- function(...){tern_limits(...)}
 
-#'@rdname tern_limits'
+#'@rdname tern_limits
 #'@usage NULL
 #'@format NULL
 #'@export 

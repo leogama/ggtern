@@ -2,6 +2,7 @@
 % Please edit documentation in R/tern-limits.R
 \name{tern_limits}
 \alias{limit_tern}
+\alias{limits_tern}
 \alias{tern_limit}
 \alias{tern_limits}
 \title{Restrict Ternary Limits}
