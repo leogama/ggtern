@@ -2,18 +2,13 @@
 % Please edit documentation in R/tern-limits.R
 \name{tern_limits}
 \alias{limit_tern}
-\alias{limits_tern}
 \alias{tern_limit}
 \alias{tern_limits}
 \title{Restrict Ternary Limits}
 \usage{
 tern_limits(T = 1, L = 1, R = 1, ...)
 
-limits_tern(...)
-
 limit_tern(...)
-
-tern_limit(...)
 }
 \arguments{
 \item{T, L, R}{numeric value (scalar) of the maximum \code{T,L,R} species limit for each scale respectively}
@@ -40,8 +35,6 @@ df = data.frame(x=runif(10),y=runif(10),z=runif(10))
 ggtern(df,aes(x,y,z)) + geom_point() + tern_limits(0.7,0.3,0.4)
 }
 \author{
-Nicholas Hamilton
-
 Nicholas Hamilton
 }
 \seealso{

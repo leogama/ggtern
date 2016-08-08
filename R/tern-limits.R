@@ -16,7 +16,6 @@
 #' @param ... other arguments to pass to ALL of \code{scale_X_continuous} (\code{X = T, L, R})
 #' 
 #' @seealso \code{\link{scale_T_continuous}}, \code{\link{scale_L_continuous}} and \code{\link{scale_R_continuous}}
-#' @author Nicholas Hamilton
 #' @examples 
 #' df = data.frame(x=runif(10),y=runif(10),z=runif(10))
 #' ggtern(df,aes(x,y,z)) + geom_point() + tern_limits(0.7,0.3,0.4)
@@ -28,34 +27,49 @@ NULL
 #' @rdname tern_limits
 #' @export
 tern_limits <- function(T=1,L=1,R=1,...){
-  ret <- list()
+
+  #Run Check on input variables
   if(!all(sapply(list(T,L,R),function(x){length(x) == 1 && is.numeric(x)})))
     stop("Arguments T, L and R must be numeric and scalar",call.=FALSE)
+  
+  ret <- list()
   tryCatch({
-    s    <- round(solve(diag(-1,3,3) + 1, c(1-T,1-L,1-R)),3)
-    o    <- function(x){x[order(x)]}
-    T    <- o(c(s[1],T)); L = o(c(s[2],L)); R = o(c(s[3],R))
-    lims <- list(T,L,R)
-    if(any(sapply(lims,function(x){diff(x) == 0})))
+    
+    #Solve the linear equations Ax = B
+    A    <- diag(-1,3,3) + 1  #All 1's and 0's down diagonal
+    B    <- c( 1-T ,1-L ,1-R)
+    x    <- round(solve(A,B),3)
+    lims <- list(T = sort(c(x[1],T)), 
+                 L = sort(c(x[2],L)), 
+                 R = sort(c(x[3],R)))
+    
+    #Run some checks
+    if(any(sapply(lims,diff) == 0))
       stop("Invalid limits, solution produces zero ranges on some scales",call.=FALSE)
-    if(any(sapply(lims,function(x){min(x) < 0 | max(x) > 1})))
+    if(any(sapply(lims,max) > 1 | sapply(lims,min) < 0))
       warning("Solution to limits produces range outside of [0,1] for some scales",call.=FALSE)
-    ret <- list( scale_T_continuous(limits=T,...),
-                 scale_L_continuous(limits=L,...),
-                 scale_R_continuous(limits=R,...))
+    
+    #Build the collection of scales
+    ret <- list( scale_T_continuous(limits=lims$T,...),
+                 scale_L_continuous(limits=lims$L,...),
+                 scale_R_continuous(limits=lims$R,...))
   },error=function(e){ warning(e)  })
   invisible(ret)
 }
 
 #'@rdname tern_limits
 #'@export 
+limit_tern <- function(...){tern_limits(...)}
+
+#'@rdname tern_limits'
+#'@usage NULL
+#'@format NULL
+#'@export 
 limits_tern <- function(...){tern_limits(...)}
 
 #'@rdname tern_limits
-#'@export 
-limit_tern <- function(...){tern_limits(...)}
-
-#'@rdname tern_limits
+#'@usage NULL
+#'@format NULL
 #'@export 
 tern_limit <- function(...){tern_limits(...)}
 
