@@ -33,8 +33,8 @@
   </div>
   <div class="span4" id='sideBar'>
     {{#package}}
-      <h2>Version</h2>
-      <b>{{version}}</b> (Development)
+      <h3>Versions</h3>
+      <a href="https://cran.r-project.org/package=ggtern"><img alt="CRAN_Status_Badge" src="http://www.r-pkg.org/badges/version/ggtern"></a> current, <b>{{version}}</b> development.
     {{/package}}
     <!-- <ul>
       {{#aliases}}<li>{{.}}</li>{{/aliases}}
@@ -42,14 +42,13 @@
     <ul>
       {{#keywords}}<li>{{.}}</li>{{/keywords}}
     </ul> -->
-      
     {{#seealso}}
-    <h2>See also</h2>
+    <h3>See also</h3>
     {{{ seealso }}}
     {{/seealso}}
 
     {{#author}}
-    <h2>Author</h2>
+    <h3>Author</h3>
     {{{ author }}}
     {{/author}}
     
