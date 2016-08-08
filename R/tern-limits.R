@@ -26,7 +26,7 @@ NULL
 
 #' @rdname tern_limits
 #' @export
-tern_limits <- function(T=1,L=1,R=1,...){
+tern_limit <- function(T=1,L=1,R=1,...){
 
   #Run Check on input variables
   if(!all(sapply(list(T,L,R),function(x){length(x) == 1 && is.numeric(x)})))
@@ -71,6 +71,6 @@ limits_tern <- function(...){tern_limits(...)}
 #'@usage NULL
 #'@format NULL
 #'@export 
-tern_limit <- function(...){tern_limits(...)}
+tern_limits <- function(...){tern_limits(...)}
 
 

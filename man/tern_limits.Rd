@@ -7,7 +7,7 @@
 \alias{tern_limits}
 \title{Restrict Ternary Limits}
 \usage{
-tern_limits(T = 1, L = 1, R = 1, ...)
+tern_limit(T = 1, L = 1, R = 1, ...)
 
 limit_tern(...)
 }
