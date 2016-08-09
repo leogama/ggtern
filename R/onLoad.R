@@ -110,9 +110,34 @@ if(FALSE){
         file = output_file)
   }
   
+  build_demos = function (pkg = ".") {
+    require(stringr)
+    require(evaluate)
+    pkg <- as.sd_package(pkg)
+    demo_dir <- file.path(pkg$path, "demo")
+    if (!file.exists(demo_dir)) 
+      return()
+    message("Rendering demos")
+    demos <- readLines(file.path(demo_dir, "00Index"))
+    pieces <- str_split_fixed(demos, "\\s+", 2)
+    in_path <- str_c(pieces[, 1], ".r")
+    filename <- str_c("demo-", pieces[, 1], ".html")
+    title <- pieces[, 2]
+    for (i in seq_along(title)) {
+      demo_code <- readLines(file.path(demo_dir, in_path[i]))
+      demo_expr <- evaluate(demo_code, new.env(parent = globalenv()), new_device = FALSE)
+      pkg$demo <- staticdocs:::replay_html(demo_expr, pkg = pkg, name = str_c(pieces[i],"-"))
+      pkg$pagetitle <- sprintf("Demo: %s",title[i])
+      pkg$title <- pkg$pagetitle
+      render_page(pkg, "demo", pkg, file.path(pkg$site_path, filename[i]))
+    }
+    list(demo = unname(apply(cbind(filename,title), 1, as.list)))
+  }
+  
   #Make the site and the sitemap
   knit(input = "./inst/staticdocs/README.rmd", output = "./inst/staticdocs/README.md")
   build_site(pkg = ".")
+  build_demos(pkg = ".")
   makeSitemap()
 }
 
