@@ -95,7 +95,9 @@ Same as \code{\link{stat_contour}}
 }
 \examples{
   data(Feldspar)
-  ggtern(data=Feldspar,aes(An,Ab,Or)) + geom_point() + geom_confidence_tern()
+  ggtern(data=Feldspar,aes(An,Ab,Or)) + 
+    geom_point() + 
+    geom_confidence_tern()
 }
 \author{
 Nicholas Hamilton

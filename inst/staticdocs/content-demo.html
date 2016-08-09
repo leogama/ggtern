@@ -2,34 +2,9 @@
 
 <div class="row">
   <div class="span8">
-    {{#sections}}
-    <div class="{{{title}}}">
-      <h2>{{{title}}}</h2>
-      {{#contents}}
-      <p>{{{.}}}</p>
-      {{/contents}}
-    </div>
-    {{/sections}}
-    
-    {{#usage}}
-    <h2>Usage</h2>
-    <pre>{{{usage}}}</pre>
-    {{/usage}}
-
-    {{#has_args}}
-    <h2>Arguments</h2>
-    <dl>
-    {{#arguments}}
-      <dt>{{name}}</dt>
-      <dd>{{{description}}}</dd>
-    {{/arguments}}
-    </dl>
-    {{/has_args}}
-
-    {{#examples }}
-    <h2 id="examples">Examples</h2>
-    <pre class="examples">{{{ examples }}}</pre>
-    {{/examples}}
+  <pre>
+    {{{demo}}}
+  </pre>
   </div>
   <div class="span4" id='sideBar'>
     {{#package}}

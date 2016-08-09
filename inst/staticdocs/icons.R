@@ -50,6 +50,11 @@ tern_limits <- sd_icon({
   ggplotGrob(x)
 })
 
+approved_layers <- sd_icon({
+  g = textGrob(label="?",gp = gpar(fontsize=30))
+  gTree(children=gList(g))
+})
+
 geom_crosshair_tern <- sd_icon({
   df = data.frame(x=c(1),y=c(1),z=c(1))
   x = .emptyPlot(df,aes(x,y,z)) + 
@@ -119,6 +124,22 @@ geom_point_swap <- sd_icon({
 
 geom_mask <- sd_icon({
   x = .emptyPlot() + geom_mask() + theme(tern.plot.background = element_rect(fill=alpha('red',.5)))
+  ggplotGrob(x)
+})
+
+annotate <- sd_icon({
+  x = .emptyPlot() + 
+    geom_mask() + 
+    annotate('label',x=1,y=1,z=1,label='xyz',color='black',size=2.5,alpha=0.25,fill='blue')
+  ggplotGrob(x)
+})
+
+annotation_raster_tern <- sd_icon({
+  data(Feldspar)
+  data(FeldsparRaster)
+  x = .emptyPlot(Feldspar,aes(Ab,An,Or)) + 
+    annotation_raster_tern(FeldsparRaster,xmin=0,xmax=1,ymin=0,ymax=1) +
+    stat_confidence_tern(geom='polygon',fill='red',alpha=0.2,aes(group=Feldspar))
   ggplotGrob(x)
 })
 

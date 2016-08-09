@@ -70,8 +70,50 @@ if(FALSE){
   library(staticdocs)
   library(ggtern)
   library(knitr)
+  library(whisker)
+  library(httr)
+  library(lubridate)
+  
+  makeSitemap = function(site_path=NULL){
+    if(is.null(site_path) || !is.character(site_path) || !dir.exists(site_path))
+      site_path = "inst/web"
+    
+    #THE XML TEMPLATE
+    tpl <-'<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{#links}}
+  <url>
+    <loc>{{{loc}}}</loc>
+    <lastmod>{{{lastmod}}}</lastmod>
+    <changefreq>{{{changefreq}}}</changefreq>
+    <priority>{{{priority}}}</priority>
+  </url>
+  {{/links}}
+</urlset>'
+    
+    #Map all the html files to xml records
+    dest  <- sprintf('http://www.ggtern.com/d/%s',packageVersion("ggtern"))
+    links <- list.files(site_path,pattern = 'html$')
+    map_links <- function(l,base = dest,live=FALSE) {
+      l   <- sprintf("%s/%s",base,l)
+      d   <- if(live) GET(l)$headers[['last-modified']] else now()
+      list(loc        = l,
+           lastmod    = format(as.Date(d,format="%a, %d %b %Y %H:%M:%S")),
+           changefreq = "monthly",
+           priority   = "0.8")
+    }
+    links       <- lapply(links, map_links)
+    output_file <- sprintf("%s/sitemap.xml",site_path)
+    
+    message(sprintf("Writing file: %s",output_file))
+    cat(whisker.render(tpl),
+        file = output_file)
+  }
+  
+  #Make the site and the sitemap
   knit(input = "./inst/staticdocs/README.rmd", output = "./inst/staticdocs/README.md")
   build_site(pkg = ".")
+  makeSitemap()
 }
 
 
