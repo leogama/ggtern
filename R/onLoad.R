@@ -67,78 +67,7 @@
 #MANUAL EXECUTION -- BUILD STATICDOCS
 #------------------------------------------------------------------------------
 if(FALSE){
-  library(staticdocs)
-  library(ggtern)
-  library(knitr)
-  library(whisker)
-  library(httr)
-  library(lubridate)
-  
-  makeSitemap = function(site_path=NULL){
-    if(is.null(site_path) || !is.character(site_path) || !dir.exists(site_path))
-      site_path = "inst/web"
-    
-    #THE XML TEMPLATE
-    tpl <-'<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {{#links}}
-  <url>
-    <loc>{{{loc}}}</loc>
-    <lastmod>{{{lastmod}}}</lastmod>
-    <changefreq>{{{changefreq}}}</changefreq>
-    <priority>{{{priority}}}</priority>
-  </url>
-  {{/links}}
-</urlset>'
-    
-    #Map all the html files to xml records
-    dest  <- sprintf('http://www.ggtern.com/d/%s',packageVersion("ggtern"))
-    links <- list.files(site_path,pattern = 'html$')
-    map_links <- function(l,base = dest,live=FALSE) {
-      l   <- sprintf("%s/%s",base,l)
-      d   <- if(live) GET(l)$headers[['last-modified']] else now()
-      list(loc        = l,
-           lastmod    = format(as.Date(d,format="%a, %d %b %Y %H:%M:%S")),
-           changefreq = "monthly",
-           priority   = "0.8")
-    }
-    links       <- lapply(links, map_links)
-    output_file <- sprintf("%s/sitemap.xml",site_path)
-    
-    message(sprintf("Writing file: %s",output_file))
-    cat(whisker.render(tpl),
-        file = output_file)
-  }
-  
-  build_demos = function (pkg = ".") {
-    require(stringr)
-    require(evaluate)
-    pkg <- as.sd_package(pkg)
-    demo_dir <- file.path(pkg$path, "demo")
-    if (!file.exists(demo_dir)) 
-      return()
-    message("Rendering demos")
-    demos <- readLines(file.path(demo_dir, "00Index"))
-    pieces <- str_split_fixed(demos, "\\s+", 2)
-    in_path <- str_c(pieces[, 1], ".r")
-    filename <- str_c("demo-", pieces[, 1], ".html")
-    title <- pieces[, 2]
-    for (i in seq_along(title)) {
-      demo_code <- readLines(file.path(demo_dir, in_path[i]))
-      demo_expr <- evaluate(demo_code, new.env(parent = globalenv()), new_device = FALSE)
-      pkg$demo <- staticdocs:::replay_html(demo_expr, pkg = pkg, name = str_c(pieces[i],"-"))
-      pkg$pagetitle <- sprintf("Demo: %s",title[i])
-      pkg$title <- pkg$pagetitle
-      render_page(pkg, "demo", pkg, file.path(pkg$site_path, filename[i]))
-    }
-    list(demo = unname(apply(cbind(filename,title), 1, as.list)))
-  }
-  
-  #Make the site and the sitemap
-  knit(input = "./inst/staticdocs/README.rmd", output = "./inst/staticdocs/README.md")
-  build_site(pkg = ".")
-  build_demos(pkg = ".")
-  makeSitemap()
+  suppressWarnings(getFromNamespace('.buildStaticDocs','ggtern')())
 }
 
 
