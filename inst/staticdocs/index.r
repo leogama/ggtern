@@ -84,7 +84,8 @@ sd_section("Convenience Functions",
              "theme_showtitles",
              "theme_ticksoutside",
              "theme_mesh",
-             "theme_latex"
+             "theme_latex",
+             "theme_zoom_X"
              )
 )
 
