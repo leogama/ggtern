@@ -77,6 +77,7 @@ Collate:
     'theme-showsecondary.R'
     'theme-showtitles.R'
     'theme-ticksoutside.R'
+    'theme-zoom.R'
     'utilities.R'
     'utilities-help.R'
     'geom-density-tern.R'

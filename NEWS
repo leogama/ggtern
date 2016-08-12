@@ -10,6 +10,7 @@ ggtern 2.1.5
 * Fixed bug with normalisation of data for errorbars, thanks to Andy London for picking up the issue.
 * Added new custom themes: theme_matrix, theme_tropical, theme_bluedark, theme_bluelight
 * Review of documentation for use in staticdocs for website.
+* New Convenience Function for Zooming
 
 ggtern 2.1.4
 ----------------------------------------------------------------
