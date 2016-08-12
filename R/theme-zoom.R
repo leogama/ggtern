@@ -7,26 +7,35 @@
 #' the \code{L} and \code{R} apexes, via the \code{theme_zoom_L} and \code{theme_zoom_R} functions respectively. 
 #' Finally, the \code{theme_zoom_center} function will adjust all three apex limits, serving, as the name suggests, 
 #' to act as a centred zoom. The examples below are fairly self explanatory. 
+#' @aliases theme_zoom
 #' @param x numeric scalar
 #' @examples
 #' #Default Plot
 #' data(Feldspar)
 #' base = ggtern(Feldspar,aes(Ab,An,Or)) +
+#'        theme_bw(8) +
+#'        geom_density_tern() + 
 #'        geom_point() + 
-#'        geom_density_tern()
-#' base
+#'        labs(title="Original")
 #' 
 #' #Zoom on Left Region
-#' base + theme_zoom_L(0.5)
+#' A = base + theme_zoom_L(0.5) + labs(title="theme_zoom_L")
 #' 
 #' #Zoom on Right Region
-#' base + theme_zoom_R(0.5)
+#' B = base + theme_zoom_R(0.5) + labs(title="theme_zoom_R")
 #' 
 #' #Zoom on Top Region
-#' base + theme_zoom_T(0.5)
+#' C = base + theme_zoom_T(0.5) + labs(title="theme_zoom_T")
 #' 
 #' #Zoom on Center Region
-#' base + theme_zoom_center(0.5)
+#' D = base + theme_zoom_center(0.5) + labs(title="theme_zoom_center")
+#' 
+#' #Put all together for comparisons sake
+#' grid.arrange(arrangeGrob(base), 
+#'              arrangeGrob(A,B,nrow=1), 
+#'              arrangeGrob(C,D,nrow=1), 
+#'              ncol=1, heights=c(2,1,1),
+#'              top = "Comparison of Zooming Functions")
 #' 
 #' @author Nicholas Hamilton
 #' @rdname theme_zoom_X
@@ -36,6 +45,7 @@ NULL
 #' @rdname theme_zoom_X
 #' @export
 theme_zoom_T = function(x = 1.0,...){
+  stopifnot(x > 0)
   args = list(...); args$L = args$R = x; args$T = 1
   do.call(limit_tern,args=args)
 }
@@ -43,6 +53,7 @@ theme_zoom_T = function(x = 1.0,...){
 #' @rdname theme_zoom_X
 #' @export
 theme_zoom_L = function(x = 1.0,...){
+  stopifnot(x > 0)
   args = list(...); args$T = args$R = x; args$L = 1
   do.call(limit_tern,args=args)
 }
@@ -50,6 +61,7 @@ theme_zoom_L = function(x = 1.0,...){
 #' @rdname theme_zoom_X
 #' @export
 theme_zoom_R = function(x = 1.0,...){
+  stopifnot(x > 0)
   args = list(...); args$T = args$L = x; args$R = 1
   do.call(limit_tern,args=args)
 }
@@ -57,7 +69,14 @@ theme_zoom_R = function(x = 1.0,...){
 #' @rdname theme_zoom_X
 #' @export
 theme_zoom_center = function(x=1.0,...){
+  stopifnot(x > 1/3)
   args = list(...); args$T = args$L = args$R = x
   do.call(limit_tern,args=args)
 }
+
+#' @rdname theme_zoom_X
+#' @usage NULL
+#' @format NULL
+#' @export
+theme_zoom_M = theme_zoom_center
 
