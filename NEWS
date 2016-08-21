@@ -11,6 +11,7 @@ ggtern 2.1.5
 * Added new custom themes: theme_matrix, theme_tropical, theme_bluedark, theme_bluelight
 * Review of documentation for use in staticdocs for website.
 * New Convenience Function for Zooming
+* New three-colored themes (theme_bvbw and theme_bvbg) for colourblind sensitive viewers.
 
 ggtern 2.1.4
 ----------------------------------------------------------------

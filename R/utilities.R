@@ -1,3 +1,7 @@
+
+
+
+
 #'Internal Functions
 #'
 #'@description INTERNAL FUNCTIONS: \code{ggtern} makes use of several non-exported internal functions, list are as follows:
@@ -46,6 +50,30 @@ find_global_tern <- function (name, env=environment()){
   nsenv <- asNamespace("ggplot2")
   if(exists(name, nsenv)){return(get(name, nsenv))}
   NULL
+}
+
+
+#' Convert RGB to HEX Color
+#' 
+#' Function to convert rgb color to hex color
+#' @param r,g,b colors, numeric scalar between 0 and 255
+#' @keywords internal
+#' @author Nicholas Hamilton
+#' @examples 
+#' rgb2hex(0,0,0)
+#' rgb2hex(255,255,255)
+#' rgb2hex(255,0,0)
+#' rgb2hex(0,255,0) 
+#' rgb2hex(0,0,255)
+#' @export
+rgb2hex = function(r=0,g=0,b=0){ 
+  check = function(x){
+    stopifnot(is.numeric(x))
+    stopifnot(length(x) == 1)
+    stopifnot(x >=0 & x <= 255)
+  }
+  check(r);check(g);check(b)
+  sprintf("#%.2x%.2x%.2x",r,g,b) 
 }
 
 #' Generate Axis Breaks
@@ -294,7 +322,6 @@ layers_add_or_remove_mask = function(plot){
   }
   plot
 } 
-
 
 
 

@@ -67,6 +67,7 @@
 #MANUAL EXECUTION -- BUILD STATICDOCS
 #------------------------------------------------------------------------------
 if(FALSE){
+  library(grid)
   buildStaticDocs = function(){
     
     build_site = function(pkg = "."){

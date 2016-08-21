@@ -46,6 +46,12 @@
 #'  \item{BlueDark Theme:}{
 #'    \code{\link[=theme_bluedark]{theme_bluedark(...)}}
 #'  }
+#'  \item{Black Vermillion Blue Theme (White Background):}{
+#'    \code{\link[=theme_bvbw]{theme_bvbw(...)}}
+#'  }
+#'  \item{Black Vermillion Blue Theme (Grey Background):}{
+#'    \code{\link[=theme_bvbg]{theme_bvbg(...)}}
+#'  }
 #' }
 #' @seealso \code{\link{ggtern_themes}}
 #' @author Nicholas Hamilton
@@ -133,12 +139,20 @@ NULL
 #' A blue theme with dark background and light features
 #' }
 #' 
+#' \item{\code{theme_bvbw}}{
+#' A black/vermillion/blue theme with white background, for colorblind sensitive readers, see references.
+#' }
+#' 
+#' \item{\code{theme_bvbg}}{
+#' A black/vermillion/blue theme with grey background, for colorblind sensitive readers, see references.
+#' }
+#' 
 #' }
 #'
 #' @examples
 #' #Create a list of the theme suffixes
 #' themesOrg = c('gray','bw','linedraw','light','dark','minimal','classic','void')
-#' themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark')
+#' themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark','bvbw','bvbg')
 #' 
 #' #Iterate over all the suffixes, creating a list of plots
 #' plotThemes = function(themes){
@@ -156,6 +170,10 @@ NULL
 #' 
 #' #Arrange the New Themes
 #' grid.arrange(grobs=plotThemes(themesNew),top = "Collection of Themes (New Themes)")
+#' 
+#' @references 
+#' Okabe, Masataka, and Kei Ito. "How to make figures and presentations that are friendly to color blind people." 
+#' University of Tokyo (2002). http://jfly.iam.u-tokyo.ac.jp/color/
 #' 
 #' @author Nicholas Hamilton
 #' @name ggtern_themes
@@ -572,6 +590,38 @@ theme_bluelight = function(base_size = 12, base_family = ""){
           tern.panel.grid.major.L = element_line(color = featAG),
           tern.panel.grid.major.R = element_line(color = featAG),
           tern.axis.arrow.show    = TRUE)
+}
+
+
+#' @rdname ggtern_themes
+#' @export
+theme_bvbw  <- function(base_size = 12, base_family = ""){
+  #Start with grey theme, then overwrite with custom theme
+  col.T = rgb2hex(0,0,0)
+  col.L = rgb2hex(213,94,0)
+  col.R = rgb2hex(0,114,178)
+  theme_custom(base_size,base_family,col.T=col.T,col.L=col.L,col.R=col.R) +
+    
+    #Add, not replace
+    theme(
+      tern.panel.background  = element_rect(fill  = 'white'),
+      tern.panel.grid.minor  = element_line(color = "gray90"),
+      tern.axis.arrow.show   = TRUE
+    )
+}
+
+#' @rdname ggtern_themes
+#' @export
+theme_bvbg <- function(base_size = 12, base_family = ""){
+  
+  #Start with rgbw theme, and modify slightly
+  theme_bobw(base_size, base_family) + 
+    
+    #Add to, not replace
+    theme(
+      tern.panel.background  = element_rect(fill  = 'gray92'),
+      tern.panel.grid.minor  = element_line(color = "white")
+    )
 }
 
 #-------------------------------------------------------------

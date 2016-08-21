@@ -50,6 +50,12 @@ are unique to \code{ggtern}.
  \item{BlueDark Theme:}{
    \code{\link[=theme_bluedark]{theme_bluedark(...)}}
  }
+ \item{Black Vermillion Blue Theme (White Background):}{
+   \code{\link[=theme_bvbw]{theme_bvbw(...)}}
+ }
+ \item{Black Vermillion Blue Theme (Grey Background):}{
+   \code{\link[=theme_bvbg]{theme_bvbg(...)}}
+ }
 }
 }
 \author{

@@ -4,6 +4,8 @@
 \alias{ggtern_themes}
 \alias{theme_bluedark}
 \alias{theme_bluelight}
+\alias{theme_bvbg}
+\alias{theme_bvbw}
 \alias{theme_bw}
 \alias{theme_classic}
 \alias{theme_custom}
@@ -57,6 +59,10 @@ theme_tropical(base_size = 12, base_family = "")
 theme_bluedark(base_size = 12, base_family = "")
 
 theme_bluelight(base_size = 12, base_family = "")
+
+theme_bvbw(base_size = 12, base_family = "")
+
+theme_bvbg(base_size = 12, base_family = "")
 }
 \arguments{
 \item{base_size}{base font size}
@@ -153,12 +159,20 @@ A blue theme with light background and dark features
 A blue theme with dark background and light features
 }
 
+\item{\code{theme_bvbw}}{
+A black/vermillion/blue theme with white background, for colorblind sensitive readers, see references.
+}
+
+\item{\code{theme_bvbg}}{
+A black/vermillion/blue theme with grey background, for colorblind sensitive readers, see references.
+}
+
 }
 }
 \examples{
 #Create a list of the theme suffixes
 themesOrg = c('gray','bw','linedraw','light','dark','minimal','classic','void')
-themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark')
+themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark','bvbw','bvbg')
 
 #Iterate over all the suffixes, creating a list of plots
 plotThemes = function(themes){
@@ -180,5 +194,9 @@ grid.arrange(grobs=plotThemes(themesNew),top = "Collection of Themes (New Themes
 }
 \author{
 Nicholas Hamilton
+}
+\references{
+Okabe, Masataka, and Kei Ito. "How to make figures and presentations that are friendly to color blind people." 
+University of Tokyo (2002). http://jfly.iam.u-tokyo.ac.jp/color/
 }
 
