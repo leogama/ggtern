@@ -18,7 +18,7 @@ ifthenelse(x, a, b)
 
 is.numericor(A, B)
 
-find_global_tern(name, env = environment())
+find_global_tern(name, env = environment(), mode = "any")
 
 tern_dep(version, msg)
 
@@ -48,6 +48,8 @@ layers_add_or_remove_mask(plot)
 \item{name}{character name of object to search for}
 
 \item{env}{environment to search within as first priority}
+
+\item{mode}{the mode to search within}
 
 \item{version}{The last version of ggplot2 where this function was good
 (in other words, the last version where it was not deprecated).}

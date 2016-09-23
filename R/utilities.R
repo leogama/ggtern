@@ -39,16 +39,27 @@ is.numericor <- function(A,B){
 #' now additionally searches within the \code{ggtern} namespace prior to the \code{ggplot2} namespace.
 #' @param name character name of object to search for
 #' @param env environment to search within as first priority
+#' @param mode the mode to search within
 #' @keywords internal
 #' @rdname undocumented
-find_global_tern <- function (name, env=environment()){  
+find_global_tern <- function (name, env=environment(),mode='any'){  
   if(!is.character(name)){stop("'name' must be provided as a character")}
   if(!inherits(environment(),"environment")){stop("'env' must inherit the environment class")}
-  if (exists(name, env)){ return(get(name, env))}
+  
+  if (exists(name, envir = env, mode = mode)){ 
+    return(get(name, envir = env, mode = mode))
+  }
+  
   nsenv <- asNamespace("ggtern")
-  if(exists(name, nsenv)){return(get(name, nsenv))}
+  if(exists(name, envir = nsenv, mode=mode)){
+    return(get(name, envir = nsenv, mode = mode))
+  }
+  
   nsenv <- asNamespace("ggplot2")
-  if(exists(name, nsenv)){return(get(name, nsenv))}
+  if(exists(name, envir = nsenv, mode=mode)){
+    return(get(name, envir = nsenv, mode = mode))
+  }
+  
   NULL
 }
 
@@ -60,20 +71,42 @@ find_global_tern <- function (name, env=environment()){
 #' @keywords internal
 #' @author Nicholas Hamilton
 #' @examples 
+#' #Black
 #' rgb2hex(0,0,0)
+#' 
+#' #White
 #' rgb2hex(255,255,255)
+#' 
+#' #Red
 #' rgb2hex(255,0,0)
+#' 
+#' #Green
 #' rgb2hex(0,255,0) 
+#' 
+#' #Blue
 #' rgb2hex(0,0,255)
+#' 
+#' #Vectorised sequence of blue
+#' rgb2hex(0,0,seq(0,255,by=5))
 #' @export
-rgb2hex = function(r=0,g=0,b=0){ 
-  check = function(x){
-    stopifnot(is.numeric(x))
-    stopifnot(length(x) == 1)
-    stopifnot(x >=0 & x <= 255)
+rgb2hex = function(r = 0, g = 0, b = 0){
+  df = data.frame(r, g, b)
+  check = function(x, ix = NULL){
+    nm = deparse(substitute(x))
+    ix = as.character({ix %||% ''})
+    if(!is.numeric(x))  stop(sprintf("'%s%s' must be numeric",             nm,ix),call. = FALSE)
+    if(length(x) != 1)  stop(sprintf("'%s%s' must be scalar",              nm,ix),call. = FALSE)
+    if(!is.finite(x))   stop(sprintf("'%s%s' must be finite",              nm,ix),call. = FALSE)
+    if(x < 0 | x > 255) stop(sprintf("'%s%s' must be in the range [0,255]",nm,ix),call. = FALSE)
   }
-  check(r);check(g);check(b)
-  sprintf("#%.2x%.2x%.2x",r,g,b) 
+  nr = nrow(df)
+  sapply( c(1:nr), function(ix){
+    n = if(nr > 1){ ix }else{ NULL }
+    r = df$r[ix]; check(r,n)
+    g = df$g[ix]; check(g,n)
+    b = df$b[ix]; check(b,n)
+    sprintf("#%.2x%.2x%.2x",r,g,b) 
+  })
 }
 
 #' Generate Axis Breaks
@@ -290,9 +323,19 @@ scales_add_missing_tern <- function(plot){
   
   #Ensure required scales have been added
   rs = plot$coordinates$required_scales
-  ggint$scales_add_missing(plot,rs,plot$plot_env) ##NH
+  
+  aesthetics  = setdiff(rs, plot$scales$input())
+  env = plot$plot_env
+  for (aes in aesthetics) {
+    scale_name <- paste("scale", aes, "continuous", sep = "_")
+    scale_f <- ggtern:::find_global_tern(scale_name, env, mode = "function")
+    plot$scales$add(scale_f())
+  }
+  
+  #ggint$scales_add_missing(plot,rs,plot$plot_env) ##NH
   #plot$scales$scales = plot$scales$scales[!sapply(plot$scales$scales,is.null)] 
- 
+  #plot$scales$scales = compact(plot$scales$scales)
+  
   #Push some details to the coordinates
   plot$coordinates$scales        = sapply(rs,plot$scales$get_scales) ##NH
   for(r in rs) 
