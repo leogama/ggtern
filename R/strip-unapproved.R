@@ -33,53 +33,30 @@ NULL
 #' 
 #' @param layers list of the layers to strip unnaproved layers from.
 #' @return \code{strip_unapproved} returns a list of approved layers (may be empty if none are approved).
-strip_unapproved <- function(layers){  
-  ##Remove Unapproved Ternary Layers:
-  tryCatch({
-    L <- length(layers)
-    for(ix in L:1){ #backwards.
-      layer = layers[[ix]]
-      if(inherits(layer,"ggproto")){
-        
-        #Get the geom and stat name for this layer
-        geomName <- class(layer$geom)[1]
-        statName <- class(layer$stat)[1]
-        postName <- class(layer$position)[1]
-        
-        #Reset
-        remove = FALSE
-        
-        #Check the Geometries
-        if(!any(geomName %in% .approvedgeom)){
-          msg = sprintf("Removing Layer %i ('%s'), as it is not an approved geometry (for ternary plots) under the present ggtern package.",
-                        (L - ix + 1),
-                        paste(geomName,collapse="', '"))
-          warning(msg,call. = FALSE)
-          remove = TRUE
-          
-        #Check the Stats
-        } else if(!any(statName %in% .approvedstat)){
-          msg = sprintf("Removing Layer %i ('%s'), as it is not an approved stat (for ternary plots) under the present ggtern package.",
-                        (L - ix + 1),
-                        paste(statName,collapse="', '"))
-          warning(msg,call. = FALSE)
-          remove = TRUE
-          
-        #Check the Positions
-        } else if(!any(postName %in% .approvedposition)){
-          msg = sprintf("Removing Layer %i ('%s'), as it is not an approved position (for ternary plots) under the present ggtern package.",
-                        (L - ix + 1),
-                        paste(postName,collapse="', '"))
-          warning(msg,call. = FALSE)
-          remove = TRUE
-        }
-        
-        #Instructed to remove
-        if(remove) layers[[ix]] <- NULL
-      }
+strip_unapproved <- function(layers){
+  layers = lapply(seq_along(layers),function(ix){
+    layer    <- layers[[ix]]
+    f <- function(type,name)
+      sprintf("Removing Layer %i ('%s'), as it is not an approved %s (for ternary plots) under the present ggtern package.", 
+              ix,paste(name,collapse="', '"),type)
+    n = class(layer$geom)[1]
+    if(!any(n %in% .approvedgeom)){
+      warning(f('geometry',n),call.=FALSE)
+      return(NULL)
     }
-  },error=function(e){})
-  layers
+    n = class(layer$stat)[1]
+    if(!any(n %in% .approvedstat)){
+      warning(f('stat',n),call.=FALSE)
+      return(NULL)
+    }
+    n = class(layer$position)[1]
+    if(!any(n %in% .approvedposition)){
+      warning(f('position',n),call.=FALSE)
+      return(NULL)
+    }
+    layer
+  })
+  compact(layers)
 }
 
 #LIST OF APPROVED GEOMS
