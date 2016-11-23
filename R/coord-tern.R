@@ -133,10 +133,10 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     #Determine the Layout
     layout <- table$layout
     #Remove Y-axis columns
-    ycols  <- layout[grepl("^ylab", layout$name), , drop = FALSE]
+    ycols  <- layout[grepl("^ylab-l", layout$name), , drop = FALSE]
     table  <- table[,-ycols$l]
     #Remove X-axis Rows
-    xrows  <- layout[grepl("^xlab", layout$name), , drop = FALSE]
+    xrows  <- layout[grepl("^xlab-b", layout$name), , drop = FALSE]
     table  <- table[-xrows$t,]
     table
   },
