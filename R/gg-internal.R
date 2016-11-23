@@ -1,9 +1,12 @@
 #Expose some required functions from the parent ggplot2 namespace
 .getFunctions <- function(){
 
-.functions.ggplot2   = c('new_panel','train_layout','train_position','train_ranges','expand_default',
-                         'map_position','map_layout','map_position','reset_scales','plot_theme',
-                         'facet_render','xlabel','ylabel','element_render','message_wrap',
+#' OLD FUNCTIONS  
+#'new_panel','train_layout','train_position','train_ranges','map_position','map_layout','reset_scales','facet_render',
+#'xlabel','ylabel'
+
+.functions.ggplot2   = c('create_layout','expand_default','plot_theme',
+                         'element_render','message_wrap',
                          'set_last_plot','make_labels','build_guides','is.zero','add_ggplot','labelGrob',
                          'is.layer','is.facet','is.Coord','GeomSegment',
                          '.element_tree','el_def','combine_elements','aes_to_scale',
