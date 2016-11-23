@@ -287,11 +287,11 @@ ggplot_gtable <- function(data) {
   plot_table
 }
 
-# Generate a ggplot2 plot grob (ggtern version)
-#
-# @param x ggplot2 object
-# @rdname ggplot_gtable
-# @export
-#ggplotGrob <- function(x) {
-#  ggplot_gtable(ggplot_build(x))
-#}
+#' Generate a ggplot2 plot grob (ggtern version)
+#'
+#' @param x ggplot2 object
+#' @rdname ggplot_gtable
+#' @export
+ggplotGrob <- function(x) {
+  ggplot_gtable(ggplot_build(x))
+}

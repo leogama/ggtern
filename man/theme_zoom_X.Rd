@@ -20,6 +20,8 @@ theme_zoom_center(x = 1, ...)
 }
 \arguments{
 \item{x}{numeric scalar}
+
+\item{...}{additional arguments to be passed through to \code{\link{limit_tern}}}
 }
 \description{
 A series of convenience functions for the zooming in on the middle or apex regions to various degrees.

@@ -9,6 +9,7 @@
 #' to act as a centred zoom. The examples below are fairly self explanatory. 
 #' @aliases theme_zoom
 #' @param x numeric scalar
+#' @param ... additional arguments to be passed through to \code{\link{limit_tern}}
 #' @examples
 #' #Default Plot
 #' data(Feldspar)

@@ -171,8 +171,10 @@ A black/vermillion/blue theme with grey background, for colorblind sensitive rea
 }
 \examples{
 #Create a list of the theme suffixes
-themesOrg = c('gray','bw','linedraw','light','dark','minimal','classic','void')
-themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark','bvbw','bvbg')
+themesOrg = c('gray','bw','linedraw','light',
+              'dark','minimal','classic','void')
+themesNew = c('custom','darker','rgbw','rgbg','tropical',
+              'matrix','bluelight','bluedark','bvbw','bvbg')
 
 #Iterate over all the suffixes, creating a list of plots
 plotThemes = function(themes){

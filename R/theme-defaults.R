@@ -151,8 +151,10 @@ NULL
 #'
 #' @examples
 #' #Create a list of the theme suffixes
-#' themesOrg = c('gray','bw','linedraw','light','dark','minimal','classic','void')
-#' themesNew = c('custom','darker','rgbw','rgbg','tropical','matrix','bluelight','bluedark','bvbw','bvbg')
+#' themesOrg = c('gray','bw','linedraw','light',
+#'               'dark','minimal','classic','void')
+#' themesNew = c('custom','darker','rgbw','rgbg','tropical',
+#'               'matrix','bluelight','bluedark','bvbw','bvbg')
 #' 
 #' #Iterate over all the suffixes, creating a list of plots
 #' plotThemes = function(themes){
@@ -614,8 +616,8 @@ theme_bvbw  <- function(base_size = 12, base_family = ""){
 #' @export
 theme_bvbg <- function(base_size = 12, base_family = ""){
   
-  #Start with rgbw theme, and modify slightly
-  theme_bobw(base_size, base_family) + 
+  #Start with theme_bvbw  theme, and modify slightly
+  theme_bvbw(base_size, base_family) + 
     
     #Add to, not replace
     theme(

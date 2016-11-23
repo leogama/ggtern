@@ -38,6 +38,7 @@ is.numericor <- function(A,B){
 #' @param mode the mode to search within
 #' @keywords internal
 #' @rdname undocumented
+#' @export
 find_global_tern <- function (name, env=environment(),mode='any'){  
   if(!is.character(name)){stop("'name' must be provided as a character")}
   if(!inherits(environment(),"environment")){stop("'env' must inherit the environment class")}
@@ -323,7 +324,7 @@ scales_add_missing_tern <- function(plot){
   env = plot$plot_env
   for (aes in aesthetics) {
     scale_name <- paste("scale", aes, "continuous", sep = "_")
-    scale_f <- ggtern:::find_global_tern(scale_name, env, mode = "function")
+    scale_f <- find_global_tern(scale_name, env, mode = "function")
     plot$scales$add(scale_f())
   }
   
