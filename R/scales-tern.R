@@ -17,12 +17,12 @@ scale_T_continuous <- function(name         = waiver(),
     "tern_T", identity, name = name, breaks = breaks,
     minor_breaks = minor_breaks, labels = labels, limits = limits,
     expand = waiver(), oob = censor, na.value = NA_real_, trans = "identity",
-    guide = "none"
+    guide = "none",super = ScaleContinuousPosition
   )
   # TODO: Fix this hack. We're reassigning the parent ggproto object, but this
   # object should in the first place be created with the correct parent.
-  sc$super <- ScaleContinuousPosition
-  class(sc) <- class(ScaleContinuousPosition)
+  #sc$super <- ScaleContinuousPosition
+  #class(sc) <- class(ScaleContinuousPosition)
   sc
 }
 
@@ -39,12 +39,12 @@ scale_L_continuous <- function(name         = waiver(),
     "tern_L", identity, name = name, breaks = breaks,
     minor_breaks = minor_breaks, labels = labels, limits = limits,
     expand = waiver(), oob = censor, na.value = NA_real_, trans = "identity",
-    guide = "none"
+    guide = "none",super = ScaleContinuousPosition
   )
   # TODO: Fix this hack. We're reassigning the parent ggproto object, but this
   # object should in the first place be created with the correct parent.
-  sc$super <- ScaleContinuousPosition
-  class(sc) <- class(ScaleContinuousPosition)
+  #sc$super <- ScaleContinuousPosition
+  #class(sc) <- class(ScaleContinuousPosition)
   sc
 }
 
@@ -60,11 +60,11 @@ scale_R_continuous <- function(name         = waiver(),
     "tern_R", identity, name = name, breaks = breaks,
     minor_breaks = minor_breaks, labels = labels, limits = limits,
     expand = waiver(), oob = censor, na.value = NA_real_, trans = "identity",
-    guide = "none"
+    guide = "none",super = ScaleContinuousPosition
   )
   # TODO: Fix this hack. We're reassigning the parent ggproto object, but this
   # object should in the first place be created with the correct parent.
-  sc$super <- ScaleContinuousPosition
-  class(sc) <- class(ScaleContinuousPosition)
+  #sc$super <- ScaleContinuousPosition
+  #class(sc) <- class(ScaleContinuousPosition)
   sc
 }

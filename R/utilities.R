@@ -1,7 +1,3 @@
-
-
-
-
 #'Internal Functions
 #'
 #'@description INTERNAL FUNCTIONS: \code{ggtern} makes use of several non-exported internal functions, list are as follows:
@@ -62,7 +58,6 @@ find_global_tern <- function (name, env=environment(),mode='any'){
   
   NULL
 }
-
 
 #' Convert RGB to HEX Color
 #' 
