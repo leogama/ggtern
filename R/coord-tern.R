@@ -93,10 +93,21 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       data           = addOrigin(data,ix.comb,(target - origin))
     }
     
-    self$super$super$transform(data,scale_details)
+    #self$super$super$transform(data,scale_details)
+    self$super()$super()$transform(data,scale_details)
   },
-  render_axis_h   = function(self,scale_details, theme) zeroGrob(), #not required
-  render_axis_v   = function(self,scale_details, theme) zeroGrob(), #not required
+  render_axis_h   = function(self,scale_details, theme){
+    list(
+      top = zeroGrob(),
+      bottom = zeroGrob()
+    )
+  },
+  render_axis_v   = function(self,scale_details, theme){
+    list(
+      left = zeroGrob(),
+      right = zeroGrob()
+    )
+  },
   render_bg       = function(self,scale_details, theme){
     items = list() 
     extrm = .get.tern.extremes(self,scale_details)
@@ -116,8 +127,18 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
       items = .render.fgset(self,extrm,scale_details,theme,items)
     }
     items = .render.titles(self,extrm,scale_details,theme,items)
-    #items[[length(items) + 1]] = element_render(theme, "panel.border")
     gTree(children = do.call("gList", items))
+  },
+  remove_labels = function(self,table){
+    #Determine the Layout
+    layout <- table$layout
+    #Remove Y-axis columns
+    ycols  <- layout[grepl("^ylab", layout$name), , drop = FALSE]
+    table  <- table[,-ycols$l]
+    #Remove X-axis Rows
+    xrows  <- layout[grepl("^xlab", layout$name), , drop = FALSE]
+    table  <- table[-xrows$t,]
+    table
   },
   train = function(self, scale_details) {
     train_cartesian <- function(scale_details,limits,name,continuousAmount) {
@@ -750,14 +771,14 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
     .render.arrow <- function(name,ix,items){
       tryCatch({  
         e = calc_element(name,theme=theme,verbose=F)
-        if(identical(e,element_blank()))return(items)
+        if(identical(e,element_blank())) return(items)
         grob = segmentsGrob(x0 = d$x[ix], x1 = d$xend[ix], y0 = d$y[ix], y1 = d$yend[ix],
                             default.units ="npc",
                             arrow         = e$lineend,
                             gp            = gpar(col     = e$colour, 
                                                  lty     = e$linetype,
                                                  lineend = 'butt',
-                                                 lwd     = e$size*find_global_tern(".pt"))
+                                                 lwd     = e$size)
         )
         items[[length(items) + 1]] <- grob
       },error = function(e){
