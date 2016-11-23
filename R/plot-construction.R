@@ -14,6 +14,10 @@
   else if (is.ggplot(e1)) add_ggplot(e1, e2, e2name)
 }
 
+#' @rdname plot_construction
+#' @export
+"%+%" <- `+.gg`
+
 add_ggplot <- function(p, object, objectname) {
   if (is.null(object)) return(p)
   
@@ -30,6 +34,8 @@ add_ggplot <- function(p, object, objectname) {
     p <- ggint$update_guides(p, object)
   } else if (inherits(object, "uneval")) {
     p$mapping <- defaults(object, p$mapping)
+    # defaults() doesn't copy class, so copy it.
+    class(p$mapping) <- class(object)
     
     labels <- lapply(object, deparse)
     names(labels) <- names(object)
@@ -42,7 +48,7 @@ add_ggplot <- function(p, object, objectname) {
     p
   } else if (is.list(object)) {
     for (o in object) {
-      p <- p + o
+      p <- p %+% o
     }
   } else if (ggint$is.layer(object)) {
     p$layers <- append(p$layers, object)
