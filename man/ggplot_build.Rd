@@ -3,17 +3,11 @@
 \name{ggplot_build}
 \alias{ggplot_build}
 \alias{layer_data}
-\alias{layer_grob}
-\alias{layer_scales}
 \title{Build ggplot for rendering (ggtern version).}
 \usage{
 ggplot_build(plot)
 
 layer_data(plot, i = 1L)
-
-layer_scales(plot, i = 1L, j = 1L)
-
-layer_grob(plot, i = 1L)
 }
 \arguments{
 \item{plot}{ggplot object}

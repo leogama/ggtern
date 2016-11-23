@@ -7,14 +7,16 @@
 theme(..., complete = FALSE, validate = TRUE)
 }
 \arguments{
-\item{...}{a list of element name, element pairings that modify the
-existing theme.}
+\item{...}{additional element specifications not part of base ggplot2. If
+supplied \code{validate} needs to be set to \code{FALSE}.}
 
 \item{complete}{set this to TRUE if this is a complete theme, such as
 the one returned \code{by theme_grey()}. Complete themes behave
-differently when added to a ggplot object.}
+differently when added to a ggplot object. Also, when setting
+\code{complete = TRUE} all elements will be set to inherit from blank
+elements.}
 
-\item{validate}{TRUE to run validate_element, FALSE to bypass checks.}
+\item{validate}{\code{TRUE} to run validate_element, \code{FALSE} to bypass checks.}
 }
 \description{
 Use this function to modify theme settings.
