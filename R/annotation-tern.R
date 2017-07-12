@@ -68,6 +68,7 @@ annotate <- function(geom,
     data        = data,
     mapping     = aes_all(names(data)),
     inherit.aes = FALSE,
-    show.legend = FALSE
+    show.legend = FALSE,
+    check.aes   = FALSE
   )
 }

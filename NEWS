@@ -1,3 +1,17 @@
+ggtern 2.2.1
+----------------------------------------------------------------
+* Modified the masked ggplot_gtable and ggplot_build functions, to call the parent versions if the plot is not ternary (ie the functions within the starndard ggplot2 plot), reducing the fragility of the ggtern package to changes in ggplot2
+* Approved geom_encircle from the ggalt package as an approved geometry, as requested by David Zakharov.
+* Fixed error warning excess aesthetic
+* Fixed issue w/ theme, where element blank was being ignored.
+
+ggtern 2.2.0
+----------------------------------------------------------------
+* Tidied up strip_unnaproved function
+* Removed hidden functions no longer used
+* Fixed ggproto modifications, plot build, plot construction and ternary scales
+* Documentation Improvements
+
 ggtern 2.1.5
 ----------------------------------------------------------------
 * Fixed bug to do with theme element rendering, some properties were being ignored (Thanks to Ivan Galvan for picking up on this)

@@ -92,7 +92,8 @@ strip_unapproved <- function(layers){
                         Rmark            = "GeomRmark",
                         point_swap       = "GeomPointSwap",
                         "GeomRasterAnnTern",
-                        "GeomDl"
+                        "GeomDl",
+                        encircle         = "GeomEncircle"
 )
 
 #LIST OF APPROVED STATS
