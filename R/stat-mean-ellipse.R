@@ -1,8 +1,5 @@
 #' Mean Ellipses
 #' 
-#' Statistics to produce the ellipses from a mean and a variance of ternary compositional data, 
-#' based off the function included in the \code{\link{compositions}} package.
-#' 
 #' @param steps the number of discretisation points to draw the ellipses
 #' @param r a scaling of the half-diameters
 #' @section Computed variables: 

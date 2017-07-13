@@ -1,7 +1,7 @@
 #' Mean Ellipse
 #' 
-#' Default geometry to produce the ellipses from a mean and a variance of ternary compositional data, 
-#' based off the function included in the \code{\link{compositions}} package.
+#' Produce ellipses from a mean and a variance of ternary compositional data, based off the function 
+#' included in the \code{\link{compositions}} package.
 #' 
 #' @inheritParams ggplot2::geom_smooth
 #' @inheritParams ggplot2::geom_density2d

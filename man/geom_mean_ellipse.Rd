@@ -72,11 +72,10 @@ the default plot specification, e.g. \code{\link{borders}}.}
 \item{r}{a scaling of the half-diameters}
 }
 \description{
-Default geometry to produce the ellipses from a mean and a variance of ternary compositional data, 
-based off the function included in the \code{\link{compositions}} package.
+Produce ellipses from a mean and a variance of ternary compositional data, based off the function 
+included in the \code{\link{compositions}} package.
 
-Statistics to produce the ellipses from a mean and a variance of ternary compositional data, 
-based off the function included in the \code{\link{compositions}} package.
+Mean Ellipses
 }
 \section{Aesthetics}{
 
