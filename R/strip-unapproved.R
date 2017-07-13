@@ -93,7 +93,8 @@ strip_unapproved <- function(layers){
                         point_swap       = "GeomPointSwap",
                         "GeomRasterAnnTern",
                         "GeomDl",
-                        encircle         = "GeomEncircle"
+                        encircle         = "GeomEncircle",
+                        mean_ellipse     = "GeomMeanEllipse"
 )
 
 #LIST OF APPROVED STATS
@@ -103,7 +104,8 @@ strip_unapproved <- function(layers){
                         smooth_tern      = "StatSmoothTern",
                         sum              = "StatSum",
                         unique           = "StatUnique",
-                        interpolate_tern = "StatInterpolateTern"
+                        interpolate_tern = "StatInterpolateTern",
+                        mean_ellipse     = "StatMeanEllipse"
 )
 
 #LIST OF APPROVED POSITIONS

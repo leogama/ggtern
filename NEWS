@@ -4,6 +4,7 @@ ggtern 2.2.1
 * Approved geom_encircle from the ggalt package as an approved geometry, as requested by David Zakharov.
 * Fixed error warning excess aesthetic
 * Fixed issue w/ theme, where element blank was being ignored.
+* Mean Ellipses Geomery. Thanks to Ashton Drew from KDV Decision Analysis for requesting this.
 
 ggtern 2.2.0
 ----------------------------------------------------------------
