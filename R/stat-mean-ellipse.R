@@ -10,6 +10,7 @@
 #'   theme_bw() + 
 #'   stat_mean_ellipse(geom='polygon',steps=500,fill='red',color='black') +
 #'   geom_point()
+#' @importFrom compositions mean.rmult idt idtInv clrvar2ilr
 #' @rdname geom_mean_ellipse
 #' @export
 stat_mean_ellipse <- function( mapping  = NULL, data = NULL, geom = "MeanEllipse", position = "identity", 
@@ -65,10 +66,10 @@ StatMeanEllipse <- ggproto("StatMeanEllipse",
         #Split and process for each panel, group and break
         ret = plyr::ddply(data,setdiff(names(data),vars),function(data){
           
-          d    = acomp(data[,vars])
+          d    = compositions::acomp(data[,vars])
           data[,vars] = as.data.frame(d)
-          mu   = mean(d)  #Mean
-          sig  = var(d)   #Variance
+          mu   = mean(d,robust=FALSE)  #Mean
+          sig  = compositions::var(d, robust=FALSE)  #Variance
           ei   = eigen(compositions::clrvar2ilr(sig),symmetric=TRUE)
           
           if( min(ei$values) / max(ei$values) < -1E-8) {
@@ -76,6 +77,7 @@ StatMeanEllipse <- ggproto("StatMeanEllipse",
             warning(msg)
             print(list(problem=msg,var=var,eigen=ei))
           }
+          
           rs = sqrt(abs(ei$values))*r[1]
           me = compositions::idt(mu)
           c1 = me[1]+rs[1]*ei$vectors[1,1]*sw + rs[2]*ei$vectors[1,2]*cw
