@@ -98,6 +98,8 @@ Collate:
     'geom-point-swap.R'
     'annotation-tern.R'
     'annotation-raster-tern.R'
+    'geom-text-viewport.R'
+    'geom-label-viewport.R'
 NeedsCompilation: no
 Repository: CRAN
 RoxygenNote: 5.0.1

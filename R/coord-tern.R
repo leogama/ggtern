@@ -507,7 +507,7 @@ CoordTern <- ggproto("CoordTern", CoordCartesian,
                      gp            = gpar(col     = e$colour %||% 'transparent', 
                                           lty     = e$linetype,
                                           lineend = 'butt',
-                                          lwd     = (e$size %||% 0))
+                                          lwd     = e$size %||% 0)
         )
       })
       

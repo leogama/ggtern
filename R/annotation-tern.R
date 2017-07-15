@@ -30,14 +30,16 @@
 #'   theme_dark() + 
 #'   theme_nomask()
 #' @author Nicholas Hamilton
+#' @rdname annotate
+#' @name annotate
 #' @export
-annotate <- function(geom, 
-                          x = NULL, y = NULL, z = NULL,
-                          xmin = NULL, xmax = NULL,
-                          ymin = NULL, ymax = NULL, 
-                          zmin = NULL, zmax = NULL,
-                          xend = NULL, yend = NULL, zend=NULL, ...,
-                          na.rm = FALSE) {
+annotate <- function( geom, 
+                      x = NULL, y = NULL, z = NULL,
+                      xmin = NULL, xmax = NULL,
+                      ymin = NULL, ymax = NULL, 
+                      zmin = NULL, zmax = NULL,
+                      xend = NULL, yend = NULL, zend=NULL, ...,
+                      na.rm = FALSE) {
 
   position <- compact(list(
     x = x, xmin = xmin, xmax = xmax, xend = xend,
@@ -72,3 +74,4 @@ annotate <- function(geom,
     check.aes   = FALSE
   )
 }
+
