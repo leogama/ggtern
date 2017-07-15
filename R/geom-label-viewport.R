@@ -7,7 +7,26 @@
 #' 
 #' @section Aesthetics:
 #' \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom","Label")}
-#'
+#' 
+#' @examples
+#' library(ggplot2)
+#' data(Feldspar)
+#' base = ggtern(data=Feldspar,aes(Ab,An,Or)) + 
+#'   geom_mask() + 
+#'   geom_point() + 
+#'   geom_label_viewport(x=0.5,y=0.5,label="Middle",color='red') + 
+#'   geom_label_viewport(x=1.0,y=1.0,label="Top Right",color='blue') + 
+#'   geom_label_viewport(x=0.0,y=0.0,label="Bottom Left",color='green') +
+#'   geom_label_viewport(x=0.0,y=1.0,label="Top Left",color='orange') + 
+#'   geom_label_viewport(x=1.0,y=0.0,label="Bottom Right",color='magenta')
+#' base
+#' 
+#' base + 
+#'   geom_label_viewport(x=0.9,y=0.5,label="Clipping Turned Off",color='purple',hjust=0,clip='on') 
+#' 
+#' base + 
+#'   geom_label_viewport(x=0.9,y=0.5,label="Clipping Turned Off",color='purple',hjust=0,clip='off') 
+#' 
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
 #' @inheritParams ggplot2::geom_label
@@ -70,7 +89,8 @@ GeomLabelViewport <- ggproto("GeomLabelViewport",
                          na.rm = FALSE,
                          label.padding = unit(0.25, "lines"),
                          label.r = unit(0.15, "lines"),
-                         label.size = 0.25) {
+                         label.size = 0.25,
+                         clip = "inherit") {
     
     #Check the required aesthetics have been provided
     ggint$check_required_aesthetics(self$required_aes, names(data), ggint$snake_class(self))
@@ -115,7 +135,7 @@ GeomLabelViewport <- ggproto("GeomLabelViewport",
            fill       = alpha(row$fill, row$alpha),
            lwd        = label.size * .pt
          ),
-         vp = grid::viewport()
+         vp = grid::viewport(clip = clip)
        )
      })
      class(grobs) <- "gList"
