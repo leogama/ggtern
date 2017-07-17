@@ -42,6 +42,10 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 \code{color = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
+\item{hjust}{horizontal justification}
+
+\item{vjust}{vertical justification}
+
 \item{parse}{If TRUE, the labels will be parsed into expressions and
 displayed as described in ?plotmath}
 
@@ -89,13 +93,12 @@ base +
 base + 
   geom_text_viewport(x=0.9,y=0.5,label="Clipping Turned Off",color='purple',hjust=0,clip='off') 
 
-
 }
 \author{
 Nicholas Hamilton
 }
 \seealso{
-\code{\link{ggplot2::geom_text}}
+\code{\link[ggplot2]{geom_text}}
 }
 \keyword{datasets}
 

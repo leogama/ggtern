@@ -43,6 +43,10 @@ often aesthetics, used to set an aesthetic to a fixed value, like
 \code{color = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
 
+\item{hjust}{horizontal justification}
+
+\item{vjust}{vertical justification}
+
 \item{parse}{If TRUE, the labels will be parsed into expressions and
 displayed as described in ?plotmath}
 
@@ -98,7 +102,7 @@ base +
 Nicholas Hamilton
 }
 \seealso{
-\code{\link{ggplot2::geom_label}}
+\code{\link[ggplot2]{geom_label}}
 }
 \keyword{datasets}
 

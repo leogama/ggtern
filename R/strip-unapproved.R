@@ -94,10 +94,10 @@ strip_unapproved <- function(layers){
                         rect             = "GeomRect",
                         "GeomRasterAnnTern",
                         "GeomDl",
-                        encircle            = "GeomEncircle",
-                        mean_ellipse        = "GeomMeanEllipse",
-                        geom_text_viewport  = "GeomTextViewport",
-                        geom_label_viewport = "GeomLabelViewport"
+                        "GeomEncircle",
+                        mean_ellipse     = "GeomMeanEllipse",
+                        text_viewport    = "GeomTextViewport",
+                        label_viewport   = "GeomLabelViewport"
 )
 
 #LIST OF APPROVED STATS

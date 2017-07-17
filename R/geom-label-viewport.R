@@ -28,9 +28,11 @@
 #'   geom_label_viewport(x=0.9,y=0.5,label="Clipping Turned Off",color='purple',hjust=0,clip='off') 
 #' 
 #' @inheritParams ggplot2::layer
+#' @inheritParams ggplot2::geom_text
 #' @inheritParams ggplot2::geom_point
 #' @inheritParams ggplot2::geom_label
-#' @seealso \code{\link{ggplot2::geom_label}}
+#' @inheritParams ggtern::geom_text_viewport
+#' @seealso \code{\link[ggplot2]{geom_label}}
 #' @author Nicholas Hamilton
 #' @rdname geom_label_viewport
 #' @name geom_label_viewport

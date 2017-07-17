@@ -30,7 +30,9 @@
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_point
 #' @inheritParams ggplot2::geom_text
-#' @seealso \code{\link{ggplot2::geom_text}}
+#' @param hjust horizontal justification
+#' @param vjust vertical justification
+#' @seealso \code{\link[ggplot2]{geom_text}}
 #' @author Nicholas Hamilton
 #' @rdname geom_text_viewport
 #' @name geom_text_viewport
