@@ -303,7 +303,11 @@ theme_bw <- function(base_size = 12, base_family = "") {
   base %+replace%
   theme(
     tern.plot.background  = element_rect(size=NA,color=NA),
-    tern.axis.line = element_line(color = base$panel.border$colour)
+    tern.axis.line        = element_line(color  = base$panel.border$colour),
+    tern.axis.arrow       = element_line(
+      color               = base$panel.border$colour,
+      lineend             = getOption('tern.arrow')
+    )
   )
 }
 
