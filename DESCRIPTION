@@ -73,7 +73,7 @@ Collate:
     'theme-rotate.R'
     'theme-showgrid.R'
     'theme-showlabels.R'
-    'theme-showsecondary.R'
+    'theme-ticks.R'
     'theme-showtitles.R'
     'theme-ticksoutside.R'
     'theme-zoom.R'

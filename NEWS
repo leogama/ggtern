@@ -1,3 +1,8 @@
+ggtern 2.2.2
+----------------------------------------------------------------
+*Fixed bug to do with enabling arrows on theme_bw
+*Added convenience function for changing major or minor ticklengths.
+
 ggtern 2.2.1
 ----------------------------------------------------------------
 * Modified the masked ggplot_gtable and ggplot_build functions, to call the parent versions if the plot is not ternary (ie the functions within the starndard ggplot2 plot), reducing the fragility of the ggtern package to changes in ggplot2

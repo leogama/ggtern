@@ -32,7 +32,10 @@ sd_section("Geoms",
             "geom_errorbarX",
             "geom_smooth_tern",
             "geom_point_swap",
-            "geom_mask"
+            "geom_mask",
+            "geom_label_viewport",
+            "geom_text_viewport",
+            "geom_mean_ellipse"
           )
 )
 
@@ -83,6 +86,7 @@ sd_section("Convenience Functions",
              "theme_showprimary",
              "theme_showtitles",
              "theme_ticksoutside",
+             "theme_ticklength",
              "theme_mesh",
              "theme_latex",
              "theme_zoom_X"
