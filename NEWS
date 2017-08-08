@@ -1,6 +1,6 @@
 ggtern 2.2.2
 ----------------------------------------------------------------
-*Fixed bug to do with enabling arrows on theme_bw
+*Fixed bug to do with enabling arrows on
 *Added convenience function for changing major or minor ticklengths.
 
 ggtern 2.2.1

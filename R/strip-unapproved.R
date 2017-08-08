@@ -95,6 +95,7 @@ strip_unapproved <- function(layers){
                         "GeomRasterAnnTern",
                         "GeomDl",
                         "GeomEncircle",
+                        "GeomCustomAnn",
                         mean_ellipse     = "GeomMeanEllipse",
                         text_viewport    = "GeomTextViewport",
                         label_viewport   = "GeomLabelViewport"
