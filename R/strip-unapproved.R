@@ -92,6 +92,7 @@ strip_unapproved <- function(layers){
                         Rmark            = "GeomRmark",
                         point_swap       = "GeomPointSwap",
                         rect             = "GeomRect",
+                        polygon_closed   = "GeomPolygonClosed",
                         "GeomRasterAnnTern",
                         "GeomDl",
                         "GeomEncircle",

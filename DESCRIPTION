@@ -13,7 +13,7 @@ Authors@R:
 Author: Nicholas Hamilton [aut, cre]
 Maintainer: Nicholas Hamilton <nick@ggtern.com>
 Depends:
-    ggplot2 (>= 2.2.0)
+    ggplot2 (>= 2.2.1)
 Imports:
     compositions,
     grid,
@@ -100,6 +100,7 @@ Collate:
     'annotation-raster-tern.R'
     'geom-text-viewport.R'
     'geom-label-viewport.R'
+    'geom-polygon-closed.R'
 NeedsCompilation: no
 Repository: CRAN
 RoxygenNote: 5.0.1
