@@ -2,6 +2,7 @@ ggtern 2.2.2
 ----------------------------------------------------------------
 *Fixed bug to do with enabling arrows on
 *Added convenience function for changing major or minor ticklengths.
+*Additional datasets
 
 ggtern 2.2.1
 ----------------------------------------------------------------
