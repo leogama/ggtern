@@ -23,7 +23,7 @@ stat_hex_tern <- function(mapping = NULL, data = NULL,
       bins = bins,
       binwidth = binwidth,
       na.rm = na.rm,
-      fun = sum,
+      fun = fun,
       ...
     )
   )
