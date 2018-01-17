@@ -36,14 +36,19 @@ stat_hex_tern <- function(mapping = NULL, data = NULL,
 StatHexTern <- ggproto("StatHexTern", Stat,
     default_aes = aes(value = 1, fill = ..stat..),
     required_aes = c("x", "y","z"),
+    setup_data = function(self,data,params){
+      ##Ensure it is simplex
+      raes        = self$required_aes
+      data[,raes] = as.data.frame(acomp(data[,raes]))
+      data
+    },
     compute_group = function(self, data, scales, binwidth = NULL, bins = 30, na.rm = FALSE, fun = sum) {
       ggint$try_require("hexbin", "stat_binhex_tern")
       
       #Transform to cartesian space
       coord       = coord_tern()
       data        = ggtern::tlr2xy(data,coord,inverse=FALSE,scale=TRUE)
-      
-      binwidth    = binwidth %||% ggint$hex_binwidth(bins, scales)
+      binwidth    = binwidth %||% 1/abs(bins) #ggint$hex_binwidth(bins, scales)
       value       = data$value %||% rep(1L, nrow(data))
       
       ##For Consistency with ggplo2 hexbin
