@@ -55,13 +55,181 @@ theme_update <- function(...) {
 #' @author Nicholas Hamilton
 #' @rdname theme
 #' @export
-theme <- function(..., complete = FALSE, validate = TRUE) {
-  elements <- list(...)
+theme <- function(
+  line,
+  rect,
+  text,
+  title,
+  aspect.ratio,
+  axis.title,
+  axis.title.x,
+  axis.title.x.top,
+  axis.title.x.bottom,
+  axis.title.y,
+  axis.title.y.left,
+  axis.title.y.right,
+  axis.text,
+  axis.text.x,
+  axis.text.x.top,
+  axis.text.x.bottom,
+  axis.text.y,
+  axis.text.y.left,
+  axis.text.y.right,
+  axis.ticks,
+  axis.ticks.x,
+  axis.ticks.x.top,
+  axis.ticks.x.bottom,
+  axis.ticks.y,
+  axis.ticks.y.left,
+  axis.ticks.y.right,
+  axis.ticks.length,
+  axis.line,
+  axis.line.x,
+  axis.line.x.top,
+  axis.line.x.bottom,
+  axis.line.y,
+  axis.line.y.left,
+  axis.line.y.right,
+  legend.background,
+  legend.margin,
+  legend.spacing,
+  legend.spacing.x,
+  legend.spacing.y,
+  legend.key,
+  legend.key.size,
+  legend.key.height,
+  legend.key.width,
+  legend.text,
+  legend.text.align,
+  legend.title,
+  legend.title.align,
+  legend.position,
+  legend.direction,
+  legend.justification,
+  legend.box,
+  legend.box.just,
+  legend.box.margin,
+  legend.box.background,
+  legend.box.spacing,
+  panel.background,
+  panel.border,
+  panel.spacing,
+  panel.spacing.x,
+  panel.spacing.y,
+  panel.grid,
+  panel.grid.major,
+  panel.grid.minor,
+  panel.grid.major.x,
+  panel.grid.major.y,
+  panel.grid.minor.x,
+  panel.grid.minor.y,
+  panel.ontop,
+  plot.background,
+  plot.title,
+  plot.subtitle,
+  plot.caption,
+  plot.margin,
+  strip.background,
+  strip.placement,
+  strip.text,
+  strip.text.x,
+  strip.text.y,
+  strip.switch.pad.grid,
+  strip.switch.pad.wrap,
+                  tern.axis.arrow,
+                  tern.axis.arrow.finish,
+                  tern.axis.arrow.L,
+                  tern.axis.arrow.R,
+                  tern.axis.arrow.sep,
+                  tern.axis.arrow.show,
+                  tern.axis.arrow.start,
+                  tern.axis.arrow.T,
+                  tern.axis.arrow.text,
+                  tern.axis.arrow.text.L,
+                  tern.axis.arrow.text.R,
+                  tern.axis.arrow.text.T,
+                  tern.axis.clockwise,
+                  tern.axis.hshift,
+                  tern.axis.line,
+                  tern.axis.line.L,
+                  tern.axis.line.ontop,
+                  tern.axis.line.R,
+                  tern.axis.line.T,
+                  tern.axis.text,
+                  tern.axis.text.L,
+                  tern.axis.text.R,
+                  tern.axis.text.show,
+                  tern.axis.text.T,
+                  tern.axis.ticks,
+                  tern.axis.ticks.length.major,
+                  tern.axis.ticks.length.minor,
+                  tern.axis.ticks.major,
+                  tern.axis.ticks.major.L,
+                  tern.axis.ticks.major.R,
+                  tern.axis.ticks.major.T,
+                  tern.axis.ticks.minor,
+                  tern.axis.ticks.minor.L,
+                  tern.axis.ticks.minor.R,
+                  tern.axis.ticks.minor.T,
+                  tern.axis.ticks.outside,
+                  tern.axis.ticks.primary.show,
+                  tern.axis.ticks.secondary.show,
+                  tern.axis.title,
+                  tern.axis.title.L,
+                  tern.axis.title.R,
+                  tern.axis.title.show,
+                  tern.axis.title.T,
+                  tern.axis.vshift,
+                  tern.panel.background,
+                  tern.panel.expand,
+                  tern.panel.grid.major,
+                  tern.panel.grid.major.L,
+                  tern.panel.grid.major.R,
+                  tern.panel.grid.major.T,
+                  tern.panel.grid.major.show,
+                  tern.panel.grid.minor,
+                  tern.panel.grid.minor.L,
+                  tern.panel.grid.minor.R,
+                  tern.panel.grid.minor.T,
+                  tern.panel.grid.minor.show,
+                  tern.panel.grid.ontop,
+                  tern.panel.mask.show,
+                  tern.panel.rotate,
+                  tern.plot.background,
+                  tern.plot.latex,
+                  ..., 
+                  complete = FALSE, validate = TRUE) {
+  
+  elements <- ggint$find_args(..., complete = NULL, validate = NULL)
   
   if (!is.null(elements$axis.ticks.margin)) {
     warning("`axis.ticks.margin` is deprecated. Please set `margin` property ",
             " of `axis.text` instead", call. = FALSE)
     elements$axis.ticks.margin <- NULL
+  }
+  if (!is.null(elements$panel.margin)) {
+    warning("`panel.margin` is deprecated. Please use `panel.spacing` property ",
+            "instead", call. = FALSE)
+    elements$panel.spacing <- elements$panel.margin
+    elements$panel.margin <- NULL
+  }
+  if (!is.null(elements$panel.margin.x)) {
+    warning("`panel.margin.x` is deprecated. Please use `panel.spacing.x` property ",
+            "instead", call. = FALSE)
+    elements$panel.spacing.x <- elements$panel.margin.x
+    elements$panel.margin.x <- NULL
+  }
+  if (!is.null(elements$panel.margin.y)) {
+    warning("`panel.margin` is deprecated. Please use `panel.spacing` property ",
+            "instead", call. = FALSE)
+    elements$panel.spacing.y <- elements$panel.margin.y
+    elements$panel.margin.y <- NULL
+  }
+  if (is.unit(elements$legend.margin) && !is.margin(elements$legend.margin)) {
+    warning("`legend.margin` must be specified using `margin()`. For the old ",
+            "behavior use legend.spacing", call. = FALSE)
+    elements$legend.spacing <- elements$legend.margin
+    elements$legend.margin <- margin()
   }
   
   # Check that all elements have the correct class (element_text, unit, etc)
@@ -69,8 +237,10 @@ theme <- function(..., complete = FALSE, validate = TRUE) {
     mapply(validate_element, elements, names(elements))
   }
   
-  structure(elements, class = c("theme", "gg"),
-            complete = complete, validate = validate)
+  structure(elements, 
+            class    = c("theme", "gg"),
+            complete = complete, 
+            validate = validate)
 }
 
 #' \code{plot_theme} is a local copy of the method that determines the net theme between a plot and the current global theme.

@@ -156,5 +156,14 @@ if(FALSE){
   buildStaticDocs()
 }
 
+#------------------------------------------------------------------------------
+#Unit Checks
+#------------------------------------------------------------------------------
+if(FALSE){
+  #Check there are no new theme elements
+  all(names(formals(ggplot2::theme)) %in% 
+      names(formals(ggtern::theme)))
+}
+
 
 

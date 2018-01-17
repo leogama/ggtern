@@ -4,9 +4,247 @@
 \alias{theme}
 \title{Set theme elements (ggtern version)}
 \usage{
-theme(..., complete = FALSE, validate = TRUE)
+theme(line, rect, text, title, aspect.ratio, axis.title, axis.title.x,
+  axis.title.x.top, axis.title.x.bottom, axis.title.y, axis.title.y.left,
+  axis.title.y.right, axis.text, axis.text.x, axis.text.x.top,
+  axis.text.x.bottom, axis.text.y, axis.text.y.left, axis.text.y.right,
+  axis.ticks, axis.ticks.x, axis.ticks.x.top, axis.ticks.x.bottom, axis.ticks.y,
+  axis.ticks.y.left, axis.ticks.y.right, axis.ticks.length, axis.line,
+  axis.line.x, axis.line.x.top, axis.line.x.bottom, axis.line.y,
+  axis.line.y.left, axis.line.y.right, legend.background, legend.margin,
+  legend.spacing, legend.spacing.x, legend.spacing.y, legend.key,
+  legend.key.size, legend.key.height, legend.key.width, legend.text,
+  legend.text.align, legend.title, legend.title.align, legend.position,
+  legend.direction, legend.justification, legend.box, legend.box.just,
+  legend.box.margin, legend.box.background, legend.box.spacing,
+  panel.background, panel.border, panel.spacing, panel.spacing.x,
+  panel.spacing.y, panel.grid, panel.grid.major, panel.grid.minor,
+  panel.grid.major.x, panel.grid.major.y, panel.grid.minor.x,
+  panel.grid.minor.y, panel.ontop, plot.background, plot.title, plot.subtitle,
+  plot.caption, plot.margin, strip.background, strip.placement, strip.text,
+  strip.text.x, strip.text.y, strip.switch.pad.grid, strip.switch.pad.wrap,
+  tern.axis.arrow, tern.axis.arrow.finish, tern.axis.arrow.L, tern.axis.arrow.R,
+  tern.axis.arrow.sep, tern.axis.arrow.show, tern.axis.arrow.start,
+  tern.axis.arrow.T, tern.axis.arrow.text, tern.axis.arrow.text.L,
+  tern.axis.arrow.text.R, tern.axis.arrow.text.T, tern.axis.clockwise,
+  tern.axis.hshift, tern.axis.line, tern.axis.line.L, tern.axis.line.ontop,
+  tern.axis.line.R, tern.axis.line.T, tern.axis.text, tern.axis.text.L,
+  tern.axis.text.R, tern.axis.text.show, tern.axis.text.T, tern.axis.ticks,
+  tern.axis.ticks.length.major, tern.axis.ticks.length.minor,
+  tern.axis.ticks.major, tern.axis.ticks.major.L, tern.axis.ticks.major.R,
+  tern.axis.ticks.major.T, tern.axis.ticks.minor, tern.axis.ticks.minor.L,
+  tern.axis.ticks.minor.R, tern.axis.ticks.minor.T, tern.axis.ticks.outside,
+  tern.axis.ticks.primary.show, tern.axis.ticks.secondary.show, tern.axis.title,
+  tern.axis.title.L, tern.axis.title.R, tern.axis.title.show, tern.axis.title.T,
+  tern.axis.vshift, tern.panel.background, tern.panel.expand,
+  tern.panel.grid.major, tern.panel.grid.major.L, tern.panel.grid.major.R,
+  tern.panel.grid.major.T, tern.panel.grid.major.show, tern.panel.grid.minor,
+  tern.panel.grid.minor.L, tern.panel.grid.minor.R, tern.panel.grid.minor.T,
+  tern.panel.grid.minor.show, tern.panel.grid.ontop, tern.panel.mask.show,
+  tern.panel.rotate, tern.plot.background, tern.plot.latex, ...,
+  complete = FALSE, validate = TRUE)
 }
 \arguments{
+\item{line}{all line elements (\code{element_line})}
+
+\item{rect}{all rectangular elements (\code{element_rect})}
+
+\item{text}{all text elements (\code{element_text})}
+
+\item{title}{all title elements: plot, axes, legends (\code{element_text};
+inherits from \code{text})}
+
+\item{aspect.ratio}{aspect ratio of the panel}
+
+\item{axis.title}{label of axes (\code{element_text}; inherits from
+\code{text})}
+
+\item{axis.title.x}{x axis label (\code{element_text}; inherits from
+\code{axis.title})}
+
+\item{axis.title.x.top}{x axis label on top axis (\code{element_text};
+inherits from \code{axis.title.x})}
+
+\item{axis.title.y}{y axis label (\code{element_text}; inherits from
+\code{axis.title})}
+
+\item{axis.title.y.right}{y axis label on right axis (\code{element_text};
+inherits from \code{axis.title.y})}
+
+\item{axis.text}{tick labels along axes (\code{element_text}; inherits from
+\code{text})}
+
+\item{axis.text.x}{x axis tick labels (\code{element_text}; inherits from
+\code{axis.text})}
+
+\item{axis.text.x.top}{x axis tick labels on top axis (\code{element_text};
+inherits from \code{axis.text.x})}
+
+\item{axis.text.y}{y axis tick labels (\code{element_text}; inherits from
+\code{axis.text})}
+
+\item{axis.text.y.right}{y axis tick labels on right axis
+(\code{element_text}; inherits from \code{axis.text.y})}
+
+\item{axis.ticks}{tick marks along axes (\code{element_line}; inherits from
+\code{line})}
+
+\item{axis.ticks.x}{x axis tick marks (\code{element_line}; inherits from
+\code{axis.ticks})}
+
+\item{axis.ticks.y}{y axis tick marks (\code{element_line}; inherits from
+\code{axis.ticks})}
+
+\item{axis.ticks.length}{length of tick marks (\code{unit})}
+
+\item{axis.line}{lines along axes (\code{element_line}; inherits from
+\code{line})}
+
+\item{axis.line.x}{line along x axis (\code{element_line}; inherits from
+\code{axis.line})}
+
+\item{axis.line.y}{line along y axis (\code{element_line}; inherits from
+\code{axis.line})}
+
+\item{legend.background}{background of legend (\code{element_rect}; inherits
+from \code{rect})}
+
+\item{legend.margin}{the margin around each legend (\code{margin})}
+
+\item{legend.spacing}{the spacing between legends (\code{unit})}
+
+\item{legend.spacing.x}{the horizontal spacing between legends (\code{unit});
+inherits from \code{legend.spacing}}
+
+\item{legend.spacing.y}{the horizontal spacing between legends (\code{unit});
+inherits from \code{legend.spacing}}
+
+\item{legend.key}{background underneath legend keys (\code{element_rect};
+inherits from \code{rect})}
+
+\item{legend.key.size}{size of legend keys (\code{unit})}
+
+\item{legend.key.height}{key background height (\code{unit}; inherits from
+\code{legend.key.size})}
+
+\item{legend.key.width}{key background width (\code{unit}; inherits from
+\code{legend.key.size})}
+
+\item{legend.text}{legend item labels (\code{element_text}; inherits from
+\code{text})}
+
+\item{legend.text.align}{alignment of legend labels (number from 0 (left) to
+1 (right))}
+
+\item{legend.title}{title of legend (\code{element_text}; inherits from
+\code{title})}
+
+\item{legend.title.align}{alignment of legend title (number from 0 (left) to
+1 (right))}
+
+\item{legend.position}{the position of legends ("none", "left", "right",
+"bottom", "top", or two-element numeric vector)}
+
+\item{legend.direction}{layout of items in legends ("horizontal" or
+"vertical")}
+
+\item{legend.justification}{anchor point for positioning legend inside plot
+("center" or two-element numeric vector) or the justification according to
+the plot area when positioned outside the plot}
+
+\item{legend.box}{arrangement of multiple legends ("horizontal" or
+"vertical")}
+
+\item{legend.box.just}{justification of each legend within the overall
+bounding box, when there are multiple legends ("top", "bottom", "left", or
+"right")}
+
+\item{legend.box.margin}{margins around the full legend area, as specified
+using \code{\link{margin}}}
+
+\item{legend.box.background}{background of legend area (\code{element_rect};
+inherits from \code{rect})}
+
+\item{legend.box.spacing}{The spacing between the plotting area and the
+legend box (\code{unit})}
+
+\item{panel.background}{background of plotting area, drawn underneath plot
+(\code{element_rect}; inherits from \code{rect})}
+
+\item{panel.border}{border around plotting area, drawn on top of plot so that
+  it covers tick marks and grid lines. This should be used with
+  \code{fill=NA}
+(\code{element_rect}; inherits from \code{rect})}
+
+\item{panel.spacing}{spacing between facet panels (\code{unit})}
+
+\item{panel.spacing.x}{horizontal spacing between facet panels (\code{unit};
+inherits from \code{panel.spacing})}
+
+\item{panel.spacing.y}{vertical spacing between facet panels (\code{unit};
+inherits from \code{panel.spacing})}
+
+\item{panel.grid}{grid lines (\code{element_line}; inherits from \code{line})}
+
+\item{panel.grid.major}{major grid lines (\code{element_line}; inherits from
+\code{panel.grid})}
+
+\item{panel.grid.minor}{minor grid lines (\code{element_line}; inherits from
+\code{panel.grid})}
+
+\item{panel.grid.major.x}{vertical major grid lines (\code{element_line};
+inherits from \code{panel.grid.major})}
+
+\item{panel.grid.major.y}{horizontal major grid lines (\code{element_line};
+inherits from \code{panel.grid.major})}
+
+\item{panel.grid.minor.x}{vertical minor grid lines (\code{element_line};
+inherits from \code{panel.grid.minor})}
+
+\item{panel.grid.minor.y}{horizontal minor grid lines (\code{element_line};
+inherits from \code{panel.grid.minor})}
+
+\item{panel.ontop}{option to place the panel (background, gridlines) over
+the data layers.  Usually used with a transparent or blank
+\code{panel.background}. (\code{logical})}
+
+\item{plot.background}{background of the entire plot (\code{element_rect};
+inherits from \code{rect})}
+
+\item{plot.title}{plot title (text appearance) (\code{element_text}; inherits
+from \code{title}) left-aligned by default}
+
+\item{plot.subtitle}{plot subtitle (text appearance) (\code{element_text};
+inherits from \code{title}) left-aligned by default}
+
+\item{plot.caption}{caption below the plot (text appearance)
+(\code{element_text}; inherits from \code{title}) right-aligned by default}
+
+\item{plot.margin}{margin around entire plot (\code{unit} with the sizes of
+the top, right, bottom, and left margins)}
+
+\item{strip.background}{background of facet labels (\code{element_rect};
+inherits from \code{rect})}
+
+\item{strip.placement}{placement of strip with respect to axes,
+either "inside" or "outside". Only important when axes and strips are
+on the same side of the plot.}
+
+\item{strip.text}{facet labels (\code{element_text}; inherits from
+\code{text})}
+
+\item{strip.text.x}{facet labels along horizontal direction
+(\code{element_text}; inherits from \code{strip.text})}
+
+\item{strip.text.y}{facet labels along vertical direction
+(\code{element_text}; inherits from \code{strip.text})}
+
+\item{strip.switch.pad.grid}{space between strips and axes when strips are
+switched (\code{unit})}
+
+\item{strip.switch.pad.wrap}{space between strips and axes when strips are
+switched (\code{unit})}
+
 \item{...}{additional element specifications not part of base ggplot2. If
 supplied \code{validate} needs to be set to \code{FALSE}.}
 
