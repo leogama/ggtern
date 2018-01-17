@@ -46,8 +46,15 @@ StatHexTern <- ggproto("StatHexTern", Stat,
       binwidth    = binwidth %||% ggint$hex_binwidth(bins, scales)
       value       = data$value %||% rep(1L, nrow(data))
       
+      ##For Consistency with ggplo2 hexbin
+      wt          = rep(1,nrow(data))
+      bin         = ggint$hexBinSummarise(data$x, data$y, wt,    binwidth, sum)
+      bin$density = as.vector(bin$value / sum(bin$value, na.rm = TRUE))
+      
       out         = ggint$hexBinSummarise(data$x, data$y, value, binwidth, fun)
       out$stat    = out$value
+      out$count   = bin$value
+      out$density = bin$density
       out$value   = NULL
       
       #Transform back to ternary space
