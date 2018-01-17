@@ -48,7 +48,7 @@ StatHexTern <- ggproto("StatHexTern", Stat,
       #Transform to cartesian space
       coord       = coord_tern()
       data        = ggtern::tlr2xy(data,coord,inverse=FALSE,scale=TRUE)
-      binwidth    = binwidth %||% 1/abs(bins) #ggint$hex_binwidth(bins, scales)
+      binwidth    = binwidth %||% (1/abs(bins)) #ggint$hex_binwidth(bins, scales)
       value       = data$value %||% rep(1L, nrow(data))
       
       ##For Consistency with ggplo2 hexbin
