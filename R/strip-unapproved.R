@@ -93,6 +93,7 @@ strip_unapproved <- function(layers){
                         point_swap       = "GeomPointSwap",
                         rect             = "GeomRect",
                         polygon_closed   = "GeomPolygonClosed",
+                        hex_tern         = "GeomHexTern",
                         "GeomRasterAnnTern",
                         "GeomDl",
                         "GeomEncircle",
@@ -110,7 +111,8 @@ strip_unapproved <- function(layers){
                         sum              = "StatSum",
                         unique           = "StatUnique",
                         interpolate_tern = "StatInterpolateTern",
-                        mean_ellipse     = "StatMeanEllipse"
+                        mean_ellipse     = "StatMeanEllipse",
+                        hex_tern         = "StatHexTern"
 )
 
 #LIST OF APPROVED POSITIONS

@@ -16,7 +16,8 @@
                            'predictdf','contour_lines','check_required_aesthetics','snake_class',
                            'ggname','ggplot_gtable','camelize',
                            'element_grob.element_line','element_grob.element_rect','element_grob.element_text','element_grob.element_blank',
-                           'plot_clone','compute_just','labelGrob')
+                           'plot_clone','compute_just','labelGrob',
+                           'hexGrob','try_require','hex_binwidth','hexBinSummarise')
   .functions.gridExtra  = c('latticeGrob')
     .functions          = rbind(data.frame(p='ggplot2',  f=unique(.functions.ggplot2)),
                                 data.frame(p='gridExtra',f=unique(.functions.gridExtra)))
