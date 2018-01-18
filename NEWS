@@ -1,6 +1,6 @@
 ggtern 2.2.2
 ----------------------------------------------------------------
-* Fixed bug to do with enabling arrows on
+* Fixed bug to do with enabling arrows on theme_bw theme preset
 * Added convenience function for changing major or minor ticklengths.
 * Additional datasets
 * Ternary version of hexbin
