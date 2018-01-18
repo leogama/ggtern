@@ -2,47 +2,43 @@
 % Please edit documentation in R/theme.R
 \name{theme}
 \alias{theme}
-\title{Set theme elements (ggtern version)}
+\title{Modify components of a theme (ggtern version)}
 \usage{
 theme(line, rect, text, title, aspect.ratio, axis.title, axis.title.x,
-  axis.title.x.top, axis.title.x.bottom, axis.title.y, axis.title.y.left,
-  axis.title.y.right, axis.text, axis.text.x, axis.text.x.top,
-  axis.text.x.bottom, axis.text.y, axis.text.y.left, axis.text.y.right,
-  axis.ticks, axis.ticks.x, axis.ticks.x.top, axis.ticks.x.bottom, axis.ticks.y,
-  axis.ticks.y.left, axis.ticks.y.right, axis.ticks.length, axis.line,
-  axis.line.x, axis.line.x.top, axis.line.x.bottom, axis.line.y,
-  axis.line.y.left, axis.line.y.right, legend.background, legend.margin,
-  legend.spacing, legend.spacing.x, legend.spacing.y, legend.key,
-  legend.key.size, legend.key.height, legend.key.width, legend.text,
-  legend.text.align, legend.title, legend.title.align, legend.position,
-  legend.direction, legend.justification, legend.box, legend.box.just,
-  legend.box.margin, legend.box.background, legend.box.spacing,
-  panel.background, panel.border, panel.spacing, panel.spacing.x,
-  panel.spacing.y, panel.grid, panel.grid.major, panel.grid.minor,
-  panel.grid.major.x, panel.grid.major.y, panel.grid.minor.x,
+  axis.title.x.top, axis.title.y, axis.title.y.right, axis.text, axis.text.x,
+  axis.text.x.top, axis.text.y, axis.text.y.right, axis.ticks, axis.ticks.x,
+  axis.ticks.y, axis.ticks.length, axis.line, axis.line.x, axis.line.y,
+  legend.background, legend.margin, legend.spacing, legend.spacing.x,
+  legend.spacing.y, legend.key, legend.key.size, legend.key.height,
+  legend.key.width, legend.text, legend.text.align, legend.title,
+  legend.title.align, legend.position, legend.direction, legend.justification,
+  legend.box, legend.box.just, legend.box.margin, legend.box.background,
+  legend.box.spacing, panel.background, panel.border, panel.spacing,
+  panel.spacing.x, panel.spacing.y, panel.grid, panel.grid.major,
+  panel.grid.minor, panel.grid.major.x, panel.grid.major.y, panel.grid.minor.x,
   panel.grid.minor.y, panel.ontop, plot.background, plot.title, plot.subtitle,
   plot.caption, plot.margin, strip.background, strip.placement, strip.text,
   strip.text.x, strip.text.y, strip.switch.pad.grid, strip.switch.pad.wrap,
-  tern.axis.arrow, tern.axis.arrow.finish, tern.axis.arrow.L, tern.axis.arrow.R,
-  tern.axis.arrow.sep, tern.axis.arrow.show, tern.axis.arrow.start,
-  tern.axis.arrow.T, tern.axis.arrow.text, tern.axis.arrow.text.L,
-  tern.axis.arrow.text.R, tern.axis.arrow.text.T, tern.axis.clockwise,
-  tern.axis.hshift, tern.axis.line, tern.axis.line.L, tern.axis.line.ontop,
-  tern.axis.line.R, tern.axis.line.T, tern.axis.text, tern.axis.text.L,
-  tern.axis.text.R, tern.axis.text.show, tern.axis.text.T, tern.axis.ticks,
-  tern.axis.ticks.length.major, tern.axis.ticks.length.minor,
-  tern.axis.ticks.major, tern.axis.ticks.major.L, tern.axis.ticks.major.R,
-  tern.axis.ticks.major.T, tern.axis.ticks.minor, tern.axis.ticks.minor.L,
-  tern.axis.ticks.minor.R, tern.axis.ticks.minor.T, tern.axis.ticks.outside,
+  tern.axis.arrow, tern.axis.arrow.T, tern.axis.arrow.L, tern.axis.arrow.R,
+  tern.axis.arrow.text, tern.axis.arrow.text.T, tern.axis.arrow.text.L,
+  tern.axis.arrow.text.R, tern.axis.arrow.start, tern.axis.arrow.finish,
+  tern.axis.arrow.sep, tern.axis.arrow.show, tern.axis.clockwise,
+  tern.axis.vshift, tern.axis.hshift, tern.axis.line.ontop, tern.axis.line,
+  tern.axis.line.T, tern.axis.line.L, tern.axis.line.R, tern.axis.text,
+  tern.axis.text.T, tern.axis.text.L, tern.axis.text.R, tern.axis.text.show,
+  tern.axis.ticks, tern.axis.ticks.length.major, tern.axis.ticks.length.minor,
+  tern.axis.ticks.major, tern.axis.ticks.major.T, tern.axis.ticks.major.L,
+  tern.axis.ticks.major.R, tern.axis.ticks.minor, tern.axis.ticks.minor.T,
+  tern.axis.ticks.minor.L, tern.axis.ticks.minor.R, tern.axis.ticks.outside,
   tern.axis.ticks.primary.show, tern.axis.ticks.secondary.show, tern.axis.title,
-  tern.axis.title.L, tern.axis.title.R, tern.axis.title.show, tern.axis.title.T,
-  tern.axis.vshift, tern.panel.background, tern.panel.expand,
-  tern.panel.grid.major, tern.panel.grid.major.L, tern.panel.grid.major.R,
-  tern.panel.grid.major.T, tern.panel.grid.major.show, tern.panel.grid.minor,
-  tern.panel.grid.minor.L, tern.panel.grid.minor.R, tern.panel.grid.minor.T,
-  tern.panel.grid.minor.show, tern.panel.grid.ontop, tern.panel.mask.show,
-  tern.panel.rotate, tern.plot.background, tern.plot.latex, ...,
-  complete = FALSE, validate = TRUE)
+  tern.axis.title.T, tern.axis.title.L, tern.axis.title.R, tern.axis.title.show,
+  tern.panel.background, tern.panel.expand, tern.panel.grid.major,
+  tern.panel.grid.major.T, tern.panel.grid.major.L, tern.panel.grid.major.R,
+  tern.panel.grid.major.show, tern.panel.grid.minor, tern.panel.grid.minor.T,
+  tern.panel.grid.minor.L, tern.panel.grid.minor.R, tern.panel.grid.minor.show,
+  tern.panel.grid.ontop, tern.panel.mask.show, tern.panel.rotate,
+  tern.plot.background, tern.plot.latex, ..., complete = FALSE,
+  validate = TRUE)
 }
 \arguments{
 \item{line}{all line elements (\code{element_line})}
@@ -245,6 +241,128 @@ switched (\code{unit})}
 \item{strip.switch.pad.wrap}{space between strips and axes when strips are
 switched (\code{unit})}
 
+\item{tern.axis.arrow}{Base Arrow Line (`element_line`; inherits from `axis.line`)}
+
+\item{tern.axis.arrow.T}{Arrow Line for TOP Axis (`element_line`; inherits from `tern.axis.arrow`)}
+
+\item{tern.axis.arrow.L}{Arrow Line for LHS Axis (`element_line`; inherits from `tern.axis.arrow`)}
+
+\item{tern.axis.arrow.R}{Arrow Line for RHS Axis (`element_line`; inherits from `tern.axis.arrow`)}
+
+\item{tern.axis.arrow.text}{Base Arrow Label (`element_text`; inherits from `tern.axis.text`)}
+
+\item{tern.axis.arrow.text.T}{Arrow Label on TOP Axis (`element_text`; inherits from `tern.axis.arrow.text`)}
+
+\item{tern.axis.arrow.text.L}{Arrow Label on LHS Axis (`element_text`; inherits from `tern.axis.arrow.text`)}
+
+\item{tern.axis.arrow.text.R}{Arrow Label on RHS Axis (`element_text`; inherits from `tern.axis.arrow.text`)}
+
+\item{tern.axis.arrow.start}{Proportion of Axis when Arrow Starts (`numeric`)}
+
+\item{tern.axis.arrow.finish}{Proportion of Axis when Arrow Finishes (`numeric`)}
+
+\item{tern.axis.arrow.sep}{Arrows Seperation from Axis (`numeric`)}
+
+\item{tern.axis.arrow.show}{Arrows Show or Hide (`logical`)}
+
+\item{tern.axis.clockwise}{Clockwise or Anticlockwise Precession (`logical`)}
+
+\item{tern.axis.vshift}{Amount to nudge the plot vertically (`numeric`)}
+
+\item{tern.axis.hshift}{Amount to nudge the plot horizontally (`numeric`)}
+
+\item{tern.axis.line.ontop}{Bring Axis Borders on Top of Everything (Depreciated) (`logical`)}
+
+\item{tern.axis.line}{Base Line (`element_line`; inherits from `axis.line`)}
+
+\item{tern.axis.line.T}{Line for TOP Axis (`element_line`; inherits from `tern.axis.line`)}
+
+\item{tern.axis.line.L}{Line for LHS Axis (`element_line`; inherits from `tern.axis.line`)}
+
+\item{tern.axis.line.R}{Line for RHS Axis (`element_line`; inherits from `tern.axis.line`)}
+
+\item{tern.axis.text}{Base Text (`element_text`; inherits from `axis.text`)}
+
+\item{tern.axis.text.T}{Text for TOP Axis (`element_text`; inherits from `tern.axis.text`)}
+
+\item{tern.axis.text.L}{Text for LHS Axis (`element_text`; inherits from `tern.axis.text`)}
+
+\item{tern.axis.text.R}{Text for RHS Axis (`element_text`; inherits from `tern.axis.text`)}
+
+\item{tern.axis.text.show}{Axis Labels Show or Hide (`logical`)}
+
+\item{tern.axis.ticks}{Base Ticks (`element_line`; inherits from `axis.ticks`)}
+
+\item{tern.axis.ticks.length.major}{Ticks Major Ticklength (`unit`)}
+
+\item{tern.axis.ticks.length.minor}{Ticks Minor Ticklength (`unit`)}
+
+\item{tern.axis.ticks.major}{Base Major Ticks (`element_line`; inherits from `tern.axis.ticks`)}
+
+\item{tern.axis.ticks.major.T}{Base Major Ticks for TOP Axis (`element_line`; inherits from `tern.axis.ticks.major`)}
+
+\item{tern.axis.ticks.major.L}{Base Major Ticks for LHS Axis (`element_line`; inherits from `tern.axis.ticks.major`)}
+
+\item{tern.axis.ticks.major.R}{Base Major Ticks for RHS Axis (`element_line`; inherits from `tern.axis.ticks.major`)}
+
+\item{tern.axis.ticks.minor}{Base Minor Ticks (`element_line`; inherits from `tern.axis.ticks`)}
+
+\item{tern.axis.ticks.minor.T}{Base Minor Ticks for TOP Axis (`element_line`; inherits from `tern.axis.ticks.minor`)}
+
+\item{tern.axis.ticks.minor.L}{Base Minor Ticks for LHS Axis (`element_line`; inherits from `tern.axis.ticks.minor`)}
+
+\item{tern.axis.ticks.minor.R}{Base Minor Ticks for RHS Axis (`element_line`; inherits from `tern.axis.ticks.minor`)}
+
+\item{tern.axis.ticks.outside}{Ticks Outside or Inside (`logical`)}
+
+\item{tern.axis.ticks.primary.show}{Ticks Show Primary (`logical`)}
+
+\item{tern.axis.ticks.secondary.show}{Ticks Show Secondary (`logical`)}
+
+\item{tern.axis.title}{Base Apex Title (`element_text`; inherits from `axis.title`)}
+
+\item{tern.axis.title.T}{Apex Title for TOP Axis (`element_text`; inherits from `tern.axis.title`)}
+
+\item{tern.axis.title.L}{Apex Title for LHS Axis (`element_text`; inherits from `tern.axis.title`)}
+
+\item{tern.axis.title.R}{Apex Title for RHS Axis (`element_text`; inherits from `tern.axis.title`)}
+
+\item{tern.axis.title.show}{Apex Titles Show or Hide (`logical`)}
+
+\item{tern.panel.background}{Background of Ternary Plot Area** (`element_rect`; inherits from `panel.background`)}
+
+\item{tern.panel.expand}{The amount to expand the ternary plotting panel, in ratio to npc units (`numeric`)}
+
+\item{tern.panel.grid.major}{Base Major Gridline (`element_line`; inherits from `panel.grid.major`)}
+
+\item{tern.panel.grid.major.T}{Major Gridline for TOP Axis (`element_line`; inherits from `tern.panel.grid.major`)}
+
+\item{tern.panel.grid.major.L}{Major Gridline for LHS Axis (`element_line`; inherits from `tern.panel.grid.major`)}
+
+\item{tern.panel.grid.major.R}{Major Gridline for RHS Axis (`element_line`; inherits from `tern.panel.grid.major`)}
+
+\item{tern.panel.grid.major.show}{Show or Hide Major Gridline (`logical`)}
+
+\item{tern.panel.grid.minor}{Base Minor Gridline (`element_line`; inherits from `panel.grid.minor`)}
+
+\item{tern.panel.grid.minor.T}{Minor Gridline for TOP Axis (`element_line`; inherits from `tern.panel.grid.minor`)}
+
+\item{tern.panel.grid.minor.L}{Minor Gridline for LHS Axis (`element_line`; inherits from `tern.panel.grid.minor`)}
+
+\item{tern.panel.grid.minor.R}{Minor Gridline for RHS Axis (`element_line`; inherits from `tern.panel.grid.minor`)}
+
+\item{tern.panel.grid.minor.show}{Show or Hide Minor Gridline (`logical`)}
+
+\item{tern.panel.grid.ontop}{Bring grids, axis and axis labels on top of everything else (`logical`)}
+
+\item{tern.panel.mask.show}{Show or Hide the Clipping Mask (`logical`)}
+
+\item{tern.panel.rotate}{The amount to rotate the ternary diagram in degrees (`numeric`)}
+
+\item{tern.plot.background}{Background of Ternary Clipping Area** (`element_rect`; inherits from `plot.background`)}
+
+\item{tern.plot.latex}{Whether to parse characters as latex commands (`logical`)}
+
 \item{...}{additional element specifications not part of base ggplot2. If
 supplied \code{validate} needs to be set to \code{FALSE}.}
 
@@ -257,7 +375,20 @@ elements.}
 \item{validate}{\code{TRUE} to run validate_element, \code{FALSE} to bypass checks.}
 }
 \description{
-Use this function to modify theme settings.
+Use `theme()` to modify individual components of a theme, allowing
+you to control the appearance of all non-data components of the plot.
+`theme()` only affects a single plot: see [theme_update()] if
+you want modify the active theme, to affect all subsequent plots.
+}
+\section{Theme inheritance}{
+
+Theme elements inherit properties from other theme elements.
+For example, `axis.title.x` inherits from `axis.title`,
+which in turn inherits from `text`. All text elements inherit
+directly or indirectly from `text`; all lines inherit from
+`line`, and all rectangular objects inherit from `rect`.
+This means that you can modify the appearance of multiple elements by
+setting a single high-level component.
 }
 \author{
 Nicholas Hamilton

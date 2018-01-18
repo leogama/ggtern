@@ -157,6 +157,20 @@ if(FALSE){
 }
 
 #------------------------------------------------------------------------------
+#Generate @params for theme
+#------------------------------------------------------------------------------
+if(FALSE){
+  el = ggtern:::ggint$.element_tree
+  el.ix = names(formals(theme)); el.ix = el.ix[grep(el.ix,pattern='tern')]
+  result = unlist(lapply(el.ix,function(x){
+    e = el[[x]]; print(e)
+    s = `if`(is.character(e$inherit),sprintf('; inherits from `%s`',e$inherit),'')
+    sprintf("#' @param %s %s (`%s`%s)",x,e$description,e$class,s)
+  }))
+  writeLines(result)
+}
+
+#------------------------------------------------------------------------------
 #Unit Checks
 #------------------------------------------------------------------------------
 if(FALSE){

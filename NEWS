@@ -1,9 +1,10 @@
 ggtern 2.2.2
 ----------------------------------------------------------------
-*Fixed bug to do with enabling arrows on
-*Added convenience function for changing major or minor ticklengths.
-*Additional datasets
-*Ternary version of hexbin
+* Fixed bug to do with enabling arrows on
+* Added convenience function for changing major or minor ticklengths.
+* Additional datasets
+* Ternary version of hexbin
+* Update the theme(..) function to now include valid arguments relative to the new theme elements
 
 ggtern 2.2.1
 ----------------------------------------------------------------
