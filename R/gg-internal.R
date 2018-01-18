@@ -18,7 +18,7 @@
                            'element_grob.element_line','element_grob.element_rect','element_grob.element_text','element_grob.element_blank',
                            'plot_clone','compute_just','labelGrob',
                            'hexGrob','try_require','hex_binwidth','hexBinSummarise',
-                           'find_args')
+                           'find_args','is.margin')
   .functions.gridExtra  = c('latticeGrob')
     .functions          = rbind(data.frame(p='ggplot2',  f=unique(.functions.ggplot2)),
                                 data.frame(p='gridExtra',f=unique(.functions.gridExtra)))

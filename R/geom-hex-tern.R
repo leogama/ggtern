@@ -15,6 +15,7 @@
 #' @section Aesthetics:
 #' \Sexpr[results=rd,stage=build]{ggplot2:::rd_aesthetics("geom", "hex")}
 #' @inheritParams ggplot2::geom_hex
+#' @param geom,stat Override the default connection between `geom_hex_tern` and `stat_hex_tern`
 #' @param fun the scalar function to use for the statistic
 #' @rdname geom_hex_tern
 #' @examples 

@@ -4,6 +4,7 @@
 #' on the starting and finishing points index.
 #' 
 #' @inheritParams ggplot2::geom_polygon
+#' @param closure one of 'none','upper' or 'lower'
 #' @author Nicholas Hamilton
 #' @rdname geom_polygon_closed
 #' @export

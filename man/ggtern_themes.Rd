@@ -170,6 +170,7 @@ A black/vermillion/blue theme with grey background, for colorblind sensitive rea
 }
 }
 \examples{
+\donttest{
 #Create a list of the theme suffixes
 themesOrg = c('gray','bw','linedraw','light',
               'dark','minimal','classic','void')
@@ -192,6 +193,7 @@ grid.arrange(grobs=plotThemes(themesOrg),top = "Collection of Themes (Original)"
 
 #Arrange the New Themes
 grid.arrange(grobs=plotThemes(themesNew),top = "Collection of Themes (New Themes)")
+}
 
 }
 \author{

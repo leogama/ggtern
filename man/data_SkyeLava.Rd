@@ -17,10 +17,10 @@ AFM compositions of 23 aphyric Skye lavas.
 }
 \examples{
 
-#Emulate & Enhance plot produced in Fig. 3, pg 7 of:
-Martin-Fernández, J.; Chacón-Durán, J. & Mateu-Figueras, G. 
-Updating on the kernel density estimation for compositional data 
-Proceedings of 17th Conference IASC-ERSS, Compstat, Roma,(Italy), 2006, 713-720
+# Emulate & Enhance plot produced in Fig. 3, pg 7 of:
+# Martin-Fernandez, J.; Chacon-Duran, J. & Mateu-Figueras, G.
+# Updating on the kernel density estimation for compositional data 
+# Proceedings of 17th Conference IASC-ERSS, Compstat, Roma,(Italy), 2006, 713-720
 
 data(SkyeLava)
 breaks  = c(.01,.05,.10,.25,.5,.75,.9,.95,.99)

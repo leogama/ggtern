@@ -52,6 +52,8 @@ a warning. If \code{TRUE}, missing values are silently removed.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link{borders}}.}
+
+\item{closure}{one of 'none','upper' or 'lower'}
 }
 \description{
 A little like geom_area, in the sense that polygons are either upper or lower closed based 
