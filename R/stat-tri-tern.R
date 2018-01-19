@@ -43,16 +43,16 @@ StatTriTern <- ggproto("StatTriTern", Stat,
       data[,raes] = as.data.frame(acomp(data[,raes]))
       data
     },
-    compute_group = function(self, data, scales, bins = 30, na.rm = FALSE, fun = sum, centroid = FALSE) {
+    compute_group = function(self, data, scales, bins = 30, na.value = NA, na.rm = FALSE, fun = sum, centroid = FALSE) {
       
       ##For Consistency with ggplo2 hexbin
       value       = rep(1,nrow(data))
-      bin         = triBinSummarise(data$x, data$y, data$z, value, bins, sum)
+      bin         = triBinSummarise(data$x, data$y, data$z, value, bins, sum, na.value = na.value)
       bin$density = as.vector(bin$value / sum(bin$value, na.rm = TRUE))
       
       ##User Defined Stats
       value       = data$value %||% value
-      out         = triBinSummarise(data$x, data$y, data$z, value, bins, fun)
+      out         = triBinSummarise(data$x, data$y, data$z, value, bins, fun, na.value = na.value)
       
       #Assemble
       out$group   = out$IDPolygon
@@ -96,7 +96,7 @@ triMesh <- function(n = 1) {
   return(df)
 }
 
-triStat <- function(df, xmin = 0, xmax = 1, ymin = 0, ymax = 1, zmin = 0, zmax = 1,fun) {
+triStat <- function(df, xmin = 0, xmax = 1, ymin = 0, ymax = 1, zmin = 0, zmax = 1,na.value=NA,fun) {
   ret <- df
   ret <- with(ret, ret[xmin <= x & x < xmax,,drop=F])
   ret <- with(ret, ret[ymin <= y & y < ymax,,drop=F])
@@ -104,7 +104,7 @@ triStat <- function(df, xmin = 0, xmax = 1, ymin = 0, ymax = 1, zmin = 0, zmax =
   
   #If No rows, return NA
   nr  <- nrow(ret)
-  if(is.na(nr) || nr == 0) return(NA)
+  if(is.na(nr) || nr == 0) return(na.value[1])
   fun(ret$w)
 }
 
@@ -150,7 +150,7 @@ triPoly = function( n = 1 ){
 }
 
 
-triBinSummarise = function(x,y,z,w,bins,fun,fun.args=list(), drop = TRUE){
+triBinSummarise = function(x,y,z,w,bins,fun, fun.args=list(), na.value=NA, drop = TRUE){
   poly    = triPoly(bins)
   theBins = with(poly,ddply(poly, .(IDPolygon), here(summarize), 
                             xmin = min(x), xmax = max(x), 
@@ -158,6 +158,7 @@ triBinSummarise = function(x,y,z,w,bins,fun,fun.args=list(), drop = TRUE){
                             zmin = min(z), zmax = max(z))
                  )
   df   = data.frame(x,y,z,w)
-  stat = with(theBins,ddply(theBins, .(IDPolygon), here(summarize), value = triStat(df, xmin, xmax, ymin, ymax, zmin, zmax, fun)))
+  stat = with(theBins,ddply(theBins, .(IDPolygon), here(summarize), 
+                            value = triStat(df, xmin, xmax, ymin, ymax, zmin, zmax, na.value, fun)))
   merge(poly,stat)
 }
