@@ -62,6 +62,15 @@ StatHexTern <- ggproto("StatHexTern", Stat,
       out$density = bin$density
       out$value   = NULL
       
+      #Remove NA's
+      if(na.rm){
+        out         = remove_missing(out,FALSE,
+                                     c(self$required_aes, 
+                                       c('stat','count','density')),
+                                     ggint$snake_class(self),
+                                     finite = TRUE)
+      }
+      
       #Transform back to ternary space
       ggtern::tlr2xy(out,coord,inverse=TRUE,scale=TRUE)
     }

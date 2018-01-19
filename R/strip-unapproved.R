@@ -94,6 +94,7 @@ strip_unapproved <- function(layers){
                         rect             = "GeomRect",
                         polygon_closed   = "GeomPolygonClosed",
                         hex_tern         = "GeomHexTern",
+                        tri_tern         = "GeomTriTern",
                         "GeomRasterAnnTern",
                         "GeomDl",
                         "GeomEncircle",
@@ -112,7 +113,8 @@ strip_unapproved <- function(layers){
                         unique           = "StatUnique",
                         interpolate_tern = "StatInterpolateTern",
                         mean_ellipse     = "StatMeanEllipse",
-                        hex_tern         = "StatHexTern"
+                        hex_tern         = "StatHexTern",
+                        tri_tern         = "StatTriTern"
 )
 
 #LIST OF APPROVED POSITIONS

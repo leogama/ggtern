@@ -103,6 +103,8 @@ Collate:
     'geom-text-viewport.R'
     'geom-label-viewport.R'
     'geom-polygon-closed.R'
+    'geom-tri-tern.R'
+    'stat-tri-tern.R'
 NeedsCompilation: no
 Repository: CRAN
 RoxygenNote: 5.0.1
