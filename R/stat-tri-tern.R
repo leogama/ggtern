@@ -96,57 +96,50 @@ triMesh <- function(n = 1) {
   return(df)
 }
 
-triStat <- function(df, xmin = 0, xmax = 1, ymin = 0, ymax = 1, zmin = 0, zmax = 1,na.value=NA,fun) {
-  ret <- df
-  ret <- with(ret, ret[xmin <= x & x < xmax,,drop=F])
-  ret <- with(ret, ret[ymin <= y & y < ymax,,drop=F])
-  ret <- with(ret, ret[zmin <= z & z < zmax,,drop=F])
-  
-  #If No rows, return NA
-  nr  <- nrow(ret)
-  if(is.na(nr) || nr == 0) return(na.value[1])
-  fun(ret$w)
-}
-
 triPoly = function( n = 1 ){
   n     = as.integer(max(n[1],1))
   mesh  = triMesh( n )
   inv   = 1/n
   
-  #Upper Triangles
-  upper = with(mesh,ddply(mesh,.(IDPoint),function(df){
+  #Triangles: A complete space-filling motiv contains a
+  #           Upper and a Lower Triangle at each point.
+  #           These triangles are diagonally opposed
+  result = with(mesh,ddply(mesh,.(IDPoint),function(df){
     x = df$x; y=df$y; p = df$IDPoint[1]
-    result   = data.frame(x = c(x,x,x+inv),
-                        y = c(y,y+inv,y))
-    result$z = with(result,1-x-y)
-    if(min(result) < -inv/2 || max(result) > 1 + inv/2) return(data.frame())
-    result
+    
+    #Upper Triangles
+    a = data.frame(x = c(x,x,x+inv),
+                   y = c(y,y+inv,y))
+    a$z = with(a,1-x-y); mn = min(a); mx = max(a);
+    a$IDPoint = p
+    if(mn < -inv/2 || mx > 1 + inv/2)
+      a = a[0,,drop=FALSE]
+    
+    #Lower Triangles
+    b = data.frame(x=c(x,x,x-inv),
+                   y=c(y,y-inv,y))
+    b$z = with(b,1-x-y); mn = min(b); mx = max(b);
+    b$IDPoint = -p
+    if(mn < -inv/2 || mx > 1 + inv/2) 
+      b = b[0,,drop=FALSE]
+    
+    #Done
+    rbind(a,b)[,c('IDPoint','x','y','z')]
   }))
   
-  #Lower Triangles
-  lower = with(mesh,ddply(mesh,.(IDPoint),function(df,u = max(upper$IDPoint)){
-    x = df$x; y=df$y; p = df$IDPoint[1]
-    result   = data.frame(x=c(x,x,x-inv),y=c(y,y-inv,y))
-    result$z = with(result,1-x-y)
-    if(min(result) < -inv/2 || max(result) > 1 + inv/2) return(data.frame())
-    result$IDPoint = u + 1 + p
-    result
-  }))
-  
-  #Combine
-  result   = rbind(upper,lower)
-  
-  #Determine the balancing composition
-  result$z = with(result,1-x-y)
-  
-  #Now Assemble as polygons
-  result$IDPolygon = result$IDPoint
-  
-  #Remove Columns to do with Mesh and Type
-  result$IDPoint = NULL
-  
-  #Result
-  result[,c('IDPolygon','x','y','z')]
+
+  names(result)[1] = "IDPolygon"
+  result
+}
+
+triStat <- function(df, xmin = 0, xmax = 1, ymin = 0, ymax = 1, zmin = 0, zmax = 1,na.value=NA,fun) {
+  df <- with(df, df[xmin <= x & x < xmax &
+                    ymin <= y & y < ymax &
+                    zmin <= z & z < zmax  ,,drop=F])
+  #If No rows, return NA
+  nr  <- nrow(df)
+  if(is.na(nr) || nr == 0) return(na.value[1])
+  with(df,fun(w))
 }
 
 
