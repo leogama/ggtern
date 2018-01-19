@@ -12,8 +12,8 @@ geom_tri_tern(mapping = NULL, data = NULL, stat = "tri_tern",
   show.legend = NA, inherit.aes = TRUE)
 
 stat_tri_tern(mapping = NULL, data = NULL, geom = "tri_tern",
-  position = "identity", ..., bins = 30, fun = sum, na.rm = FALSE,
-  show.legend = NA, inherit.aes = TRUE)
+  position = "identity", ..., bins = 30, fun = sum, centroid = FALSE,
+  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE)
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -61,6 +61,8 @@ the default plot specification, e.g. \code{\link{borders}}.}
 
 \item{bins}{numeric vector giving number of bins in both vertical and
 horizontal directions. Set to 30 by default.}
+
+\item{centroid}{logical to return the centroid of the polygon, rather than the complete polygon}
 }
 \description{
 Divides the plane into regular triangles, counts the number of cases in

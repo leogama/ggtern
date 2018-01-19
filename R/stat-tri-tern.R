@@ -1,12 +1,14 @@
 #' @export
 #' @rdname geom_tri_tern
 #' @inheritParams ggplot2::stat_bin_2d
+#' @param centroid logical to return the centroid of the polygon, rather than the complete polygon
 #' @export
 stat_tri_tern <- function(mapping = NULL, data = NULL,
                           geom = "tri_tern", position = "identity",
                           ...,
                           bins = 30,
                           fun = sum,
+                          centroid = FALSE,
                           na.rm = FALSE,
                           show.legend = NA,
                           inherit.aes = TRUE) {
@@ -22,6 +24,7 @@ stat_tri_tern <- function(mapping = NULL, data = NULL,
       bins      = bins,
       na.rm     = na.rm,
       fun       = fun,
+      centroid  = centroid,
       ...
     )
   )
@@ -40,7 +43,7 @@ StatTriTern <- ggproto("StatTriTern", Stat,
       data[,raes] = as.data.frame(acomp(data[,raes]))
       data
     },
-    compute_group = function(self, data, scales, bins = 30, na.rm = FALSE, fun = sum) {
+    compute_group = function(self, data, scales, bins = 30, na.rm = FALSE, fun = sum, centroid = FALSE) {
       
       ##For Consistency with ggplo2 hexbin
       value       = rep(1,nrow(data))
@@ -65,6 +68,15 @@ StatTriTern <- ggproto("StatTriTern", Stat,
                                          c('stat','count','density')),
                                        ggint$snake_class(self),
                                        finite = TRUE)
+      }
+      
+      #If Centroid
+      if(centroid){
+        out = ddply(out,'group',function(df){
+          res = df[1,,drop=FALSE]
+          res[,self$required_aes] = colMeans(df[,self$required_aes])
+          res
+        })
       }
       
       out
