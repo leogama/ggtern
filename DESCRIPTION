@@ -1,7 +1,7 @@
 Package: ggtern
 Type: Package
 Title: An Extension to 'ggplot2', for the Creation of Ternary Diagrams
-Version: 2.2.2
+Version: 2.2.3
 Date: 2018-01-17
 Description: Extends the functionality of 'ggplot2', providing the capability
     to plot ternary diagrams for (subset of) the 'ggplot2' geometries. Additionally,
