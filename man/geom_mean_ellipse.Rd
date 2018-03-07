@@ -2,9 +2,9 @@
 % Please edit documentation in R/geom-mean-ellipse.R, R/stat-mean-ellipse.R
 \docType{data}
 \name{geom_mean_ellipse}
-\alias{StatMeanEllipse}
 \alias{geom_mean_ellipse}
 \alias{stat_mean_ellipse}
+\alias{StatMeanEllipse}
 \title{Mean Ellipse}
 \usage{
 geom_mean_ellipse(mapping = NULL, data = NULL, stat = "MeanEllipse",
@@ -35,8 +35,8 @@ plot. You must supply \code{mapping} if there is no plot mapping.}
    the plot data. The return value must be a \code{data.frame.}, and
    will be used as the layer data.}
 
-\item{stat}{The statistical transformation to use on the data for this
-layer, as a string.}
+\item{stat}{Use to override the default connection between
+\code{geom_smooth} and \code{stat_smooth}.}
 
 \item{position}{Position adjustment, either as a string, or the result of
 a call to a position adjustment function.}
@@ -86,6 +86,7 @@ Mean Ellipses
  
 Same as \code{\link{stat_contour}}
 }
+
 \examples{
   data(Feldspar)
   ggtern(data=Feldspar,aes(An,Ab,Or)) + 
@@ -101,4 +102,3 @@ ggtern(data=Feldspar,aes(Ab,An,Or)) +
 Nicholas Hamilton & Ashton Drew
 }
 \keyword{datasets}
-

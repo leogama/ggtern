@@ -2,13 +2,13 @@
 % Please edit documentation in R/geom-errorbarX.R
 \docType{data}
 \name{geom_errorbarX}
-\alias{GeomErrorbarl}
-\alias{GeomErrorbarr}
-\alias{GeomErrorbart}
+\alias{geom_errorbarX}
+\alias{geom_errorbarT}
 \alias{geom_errorbarL}
 \alias{geom_errorbarR}
-\alias{geom_errorbarT}
-\alias{geom_errorbarX}
+\alias{GeomErrorbart}
+\alias{GeomErrorbarl}
+\alias{GeomErrorbarr}
 \title{Ternary Error Bars}
 \usage{
 geom_errorbarT(mapping = NULL, data = NULL, stat = "identity",
@@ -89,6 +89,7 @@ for the top, left and right apex species respectively, analogous to \code{\link[
 
 \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom", "errorbarr")}
 }
+
 \examples{
 #Example with Dummy Data.
 tmp <- data.frame(x=1/3,
@@ -106,4 +107,3 @@ ggtern(data=tmp,aes(x,y,z)) +
 Nicholas Hamilton
 }
 \keyword{datasets}
-

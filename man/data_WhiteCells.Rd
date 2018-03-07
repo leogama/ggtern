@@ -2,8 +2,8 @@
 % Please edit documentation in R/doc-data.R
 \docType{data}
 \name{data_WhiteCells}
-\alias{WhiteCells}
 \alias{data_WhiteCells}
+\alias{WhiteCells}
 \title{Aichisons White Cells}
 \format{1 row per point, 60 points in total, 2 experiments x 30 points each, Each point contains data on the following:
 \enumerate{ 
@@ -23,12 +23,11 @@ data(WhiteCells)
    geom_point(aes(shape=Experiment)) +
    facet_wrap(~Experiment,nrow=2)
 }
-\author{
-J. Aitchison
-}
 \references{
 Aitchison, J. 
             The statistical analysis of compositional data 
             Chapman and Hall London, 1986, pp366
 }
-
+\author{
+J. Aitchison
+}

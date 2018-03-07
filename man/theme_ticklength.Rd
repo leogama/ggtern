@@ -27,4 +27,3 @@ ggtern() +
 \author{
 Nicholas Hamilton
 }
-

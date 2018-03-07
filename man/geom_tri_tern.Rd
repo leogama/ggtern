@@ -2,9 +2,9 @@
 % Please edit documentation in R/geom-tri-tern.R, R/stat-tri-tern.R
 \docType{data}
 \name{geom_tri_tern}
-\alias{StatTriTern}
 \alias{geom_tri_tern}
 \alias{stat_tri_tern}
+\alias{StatTriTern}
 \title{Tribin (ggtern version).}
 \usage{
 geom_tri_tern(mapping = NULL, data = NULL, stat = "tri_tern",
@@ -73,6 +73,7 @@ fill.
 
 \Sexpr[results=rd,stage=build]{ggplot2:::rd_aesthetics("geom", "hex")}
 }
+
 \examples{
 set.seed(1)
 n  = 1000
@@ -91,4 +92,3 @@ ggtern(df,aes(x,y,z)) +
    geom_point(size=0.25)
 }
 \keyword{datasets}
-

@@ -2,10 +2,10 @@
 % Please edit documentation in R/geom-density-tern.R, R/stat-density-tern.R
 \docType{data}
 \name{geom_density_tern}
-\alias{GeomDensityTern}
-\alias{StatDensityTern}
 \alias{geom_density_tern}
+\alias{GeomDensityTern}
 \alias{stat_density_tern}
+\alias{StatDensityTern}
 \title{Density Estimate (ggtern version)}
 \usage{
 geom_density_tern(mapping = NULL, data = NULL, stat = "DensityTern",
@@ -14,8 +14,8 @@ geom_density_tern(mapping = NULL, data = NULL, stat = "DensityTern",
 
 stat_density_tern(mapping = NULL, data = NULL, geom = "density_tern",
   position = "identity", ..., contour = TRUE, n = 100, h = NULL,
-  na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, weight = 1,
-  base = "ilr", expand = c(0.5, 0.5))
+  bdl = 0, bdl.val = NA, na.rm = FALSE, show.legend = NA,
+  inherit.aes = TRUE, weight = 1, base = "ilr", expand = c(0.5, 0.5))
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link{aes}} or
@@ -76,6 +76,13 @@ estimation}
 
 \item{h}{Bandwidth (vector of length two) as a multiple of the best estimate, estimated using \code{\link[MASS]{bandwidth.nrd}}.}
 
+\item{bdl}{the threshold for detection limit. This is applied against the output of \code{\link[compositions]{acomp}} function, 
+so it is expected as a fraction in the range [0,1]}
+
+\item{bdl.val}{compositions which have components that are below the detection limit, will have these components replaced by this val. 
+If it is NA then these items will be discarded. If the value is something other than 'NA', then all values less than \code{bdl} will
+be replaced and therefore included in the final density estimate.}
+
 \item{weight}{weighting for weighted kde2d esimate, default's to 1, which is non-weighted and equivalent to the usual kde2d calculation}
 
 \item{base}{the base transformation of the data, options include 'identity' (ie direct on the cartesian space), or 'ilr'
@@ -92,6 +99,7 @@ useful for dealing with overplotting. Additional weight aesthetic (see aesthetic
 
 \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom", "density_tern")}
 }
+
 \examples{
 #Plot Density Estimate, on isometric log ratio transformation of original data
 data('Feldspar')
@@ -116,4 +124,3 @@ Nicholas Hamilton
 Nicholas Hamilton
 }
 \keyword{datasets}
-

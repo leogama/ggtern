@@ -2,8 +2,8 @@
 % Please edit documentation in R/geom-polygon-closed.R
 \docType{data}
 \name{geom_polygon_closed}
-\alias{GeomPolygonClosed}
 \alias{geom_polygon_closed}
+\alias{GeomPolygonClosed}
 \title{Closed Polygons}
 \usage{
 geom_polygon_closed(mapping = NULL, data = NULL, stat = "identity",
@@ -63,4 +63,3 @@ on the starting and finishing points index.
 Nicholas Hamilton
 }
 \keyword{datasets}
-

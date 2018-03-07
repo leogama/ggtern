@@ -2,10 +2,10 @@
 % Please edit documentation in R/plot.R
 \name{ggplot}
 \alias{ggplot}
-\alias{ggplot.data.frame}
 \alias{ggplot.default}
-\alias{plot.ggplot}
+\alias{ggplot.data.frame}
 \alias{print.ggplot}
+\alias{plot.ggplot}
 \title{Create a new ggplot plot.}
 \usage{
 ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())
@@ -78,4 +78,3 @@ is often the case in complex graphics.
 Nicholas Hamilton
 }
 \keyword{hplot}
-

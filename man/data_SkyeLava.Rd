@@ -2,8 +2,8 @@
 % Please edit documentation in R/doc-data.R
 \docType{data}
 \name{data_SkyeLava}
-\alias{SkyeLava}
 \alias{data_SkyeLava}
+\alias{SkyeLava}
 \title{Aichisons Skye Lavas}
 \format{1 row per point, 23 points in total, Each point contains data on the following:
 \enumerate{ 
@@ -41,12 +41,11 @@ labs(title    = "Aphyric Skye Lavas",
      Larrow = "F = Fe_20_3",
      Rarrow = "M = MgO")
 }
-\author{
-J. Aitchison
-}
 \references{
 Aitchison, J. 
             The statistical analysis of compositional data 
             Chapman and Hall London, 1986, pp360
 }
-
+\author{
+J. Aitchison
+}

@@ -390,7 +390,7 @@ directly or indirectly from `text`; all lines inherit from
 This means that you can modify the appearance of multiple elements by
 setting a single high-level component.
 }
+
 \author{
 Nicholas Hamilton
 }
-

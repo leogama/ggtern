@@ -2,19 +2,28 @@
 % Please edit documentation in R/geom-Xline.R
 \docType{data}
 \name{geom_Xline}
-\alias{GeomLline}
-\alias{GeomRline}
-\alias{GeomTline}
-\alias{Lline}
-\alias{Rline}
-\alias{Tline}
+\alias{geom_Xline}
+\alias{geom_Tline}
 \alias{geom_Lline}
 \alias{geom_Rline}
-\alias{geom_Tline}
-\alias{geom_Xline}
-\alias{lline}
-\alias{rline}
+\alias{Tline}
 \alias{tline}
+\alias{Lline}
+\alias{lline}
+\alias{Rline}
+\alias{rline}
+\alias{geom_Tline}
+\alias{GeomTline}
+\alias{Tline}
+\alias{tline}
+\alias{geom_Lline}
+\alias{GeomLline}
+\alias{Lline}
+\alias{lline}
+\alias{geom_Rline}
+\alias{GeomRline}
+\alias{Rline}
+\alias{rline}
 \title{Fixed Value Lines}
 \usage{
 geom_Tline(mapping = NULL, data = NULL, ..., Tintercept, na.rm = FALSE,
@@ -92,4 +101,3 @@ geom_Rline(Rintercept=.1, colour='blue')
 Nicholas Hamilton
 }
 \keyword{datasets}
-

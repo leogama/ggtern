@@ -2,13 +2,13 @@
 % Please edit documentation in R/geom-Xisoprop.R
 \docType{data}
 \name{geom_Xisoprop}
-\alias{GeomLisoprop}
-\alias{GeomRisoprop}
+\alias{geom_Xisoprop}
+\alias{geom_Tisoprop}
 \alias{GeomTisoprop}
 \alias{geom_Lisoprop}
+\alias{GeomLisoprop}
 \alias{geom_Risoprop}
-\alias{geom_Tisoprop}
-\alias{geom_Xisoprop}
+\alias{GeomRisoprop}
 \title{Fixed Value Isoproportion Lines}
 \usage{
 geom_Tisoprop(mapping = NULL, data = NULL, ..., value, na.rm = FALSE,
@@ -62,6 +62,7 @@ line projecting from the T, L and R apex respectively.
 
 \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom", "Tisoprop")}
 }
+
 \examples{
 data(Feldspar)
 ggtern(data=Feldspar,aes(Ab,An,Or)) +
@@ -74,4 +75,3 @@ geom_point()
 Nicholas Hamilton
 }
 \keyword{datasets}
-

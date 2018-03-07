@@ -2,8 +2,8 @@
 % Please edit documentation in R/geom-label-viewport.R
 \docType{data}
 \name{geom_label_viewport}
-\alias{GeomLabelViewport}
 \alias{geom_label_viewport}
+\alias{GeomLabelViewport}
 \title{Draw Label at Relative Position on Viewport}
 \usage{
 geom_label_viewport(mapping = NULL, data = NULL, stat = "identity",
@@ -78,6 +78,7 @@ coordinates.
 
 \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom","Label")}
 }
+
 \examples{
 library(ggplot2)
 data(Feldspar)
@@ -98,11 +99,10 @@ base +
   geom_label_viewport(x=0.9,y=0.5,label="Clipping Turned Off",color='purple',hjust=0,clip='off') 
 
 }
-\author{
-Nicholas Hamilton
-}
 \seealso{
 \code{\link[ggplot2]{geom_label}}
 }
+\author{
+Nicholas Hamilton
+}
 \keyword{datasets}
-

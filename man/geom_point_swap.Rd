@@ -2,8 +2,8 @@
 % Please edit documentation in R/geom-point-swap.R
 \docType{data}
 \name{geom_point_swap}
-\alias{GeomPointSwap}
 \alias{geom_point_swap}
+\alias{GeomPointSwap}
 \title{Points (Colour and Fill Swapped), as for a scatterplot}
 \usage{
 geom_point_swap(mapping = NULL, data = NULL, stat = "identity",
@@ -73,4 +73,3 @@ labs(title="Feldspar",color="Temperature",fill='Confidence')
 Nicholas Hamilton
 }
 \keyword{datasets}
-

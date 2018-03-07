@@ -2,8 +2,8 @@
 % Please edit documentation in R/geom-text-viewport.R
 \docType{data}
 \name{geom_text_viewport}
-\alias{GeomTextViewport}
 \alias{geom_text_viewport}
+\alias{GeomTextViewport}
 \title{Draw Text at Relative Position on Viewport}
 \usage{
 geom_text_viewport(mapping = NULL, data = NULL, stat = "identity",
@@ -74,6 +74,7 @@ coordinates.
 
 \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom","Text")}
 }
+
 \examples{
 library(ggplot2)
 data(Feldspar)
@@ -94,11 +95,10 @@ base +
   geom_text_viewport(x=0.9,y=0.5,label="Clipping Turned Off",color='purple',hjust=0,clip='off') 
 
 }
-\author{
-Nicholas Hamilton
-}
 \seealso{
 \code{\link[ggplot2]{geom_text}}
 }
+\author{
+Nicholas Hamilton
+}
 \keyword{datasets}
-

@@ -2,14 +2,15 @@
 % Please edit documentation in R/geom-crosshair-tern.R
 \docType{data}
 \name{geom_crosshair_tern}
+\alias{geom_crosshair_tern}
+\alias{geom_crosshair_tern}
 \alias{GeomCrosshairTern}
-\alias{GeomLmark}
-\alias{GeomRmark}
+\alias{geom_Tmark}
 \alias{GeomTmark}
 \alias{geom_Lmark}
+\alias{GeomLmark}
 \alias{geom_Rmark}
-\alias{geom_Tmark}
-\alias{geom_crosshair_tern}
+\alias{GeomRmark}
 \title{Ternary Crosshairs}
 \usage{
 geom_crosshair_tern(mapping = NULL, data = NULL, stat = "identity",
@@ -85,6 +86,7 @@ of the abovementioned crosshair.
 
 \Sexpr[results=rd,stage=build]{ggtern:::rd_aesthetics("geom", "crosshair_tern")}
 }
+
 \examples{
 set.seed(1)
 df = data.frame(x=runif(10),y=runif(10),z=runif(10))
@@ -98,4 +100,3 @@ base + geom_Lmark()
 Nicholas Hamilton
 }
 \keyword{datasets}
-

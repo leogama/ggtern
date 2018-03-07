@@ -2,10 +2,10 @@
 % Please edit documentation in R/geom-smooth-tern.R, R/stat-smooth-tern.R
 \docType{data}
 \name{geom_smooth_tern}
-\alias{GeomSmoothTern}
-\alias{StatSmoothTern}
 \alias{geom_smooth_tern}
+\alias{GeomSmoothTern}
 \alias{stat_smooth_tern}
+\alias{StatSmoothTern}
 \title{Add a Smoothed Conditional Mean.}
 \usage{
 geom_smooth_tern(mapping = NULL, data = NULL, position = "identity", ...,
@@ -106,4 +106,3 @@ ggtern(data=Feldspar,aes(Ab,An,Or,group=Feldspar)) +
 Nicholas Hamilton
 }
 \keyword{datasets}
-

@@ -48,10 +48,9 @@ annotate(geom  = 'text',
   theme_dark() + 
   theme_nomask()
 }
-\author{
-Nicholas Hamilton
-}
 \seealso{
 \code{\link[ggplot2]{annotate}}
 }
-
+\author{
+Nicholas Hamilton
+}
