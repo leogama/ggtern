@@ -68,6 +68,7 @@
 #------------------------------------------------------------------------------
 if(FALSE){
   library(grid)
+  source("./inst/staticdocs/icons.R")
   buildStaticDocs = function(){
     
     build_site = function(pkg = "."){
