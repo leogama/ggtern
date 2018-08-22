@@ -18,36 +18,40 @@ scale_R_continuous(name = waiver(), limits = NULL, breaks = waiver(),
 }
 \arguments{
 \item{name}{The name of the scale. Used as axis or legend title. If
-\code{NULL}, the default, the name of the scale is taken from the first
-mapping used for that aesthetic.}
+\code{waiver()}, the default, the name of the scale is taken from the first
+mapping used for that aesthetic. If \code{NULL}, the legend title will be
+omitted.}
 
 \item{limits}{A numeric vector of length two providing limits of the scale.
 Use \code{NA} to refer to the existing minimum or maximum.}
 
-\item{breaks}{One of: \itemize{
-  \item \code{NULL} for no breaks
-  \item \code{waiver()} for the default breaks computed by the
-    transformation object
-  \item A numeric vector of positions
-  \item A function that takes the limits as input and returns breaks
-    as output
+\item{breaks}{One of:
+\itemize{
+\item \code{NULL} for no breaks
+\item \code{waiver()} for the default breaks computed by the
+transformation object
+\item A numeric vector of positions
+\item A function that takes the limits as input and returns breaks
+as output
 }}
 
-\item{minor_breaks}{One of: \itemize{
-  \item \code{NULL} for no minor breaks
-  \item \code{waiver()} for the default breaks (one minor break between
-    each major break)
-  \item A numeric vector of positions
-  \item A function that given the limits returns a vector of minor breaks.
+\item{minor_breaks}{One of:
+\itemize{
+\item \code{NULL} for no minor breaks
+\item \code{waiver()} for the default breaks (one minor break between
+each major break)
+\item A numeric vector of positions
+\item A function that given the limits returns a vector of minor breaks.
 }}
 
-\item{labels}{One of: \itemize{
-  \item \code{NULL} for no labels
-  \item \code{waiver()} for the default labels computed by the
-    transformation object
-  \item A character vector giving labels (must be same length as \code{breaks})
-  \item A function that takes the breaks as input and returns labels
-    as output
+\item{labels}{One of:
+\itemize{
+\item \code{NULL} for no labels
+\item \code{waiver()} for the default labels computed by the
+transformation object
+\item A character vector giving labels (must be same length as \code{breaks})
+\item A function that takes the breaks as input and returns labels
+as output
 }}
 
 \item{...}{not used}

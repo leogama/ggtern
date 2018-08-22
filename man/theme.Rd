@@ -156,7 +156,7 @@ bounding box, when there are multiple legends ("top", "bottom", "left", or
 "right")}
 
 \item{legend.box.margin}{margins around the full legend area, as specified
-using \code{\link{margin}}}
+using \code{\link[=margin]{margin()}}}
 
 \item{legend.box.background}{background of legend area (\code{element_rect};
 inherits from \code{rect})}
@@ -168,8 +168,8 @@ legend box (\code{unit})}
 (\code{element_rect}; inherits from \code{rect})}
 
 \item{panel.border}{border around plotting area, drawn on top of plot so that
-  it covers tick marks and grid lines. This should be used with
-  \code{fill=NA}
+it covers tick marks and grid lines. This should be used with
+\code{fill=NA}
 (\code{element_rect}; inherits from \code{rect})}
 
 \item{panel.spacing}{spacing between facet panels (\code{unit})}
