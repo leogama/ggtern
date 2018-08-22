@@ -10,8 +10,6 @@
 
 .onAttach <- function(libname, pkgname){
   lines = c("--",
-            "Consider donating at: http://ggtern.com",
-            "Even small amounts (say $10-50) are very much appreciated!",
             sprintf("Remember to cite, run citation(package = '%s') for further info.",pkgname),
             "--")
   msg = paste(lines,collapse="\n")
