@@ -3,6 +3,8 @@
 S3method("+",gg)
 S3method(ggplot,data.frame)
 S3method(ggplot,default)
+S3method(ggplot_build,ggplot)
+S3method(ggplot_gtable,ggplot_built)
 S3method(grid.draw,ggplot)
 S3method(plot,ggplot)
 S3method(print,ggplot)
