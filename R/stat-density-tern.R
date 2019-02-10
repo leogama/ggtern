@@ -141,6 +141,13 @@ You can either:
     #Put back into dataframe
     df       = data.frame(expand.grid(x = dens$x, y = dens$y), z = as.vector(dens$z),group=data$group[1])
     
+    # Divide by jacobian determinant.
+    # Thanks to alexi19811
+    if(base == 'ilr'){
+      comps = fInv((df[,c('x','y')]))
+      df$z  = df$z / (sqrt(3) * apply(comps,1,prod))
+    }
+    
     ##Build the contours
     if (contour) {
       df = StatContour$compute_panel(df,scales,bins=bins,binwidth=binwidth,breaks=breaks)
