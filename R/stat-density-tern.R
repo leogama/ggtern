@@ -49,8 +49,8 @@ stat_density_tern <- function(mapping = NULL, data = NULL, geom = "density_tern"
       expand    = expand,
       weight    = weight,
       ...
-    )
-  )
+    ) 
+  )  
 }
 
 #' @rdname geom_density_tern
