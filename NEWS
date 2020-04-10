@@ -1,3 +1,8 @@
+
+ggtern 3.3.0
+----------------------------------------------------------------
+* Fixed broken compatability with ggplot2 3.3.0
+
 ggtern 3.1.1
 ----------------------------------------------------------------
 * Bug fix within the stat density tern funtion

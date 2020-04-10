@@ -150,7 +150,8 @@ You can either:
     
     ##Build the contours
     if (contour) {
-      df = StatContour$compute_panel(df,scales,bins=bins,binwidth=binwidth,breaks=breaks)
+      z.range <- range(df$z, na.rm = TRUE, finite = TRUE)
+      df = StatContour$compute_panel(df,scales,bins=bins,binwidth=binwidth,breaks=breaks,z.range=z.range)
     } else {
       names(df) <- c("x", "y", "density", "group")
       df$level <- 1
