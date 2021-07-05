@@ -3,7 +3,7 @@
 
   #' OLD FUNCTIONS  
   #'new_panel','train_layout','train_position','train_ranges','map_position','map_layout','reset_scales','facet_render',
-  #'xlabel','ylabel'
+  #'xlabel','ylabel','try_require'
   
   .functions.ggplot2   = c('create_layout',
                            #'expand_default', ## REMOVED
@@ -27,7 +27,7 @@
                            'ggname','ggplot_gtable','camelize',
                            'element_grob.element_line','element_grob.element_rect','element_grob.element_text','element_grob.element_blank',
                            'plot_clone','compute_just','labelGrob',
-                           'hexGrob','try_require','hex_binwidth','hexBinSummarise',
+                           'hexGrob','hex_binwidth','hexBinSummarise',
                            'find_args','is.margin','justify_grobs')
   .functions.gridExtra  = c('latticeGrob')
     .functions          = rbind(data.frame(p='ggplot2',  f=unique(.functions.ggplot2)),
